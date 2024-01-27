@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join</title>
     <script src="../js/script.js"></script>
-    <link rel="stylesheet" href="../css/style.css"> 
-    <link rel="stylesheet" href="../css/fonts.css">
-    <link rel="shortcut icon" href="assets/img/favicon.svg" type="image/x-icon">
-</head>
-<body>
-</body>
+    <link rel="stylesheet" href="../css/styleLogin.css" />
+    <link rel="stylesheet" href="../css/fonts.css" />
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/x-icon" />
+  </head>
+  <body>
+    <div id="signUpField">
+      <p>Not a Join user?</p>
+      <button>Sign up</button>
+    </div>
+
+    <div id="loginContainer">
+      <div id="loginHeader">
+        <h1>Log in</h1>
+        <img src="../assets/img/Vector 5.svg" alt="">
+      </div>
+      <form return="false">
+        <input id="inputMail" type="email" placeholder="Email" />
+        <input id="inputPassword" type="password" />
+        <div>
+          <input type="checkbox" />
+          <p>Remember me</p>
+        </div>
+        <div>
+          <button>Log in</button>
+          <button>Guest Log in</button>
+        </div>
+      </form>
+    </div>
+    <div id="loginFooter">
+      <a href="#">Parivacy Policy</a>
+      <a href="#">Legal notice</a>
+    </div>
+  </body>
 </html>

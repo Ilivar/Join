@@ -1,0 +1,61 @@
+body {
+  font-family: figtree;
+  margin: 0;
+  background-color: #f6f7f8;
+}
+
+h1{
+   
+    font-weight: 700;
+    font-size: 61px;
+
+}
+
+#loginHeader{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 89px;
+    width: 315px;
+    gap: 16px;
+}
+
+#seperatorLogin{
+    width: 0px;
+    height: 150px;
+    transform: rotate(90deg);
+    stroke-width: 3px;
+    stroke: #29ABE2;
+}
+
+#signUpField {
+  width: 279px;
+  height: 49px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: auto;
+}
+
+#signUpField Button {
+  width: 91px;
+  height: 49px;
+  padding: 15px, 16px, 15px, 16px;
+  border-radius: 8px;
+  gap: 10px;
+  background-color: #2a3647;
+  color: white;
+}
+
+#loginContainer {
+  width: 652px;
+  height: 493px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ justify-content: space-evenly;
+}
