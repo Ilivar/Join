@@ -2,6 +2,7 @@
   --Style: #d1d1d1;
   --Background: #f6f7f8;
   --icon: #a8a8a8;
+  --Version-2-main-color: #2a3647;
 }
 
 body {
@@ -14,14 +15,14 @@ body {
 
 a {
   text-decoration: none;
-  color: var(--icon, #a8a8a8);
+  color: var(--icon);
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 120%; /* 19.2px */
 }
-input::placeholder{
+input::placeholder {
   color: var(--Style);
 }
 
@@ -50,7 +51,6 @@ input::placeholder{
   line-height: 120%;
 }
 
-
 .buttonBright {
   display: flex;
   height: 48px;
@@ -61,7 +61,7 @@ input::placeholder{
   border-radius: 8px;
   border: 1px solid var(--Style);
   background: white;
-  color: var(--Version-2-main-color, #2a3647);
+  color: var(--Version-2-main-color);
   font-family: Inter;
   font-size: 21px;
   font-style: normal;
@@ -98,7 +98,7 @@ input::placeholder{
 }
 
 #seperatorLogin {
-margin-top: -68px;
+  margin-top: -68px;
 }
 
 #signUpField {
@@ -120,7 +120,7 @@ margin-top: -68px;
   align-items: center;
   gap: 32px;
   border-radius: 30px;
-  background: var(--white, #fff);
+  background: white;
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
 }
 
@@ -140,7 +140,7 @@ margin-top: -68px;
   align-items: center;
   gap: 10px;
   border-radius: 10px;
-  border: 1px solid var(--Style, #d1d1d1);
+  border: 1px solid var(--Style);
   padding-left: 21px;
   padding-right: 21px;
   color: black;
