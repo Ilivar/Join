@@ -1,32 +1,104 @@
+:root {
+  --Style: #d1d1d1;
+  --Background: #f6f7f8;
+  --icon: #a8a8a8;
+}
+
 body {
-  font-family: figtree;
+  font-family: inter;
   margin: 0;
-  background-color: #f6f7f8;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
-h1{
-   
-    font-weight: 700;
-    font-size: 61px;
-
+a {
+  text-decoration: none;
+  color: var(--icon, #a8a8a8);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 19.2px */
+}
+input::placeholder{
+  color: var(--Style);
 }
 
-#loginHeader{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 89px;
-    width: 315px;
-    gap: 16px;
+#joinIcon {
+  width: 100.034px;
+  height: 121.966px;
+  flex-shrink: 0;
+  position: absolute;
+  top: 80px;
+  left: 77px;
 }
 
-#seperatorLogin{
-    width: 0px;
-    height: 150px;
-    transform: rotate(90deg);
-    stroke-width: 3px;
-    stroke: #29ABE2;
+.buttonDark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 16px 15px 16px;
+  border-radius: 8px;
+  gap: 10px;
+  background-color: #2a3647;
+  color: white;
+  font-family: Inter;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+
+.buttonBright {
+  display: flex;
+  height: 48px;
+  padding: 15px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--Style);
+  background: white;
+  color: var(--Version-2-main-color, #2a3647);
+  font-family: Inter;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; /* 25.2px */
+}
+
+#mainContainer {
+  position: relative;
+  background-color: var(--Background);
+  width: 1440px;
+  height: 1024px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#loginHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+#loginHeader p {
+  color: #000;
+  text-align: center;
+  font-family: Inter;
+  font-size: 61px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+#seperatorLogin {
+margin-top: -68px;
 }
 
 #signUpField {
@@ -35,27 +107,80 @@ h1{
   display: flex;
   justify-content: space-evenly;
   margin-left: auto;
-}
-
-#signUpField Button {
-  width: 91px;
-  height: 49px;
-  padding: 15px, 16px, 15px, 16px;
-  border-radius: 8px;
-  gap: 10px;
-  background-color: #2a3647;
-  color: white;
+  margin-top: 67px;
+  margin-right: 122px;
 }
 
 #loginContainer {
   width: 652px;
   height: 493px;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: white;
-  border-radius: 30px;
-  display: flex;
+  display: inline-flex;
+  padding: 48px 115px;
   flex-direction: column;
   align-items: center;
- justify-content: space-evenly;
+  gap: 32px;
+  border-radius: 30px;
+  background: var(--white, #fff);
+  box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+}
+
+#inputFields {
+  display: flex;
+  height: 152px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
+
+.inputField {
+  position: relative;
+  display: flex;
+  width: 422px;
+  padding: 12px 21px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--Style, #d1d1d1);
+  padding-left: 21px;
+  padding-right: 21px;
+  color: black;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  background-repeat: no-repeat;
+  background-position: center right 21px;
+}
+
+.imgMail {
+  background-image: url("../assets/img/mail.svg");
+}
+
+.imgLock {
+  background-image: url("../assets/img/lock.svg");
+}
+
+#loginButtons {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 35px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#loginCheckbox {
+  display: flex;
+  padding: 0px 241px 0px 39px;
+  align-items: center;
+  align-self: stretch;
+  gap: 12px;
+}
+
+#loginFooter {
+  display: inline-flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 40px;
 }
