@@ -5,6 +5,8 @@ body {
 
 
 
+*{
+    font-family: inter;
 }
 
 .summary_headline {
