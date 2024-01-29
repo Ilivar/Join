@@ -37,5 +37,79 @@
     height: 424px;
     stroke-width: 1px;
     background-color: rgb(0, 0, 255);
-    
 }
+
+.input_field {
+    position: relative;
+    display: flex;
+    width: 422px;
+    padding: 12px 21px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--Style);
+    padding-left: 21px;
+    padding-right: 21px;
+    color: black;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    background-repeat: no-repeat;
+    background-position: center right 21px;
+  }
+
+  .textarea_field {
+    position: relative;
+    display: flex;
+    width: 422px;
+    padding: 12px 21px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--Style);
+    padding-left: 21px;
+    padding-right: 21px;
+    color: black;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    background-repeat: no-repeat;
+    background-position: center right 21px;
+  }
+
+  .button {
+    position: relative;
+    display: flex;
+    width: 422px;
+    padding: 12px 21px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--Style);
+    padding-left: 21px;
+    padding-right: 21px;
+    color: black;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    background-repeat: no-repeat;
+    background-position: center right 21px;
+  }
+
+  .prio_area {
+    display: flex;
+    width: 440px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .prio {
+    border-radius: 10px;
+    background: var(--white, #FFF);
+    /* nuevo */
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+  }

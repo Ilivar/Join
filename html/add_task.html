@@ -17,21 +17,24 @@
     <div class="background">
         <h1> Add Task </h1> 
         <div class="area">
-            
             <div class="area_left"> 
                 <h4> Title*</h4>
-                <input>
+                <input class="input_field" id="input_title" type="text" placeholder="Title"/>
                 <h4> Description</h4>
-                <textarea id="w3review" name="w3review" rows="4" cols="50"></textarea>
+                <textarea class="textarea_field" id="w3review" name="w3review" rows="4" cols="50" placeholder="Enter a Description"></textarea>
                 <h4>Assigned to</h4>
-                <button> Select task category</button>
+                <button class="button"> Select task category</button>
             </div>
             <div class="stroke"></div>
             <div class="area_right">
                 <h4> Due date*</h4>
-                <input>
+                <input class="input_field" id="input_title" type="text" placeholder="dd/mm/yyyy"/>
                 <h4> Prio </h4>
-                <button>Urgent</button> <button>Medium</button> <button>Low</button>
+                <div class="prio_area">
+                    <div class="prio">Urgent</div>
+                    <div class="prio">Medium</div>
+                    <div class="prio">Low</div>
+                </div>
                 <h4> Category*</h4>
                 <button> Select task category</button>
                 <h4>Subtasks</h4>
