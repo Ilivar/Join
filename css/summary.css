@@ -2,6 +2,7 @@ body {
     width: 1440px;
     height: 1024px;
     background: #F6F7F8;
+    margin: 0;
 }
 
 
@@ -17,12 +18,14 @@ body {
     justify-content: center;
     align-items: flex-start;
     gap: 28px;
+    padding-left: 400px;
 }
 
 .summary_headline {
-    display: flex;
+    display: inline-flex;
     justify-content: center;
-    text-align: center;
+    align-items: center;
+    gap: 30px;
 }
 
 
@@ -34,8 +37,7 @@ body {
     font-size: 61px;
     font-style: normal;
     font-weight: 700;
-    line-height: 120%;
-    /* 73.2px */
+    line-height: 120%; /* 73.2px */
 }
 
 .summary_headline_vector {
