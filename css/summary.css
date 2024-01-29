@@ -1,48 +1,182 @@
-*{
-    font-family: inter;
-}
-
-.summary_headline {
-    display: flex;
-    text-align: center;
-}
+body {
+    width: 1440px;
+    height: 1024px;
+    background: #F6F7F8;
 
 
-.summary_headline360 {
-    color: #000;
 
-    /* Version 2/t1 */
-    font-family: Inter;
-    font-size: 61px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 120%;
-    /* 73.2px */
-}
+    * {
+        font-family: inter;
+    }
 
-.summary_headline_vector {
-    width: 0px;
-    height: 59px;
-    stroke-width: 3px;
-    stroke: #29ABE2;
-}
-
-.summary_headline_between {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-}
+    .summary_headline {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
 
 
-.summary_headline_metrics {
-    color: #2A3647;
+    .summary_headline360 {
+        color: #000;
 
-    /* Version 2/t5 */
-    font-family: Inter;
-    font-size: 27px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%;
-    /* 32.4px */
-}
+        /* Version 2/t1 */
+        font-family: Inter;
+        font-size: 61px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
+        /* 73.2px */
+    }
+
+    .summary_headline_vector {
+        width: 0px;
+        height: 59px;
+        stroke-width: 3px;
+        stroke: #29ABE2;
+    }
+
+    .summary_headline_between {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+
+
+    .summary_headline_metrics {
+        color: #2A3647;
+
+        /* Version 2/t5 */
+        font-family: Inter;
+        font-size: 27px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+        /* 32.4px */
+    }
+
+    .todo_main {
+        display: flex;
+        width: 560px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 28px;
+        padding-left: 300px;
+    }
+
+
+    .todo {
+        display: flex;
+        width: 264px;
+        height: 168px;
+        padding: 38px 19px;
+        justify-content: center;
+        align-items: center;
+        gap: 18px;
+        flex-shrink: 0;
+        border-radius: 30px;
+        background: var(--white, #FFF);
+
+        /* nuevo */
+        box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    }
+
+    .done {
+        display: flex;
+        width: 264px;
+        height: 168px;
+        padding: 38px 19px;
+        justify-content: center;
+        align-items: center;
+        gap: 18px;
+        flex-shrink: 0;
+        border-radius: 30px;
+        background: var(--white, #FFF);
+
+        /* nuevo */
+        box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    }
+
+    .urgent {
+        display: flex;
+        width: 560px;
+        height: 168px;
+        padding: 28px 48px;
+        justify-content: center;
+        align-items: center;
+        gap: 61px;
+        border-radius: 30px;
+        background: var(--white, #FFF);
+
+        /* nuevo */
+        box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    }
+
+    .board {
+        display: flex;
+        width: 168px;
+        height: 168px;
+        padding: 25px 0px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 13px;
+        flex-shrink: 0;
+        border-radius: 30px;
+        background: var(--white, #FFF);
+
+        /* nuevo */
+        box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    }
+
+    .task_board {
+        display: flex;
+        width: 560px;
+        height: 170px;
+        padding: 1px 0px;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 28px;
+    }
+
+    .welcome {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 3px;
+    }
+
+    .welcome_text {
+        width: 338px;
+        color: #2A3647;
+
+        /* Version 2/t2 */
+        font-family: Inter;
+        font-size: 47px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 120%;
+        /* 56.4px */
+    }
+
+    .welcome_name {
+        width: 385px;
+        color: var(--Ligth-blue, #29ABE2);
+        font-family: Inter;
+        font-size: 64px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
+        /* 76.8px */
+    }
+
+    .todo_done{
+        display: flex;
+        width: 560px;
+        height: 168px;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 32px;
+    }
