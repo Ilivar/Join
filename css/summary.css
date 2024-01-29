@@ -1,0 +1,44 @@
+.summary_headline {
+    display: flex;
+    text-align: center;
+}
+
+
+.summary_headline360 {
+    color: #000;
+
+    /* Version 2/t1 */
+    font-family: Inter;
+    font-size: 61px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 73.2px */
+}
+
+.summary_headline_vector {
+    width: 0px;
+    height: 59px;
+    stroke-width: 3px;
+    stroke: #29ABE2;
+}
+
+.summary_headline_between {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+
+.summary_headline_metrics {
+    color: #2A3647;
+
+    /* Version 2/t5 */
+    font-family: Inter;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    /* 32.4px */
+}
