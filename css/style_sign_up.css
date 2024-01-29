@@ -145,6 +145,10 @@ input::placeholder {
   background-image: url("../assets/img/lock.svg");
 }
 
+.imgName    {
+    background-image: url("../assets/img/person.svg");
+}
+
 #loginButtons {
   display: flex;
   justify-content: center;
