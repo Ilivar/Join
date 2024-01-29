@@ -1,8 +1,27 @@
+* {
+    font-family: inter;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
 .background {
     width: 1440px;
     height: 1024px;
     background: #F6F7F8;
     padding-left: 390px;
+}
+
+h4 {
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    padding: 0;
+    margin: 0
 }
 
 .area {
@@ -19,7 +38,7 @@
     justify-content: center;
     align-items: flex-start;
     gap: 16px;
-    border: 3px solid rgb(236, 9, 9);
+    /* border: 3px solid rgb(236, 9, 9); */
 }
 
 .area_right {
@@ -29,15 +48,15 @@
     justify-content: center;
     align-items: flex-start;
     gap: 24px;
-    border: 3px solid rgb(19, 4, 226);
+    /* border: 3px solid rgb(19, 4, 226); */
 }
 
-.stroke {
+/* .stroke {
     width: 2px;
     height: 424px;
     stroke-width: 1px;
     background-color: rgb(0, 0, 255);
-}
+} */
 
 .input_field {
     position: relative;
@@ -108,8 +127,72 @@
   }
   
   .prio {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
     border-radius: 10px;
     background: var(--white, #FFF);
-    /* nuevo */
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+  }
+
+  .prio img {
+    padding: 8px;
+  }
+
+  .prio_orange {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    color: white;
+    background: #FFA800;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+  }
+
+  .prio_orange img {
+    padding: 8px;
+  }
+
+  .assigned_area {
+    display: flex;
+    width: 440px;
+    padding-left: 8px;
+    /* padding: 12px 16px; */
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid var(--Style, #D1D1D1);
+    background: var(--white, #FFF);
+  }
+
+  .clear_task {
+    display: flex;
+    padding: 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 10px;
+    background: #F6F7F8;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    border: 1px solid var(--Version-2-main-color, #2A3647);
+    background: #F6F7F8;
+  }
+
+  .create_task {
+    display: flex;
+    padding: 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 10px;
+    background: #2A3647;
+    color: white;
+  }
+
+  .task {
+    display: flex;
+    justify-content: flex-end;
+    width: 91%;
+    gap: 16px;
   }
