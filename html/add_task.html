@@ -7,6 +7,7 @@
     <title>Add Task</title>
     <link rel="icon" href="../assets/img/favicon.svg" type="image/x-icon" />
     <script src="../js/script.js"></script>
+    <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/add_task.css">
 </head>
 
@@ -15,30 +16,63 @@
     <div w3-include-html="../assets/templates/desktop_template.html"></div>
 
     <div class="background">
-        <h1> Add Task </h1> 
+        <!-- <h1> Add Task </h1>  -->
         <div class="area">
-            
             <div class="area_left"> 
                 <h4> Title*</h4>
-                <input>
+                <input class="input_field" id="input_title" type="text" placeholder="Title"/>
                 <h4> Description</h4>
-                <textarea id="w3review" name="w3review" rows="4" cols="50"></textarea>
+                <textarea class="textarea_field" id="w3review" name="w3review" rows="4" cols="50" placeholder="Enter a Description"></textarea>
                 <h4>Assigned to</h4>
-                <button> Select task category</button>
+                <div class="assigned_area">
+                    <p>Select contacts to assign</p>
+                    <img src="../assets/img/arrow_drop_downaa.svg">
+                </div>
             </div>
+
             <div class="stroke"></div>
+
             <div class="area_right">
                 <h4> Due date*</h4>
-                <input>
+                <input class="input_field" id="input_date" type="text" placeholder="dd/mm/yyyy"/>
                 <h4> Prio </h4>
-                <button>Urgent</button> <button>Medium</button> <button>Low</button>
+                <div class="prio_area">
+                    <div class="prio">
+                        <h4>Urgent</h4>
+                        <img src="../assets/img/Prio up.svg">
+                    </div>
+                    <div class="prio_orange">
+                        <h4>Medium</h4>
+                        <img src="../assets/img/Prio medium.svg">
+                    </div>
+                    <div class="prio">
+                        <h4>Low</h4>
+                        <img src="../assets/img/Prio down.svg">
+                    </div>
+                </div>
                 <h4> Category*</h4>
-                <button> Select task category</button>
+                <div class="assigned_area">
+                    <p>Select task category</p>
+                    <img src="../assets/img/arrow_drop_downaa.svg">
+                </div>
                 <h4>Subtasks</h4>
-                <input>
+                <div class="assigned_area">
+                    <p>Add new subtask</p>
+                    <img src="../assets/img/plus icon.svg">
+                </div>
             </div>
         </div>
-    
+        <p> *This field is required</p>
+        <div class="task">
+            <div class="clear_task"> 
+                <p> Clear Task</p>
+                <img src="../assets/img/iconoir_cancel.svg">
+            </div>
+            <div class="create_task"> 
+                <p> Create Task</p>
+                <img src="../assets/img/check.svg">
+            </div>
+        </div>
     </div>
 
 </body>
