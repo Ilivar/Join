@@ -1,3 +1,7 @@
+*{
+    font-family: inter;
+}
+
 .summary_headline {
     display: flex;
     text-align: center;
