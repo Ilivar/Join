@@ -53,7 +53,7 @@ input::placeholder {
   cursor: pointer;
 }
 
-#mainContainer {
+#main_container {
   position: relative;
   background-color: var(--Background);
   width: 1440px;
@@ -64,14 +64,14 @@ input::placeholder {
   align-items: center;
 }
 
-#loginHeader {
+#sign_up_header {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
 }
 
-#loginHeader p {
+#sign_up_header p {
   color: #000;
   text-align: center;
   font-family: Inter;
@@ -81,21 +81,12 @@ input::placeholder {
   line-height: 120%;
 }
 
-#seperatorLogin {
+#seperator {
   margin-top: -68px;
 }
 
-#signUpField {
-  width: 279px;
-  height: 49px;
-  display: flex;
-  justify-content: space-evenly;
-  margin-left: auto;
-  margin-top: 67px;
-  margin-right: 122px;
-}
 
-#loginContainer {
+#sign_up_container {
   margin-top: 197px;
   width: 598px;
   height: 630px;
@@ -109,7 +100,7 @@ input::placeholder {
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
 }
 
-#inputFields {
+#input_fields {
   display: flex;
   height: 152px;
   flex-direction: column;
@@ -117,7 +108,7 @@ input::placeholder {
   gap: 32px;
 }
 
-.inputField {
+.input_field {
   position: relative;
   display: flex;
   width: 422px;
