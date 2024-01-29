@@ -53,25 +53,6 @@ input::placeholder {
   cursor: pointer;
 }
 
-.buttonBright {
-  display: flex;
-  height: 48px;
-  padding: 15px 24px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  border-radius: 8px;
-  border: 1px solid var(--Style);
-  background: white;
-  color: var(--Version-2-main-color);
-  font-family: Inter;
-  font-size: 21px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 120%; /* 25.2px */
-  cursor: pointer;
-}
-
 #mainContainer {
   position: relative;
   background-color: var(--Background);
@@ -115,15 +96,16 @@ input::placeholder {
 }
 
 #loginContainer {
-  width: 652px;
-  height: 493px;
+  margin-top: 197px;
+  width: 598px;
+  height: 630px;
   display: inline-flex;
-  padding: 48px 115px;
+  padding: 48px 88px;
   flex-direction: column;
   align-items: center;
   gap: 32px;
   border-radius: 30px;
-  background: white;
+  background: var(--white, #fff);
   box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
 }
 
@@ -161,6 +143,10 @@ input::placeholder {
 
 .imgLock {
   background-image: url("../assets/img/lock.svg");
+}
+
+.imgName    {
+    background-image: url("../assets/img/person.svg");
 }
 
 #loginButtons {
