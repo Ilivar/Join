@@ -15,7 +15,7 @@
     <!-- Header Template  -->
     <div w3-include-html="../assets/templates/sidebar_template.html"></div>
 
-    <div class="">
+    <div class="summary_background_color">
 
         <div w3-include-html="../assets/templates/header_template.html"></div>
 
@@ -47,14 +47,19 @@
 
                         <div class="todo">
                             <img src="../assets/img/summary_todo.png" alt="">
-                            <span><b>1</b></span>
-                            <span>to-do</span>
+                            <div class="todo_flex">
+                                <span><b class="todo_number">1</b></span>
+                                <span class="todo_text">To-do</span>
+                            </div>
                         </div>
 
                         <div class="done">
                             <img src="../assets/img/summary_done.png" alt="">
-                            <span><b>1</b></span>
-                            <span>done</span>
+
+                            <div class="todo_flex">
+                                <span><b class="todo_number">1</b></span>
+                                <span class="todo_text">Done</span>
+                            </div>
                         </div>
 
                     </div>
@@ -91,22 +96,39 @@
                     </div>
 
                     <div class="task_board border_check">
+
+
                         <div class="board">
-                            <b class="tasks_number">5</b>
-                            <br> Tasks in Board
+
+                            <div class="task_text_number">
+                                <b class="tasks_number">5</b>
+                                <br>
+                                <span class="task_text">Tasks in <br> Board</span>
+                            </div>
+
                         </div>
 
                         <div class="board">
-                            <b class="tasks_number">2</b>
-                            <br>
-                            Tasks in Progress
+
+                            <div class="task_text_number">
+                                <b class="tasks_number">2</b>
+                                <br>
+                                <span class="task_text">Tasks in <br> Progress</span>
+                            </div>
+
                         </div>
 
+
                         <div class="board">
-                            <b class="tasks_number">2</b>
-                            <br>
-                            Awaiting Feedback
+
+                            <div class="task_text_number">
+                                <b class="tasks_number">2</b>
+                                <br>
+                                <span class="task_text">Awaiting <br> Feedback</span>
+                            </div>
+
                         </div>
+
                     </div>
 
 

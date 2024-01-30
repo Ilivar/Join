@@ -1,7 +1,7 @@
 body {
     width: 1440px;
     height: 100vh;
-    background: #F6F7F8;
+    
     margin: 0;
     display: flex;
 }
@@ -10,6 +10,10 @@ body {
 
 * {
     font-family: inter;
+}
+
+.summary_background_color{
+    background: #F6F7F8;
 }
 
 .summary_main {
@@ -100,6 +104,35 @@ body {
 .todo img {
     width: 69px;
     height: 69px;
+}
+
+.todo_number {
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+    /* 76.8px */
+}
+
+.todo_text {
+    color: #2A3647;
+
+    /* Version 2/t6 */
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    /* 24px */
+}
+
+.todo_flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .done {
@@ -317,4 +350,24 @@ body {
     font-weight: 600;
     line-height: 120%;
     /* 76.8px */
+}
+
+.task_text_number {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.task_text {
+    color: #2A3647;
+    text-align: center;
+
+    /* Version 2/t6 */
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    /* 24px */
 }
