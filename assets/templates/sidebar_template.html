@@ -59,6 +59,7 @@ a {
 }
 
 .menu_point {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -68,11 +69,17 @@ a {
     /* border: 1px solid white; */
 }
 
+.menu_point:hover {
+    cursor:pointer;
+    background: #181f29;
+}
+
 .menu_underpoint {
     display: flex;
-    width: 232px;
+    width: 100%;
     height: 46px;
-    padding-left: 90px;
+    /* margin-left: 90px; */
+    justify-content: start;
     align-items: center;
     gap: 8px;
     /* border: 1px solid white; */
