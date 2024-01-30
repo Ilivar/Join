@@ -1,3 +1,16 @@
+body {
+  display: flex;
+  height: 100vh;
+  padding: 0;
+}
+
+.side {
+  display: flex;
+  width: 1440px;
+  height: 1024px;
+  margin: auto;
+}
+
 * {
     font-family: inter;
 }
@@ -6,12 +19,16 @@ a {
     text-decoration: none;
     color: white;
 }
+.content {
+  border: 1px solid yellowgreen
+}
 
 .background {
-    width: 1440px;
-    height: 1024px;
+    /* width: 1208px; */
     background: #F6F7F8;
-    padding-left: 390px;
+    flex: 1;
+    border: 2px solid red;
+    
 }
 
 h4 {
@@ -25,30 +42,33 @@ h4 {
 }
 
 .area {
-    width: 1440px;
+    width: 1208px;
     height: 800px;
     display: flex;
     justify-content: space-evenly;
+    border: 2px solid blueviolet
 }
 
 .area_left {
     display: flex;
-    width: 440px;
+    width: 400px;
+    height: 600px;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     gap: 16px;
-    /* border: 3px solid rgb(236, 9, 9); */
+    border: 3px solid rgb(236, 9, 9);
 }
 
 .area_right {
     display: flex;
-    width: 440px;
+    width: 400px;
+    height: 600px;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     gap: 24px;
-    /* border: 3px solid rgb(19, 4, 226); */
+    border: 3px solid rgb(19, 4, 226);
 }
 
 /* .stroke {
@@ -61,7 +81,7 @@ h4 {
 .input_field {
     position: relative;
     display: flex;
-    width: 422px;
+    width: 350px;
     padding: 12px 21px;
     align-items: center;
     gap: 10px;
@@ -81,7 +101,7 @@ h4 {
   .textarea_field {
     position: relative;
     display: flex;
-    width: 422px;
+    width: 350px;
     padding: 12px 21px;
     align-items: center;
     gap: 10px;
@@ -101,7 +121,7 @@ h4 {
   .button {
     position: relative;
     display: flex;
-    width: 422px;
+    width: 350px;
     padding: 12px 21px;
     align-items: center;
     gap: 10px;
@@ -120,14 +140,14 @@ h4 {
 
   .prio_area {
     display: flex;
-    width: 440px;
+    width: 350px;
     justify-content: center;
     align-items: center;
     gap: 16px;
   }
   
   .prio {
-    padding: 16px;
+    padding: 8px;
     display: flex;
     justify-content: space-between;
     border-radius: 10px;
@@ -140,7 +160,7 @@ h4 {
   }
 
   .prio_orange {
-    padding: 16px;
+    padding: 8px;
     display: flex;
     justify-content: space-between;
     border-radius: 10px;
@@ -155,7 +175,7 @@ h4 {
 
   .assigned_area {
     display: flex;
-    width: 440px;
+    width: 382px;
     padding-left: 8px;
     /* padding: 12px 16px; */
     justify-content: space-between;

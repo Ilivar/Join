@@ -1,42 +1,43 @@
-
- 
-
-    <div class="header"> 
-        <h3> Kanban Project Management Tool</h3>
-        <div class="header_pictures">
-            <img src="../assets/img/help.svg">
-            <img src="../assets/img/group 9.svg" class="layer_circle">
-        </div>
-    </div>
-
+<div class="header">
+  <div class="headtext">
+    <h3>Kanban Project Management Tool</h3>
+  </div>
+  <div class="header_pictures">
+    <img src="../assets/img/help.svg" />
+    <img src="../assets/img/group 9.svg" class="layer_circle" />
+  </div>
+</div>
 
 <style>
-
-.header {
+  .header {
     display: flex;
-    width: 1208px;
-    padding: 20px 40px 20px 348px;
+    width: 100%;
     justify-content: space-between;
-    background: #FFF;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
-}
+    background: #fff;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  }
 
-.header_pictures {
+  .headtext {
+    display: flex;
+    padding-left: 100px;
+    align-items: center;
+  }
+
+  .header_pictures {
     display: flex;
     align-items: center;
     gap: 16px;
     display: inline-block;
     padding: 8px;
-}
-.header_pictures img{
+  }
+  .header_pictures img {
     width: 50px;
     height: 50px;
     padding: 5px;
-}
+  }
 
-.layer_circle {
+  .layer_circle {
     border: 2px solid black;
     border-radius: 50%;
-}
-
+  }
 </style>
