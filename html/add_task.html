@@ -17,60 +17,70 @@
     <div class="side">
         <div w3-include-html="../assets/templates/sidebar_template.html"></div>
         <div class="content">
-            <div w3-include-html="../assets/templates/header_template.html"></div>
+            
             <div class="background">
-                
+                <div w3-include-html="../assets/templates/header_template.html"></div>
                 <div class="area">
-                    <!-- <h1> Add Task </h1>  -->
-                    <div class="area_left"> 
-                        <h4> Title*</h4>
-                        <input class="input_field" id="input_title" type="text" placeholder="Title"/>
-                        <h4> Description</h4>
-                        <textarea class="textarea_field" id="w3review" name="w3review" rows="4" cols="50" placeholder="Enter a Description"></textarea>
-                        <h4>Assigned to</h4>
-                        <div class="assigned_area">
-                            <p>Select contacts to assign</p>
-                            <img src="../assets/img/arrow_drop_downaa.svg">
+                    <h1> Add Task </h1> 
+                    <div class="left_stroke_right_area">
+                        <div class="area_left"> 
+                            <div class="title_area">
+                                <h4> Title*</h4>
+                                <input class="input_field" id="input_title" type="text" placeholder="Enter a title"/>
+                            </div>
+                            <div class="description_area">
+                                <h4> Description</h4>
+                                <textarea class="textarea_field" id="w3review" name="w3review" rows="4" cols="50" placeholder="Enter a Description"></textarea>
+                            </div>
+                            <div class="assi_area">
+                                <h4>Assigned to</h4>
+                                <div class="assigned_area">
+                                    <p>Select contacts to assign</p>
+                                    <img src="../assets/img/arrow_drop_downaa.svg">
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="stroke"></div>
+                        <div class="stroke"></div>
 
-                    <div class="area_right">
-                        <h4> Due date*</h4>
-                        <input class="input_field" id="input_date" type="text" placeholder="dd/mm/yyyy"/>
-                        <h4> Prio </h4>
-                        <div class="prio_area">
-                            <div class="prio">
-                                <h4>Urgent</h4>
-                                <img src="../assets/img/Prio up.svg">
+                        <div class="area_right">
+                            <h4> Due date*</h4>
+                            <input class="input_field" id="input_date" type="text" placeholder="dd/mm/yyyy"/>
+                            <h4> Prio </h4>
+                            <div class="prio_area">
+                                <div class="prio">
+                                    <h4>Urgent</h4>
+                                    <img src="../assets/img/Prio up.svg">
+                                </div>
+                                <div class="prio_orange">
+                                    <h4>Medium</h4>
+                                    <img src="../assets/img/Prio medium.svg">
+                                </div>
+                                <div class="prio">
+                                    <h4>Low</h4>
+                                    <img src="../assets/img/Prio down.svg">
+                                </div>
                             </div>
-                            <div class="prio_orange">
-                                <h4>Medium</h4>
-                                <img src="../assets/img/Prio medium.svg">
+                            <h4> Category*</h4>
+                            <div class="assigned_area">
+                                <p>Select task category</p>
+                                <img src="../assets/img/arrow_drop_downaa.svg">
                             </div>
-                            <div class="prio">
-                                <h4>Low</h4>
-                                <img src="../assets/img/Prio down.svg">
+                            <h4>Subtasks</h4>
+                            <div class="assigned_area">
+                                <p>Add new subtask</p>
+                                <img src="../assets/img/plus icon.svg">
                             </div>
-                        </div>
-                        <h4> Category*</h4>
-                        <div class="assigned_area">
-                            <p>Select task category</p>
-                            <img src="../assets/img/arrow_drop_downaa.svg">
-                        </div>
-                        <h4>Subtasks</h4>
-                        <div class="assigned_area">
-                            <p>Add new subtask</p>
-                            <img src="../assets/img/plus icon.svg">
                         </div>
                     </div>
                 </div>
                 <div class="last_section"> 
-                    <p> *This field is required</p>
+                    <div class="required_text">
+                        <p> *This field is required</p>
+                    </div>
                     <div class="task">
                         <div class="clear_task"> 
-                            <p> Clear Task</p>
+                            <p> Clear</p>
                             <img src="../assets/img/iconoir_cancel.svg">
                         </div>
                         <div class="create_task"> 
