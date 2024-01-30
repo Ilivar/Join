@@ -9,6 +9,7 @@ body {
   font-family: inter;
   margin: 0;
   height: 100vh;
+  display: flex;
 }
 
 #main_container {
