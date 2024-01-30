@@ -1,57 +1,65 @@
-<div class="header"> 
-    <h3> Kanban Project Management Tool</h3>
-    <div class="header_pictures">
-        <img src="../assets/img/help.svg">
-        <img src="../assets/img/group 9.svg" class="layer_circle">
+<div class="display_flex">
+    <navbar class="navbar">
+        <div>
+            <img src="../assets/img/Capa2white.svg">
+        </div>
+        <div class="menu">
+            <div class="menu_point">
+                <div class="menu_underpoint">
+                    <img src="../assets/img/summary.svg">
+                    <h3> Summary</h3>
+                </div>
+            </div>
+            <div class="menu_point">
+                <div class="menu_underpoint">
+                    <img src="../assets/img/addTask.svg">
+                    <h3> Add Task</h3>
+                </div>
+            </div>
+            <div class="menu_point">
+                <div class="menu_underpoint">
+                    <img src="../assets/img/board.svg">
+                    <h3>Board</h3>
+                </div>
+            </div>
+            <div class="menu_point">
+                <div class="menu_underpoint">
+                    <img src="../assets/img/contacts.svg">
+                    <h3>Contacts</h3>
+                </div>
+            </div>
+        
+        </div>
+        <div class="area3">
+            <a href=""><h3>Privacy Policy</h3></a>
+            <a href=""><h3>Legal notice</h3></a>
+        </div>
+    </navbar>
+
+    <div class="header"> 
+        <h3> Kanban Project Management Tool</h3>
+        <div class="header_pictures">
+            <img src="../assets/img/help.svg">
+            <img src="../assets/img/group 9.svg" class="layer_circle">
+        </div>
     </div>
 </div>
 
-<navbar class="navbar">
-    <div>
-        <img src="../assets/img/Capa2white.svg">
-    </div>
-    <div class="menu">
-        <div class="menu_point">
-            <div class="menu_underpoint">
-                <img src="../assets/img/summary.svg">
-                <h3> Summary</h3>
-            </div>
-        </div>
-        <div class="menu_point">
-            <div class="menu_underpoint">
-                <img src="../assets/img/addTask.svg">
-                <h3> Add Task</h3>
-            </div>
-        </div>
-        <div class="menu_point">
-            <div class="menu_underpoint">
-                <img src="../assets/img/board.svg">
-                <h3>Board</h3>
-            </div>
-        </div>
-        <div class="menu_point">
-            <div class="menu_underpoint">
-                <img src="../assets/img/contacts.svg">
-                <h3>Contacts</h3>
-            </div>
-        </div>
-       
-    </div>
-    <div class="area3">
-        <a href=""><h3>Privacy Policy</h3></a>
-        <a href=""><h3>Legal notice</h3></a>
-    </div>
-</navbar>
+
 
 
 <style>
 
+.display_flex { 
+    /* border: 1px solid black; */
+    display: flex;
+}
+
 .header {
     display: flex;
-    width: 1440px;
+    width: 1208px;
     padding: 20px 40px 20px 348px;
     justify-content: space-between;
-    align-items: center;
     background: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
 }
@@ -77,7 +85,7 @@
 .navbar {
     display: flex;
     width: 232px;
-    height: 1024px;
+    height: 100vh;
     padding: 64px 0px;
     flex-direction: column;
     justify-content: space-between;
@@ -85,9 +93,6 @@
     flex-shrink: 0;
     background: #2A3647;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
-    position: fixed;
-    left: 0;
-    top: 0;
 }
 
 .menu_point {
