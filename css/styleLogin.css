@@ -8,9 +8,8 @@
 body {
   font-family: inter;
   margin: 0;
-  align-items: center;
-  justify-content: center;
   display: flex;
+  height: 100vh;
 }
 
 a {
@@ -81,6 +80,7 @@ input::placeholder {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  margin: auto;
 }
 
 #loginHeader {

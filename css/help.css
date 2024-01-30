@@ -8,7 +8,14 @@
   body {
     font-family: inter;
     margin: 0;
-    align-items: center;
-    justify-content: center;
+    height: 100vh;
+  }
+
+  #main_container{
+    position: relative;
+    background-color: var(--Background);
+    width: 1440px;
+    height: 1024px;
     display: flex;
+    margin: auto;
   }
