@@ -1,0 +1,46 @@
+:root {
+  --Style: #d1d1d1;
+  --Background: #f6f7f8;
+  --icon: #a8a8a8;
+  --Version-2-main-color: #2a3647;
+}
+
+body {
+  font-family: inter;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+}
+
+h1 {
+  font-family: Inter;
+  font-size: 61px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+#main_container {
+  position: relative;
+  background-color: var(--Background);
+  width: 1440px;
+  height: 1024px;
+  display: flex;
+  margin: auto;
+}
+
+#main_content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#text_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#text_container {
+    margin: 98px;
+    overflow-y: auto;
+  }
