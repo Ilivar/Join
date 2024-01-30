@@ -1,19 +1,23 @@
 body {
-    width: 1440px;
     height: 100vh;
-    
     margin: 0;
     display: flex;
 }
-
 
 
 * {
     font-family: inter;
 }
 
+#content{
+    display: flex;
+    margin: auto;
+    height: 1024px;
+}
+
 .summary_background_color{
     background: #F6F7F8;
+    width: 1440px;
 }
 
 .summary_main {
@@ -180,7 +184,6 @@ body {
     flex-shrink: 0;
     border-radius: 30px;
     background: var(--white, #FFF);
-
     /* nuevo */
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
@@ -348,8 +351,6 @@ body {
     font-size: 64px;
     font-style: normal;
     font-weight: 600;
-    line-height: 120%;
-    /* 76.8px */
 }
 
 .task_text_number {
@@ -362,12 +363,9 @@ body {
 .task_text {
     color: #2A3647;
     text-align: center;
-
-    /* Version 2/t6 */
     font-family: Inter;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
-    /* 24px */
 }
