@@ -1,5 +1,6 @@
 body {
-  margin: 0;
+  display: flex;
+  height: 100vh;
   padding: 0;
 }
 
@@ -7,7 +8,7 @@ body {
   display: flex;
   width: 1440px;
   height: 1024px;
-  border: 3px solid rgb(255, 0, 212);
+  margin: auto;
 }
 
 * {
