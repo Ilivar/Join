@@ -15,8 +15,6 @@ body {
     font-family: inter;
 }
 
-
-
 .background {
     height: 1024px;
     background: #F6F7F8;
@@ -31,7 +29,7 @@ body {
 .contact_list {
     display: flex;
     width: 456px;
-    height: 928px;
+    height: 940px;
     flex-shrink: 0;
     background: var(--white, #FFF);
     box-shadow: 4px 0px 6px 0px rgba(0, 0, 0, 0.08);
@@ -42,8 +40,12 @@ body {
 
 .text_right {
     display: flex;
+    width: 800px;
     align-items: center;
+    justify-content: center;
+    margin-bottom:700px;
     gap: 30px;
+    /* border: 2px solid blue; */
 }
 
 .title {
@@ -75,6 +77,8 @@ body {
     display: flex;
     height: 50px;
     width: 352px;
+    margin-top: 16px;
+    margin-bottom: 16px;
     padding-left: 8px;
     padding-right: 8px;
     justify-content: center;
@@ -92,4 +96,10 @@ body {
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
+}
+
+.contact_member {
+    /* border: 2px solid rebeccapurple; */
+    width: 350px;
+    overflow:auto;
 }
