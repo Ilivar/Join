@@ -1,48 +1,46 @@
 <navbar class="navbar">
-    <div>
-        <img id="navbar_img" src="../assets/img/Capa2white.svg">
+  <div>
+    <img id="navbar_img" src="../assets/img/Capa2white.svg" />
+  </div>
+  <div class="menu">
+    <div class="menu_point">
+      <div class="menu_underpoint">
+        <img src="../assets/img/summary.svg" />
+        <a href="summary.html"><h3>Summary</h3></a>
+      </div>
     </div>
-    <div class="menu">
-        <div class="menu_point">
-            <div class="menu_underpoint">
-                <img src="../assets/img/summary.svg">
-                <a href="summary.html"><h3>Summary</h3></a>
-            </div>
-        </div>
-        <div class="menu_point">
-            <div class="menu_underpoint">
-                <img src="../assets/img/addTask.svg">
-                <a href="add_task.html"><h3>Add Task</h3></a>
-            </div>
-        </div>
-        <div class="menu_point">
-            <div class="menu_underpoint">
-                <img src="../assets/img/board.svg">
-                <a href="board.html"><h3>Board</h3></a>
-            </div>
-        </div>
-        <div class="menu_point">
-            <div class="menu_underpoint">
-                <img src="../assets/img/contacts.svg">
-                <a href="contacts.html"><h3>Contacts</h3></a>
-            </div>
-        </div>
-    
+    <div class="menu_point">
+      <div class="menu_underpoint">
+        <img src="../assets/img/addTask.svg" />
+        <a href="add_task.html"><h3>Add Task</h3></a>
+      </div>
     </div>
-    <div class="area3">
-        <a href="privacy_policy.html"><h3>Privacy Policy</h3></a>
-        <a href="legal_notice.html"><h3>Legal notice</h3></a>
+    <div class="menu_point">
+      <div class="menu_underpoint">
+        <img src="../assets/img/board.svg" />
+        <a href="board.html"><h3>Board</h3></a>
+      </div>
     </div>
+    <div class="menu_point">
+      <div class="menu_underpoint">
+        <img src="../assets/img/contacts.svg" />
+        <a href="contacts.html"><h3>Contacts</h3></a>
+      </div>
+    </div>
+  </div>
+  <div class="area3">
+    <a href="privacy_policy.html"><h3>Privacy Policy</h3></a>
+    <a href="legal_notice.html"><h3>Legal notice</h3></a>
+  </div>
 </navbar>
 
 <style>
-
-a {
+  a {
     text-decoration: none;
     color: white;
-}
+  }
 
-.navbar {
+  .navbar {
     display: flex;
     width: 232px;
     height: 100%;
@@ -50,15 +48,15 @@ a {
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
-    background: #2A3647;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
-}
+    background: #2a3647;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  }
 
-#navbar_img{
+  #navbar_img {
     margin-top: 64px;
-}
+  }
 
-.menu_point {
+  .menu_point {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -67,14 +65,14 @@ a {
     gap: 15px;
     color: white;
     /* border: 1px solid white; */
-}
+  }
 
-.menu_point:hover {
-    cursor:pointer;
+  .menu_point:hover {
+    cursor: pointer;
     background: #181f29;
-}
+  }
 
-.menu_underpoint {
+  .menu_underpoint {
     display: flex;
     width: 100%;
     height: 46px;
@@ -83,9 +81,9 @@ a {
     align-items: center;
     gap: 8px;
     /* border: 1px solid white; */
-}
+  }
 
-.area3 {
+  .area3 {
     display: flex;
     padding: 243px 0px 0px 52px;
     flex-direction: column;
@@ -95,5 +93,5 @@ a {
     align-self: stretch;
     margin-bottom: 64px;
     /* border: 1px solid white; */
-}
+  }
 </style>

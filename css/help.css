@@ -32,6 +32,10 @@ body {
   overflow-y: auto;
 }
 
+#text_container::-webkit-scrollbar {
+  display: none;
+}
+
 #text_header {
   display: flex;
   justify-content: space-between;
