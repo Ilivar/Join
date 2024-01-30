@@ -1,66 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Board</title>
-    <link rel="stylesheet" href="../css/board.css">
+    <link rel="stylesheet" href="../css/board.css" />
     <script src="../js/script.js"></script>
-</head>
+  </head>
 
-<body onload="includeHTML()">
-
+  <body onload="includeHTML()">
     <div id="content" class="background_color">
+      <div w3-include-html="../assets/templates/sidebar_template.html"></div>
 
-        <div w3-include-html="../assets/templates/sidebar_template.html"></div>
+      <div w3-include-html="../assets/templates/header_template.html"></div>
 
-        <div w3-include-html="../assets/templates/header_template.html"></div>
-
-        <div>
-
-            <span class="board_headline">Board</span>
-
-            <div><input class="input_field" id="input_title" type="text" placeholder="Find Task"/></div>
-
-            <div><div class="create_task"> 
-                <p>Add Task</p>
-                <img src="../assets/img/check.svg">
-            </div></div>
-
-        </div>
-
+      <div>
+        <span class="board_headline">Board</span>
 
         <div>
-
-            <div>
-                <div>To do</div>
-                <div><img src="../assets/img/plus_icon_small.svg" alt=""></div>
-            </div>
-
-            <div>
-                <div>In progress</div>
-                <div><img src="../assets/img/plus_icon_small.svg" alt=""></div>
-            </div>
-
-            <div>
-                <div>Await feedback</div>
-                <div><img src="../assets/img/plus_icon_small.svg" alt=""></div>
-            </div>
-
-            <div>
-                <div>Done</div>
-                <div></div>
-            </div>
-
-
+          <input
+            class="input_field"
+            id="input_title"
+            type="text"
+            placeholder="Find Task"
+          />
         </div>
 
+        <div>
+          <div class="create_task">
+            <p>Add Task</p>
+            <img src="../assets/img/check.svg" />
+          </div>
+        </div>
+      </div>
 
+      <div>
+        <div>
+          <div>To do</div>
+          <div><img src="../assets/img/plus_icon_small.svg" alt="" /></div>
+        </div>
 
+        <div>
+          <div>In progress</div>
+          <div><img src="../assets/img/plus_icon_small.svg" alt="" /></div>
+        </div>
 
+        <div>
+          <div>Await feedback</div>
+          <div><img src="../assets/img/plus_icon_small.svg" alt="" /></div>
+        </div>
+
+        <div>
+          <div>Done</div>
+          <div></div>
+        </div>
+      </div>
     </div>
-
-</body>
-
+  </body>
 </html>
