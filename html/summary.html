@@ -14,9 +14,11 @@
 <body onload="includeHTML()">
     <!-- Header Template  -->
     <div w3-include-html="../assets/templates/sidebar_template.html"></div>
-    <div w3-include-html="../assets/templates/header_template.html"></div>
-    
-    <div class="summary_main border_check">
+
+    <div class="">
+
+        <div w3-include-html="../assets/templates/header_template.html"></div>
+
 
         <div class="summary_headline border_blue">
 
@@ -28,76 +30,97 @@
 
             <span class="summary_headline_metrics">Key Metrics at a Glance</span>
 
-            
+
             <div class="summary_headline_between"></div>
-            
-        </div>
-
-
-        <div class="todo_main border_check">
-
-
-            <div class="todo_done border_check border_blue">
-
-                <div class="todo">
-                    <img src="../assets/img/summary_todo.png" alt="">
-                    <span><b>1</b></span>
-                    <span>to-do</span>
-                </div>
-
-                <div class="done">
-                    <img src="../assets/img/summary_done.png" alt="">
-                    <span><b>1</b></span>
-                    <span>done</span>
-                </div>
-
-            </div>
-
-
-
-            <div class="urgent">
-                <img src="../assets/img/summary_ellipse.svg" alt="">
-                <img class="color" src="../assets/img/double_arrow_up.svg" alt="">
-                <span><b>1</b></span>
-                <span>Urgent</span>
-                <img src="../assets/img/summary_urgent_vector.svg" alt="">
-
-                <div>
-                    <span>October 16, 2022</span>
-                    <span>Upcoming Deadline</span>
-                </div>
-
-
-            </div>
-
-            <div class="task_board border_check">
-                <div class="board">
-                    <b>5</b>
-                    <br> Tasks in Board
-                </div>
-
-                <div class="board">
-                    <b>2</b>
-                    <br>
-                    Tasks in Progress
-                </div>
-
-                <div class="board">
-                    <b>2</b>
-                    <br>
-                    Awaiting Feedback
-                </div>
-            </div>
-
 
         </div>
 
+        <div class="d_flex">
 
-        <div class="welcome">
-            <div class="welcome_text">Good morning,</div>
-            <div class="welcome_name">Sofia Müller</div>
+            <div class="summary_main border_check">
+
+
+                <div class="todo_main border_check">
+
+
+                    <div class="todo_done border_check border_blue">
+
+                        <div class="todo">
+                            <img src="../assets/img/summary_todo.png" alt="">
+                            <span><b>1</b></span>
+                            <span>to-do</span>
+                        </div>
+
+                        <div class="done">
+                            <img src="../assets/img/summary_done.png" alt="">
+                            <span><b>1</b></span>
+                            <span>done</span>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="urgent">
+
+                        <div class="urgent_img_text">
+
+                            <div class="orange_circle"><img class="color" src="../assets/img/double_arrow_up.svg"
+                                    alt="">
+                            </div>
+                            <!-- <img src="../assets/img/summary_ellipse.svg" alt=""> -->
+
+                            <div class="urgent_flex">
+                                <b class="urgent_1">1</b>
+                                <span class="urgent_text">Urgent</span>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="urgent_vector">
+                            <img src="../assets/img/summary_urgent_vector.svg" alt="">
+                        </div>
+                        <div class="urgent_date_flex">
+                            <span class="urgent_date">October 16, 2022</span>
+                            <span class="urgent_upcoming">Upcoming Deadline</span>
+                        </div>
+
+
+                    </div>
+
+                    <div class="task_board border_check">
+                        <div class="board">
+                            <b class="tasks_number">5</b>
+                            <br> Tasks in Board
+                        </div>
+
+                        <div class="board">
+                            <b class="tasks_number">2</b>
+                            <br>
+                            Tasks in Progress
+                        </div>
+
+                        <div class="board">
+                            <b class="tasks_number">2</b>
+                            <br>
+                            Awaiting Feedback
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+            <div class="welcome">
+                <div class="welcome_text">Good morning,</div>
+                <div class="welcome_name">Sofia Müller</div>
+            </div>
+
         </div>
-
 
     </div>
 
