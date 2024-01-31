@@ -59,7 +59,7 @@ body {
 
 .board_background_color {
     background: #f6f7f8;
-    width: 1440px;
+    width: 1208px;
 }
 
 .board_main {
@@ -164,7 +164,7 @@ body {
     display: flex;
     width: 24px;
     height: 24px;
-    padding: 3px;
+    /* padding: 3px; */
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -187,4 +187,5 @@ body {
     width: 8px;
     height: 8px;
     flex-shrink: 0;
+    /* margin: 8px; */
 }
