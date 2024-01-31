@@ -1,61 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign up</title>
-    <link rel="stylesheet" href="../css/style_sign_up.css">
+    <link rel="stylesheet" href="../css/style_sign_up.css" />
     <link rel="stylesheet" href="../css/fonts.css" />
     <link rel="icon" href="../assets/img/favicon.svg" type="image/x-icon" />
-</head>
-<body>
+    <script src="../js/login.js"></script>
+  </head>
+  <body>
     <div id="main_container">
-        <img id="joinIcon" src="../assets/img/Capa 2.svg" alt="" />
-        
-        <div id="sign_up_container">
-        <img id="arrow_back" src="../assets/img/arrow-left-line.svg" alt="">
-          <div id="sign_up_header">
-            <p>Sign up</p>
-            <img id="seperator" src="../assets/img/Vector 5.svg" alt="" />
-          </div>
-          <form id="input_fields" return="false">
-            <input
-              class="input_field imgName"
-              id="input_name"
-              type="text"
-              placeholder="Name"
-            />
-            <input
-              class="input_field imgMail"
-              id="input_mail"
-              type="email"
-              placeholder="Email"
-            />
-            <input
+      <img id="joinIcon" src="../assets/img/Capa 2.svg" alt="" />
+
+      <div id="sign_up_container">
+        <img id="arrow_back" src="../assets/img/arrow-left-line.svg" alt="" />
+        <div id="sign_up_header">
+          <p>Sign up</p>
+          <img id="seperator" src="../assets/img/Vector 5.svg" alt="" />
+        </div>
+        <form id="input_fields" return="false">
+          <input
+            class="input_field imgName"
+            id="input_name"
+            type="text"
+            placeholder="Name"
+          />
+          <input
+            class="input_field imgMail"
+            id="input_mail"
+            type="email"
+            placeholder="Email"
+          />
+          <input
             class="input_field imgLock"
             id="input_password"
             type="password"
             placeholder="Password"
           />
           <input
-          class="input_field imgLock"
-          id="input_confirm"
-          type="password"
-          placeholder="Confirm Password"
-        />
-            <div id="loginCheckbox">
-              <input style="width: 24px; height: 24px" type="checkbox" />
-              <p>I accept the Privacy policyd</p>
-            </div>
-            <div id="loginButtons">
-              <button class="buttonDark" style="height: 48px">Sign up</button>
-            </div>
-          </form>
-        </div>
-        <div id="loginFooter">
-          <a href="privacy_policy.html">Privacy Policy</a>
-          <a href="legal_notice.html">Legal notice</a>
-        </div>
+            class="input_field imgLock"
+            id="input_confirm"
+            type="password"
+            placeholder="Confirm Password"
+          />
+          <div id="loginCheckbox">
+            <input style="width: 24px; height: 24px" type="checkbox" />
+            <p>I accept the Privacy policyd</p>
+          </div>
+          <div id="loginButtons">
+            <button
+              onclick="createNewMember()"
+              class="buttonDark"
+              style="height: 48px"
+            >
+              Sign up
+            </button>
+          </div>
+        </form>
       </div>
-</body>
+      <div id="loginFooter">
+        <a href="privacy_policy.html">Privacy Policy</a>
+        <a href="legal_notice.html">Legal notice</a>
+      </div>
+    </div>
+  </body>
 </html>
