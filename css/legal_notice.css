@@ -43,5 +43,8 @@ h1 {
 #text_container {
   margin: 98px;
   overflow-y: auto;
-  overflow: hidden;
+}
+
+#text_container::-webkit-scrollbar {
+  display: none;
 }
