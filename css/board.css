@@ -12,6 +12,7 @@ body {
     display: flex;
     margin: auto;
     height: 1024px;
+    
 }
 
 .background_color{
@@ -61,4 +62,10 @@ body {
     border-radius: 10px;
     background: #2A3647;
     color: white;
+  }
+
+
+  .board_background_color {
+    background: #f6f7f8;
+    width: 1440px;
   }
