@@ -10,6 +10,11 @@
     <script src="../js/sign_up.js"></script>
   </head>
   <body>
+    <div id="overlay">
+      <div id="popup">
+          <div id="success_info">You Signed Up successfully</div>
+      </div>
+  </div>
     <div id="main_container">
       <img id="joinIcon" src="../assets/img/Capa 2.svg" alt="" />
 
@@ -19,7 +24,7 @@
           <p>Sign up</p>
           <img id="seperator" src="../assets/img/Vector 5.svg" alt="" />
         </div>
-        <form id="input_fields" return="false">
+        <form id="input_fields"  onsubmit="createNewMember(event)" return false;>
           <input required
             class="input_field imgName"
             id="input_name"
@@ -53,7 +58,6 @@
           </div>
           <div id="loginButtons">
             <button
-              onclick="createNewMember()"
               class="buttonDark"
               style="height: 48px"
             >
@@ -62,6 +66,7 @@
           </div>
         </form>
       </div>
+      <button onclick="getItem()">TEST</button>
       <div id="loginFooter">
         <a href="privacy_policy.html">Privacy Policy</a>
         <a href="legal_notice.html">Legal notice</a>

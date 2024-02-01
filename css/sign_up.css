@@ -3,6 +3,7 @@
   --Background: #f6f7f8;
   --icon: #a8a8a8;
   --Version-2-main-color: #2a3647;
+  --warning: #FF8190;
 }
 
 body {
@@ -147,6 +148,15 @@ input::placeholder {
   background-image: url("../assets/img/person.svg");
 }
 
+#input_field_container{
+position: relative;
+}
+#msg_dont_match {
+  position: fixed;
+  color: var(--warning);
+  display: none;
+}
+
 #loginButtons {
   display: flex;
   justify-content: center;
@@ -170,4 +180,32 @@ input::placeholder {
   align-items: flex-start;
   gap: 16px;
   margin-bottom: 40px;
+}
+
+#overlay {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#popup {
+  width: 312px;
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--Version-2-main-color);
+  text-align: center;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #fff;
+  border-radius: 20px;
 }
