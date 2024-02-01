@@ -1,7 +1,5 @@
 const STORAGE_TOKEN = "AA65OLXVENV8TLEMXUEAWFYRV3L5SLIL9GP66L8H";
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
-let key = [];
-let value = [];
 
 async function setItem(key, value) {
   const payload = { key, value, token: STORAGE_TOKEN };
@@ -32,9 +30,12 @@ async function getItem(key) {
   }
 }
 
+
 function createNewMember() {
+  let key;
+  let value = [];
   let name = document.getElementById("input_name").value;
-  let mail = document.getElementById("input_mail").value;
+  let email = document.getElementById("input_mail").value; 
   let password = document.getElementById("input_password").value;
   let confirm = document.getElementById("input_confirm").value;
 
@@ -42,22 +43,32 @@ function createNewMember() {
     alert("Passwords do not match!");
     return;
   } else {
-    value.push(name, password);
-    key.push(mail);
+    let user = {
+      name: name,
+      email: email, 
+      password: password,
+    };
+    value.push(user);
+    key = email;
   }
-
-  console.log("Key:", key);
-  console.log("Values:", value);
   setItem(key, value);
+} 
+
+async function setItem(key, value) {
+  const payload = { key, value, token: STORAGE_TOKEN };
+  return fetch(STORAGE_URL, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  }).then((res) => res.json());
 }
 
+
 async function retrieveData() {
-  const key = "tim@test.de"; // Der Schlüssel, für den du die Daten abrufen möchtest
+  const key = "klaus@test.de";
   const data = await getItem(key);
 
   if (data) {
     console.log("Empfangene Daten:", data);
-    // Hier kannst du weitere Verarbeitungsschritte durchführen
   } else {
     console.log("Daten nicht gefunden.");
   }
