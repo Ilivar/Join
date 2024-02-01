@@ -11,29 +11,26 @@ async function setItem(key, value) {
   }).then((res) => res.json());
 }
 
-// async function getItem(key) {
-//   const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
-//   return fetch(url).then((res) => res.json());
-// }
-
 async function getItem(key) {
-    const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
-    
-    try {
-      const response = await fetch(url);
-      
-      if (!response.ok) {
-        throw new Error('Fehler beim Abrufen des Werts für den angegebenen Schlüssel');
-      }
-      
-      const data = await response.json();
-      return data.value;
-    } catch (error) {
-      console.error('Fehler:', error);
-      return null;
+  const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
+
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(
+        "Fehler beim Abrufen des Werts für den angegebenen Schlüssel"
+      );
     }
+
+    const data = await response.json();
+    console.log("Empfangene Daten:", data);
+    return data.value;
+  } catch (error) {
+    console.error("Fehler:", error);
+    return null;
   }
-  
+}
 
 function createNewMember() {
   let name = document.getElementById("input_name").value;
@@ -45,11 +42,23 @@ function createNewMember() {
     alert("Passwords do not match!");
     return;
   } else {
-    value.push(name, mail, password);
-    key.push("name", "mail", "password");
+    value.push(name, password);
+    key.push(mail);
   }
 
-  console.log("Keys:", key);
+  console.log("Key:", key);
   console.log("Values:", value);
   setItem(key, value);
+}
+
+async function retrieveData() {
+  const key = "tim@test.de"; // Der Schlüssel, für den du die Daten abrufen möchtest
+  const data = await getItem(key);
+
+  if (data) {
+    console.log("Empfangene Daten:", data);
+    // Hier kannst du weitere Verarbeitungsschritte durchführen
+  } else {
+    console.log("Daten nicht gefunden.");
+  }
 }
