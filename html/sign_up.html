@@ -4,12 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign up</title>
-    <link rel="stylesheet" href="../css/style_sign_up.css" />
+    <link rel="stylesheet" href="../css/sign_up.css" />
     <link rel="stylesheet" href="../css/fonts.css" />
     <link rel="icon" href="../assets/img/favicon.svg" type="image/x-icon" />
-    <script src="../js/login.js"></script>
+    <script src="../js/sign_up.js"></script>
   </head>
   <body>
+    <div id="overlay">
+      <div id="popup">
+          <div id="success_info">You Signed Up successfully</div>
+      </div>
+  </div>
     <div id="main_container">
       <img id="joinIcon" src="../assets/img/Capa 2.svg" alt="" />
 
@@ -19,38 +24,40 @@
           <p>Sign up</p>
           <img id="seperator" src="../assets/img/Vector 5.svg" alt="" />
         </div>
-        <form id="input_fields" return="false">
-          <input
+        <form id="input_fields"  onsubmit="createNewMember(event)" return false;>
+          <input required
             class="input_field imgName"
             id="input_name"
             type="text"
             placeholder="Name"
           />
-          <input
+          <input required
             class="input_field imgMail"
             id="input_mail"
             type="email"
             placeholder="Email"
           />
-          <input
+          <input required
             class="input_field imgLock"
             id="input_password"
             type="password"
             placeholder="Password"
           />
-          <input
+          <div id="input_fiel_container">
+          <input required
             class="input_field imgLock"
             id="input_confirm"
             type="password"
             placeholder="Confirm Password"
-          />
+            />
+            <span id="msg_dont_match">Ups! your password don´t match </span>
+          </div>
           <div id="loginCheckbox">
-            <input style="width: 24px; height: 24px" type="checkbox" />
-            <p>I accept the Privacy policyd</p>
+            <input required style="width: 24px; height: 24px" type="checkbox" />
+            <p>I accept the</p> <a href="privacy_policy.html">Privacy Policy</a>
           </div>
           <div id="loginButtons">
             <button
-              onclick="createNewMember()"
               class="buttonDark"
               style="height: 48px"
             >
@@ -59,6 +66,7 @@
           </div>
         </form>
       </div>
+      <button onclick="getItem()">TEST</button>
       <div id="loginFooter">
         <a href="privacy_policy.html">Privacy Policy</a>
         <a href="legal_notice.html">Legal notice</a>

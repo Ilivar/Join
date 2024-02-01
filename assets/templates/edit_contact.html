@@ -1,0 +1,140 @@
+<div class="card">
+    <div class="color_section">
+        <div class="logo_left">
+            <img src="../assets/img/Capa2white.svg">
+        </div>  
+        <img src="../assets/img/Frame 211.png">
+    </div>
+    <div class="input_section">
+        <div class="picture_area"> 
+            <img src="../assets/img/frame 79.png">
+        </div>
+        <div class="input_fields"> 
+            <div class="close">
+                <img src="../assets/img/close.png" onclick="closeEditContact()"> 
+            </div>
+            <input class="input_field img_person" id="input_name" type="name" placeholder="Name"/>
+            <input class="input_field img_email" id="input_email" type="email" placeholder="Email"/>
+            <input class="input_field img_phone" id="input_phone" type="phone" placeholder="Phone"/>
+            <div class="button_area">
+                <div class="clear_task"> 
+                    <p> Delete</p>
+                </div>
+                <div class="create_task"> 
+                    <p> Save</p>
+                    <img src="../assets/img/check.svg">
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<style>
+
+.card {
+    display: flex;
+    width: 1212px;
+    height: 592px;
+    border-radius: 30px;
+}
+
+.color_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 467px;
+    height: 592px;
+    gap: 12px;
+    background-color: #2A3647;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    text-align: center;
+}
+
+.logo_left {
+    padding-left: 110px;
+    width: 467px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.logo_left img {
+    height: 66px;
+    width: 56px;
+}
+
+.input_section {
+    width: 790px;
+    border: 2px solid rgb(161, 161, 161);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.picture_area {
+    display: flex;
+    justify-content: center;
+    width: 250px;
+    /* border: 1px solid brown; */
+}
+
+.close {
+    /* border: 1px solid blueviolet; */
+    padding-left: 45px;
+    padding-bottom: 45px;
+    width: 375px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.input_fields {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    /* border: 1px solid blue; */
+    gap: 32px;
+}
+
+.input_field {
+    position: relative;
+    display: flex;
+    width: 375px;
+    /* padding: 12px 21px; */
+    align-items: center;
+    gap: 8px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    color: black;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    background-repeat: no-repeat;
+    background-position: center right 21px;
+}
+
+.img_person {
+    background-image: url("../assets/img/person.svg");
+}
+
+.img_email {
+    background-image: url("../assets/img/mail.svg");
+}
+
+.img_phone {
+    background-image: url("../assets/img/call.svg");
+}
+
+.button_area {
+    /* border: 1px solid green; */
+    /* padding-left: 20px; */
+    display: flex;
+    gap: 12px;
+}
+</style>
