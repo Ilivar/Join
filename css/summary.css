@@ -104,7 +104,6 @@ body {
 
 .todo:hover {
   background-color: #2A3647;
-  color: white;
 }
 
 .todo img {
@@ -128,10 +127,10 @@ body {
   /* 76.8px */
 }
 
-.todo_number:hover {
-  /* background-color: #2A3647; */
+/* .todo_number:hover {
+  background-color: #2A3647;
   color: white;
-}
+} */
 
 .todo_text {
   color: #2a3647;
@@ -145,16 +144,20 @@ body {
   /* 24px */
 }
 
-.todo_text:hover {
+/* .todo_text:hover {
   background-color: #2A3647;
   color: white;
-}
+} */
 
 .todo_flex {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+/* .todo_flex:hover {
+  background-color: #2a3647;
+} */
 
 .done {
   display: flex;
@@ -169,6 +172,10 @@ body {
 
   /* nuevo */
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.done:hover {
+  background-color: #2a3647;
 }
 
 .done img {
@@ -188,6 +195,10 @@ body {
 
   /* nuevo */
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.urgent:hover{
+background-color: #2A3647;
 }
 
 .board {
