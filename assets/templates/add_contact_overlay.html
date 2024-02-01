@@ -10,12 +10,12 @@
             <img src="../assets/img/group 13.png">
         </div>
         <div class="input_fields"> 
-            <div class="close">
-                <img src="../assets/img/close.png"> 
+            <div class="close" >
+                <img src="../assets/img/close.png" onclick="closeAddContact()"> 
             </div>
-            <input class="input_field img_person" id="input_name" type="name" placeholder="Name"/>
-            <input class="input_field img_email" id="input_email" type="email" placeholder="Email"/>
-            <input class="input_field img_phone" id="input_phone" type="phone" placeholder="Phone"/>
+                <input class="input_field img_person" id="input_name" type="name" placeholder="Name"/>
+                <input class="input_field img_email" id="input_email" type="email" placeholder="Email"/>
+                <input class="input_field img_phone" id="input_phone" type="phone" placeholder="Phone"/>
             <div class="button_area">
                 <div class="clear_task"> 
                     <p> Cancel</p>
@@ -92,6 +92,10 @@
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
+}
+
+.close img:hover {
+    cursor: pointer;
 }
 
 .input_fields {

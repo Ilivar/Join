@@ -16,9 +16,14 @@
     <!-- Header Template  -->
 
     <div class="side">
-        <div class="overlay_add_contact"> 
+        <div class="overlay_add_contact" id="overlayAddContact"> 
             <div w3-include-html="../assets/templates/add_contact_overlay.html"></div>
         </div>
+        <div class="overlay_add_contact" id="editContact"> 
+            <div w3-include-html="../assets/templates/edit_contact.html"></div>
+        </div>
+        
+
         <div w3-include-html="../assets/templates/sidebar_template.html"></div>
         <div class="content">
             
@@ -40,6 +45,7 @@
                             <img src="../assets/img/vektor_senkrecht.svg" alt="">
                         </div>
                         <span class="headline_metrics">Better with a team</span>
+                        <button id="editContact" onclick="openEditContact()">Edit</button>
                     </div>
                 </div>
 
