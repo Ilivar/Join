@@ -38,7 +38,7 @@ function createNewMember(event) {
       password: password,
     };
     value.push(user);
-    setItem(key, value);
+    // setItem(key, value);
     signInSuccess();
   }
 }
