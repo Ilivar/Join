@@ -1,5 +1,7 @@
 const STORAGE_TOKEN = "AA65OLXVENV8TLEMXUEAWFYRV3L5SLIL9GP66L8H";
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
+let value = [];
+let key = "users";
 
 async function setItem(key, value) {
   const payload = { key, value, token: STORAGE_TOKEN };
@@ -9,16 +11,19 @@ async function setItem(key, value) {
   }).then((res) => res.json());
 }
 
-async function getItem(key) {
-  const url = `${STORAGE_URL}?${key}&token=${STORAGE_TOKEN}`;
+async function getItem() {
+  const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
   return fetch(url).then((res) => res.json());
 }
 
-function createNewMember(event) {
-  event.preventDefault();
+async function loadPreviousMember() {
+  let previousMember = await getItem();
+  value = JSON.parse(previousMember.data.value);
+  console.log(value);
+}
 
-  let key = "users";
-  let value = [];
+async function createNewMember(event) {
+  event.preventDefault();
   let name = document.getElementById("input_name").value;
   let email = document.getElementById("input_mail").value;
   let password = document.getElementById("input_password").value;
@@ -37,9 +42,10 @@ function createNewMember(event) {
       email: email,
       password: password,
     };
+    await loadPreviousMember();
     value.push(user);
-    // setItem(key, value);
-    signInSuccess();
+    await setItem(key, value);
+    // signInSuccess();
   }
 }
 
@@ -49,4 +55,3 @@ function signInSuccess() {
     window.location.href = "index.html";
   }, 2000);
 }
-
