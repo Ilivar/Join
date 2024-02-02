@@ -100,10 +100,12 @@ body {
 
   /* nuevo */
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-out;
 }
 
 .todo:hover {
   background-color: #2A3647;
+  transform: scale(1.1);
 }
 
 .todo img {
@@ -172,10 +174,12 @@ body {
 
   /* nuevo */
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-out;
 }
 
 .done:hover {
   background-color: #2a3647;
+  transform: scale(1.1);
 }
 
 .done img {
@@ -195,10 +199,12 @@ body {
 
   /* nuevo */
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-out;
 }
 
 .urgent:hover{
 background-color: #2A3647;
+transform: scale(1.1);
 }
 
 .board {
@@ -214,6 +220,12 @@ background-color: #2A3647;
   background: var(--white, #fff);
   /* nuevo */
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-out;
+}
+
+.board:hover {
+  background-color: #2A3647;
+  transform: scale(1.1);
 }
 
 .task_board {

@@ -83,31 +83,31 @@
                 </div>
               </div>
 
-              <div class="task_board border_check" onmouseover="changeTextTask()" onmouseout="restoreTextcolor()">
-                <div class="board">
+              <div class="task_board border_check" >
+                <div class="board" onmouseover="changeTextTaskBoard()" onmouseout="restoreTextcolorBoard()">
                   <div class="task_text_number">
-                    <b class="tasks_number task_color">5</b>
-                    <span class="task_text task_color"
+                    <b class="tasks_number task_board_color">5</b>
+                    <span class="task_text task_board_color"
                       >Tasks in <br />
                       Board</span
                     >
                   </div>
                 </div>
 
-                <div class="board">
+                <div class="board" onmouseover="changeTextTaskProgress()" onmouseout="restoreTextcolorProgress()">
                   <div class="task_text_number">
-                    <b class="tasks_number task_color">2</b>
-                    <span class="task_text task_color"
+                    <b class="tasks_number task_progress_color">2</b>
+                    <span class="task_text task_progress_color"
                       >Tasks in <br />
                       Progress</span
                     >
                   </div>
                 </div>
 
-                <div class="board">
+                <div class="board" onmouseover="changeTextTaskFeedback()" onmouseout="restoreTextcolorFeedback()">
                   <div class="task_text_number">
-                    <b class="tasks_number task_color">2</b>
-                    <span class="task_text task_color"
+                    <b class="tasks_number awaiting_feedback_color">2</b>
+                    <span class="task_text awaiting_feedback_color"
                       >Awaiting <br />
                       Feedback</span
                     >

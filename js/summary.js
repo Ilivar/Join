@@ -73,9 +73,9 @@ function restoreTextUrgent() {
 }
 
 
-function changeTextTask() {
+function changeTextTaskBoard() {
     // Alle Elemente mit der Klasse "urgent_text" auswählen
-    let urgentTextElements = document.querySelectorAll('.task_color');
+    let urgentTextElements = document.querySelectorAll('.task_board_color');
 
     // Für jedes dieser Elemente den Stil ändern
     urgentTextElements.forEach(function(element) {
@@ -87,9 +87,65 @@ function changeTextTask() {
 }
 
 // Funktion zum Zurücksetzen des Stils nach dem Verlassen des Hovers
-function restoreTextcolor() {
+function restoreTextcolorBoard() {
     // Alle Elemente mit der Klasse "urgent_text" auswählen
-    var urgentTextElements = document.querySelectorAll('.task_color');
+    var urgentTextElements = document.querySelectorAll('.task_board_color');
+
+    // Für jedes dieser Elemente den ursprünglichen Stil wiederherstellen
+    urgentTextElements.forEach(function(element) {
+        // Zurücksetzen der Hintergrundfarbe
+        element.style.backgroundColor = "";
+        // Zurücksetzen der Schriftfarbe
+        element.style.color = "";
+    });
+}
+
+
+function changeTextTaskProgress() {
+    // Alle Elemente mit der Klasse "urgent_text" auswählen
+    let urgentTextElements = document.querySelectorAll('.task_progress_color');
+
+    // Für jedes dieser Elemente den Stil ändern
+    urgentTextElements.forEach(function(element) {
+        // Ändern der Hintergrundfarbe
+        element.style.backgroundColor = "#2A3647";
+        // Ändern der Schriftfarbe
+        element.style.color = "white";
+    });
+}
+
+// Funktion zum Zurücksetzen des Stils nach dem Verlassen des Hovers
+function restoreTextcolorProgress() {
+    // Alle Elemente mit der Klasse "urgent_text" auswählen
+    var urgentTextElements = document.querySelectorAll('.task_progress_color');
+
+    // Für jedes dieser Elemente den ursprünglichen Stil wiederherstellen
+    urgentTextElements.forEach(function(element) {
+        // Zurücksetzen der Hintergrundfarbe
+        element.style.backgroundColor = "";
+        // Zurücksetzen der Schriftfarbe
+        element.style.color = "";
+    });
+}
+
+
+function changeTextTaskFeedback() {
+    // Alle Elemente mit der Klasse "urgent_text" auswählen
+    let urgentTextElements = document.querySelectorAll('.awaiting_feedback_color');
+
+    // Für jedes dieser Elemente den Stil ändern
+    urgentTextElements.forEach(function(element) {
+        // Ändern der Hintergrundfarbe
+        element.style.backgroundColor = "#2A3647";
+        // Ändern der Schriftfarbe
+        element.style.color = "white";
+    });
+}
+
+// Funktion zum Zurücksetzen des Stils nach dem Verlassen des Hovers
+function restoreTextcolorFeedback() {
+    // Alle Elemente mit der Klasse "urgent_text" auswählen
+    var urgentTextElements = document.querySelectorAll('.awaiting_feedback_color');
 
     // Für jedes dieser Elemente den ursprünglichen Stil wiederherstellen
     urgentTextElements.forEach(function(element) {
