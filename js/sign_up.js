@@ -50,11 +50,13 @@ async function createNewMember(event) {
 async function isUserNew(user, email) {
   let emailExists = value.some((existingUser) => existingUser.email === email);
   if (emailExists) {
-    alert("Benutzer existiert bereits");
+    document
+      .getElementById("already_in_use")
+      .setAttribute("style", "display: block;");
   } else {
     value.push(user);
     await setItem(key, value);
-    // signInSuccess();
+    signInSuccess();
   }
 }
 
@@ -63,4 +65,9 @@ function signInSuccess() {
   setTimeout(function () {
     window.location.href = "index.html";
   }, 2000);
+}
+
+function clearAllMembers() {
+  value = [];
+  setItem(key, value);
 }

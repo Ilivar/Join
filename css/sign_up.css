@@ -148,10 +148,13 @@ input::placeholder {
   background-image: url("../assets/img/person.svg");
 }
 
-#input_field_container{
-position: relative;
-}
 #msg_dont_match {
+  position: fixed;
+  color: var(--warning);
+  display: none;
+}
+
+#already_in_use {
   position: fixed;
   color: var(--warning);
   display: none;
