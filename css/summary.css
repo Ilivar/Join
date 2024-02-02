@@ -204,7 +204,7 @@ body {
 
 .urgent:hover{
 background-color: #2A3647;
-transform: scale(1.1);
+transform: scale(1.05);
 }
 
 .board {
