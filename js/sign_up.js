@@ -43,6 +43,15 @@ async function createNewMember(event) {
       password: password,
     };
     await loadPreviousMember();
+    isUserNew(user, email);
+  }
+}
+
+async function isUserNew(user, email) {
+  let emailExists = value.some((existingUser) => existingUser.email === email);
+  if (emailExists) {
+    alert("Benutzer existiert bereits");
+  } else {
     value.push(user);
     await setItem(key, value);
     // signInSuccess();
