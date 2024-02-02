@@ -8,6 +8,7 @@
     <script src="../js/script.js"></script>
     <link rel="stylesheet" href="../css/fonts.css" />
     <link rel="stylesheet" href="../css/summary.css" />
+    <script src="../js/summary.js"></script>
   </head>
 
   <body onload="includeHTML()">
@@ -31,28 +32,32 @@
         </div>
 
         <div class="d_flex">
+          
           <div class="summary_main border_check">
+
             <div class="todo_main border_check">
+
               <div class="todo_done border_check border_blue">
-                <div class="todo">
-                  <img src="../assets/img/summary_todo.png" alt="" />
+
+                <div class="todo" onmouseover="changeImagePen(this)" onmouseout="restoreImagePen(this)">
+                  <img id="pen" src="../assets/img/pen_img_black.svg"/>
                   <div class="todo_flex">
-                    <span><b class="todo_number">1</b></span>
-                    <span class="todo_text">To-do</span>
+                    <span><b class="todo_number" id="todoNumber">1</b></span>
+                    <span class="todo_text" id="todoText">To-do</span>
                   </div>
                 </div>
 
-                <div class="done">
-                  <img src="../assets/img/summary_done.png" alt="" />
+                <div class="done" onmouseover="changeImageCheck(this)" onmouseout="restoreImageCheck(this)">
+                  <img id="check" src="../assets/img/check_img_dark.svg" />
 
                   <div class="todo_flex">
-                    <span><b class="todo_number">1</b></span>
-                    <span class="todo_text">Done</span>
+                    <span><b class="todo_number" id="doneNumber">1</b></span>
+                    <span class="todo_text" id="doneText">Done</span>
                   </div>
                 </div>
               </div>
 
-              <div class="urgent">
+              <div class="urgent" onmouseover="changeTextUrgent()" onmouseout="restoreTextUrgent()">
                 <div class="urgent_img_text">
                   <div class="orange_circle">
                     <img
@@ -64,8 +69,8 @@
                   <!-- <img src="../assets/img/summary_ellipse.svg" alt=""> -->
 
                   <div class="urgent_flex">
-                    <b class="urgent_1">1</b>
-                    <span class="urgent_text">Urgent</span>
+                    <b class="urgent_1 urgent_color">1</b>
+                    <span class="urgent_text urgent_color">Urgent</span>
                   </div>
                 </div>
 
@@ -73,36 +78,36 @@
                   <img src="../assets/img/summary_urgent_vector.svg" alt="" />
                 </div>
                 <div class="urgent_date_flex">
-                  <span class="urgent_date">October 16, 2022</span>
-                  <span class="urgent_upcoming">Upcoming Deadline</span>
+                  <span class="urgent_date urgent_color" >October 16, 2022</span>
+                  <span class="urgent_upcoming urgent_color">Upcoming Deadline</span>
                 </div>
               </div>
 
-              <div class="task_board border_check">
-                <div class="board">
+              <div class="task_board border_check" >
+                <div class="board" onmouseover="changeTextTaskBoard()" onmouseout="restoreTextcolorBoard()">
                   <div class="task_text_number">
-                    <b class="tasks_number">5</b>
-                    <span class="task_text"
+                    <b class="tasks_number task_board_color">5</b>
+                    <span class="task_text task_board_color"
                       >Tasks in <br />
                       Board</span
                     >
                   </div>
                 </div>
 
-                <div class="board">
+                <div class="board" onmouseover="changeTextTaskProgress()" onmouseout="restoreTextcolorProgress()">
                   <div class="task_text_number">
-                    <b class="tasks_number">2</b>
-                    <span class="task_text"
+                    <b class="tasks_number task_progress_color">2</b>
+                    <span class="task_text task_progress_color"
                       >Tasks in <br />
                       Progress</span
                     >
                   </div>
                 </div>
 
-                <div class="board">
+                <div class="board" onmouseover="changeTextTaskFeedback()" onmouseout="restoreTextcolorFeedback()">
                   <div class="task_text_number">
-                    <b class="tasks_number">2</b>
-                    <span class="task_text"
+                    <b class="tasks_number awaiting_feedback_color">2</b>
+                    <span class="task_text awaiting_feedback_color"
                       >Awaiting <br />
                       Feedback</span
                     >
