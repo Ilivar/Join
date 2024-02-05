@@ -8,9 +8,10 @@
   <link rel="stylesheet" href="../css/board.css" />
   <link rel="stylesheet" href="../css/fonts.css">
   <script src="../js/script.js"></script>
+  <script src="../js/board.js"></script>
 </head>
 
-<body onload="includeHTML()">
+<body onload="init()">
   <div id="content">
     <!-- Header Template  -->
     <div w3-include-html="../assets/templates/sidebar_template.html"></div>
@@ -112,7 +113,7 @@
 
       </div>
 
-     <div class="user_story_content">
+     <div class="user_story_content" id="tasksBoard">
 
      </div>
 
