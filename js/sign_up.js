@@ -19,7 +19,6 @@ async function getItem() {
 async function loadPreviousMember() {
   let previousMember = await getItem();
   value = JSON.parse(previousMember.data.value);
-  console.log(value);
 }
 
 async function createNewMember(event) {

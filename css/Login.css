@@ -3,6 +3,7 @@
   --Background: #f6f7f8;
   --icon: #a8a8a8;
   --Version-2-main-color: #2a3647;
+  --warning: #FF8190;
 }
 
 body {
@@ -161,6 +162,11 @@ input::placeholder {
 
 .imgLock {
   background-image: url("../assets/img/lock.svg");
+}
+
+#wrong_data {
+  color: var(--warning);
+  display: none;
 }
 
 #loginButtons {

@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join</title>
     <script src="../js/script.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/sign_up.js"></script>
     <link rel="stylesheet" href="../css/Login.css" />
     <link rel="stylesheet" href="../css/fonts.css" />
     <link rel="icon" href="../assets/img/favicon.svg" type="image/x-icon" />
   </head>
-  <body>
+  <body onload="init()">
     <div id="mainContainer">
       <div id="signUpField">
         <p>Not a Join user?</p>
@@ -23,28 +25,33 @@
           <p>Log in</p>
           <img id="seperatorLogin" src="../assets/img/Vector 5.svg" alt="" />
         </div>
-        <form id="inputFields" return="false">
+        <form id="inputFields" onsubmit="login(); return false;">
           <input
             class="inputField imgMail"
             id="inputMail"
             type="email"
             placeholder="Email"
           />
-          <input
-            class="inputField imgLock"
-            id="inputPassword"
-            type="password"
-            placeholder="Password"
-          />
+          <div>
+            <input
+              class="inputField imgLock"
+              id="inputPassword"
+              type="password"
+              placeholder="Password"
+            />
+            <span id="wrong_data">Wrong email or password.</span>
+          </div>
           <div id="loginCheckbox">
-            <input style="width: 24px; height: 24px" type="checkbox" />
+            <input id="remember_check" style="width: 24px; height: 24px" type="checkbox" />
             <p>Remember me</p>
           </div>
           <div id="loginButtons">
-            <a href="summary.html">
-              <button class="buttonDark" style="height: 48px">Log in</button>
+            <button type="submit" class="buttonDark" style="height: 48px">
+              Log in
+            </button>
+            <a href="../html/summary.html">
+              <button type="button" class="buttonBright">Guest Log in</button>
             </a>
-            <button class="buttonBright">Guest Log in</button>
           </div>
         </form>
       </div>
