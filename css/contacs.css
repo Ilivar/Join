@@ -3,6 +3,9 @@ body {
     height: 100vh;
     margin: 0;
 }
+a{
+    color: #007CEE!important;
+}
 
 .side {
     display: flex;
@@ -120,8 +123,10 @@ body {
 .contact_member {
     /* border: 2px solid rebeccapurple; */
     width: 350px;
-    overflow:auto;
+    /* overflow:auto; */
 }
+
+
 
 .button {
     position: relative;
