@@ -31,9 +31,9 @@ function addNewContact() {
     email: email,
     phone: phone,
   };
-//   contacts.push(newContact);
-  localStorage.setItem("Contact", JSON.stringify(newContact));
+  contacts.push(newContact);
   closeAddContact();
+  renderContacts();
 }
 
 function renderContacts() {
