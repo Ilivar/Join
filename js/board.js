@@ -59,9 +59,11 @@ function boardTasks() {
             <div>${board['prio']}</div>
             <div>${board['assigned to']}</div>
             <div>${board['subtasks']}</div>
-            <div class="progress-bar-container">
-            <div class="progress-bar"></div>
+           
         </div>
+
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
             </div>
         `;
     });
