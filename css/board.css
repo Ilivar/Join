@@ -256,12 +256,13 @@ body {
 
 
 .drag-area {
-    height: 200px;
-    background-color: rgba(0, 0, 0, 0.1);
-    border: 1px dashed black;
+    height: 700px;
+    width: 200px;
+    background-color: transparent;
+    /* Transparente Hintergrundfarbe */
+    border: none;
+    /* Keine Grenzen */
     margin-bottom: 50px;
-    display: flex;
-    align-items: flex-start;
     position: relative;
 }
 
