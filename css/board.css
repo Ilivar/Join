@@ -64,7 +64,7 @@ body {
 
 .board_main {
     width: 1208px;
-    height: 232px;
+    height: 152px;
     flex-shrink: 0;
     margin-top: 79.5px;
     /* margin-bottom: 79.5px; */
@@ -135,7 +135,7 @@ body {
 
 .to_do_main {
     display: flex;
-    width: 1208px;
+    width: 1076px;
     padding: 0px 64px;
     justify-content: space-between;
     align-items: flex-start;
@@ -175,10 +175,11 @@ body {
 
 .user_story_content {
     display: flex;
-    width: 1208px;
+    width: 1076px;
     height: 688px;
     padding: 0px 64px;
     align-items: flex-start;
+    justify-content: space-between;
     gap: 26px;
     flex-shrink: 0;
 }
@@ -203,10 +204,14 @@ body {
     font-size: 22px;
     background-color: white;
     box-shadow: #42526E;
-    gap: 24px;
-    white-space: nowrap;
+    gap: 10px;
+}
+
+.card_content{
+    width: 100%;
     overflow: hidden; /* Verhindert, dass Text über den Container hinaus sichtbar wird */
     text-overflow: ellipsis; /* Fügt "..." am Ende des abgeschnittenen Textes hinzu */
+    
 }
 
 .category {
@@ -239,5 +244,5 @@ body {
   .progress-bar {
     width: 50%; /* Der Füllstand der Fortschrittsleiste in Prozent */
     height: 100%;
-    background-color: #4CAF50; /* Farbe des Füllstandes */
+    background-color: #4589FF; /* Farbe des Füllstandes */
   }

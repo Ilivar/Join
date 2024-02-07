@@ -51,7 +51,9 @@ function boardTasks() {
 
     boards.forEach(board => {
         tasksContainer.innerHTML += /*html*/`
-        <div class="task_content"> 
+        <div class="task_content">
+        
+        <div class="card_content"> 
             <div class="category">${board['category']}</div>
             <div class="title">${board['title']}</div>
             <div class="description">${board['description']}</div>
@@ -64,7 +66,9 @@ function boardTasks() {
 
         <div class="progress-bar-container">
             <div class="progress-bar"></div>
-            </div>
+        </div>
+
+        </div>
         `;
     });
 }
