@@ -154,6 +154,7 @@ h4 {
 .prio_area {
   display: flex;
   width: 400px;
+  height: 56px;
   justify-content: center;
   align-items: center;
   gap: 16px;
@@ -161,12 +162,18 @@ h4 {
 }
 
 .prio {
+  width: 134px;
   padding: 8px;
   display: flex;
-  /* justify-content: space-evenly; */
+  justify-content: space-evenly;
   border-radius: 10px;
   background: var(--white, #fff);
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.prio:hover {
+  cursor: pointer;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .prio img {
@@ -179,9 +186,14 @@ h4 {
   display: flex;
   justify-content: space-between;
   border-radius: 10px;
-  color: white;
-  background: #ffa800;
+  color: rgb(0, 0, 0);
+  background: #ffffff;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.prio_orange:hover {
+  cursor: pointer;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .prio_orange img {
@@ -246,3 +258,35 @@ h4 {
   display: flex;
   align-items: flex-end;
 }
+
+.create_task:hover {
+  cursor: pointer;
+  background-color: #29ABE2;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.accordion {
+  border: 1px solid var(--Style, #d1d1d1);
+  background: var(--white, #fff);
+  color: #000000;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  outline: none;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background: var(--white, #fff);
+}
+
+.panel {
+  width: 100%;
+  background: var(--white, #fff);
+  display: none;
+}
+
+
+
+
