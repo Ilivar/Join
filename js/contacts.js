@@ -1,8 +1,10 @@
 let contacts = [];
 
-function init() {
+async function init() {
   includeHTML();
   renderContacts();
+  await loadPreviousMember();
+  await loadCurrentUserData();
 }
 
 function openNewContact() {
@@ -31,7 +33,7 @@ function addNewContact() {
     email: email,
     phone: phone,
   };
-  contacts.push(newContact);
+  addContactToUserData(newContact);
   closeAddContact();
   renderContacts();
 }
@@ -90,4 +92,30 @@ function renderContacts() {
     document.getElementById("conctactMemberField").innerHTML +=
       contactHTML + `</div></div>`;
   }
+}
+
+
+function addContactToUserData(newContact) {
+  if (!currentUserData[0].contacts) {
+    currentUserData[0].contacts = [];
+  }
+
+  currentUserData[0].contacts.push(newContact);
+
+  setItem("users", currentUserData);
+}
+
+function addNewContact() {
+  let name = document.getElementById("input_name").value;
+  let email = document.getElementById("input_email").value;
+  let phone = document.getElementById("input_phone").value;
+
+  const newContact = {
+    name: name,
+    email: email,
+    phone: phone,
+  };
+  addContactToUserData(newContact);
+  closeAddContact();
+  renderContacts();
 }

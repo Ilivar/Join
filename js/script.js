@@ -1,3 +1,10 @@
+const STORAGE_TOKEN = "AA65OLXVENV8TLEMXUEAWFYRV3L5SLIL9GP66L8H";
+const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
+let value = [];
+let key = "users";
+
+let currentUser;
+let currentUserData =[];
 
 
 // Template -> Header Sidebar // 
@@ -27,5 +34,48 @@ function includeHTML() {
       /* Exit the function: */
       return;
     }
+  }
+}
+
+async function setItem(key, value) {
+  const payload = { key, value, token: STORAGE_TOKEN };
+  return fetch(STORAGE_URL, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  }).then((res) => res.json());
+}
+
+async function getItem() {
+  const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
+  return fetch(url).then((res) => res.json() );
+}
+
+async function loadPreviousMember() {
+  let previousMember = await getItem();
+  value = JSON.parse(previousMember.data.value);
+}
+
+function clearAllMembers() {
+  value = [];
+  setItem(key, value);
+}
+
+async function loadCurrentUser() {
+currentUser = localStorage.getItem("user");
+console.log(currentUser);
+}
+
+async function loadCurrentUserData(){
+  loadCurrentUser();
+  findUserByEmail(currentUser)
+}
+
+async function findUserByEmail(emailToFind) {
+  for (let i = 0; i < value.length; i++) {
+      if (value[i].email === emailToFind) {
+          currentUserData.push(value[i]);
+          console.log(currentUserData);
+          break;
+      }
   }
 }
