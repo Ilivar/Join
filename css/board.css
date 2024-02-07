@@ -176,7 +176,7 @@ body {
 .user_story_content {
     display: flex;
     width: 1076px;
-    height: 688px;
+    height: 790px;
     padding: 0px 64px;
     align-items: flex-start;
     justify-content: space-between;
@@ -207,11 +207,13 @@ body {
     gap: 10px;
 }
 
-.card_content{
+.card_content {
     width: 100%;
-    overflow: hidden; /* Verhindert, dass Text über den Container hinaus sichtbar wird */
-    text-overflow: ellipsis; /* Fügt "..." am Ende des abgeschnittenen Textes hinzu */
-    
+    overflow: hidden;
+    /* Verhindert, dass Text über den Container hinaus sichtbar wird */
+    text-overflow: ellipsis;
+    /* Fügt "..." am Ende des abgeschnittenen Textes hinzu */
+
 }
 
 .category {
@@ -232,17 +234,45 @@ body {
 .description {
     color: #A8A8A8;
     font-size: 16px;
-   
+
 }
 
 .progress-bar-container {
-    width: 200px; /* Breite der Fortschrittsleiste */
-    height: 20px; /* Höhe der Fortschrittsleiste */
-    border: 1px solid #ccc; /* Rand der Fortschrittsleiste */
-  }
-  
-  .progress-bar {
-    width: 50%; /* Der Füllstand der Fortschrittsleiste in Prozent */
+    width: 200px;
+    /* Breite der Fortschrittsleiste */
+    height: 20px;
+    /* Höhe der Fortschrittsleiste */
+    border: 1px solid #ccc;
+    /* Rand der Fortschrittsleiste */
+}
+
+.progress-bar {
+    width: 50%;
+    /* Der Füllstand der Fortschrittsleiste in Prozent */
     height: 100%;
-    background-color: #4589FF; /* Farbe des Füllstandes */
-  }
+    background-color: #4589FF;
+    /* Farbe des Füllstandes */
+}
+
+
+.drag-area {
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px dashed black;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+}
+
+.drag-area-highlight {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.todo {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}

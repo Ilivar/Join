@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../css/board.css" />
   <link rel="stylesheet" href="../css/fonts.css">
   <script src="../js/script.js"></script>
+  <!-- <script src="../js/board_test.js"></script> -->
   <script src="../js/board.js"></script>
 </head>
 
@@ -57,68 +58,87 @@
           <div class="to_do_main">
 
             <div class="todo_content">
-  
+
               <div class="todo_text">
                 To do
               </div>
-  
+
               <div class="todo_plus_content">
-  
+
                 <img class="todo_plus_img" src="../assets/img/plus_icon_small.svg" alt="" />
-  
+
               </div>
-  
+
             </div>
-  
+
             <div class="todo_content">
-  
+
               <div class="todo_text">
                 In progress
               </div>
-  
+
               <div class="todo_plus_content">
-  
+
                 <img class="todo_plus_img" src="../assets/img/plus_icon_small.svg" alt="" />
-  
+
               </div>
-  
+
             </div>
-  
+
             <div class="todo_content">
-  
+
               <div class="todo_text">
                 Await feedback
               </div>
-  
+
               <div class="todo_plus_content">
-  
+
                 <img class="todo_plus_img" src="../assets/img/plus_icon_small.svg" alt="" />
-  
+
               </div>
-  
+
             </div>
-  
+
             <div class="todo_content">
-  
+
               <div class="todo_text">Done</div>
-  
+
             </div>
-  
+
           </div>
 
 
         </div>
 
-        
+
 
       </div>
 
-     <div class="user_story_content" id="tasksBoard">
+      <div class="user_story_content" id="tasksBoard">
 
-     </div>
+        <div class="drag-area" id="drag_to_do" ondrop="moveTo('drag_to_do')" ondragleave="removeHighlight('drag_to_do')"
+          ondragover="allowDrop(event); highlight('drag_to_do')">
+        </div>
+
+
+        <div class="drag-area" id="drag_in_progress" ondrop="moveTo('drag_in_progress')"
+          ondragleave="removeHighlight('drag_in_progress')"
+          ondragover="allowDrop(event); highlight('drag_in_progress')">
+        </div>
+
+        <div class="drag-area" id="drag_await_feedback" ondrop="moveTo('drag_await_feedback')"
+          ondragleave="removeHighlight('drag_await_feedback')"
+          ondragover="allowDrop(event); highlight('drag_await_feedback')">
+
+        </div>
+        <div class="drag-area" id="drag_done" ondrop="moveTo('drag_done')" ondragleave="removeHighlight('drag_done')"
+          ondragover="allowDrop(event); highlight('drag_done')">
+        </div>
+      </div>
 
     </div>
   </div>
+
 </body>
 
 </html>

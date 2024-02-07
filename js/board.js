@@ -1,83 +1,88 @@
-let boards = [
-    {
-        'category': 'User Story',
-        'title': 'Kochwelt Page & Recipe recommender',
-        'description': 'Build start page with recipe recommendation.',
-        'due date': 'Due date: 10/05/2023',
-        'prio': 'Priority: Medium =',
-        'assigned to': 'assigned to: Emmanuel Mauer, Marcel Bauer, Anton Mayer',
-        'subtasks': 'Subtasks: Implement Recipe Recommendation Start page Layout'
-    },
-    {
-        'category': 'Technical task',
-        'title': 'CSS Architecture Planning',
-        'description': 'Define CSS naming conventions and structure.',
-        'due date': 'Due date: 02/09/2023',
-        'prio': 'Priority: Urgent ^^',
-        'assigned to': 'assigned to: Sofia Müller (You) Benedikt Ziegler',
-        'subtasks': 'Subtasks: Establish CSS Methodology Setup Base Styles'
-    },
-    {
-        'category': 'Technical task',
-        'title': 'CSS Architecture Planning',
-        'description': 'Define CSS naming conventions and structure.',
-        'due date': 'Due date: 02/09/2023',
-        'prio': 'Priority: Urgent ^^',
-        'assigned to': 'assigned to: Sofia Müller (You) Benedikt Ziegler',
-        'subtasks': 'Subtasks: Establish CSS Methodology Setup Base Styles'
-    },
-    {
-        'category': 'Technical task',
-        'title': 'CSS Architecture Planning',
-        'description': 'Define CSS naming conventions and structure.',
-        'due date': 'Due date: 02/09/2023',
-        'prio': 'Priority: Urgent ^^',
-        'assigned to': 'assigned to: Sofia Müller (You) Benedikt Ziegler',
-        'subtasks': 'Subtasks: Establish CSS Methodology Setup Base Styles'
-    }
+let todos = [{
+    'id': 0,
+    'title': 'Putzen',
+    'category': 'drag_to_do'
+}, {
+    'id': 1,
+    'title': 'Kochen',
+    'category': 'drag_in_progress'
+}, {
+    'id': 2,
+    'title': 'Einkaufen',
+    'category': 'drag_await_feedback'
+}, {
+    'id': 3,
+    'title': 'bezahlen',
+    'category': 'drag_done'
+}];
 
-]
-
+let currentDraggedElement;
 
 function init() {
-    boardTasks();
     includeHTML();
-    setProgress(progress);
+    updateHTML();
 }
 
-function boardTasks() {
-    let tasksContainer = document.getElementById('tasksBoard');
-    tasksContainer.innerHTML = ''; //
+function updateHTML() {
+    let drag_to_do = todos.filter(t => t['category'] == 'drag_to_do');
 
-    boards.forEach(board => {
-        tasksContainer.innerHTML += /*html*/`
-        <div class="task_content">
-        
-        <div class="card_content"> 
-            <div class="category">${board['category']}</div>
-            <div class="title">${board['title']}</div>
-            <div class="description">${board['description']}</div>
-            <div>${board['due date']}</div>
-            <div>${board['prio']}</div>
-            <div>${board['assigned to']}</div>
-            <div>${board['subtasks']}</div>
-           
-        </div>
+    document.getElementById('drag_to_do').innerHTML = '';
 
-        <div class="progress-bar-container">
-            <div class="progress-bar"></div>
-        </div>
+    for (let index = 0; index < drag_to_do.length; index++) {
+        const element = drag_to_do[index];
+        document.getElementById('drag_to_do').innerHTML += generateTodoHTML(element);
+    }
 
-        </div>
-        `;
-    });
+    let drag_in_progress = todos.filter(t => t['category'] == 'drag_in_progress');
+
+    document.getElementById('drag_in_progress').innerHTML = '';
+
+    for (let index = 0; index < drag_in_progress.length; index++) {
+        const element = drag_in_progress[index];
+        document.getElementById('drag_in_progress').innerHTML += generateTodoHTML(element);
+    }
+
+    let drag_await_feedback = todos.filter(t => t['category'] == 'drag_await_feedback');
+
+    document.getElementById('drag_await_feedback').innerHTML = '';
+
+    for (let index = 0; index < drag_await_feedback.length; index++) {
+        const element = drag_await_feedback[index];
+        document.getElementById('drag_await_feedback').innerHTML += generateTodoHTML(element);
+    }
+
+    let drag_done = todos.filter(t => t['category'] == 'drag_done');
+
+    document.getElementById('drag_done').innerHTML = '';
+
+    for (let index = 0; index < drag_done.length; index++) {
+        const element = drag_done[index];
+        document.getElementById('drag_done').innerHTML += generateTodoHTML(element);
+    }
+
 }
 
-// Annahme: progress ist ein Wert zwischen 0 und 100
-function setProgress(progress) {
-    var progressBar = document.querySelector('.progress-bar');
-    progressBar.style.width = progress + '%';
-  }
-  
-  // Beispielaufruf
-  setProgress(70); // Setzt den Fortschritt auf 70%
+function startDragging(id) {
+    currentDraggedElement = id;
+}
+
+function generateTodoHTML(element) {
+    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="todo">${element['title']}</div>`;
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function moveTo(category) {
+    todos[currentDraggedElement]['category'] = category;
+    updateHTML();
+}
+
+function highlight(id) {
+    document.getElementById(id).classList.add('drag-area-highlight');
+}
+
+function removeHighlight(id) {
+    document.getElementById(id).classList.remove('drag-area-highlight');
+}
