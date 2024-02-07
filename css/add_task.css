@@ -271,11 +271,17 @@ h4 {
   background: var(--white, #fff);
   color: #000000;
   cursor: pointer;
-  padding: 18px;
-  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 90%;
   text-align: left;
   outline: none;
   transition: 0.4s;
+}
+
+.head_arccordion {
+  display: flex;
+  justify-content: space-between;
 }
 
 .accordion-content {
@@ -294,7 +300,7 @@ h4 {
   background: var(--white, #fff);
   color: #000000;
   cursor: pointer;
-  padding: 18px;
+  padding: 16px;
   width: 100%;
   text-align: left;
   transition: 0.4s;
