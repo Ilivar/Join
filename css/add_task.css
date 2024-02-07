@@ -266,6 +266,7 @@ h4 {
 }
 
 .accordion {
+  border-radius: 10px;
   border: 1px solid var(--Style, #d1d1d1);
   background: var(--white, #fff);
   color: #000000;
@@ -277,16 +278,28 @@ h4 {
   transition: 0.4s;
 }
 
-.active, .accordion:hover {
-  background: var(--white, #fff);
-}
-
-.panel {
-  width: 100%;
-  background: var(--white, #fff);
+.accordion-content {
   display: none;
+  /* padding: 10px; */
 }
 
+.column {
+  display: flex;
+  flex-direction: column;
+}
 
+.button_task {
+  border-radius: 10px;
+  border: 0px solid var(--Style, #d1d1d1);
+  background: var(--white, #fff);
+  color: #000000;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  transition: 0.4s;
+}
 
-
+.button_task:hover {
+  background: var(--white, #d1d1d1);
+}

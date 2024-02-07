@@ -63,13 +63,17 @@
                                 </div>
                             </div>
                             <h4> Category*</h4>
-                            <button id="accordion" class="assigned_area accordion"> Select task category
-                                <img src="../assets/img/arrow_drop_downaa.svg">
-                            </button>
-                            <div class="panel">
-                                <p> Technical Task</p>
-                                <p> User Story</p>
-                            </div>
+                            
+                                <div class="accordion">
+                                  <div onclick="toggleAccordion(this)">Select task category</div>
+                                  <div class="accordion-content">
+                                        <div class="column">
+                                        <button class="button_task">Technical Task</button>
+                                        <button class="button_task">User Story</button>
+                                        </div>
+                                  </div>
+                                </div>
+                              
                          
                             <h4>Subtasks</h4>
                             <div class="assigned_area">
@@ -97,6 +101,8 @@
             </div>
         </div>
     </div>
+
+   
 </body>
 
 </html>
