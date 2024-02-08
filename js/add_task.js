@@ -1,14 +1,16 @@
 document.addEventListener("DOMContentLoaded", function() {
     let acc = document.getElementById('accordion');
-acc.addEventListener("click", function() {
-  this.classList.toggle("active");
-  let panel = this.nextElementSibling;
-  if (panel.style.display === "block") {
-    panel.style.display = "none";
-  } else {
-    panel.style.display = "block";
-  }
-});
+    if (acc) {
+        acc.addEventListener("click", function() {
+            this.classList.toggle("active");
+            let panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    }
 });
 
 function toggleAccordion(element) {
@@ -19,6 +21,19 @@ function toggleAccordion(element) {
       content.style.display = "block";
     }
   }
+
+function checkFutureDate() {
+    let inputDate = document.getElementById('input_date').value;
+    let currentDate = new Date();
+    let inputDateArray = inputDate.split('/');
+    let inputDateObject = new Date(inputDateArray[2], inputDateArray[1] - 1, inputDateArray[0]);
+    
+    if (inputDateObject > currentDate) {
+        alert('Das eingegebene Datum liegt in der Zukunft!');
+    } else {
+        alert('Das eingegebene Datum liegt nicht in der Zukunft.');
+    }
+}
 
 let activeButton = null;
 
@@ -64,6 +79,16 @@ function buttonMedium() {
 
 function buttonLow() {
     setActiveButton('buttonLow', "../assets/img/Prio baja.svg", "rgba(122, 226, 41, 1)");
+}
+
+function replaceToTechnicalTask() {
+    let heading = document.querySelector('.head_arccordion_category p');
+    heading.textContent = "Technical Task";
+}
+
+function replaceToUserStory() {
+    let heading = document.querySelector('.head_arccordion_category p');
+    heading.textContent = "User Story";
 }
 
 

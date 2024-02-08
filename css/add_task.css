@@ -109,6 +109,7 @@ h4 {
   line-height: 120%;
   background-repeat: no-repeat;
   background-position: center right 21px;
+  border: 1px solid var(--Style, #d1d1d1);
 }
 
 .textarea_field {
@@ -129,6 +130,7 @@ h4 {
   line-height: 120%;
   background-repeat: no-repeat;
   background-position: center right 21px;
+  border: 1px solid var(--Style, #d1d1d1);
 }
 
 .button {
@@ -149,6 +151,10 @@ h4 {
   line-height: 120%;
   background-repeat: no-repeat;
   background-position: center right 21px;
+}
+
+.assi_area {
+  width: 400px;
 }
 
 .prio_area {
@@ -280,6 +286,11 @@ h4 {
 }
 
 .head_arccordion {
+  display: flex;
+  justify-content: space-between;
+}
+
+.head_arccordion_category {
   display: flex;
   justify-content: space-between;
 }

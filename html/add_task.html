@@ -35,9 +35,18 @@
                             </div>
                             <div class="assi_area">
                                 <h4>Assigned to</h4>
-                                <div class="assigned_area">
-                                    <p>Select contacts to assign</p>
-                                    <img src="../assets/img/arrow_drop_downaa.svg">
+                                <div class="accordion">
+                                    <div class="head_arccordion" onclick="toggleAccordion(this)">
+                                        <p>Select contacts to assign</p>
+                                        <img src="../assets/img/arrow_drop_downaa.svg">
+                                    </div>
+                                    <div class="accordion-content">
+                                        <div class="column">
+                                        <button class="button_task">User 1</button>
+                                        <button class="button_task">User 2</button>
+                                        <button class="button_task">User 3</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -47,6 +56,7 @@
                         <div class="area_right">
                             <h4> Due date *</h4>
                             <input class="input_field" id="input_date" type="text" placeholder="dd/mm/yyyy" required/>
+                            <button onclick="checkFutureDate()"> Datum - Test</button>
                             <h4> Prio </h4>
                             <div class="prio_area">
                                 <div id="buttonUrgent" class="prio" onclick="buttonUrgent()">
@@ -65,14 +75,14 @@
                             <h4> Category*</h4>
                             
                                 <div class="accordion">
-                                    <div class="head_arccordion" onclick="toggleAccordion(this)">
+                                    <div class="head_arccordion_category" onclick="toggleAccordion(this)">
                                         <p>Select task category</p>
                                         <img src="../assets/img/arrow_drop_downaa.svg">
                                     </div>
                                     <div class="accordion-content">
                                         <div class="column">
-                                        <button class="button_task">Technical Task</button>
-                                        <button class="button_task">User Story</button>
+                                        <button class="button_task" onclick="replaceToTechnicalTask()">Technical Task</button>
+                                        <button class="button_task" onclick="replaceToUserStory()">User Story</button>
                                         </div>
                                     </div>
                                 </div>
