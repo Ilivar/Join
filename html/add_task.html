@@ -27,7 +27,7 @@
                         <div class="area_left"> 
                             <div class="title_area">
                                 <h4> Title*</h4>
-                                <input class="input_field" id="input_title" type="text" placeholder="Enter a title"/>
+                                <input class="input_field" id="input_title" type="text" placeholder="Enter a title" required/>
                             </div>
                             <div class="description_area">
                                 <h4> Description</h4>
@@ -45,28 +45,39 @@
                         <div class="stroke"></div>
 
                         <div class="area_right">
-                            <h4> Due date*</h4>
-                            <input class="input_field" id="input_date" type="text" placeholder="dd/mm/yyyy"/>
+                            <h4> Due date *</h4>
+                            <input class="input_field" id="input_date" type="text" placeholder="dd/mm/yyyy" required/>
                             <h4> Prio </h4>
                             <div class="prio_area">
-                                <div class="prio">
+                                <div id="buttonUrgent" class="prio" onclick="buttonUrgent()">
                                     <h4>Urgent</h4>
-                                    <img src="../assets/img/Prio up.svg">
+                                    <img id="prioImg" src="../assets/img/Prio up.svg">
                                 </div>
-                                <div class="prio_orange">
+                                <div id="buttonMedium" class="prio_orange" onclick="buttonMedium()">
                                     <h4>Medium</h4>
-                                    <img src="../assets/img/Prio medium.svg">
+                                    <img id="mediumImg" src="../assets/img/Prio media.svg">
                                 </div>
-                                <div class="prio">
+                                <div id="buttonLow" class="prio" onclick="buttonLow()">
                                     <h4>Low</h4>
-                                    <img src="../assets/img/Prio down.svg">
+                                    <img id="lowImg" src="../assets/img/Prio down.svg">
                                 </div>
                             </div>
                             <h4> Category*</h4>
-                            <div class="assigned_area">
-                                <p>Select task category</p>
-                                <img src="../assets/img/arrow_drop_downaa.svg">
-                            </div>
+                            
+                                <div class="accordion">
+                                    <div class="head_arccordion" onclick="toggleAccordion(this)">
+                                        <p>Select task category</p>
+                                        <img src="../assets/img/arrow_drop_downaa.svg">
+                                    </div>
+                                    <div class="accordion-content">
+                                        <div class="column">
+                                        <button class="button_task">Technical Task</button>
+                                        <button class="button_task">User Story</button>
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                         
                             <h4>Subtasks</h4>
                             <div class="assigned_area">
                                 <p>Add new subtask</p>
@@ -93,6 +104,8 @@
             </div>
         </div>
     </div>
+
+   
 </body>
 
 </html>
