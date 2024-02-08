@@ -2,9 +2,9 @@ let contacts = [];
 
 async function init() {
   includeHTML();
-  renderContacts();
   await loadPreviousMember();
   await loadCurrentUserData();
+  await renderContacts();
 }
 
 function openNewContact() {
@@ -53,7 +53,8 @@ function addNewContact() {
 //   }
 // }
 
-function renderContacts() {
+async function renderContacts() {
+  contacts = value[0].contacts;
   document.getElementById("conctactMemberField").innerHTML = "";
   contacts.sort((a, b) => a.name.localeCompare(b.name));
 
@@ -79,11 +80,13 @@ function renderContacts() {
 
     // Füge den Kontakt zum aktuellen Container hinzu
     contactHTML += `
-            <div class="contact">
+     <div class= "hole_contact"> 
+            
+          <div class="contact">
                <h3> ${contact.name}</h3>
                 <a href="#">${contact.email}</a>
-   
-            </div>
+          </div>
+      </div>
         `;
   }
 
@@ -93,7 +96,6 @@ function renderContacts() {
       contactHTML + `</div></div>`;
   }
 }
-
 
 function addContactToUserData(newContact) {
   if (!currentUserData[0].contacts) {
