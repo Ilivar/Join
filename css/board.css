@@ -182,6 +182,7 @@ body {
     justify-content: space-between;
     gap: 26px;
     flex-shrink: 0;
+    margin-top: 15px;
 }
 
 .todo_plus_img {
@@ -194,13 +195,11 @@ body {
 .task_content {
     cursor: pointer;
     border-radius: 24px;
-    height: 215px;
-    width: 200px;
-    padding: 2%;
+    height: 263px;
+    width: 246px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     font-size: 22px;
     background-color: white;
     box-shadow: #42526E;
@@ -208,12 +207,13 @@ body {
 }
 
 .card_content {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 231px;
+    width: 220px;
     overflow: hidden;
-    /* Verhindert, dass Text über den Container hinaus sichtbar wird */
     text-overflow: ellipsis;
-    /* Fügt "..." am Ende des abgeschnittenen Textes hinzu */
-
+    gap: 24px;
 }
 
 .category {
@@ -224,6 +224,20 @@ body {
     Height: 27px;
     Padding: 4px 16px 4px 16px;
     Gap: 10px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+}
+
+.title_description {
+    display: flex;
+    flex-direction: column;
+    Width: 220px; 
+    Height: 84px ;
+    Gap: 8px;
 }
 
 .title {
@@ -234,13 +248,24 @@ body {
 .description {
     color: #A8A8A8;
     font-size: 16px;
+}
 
+.additional-text {
+    display: none;
+    /* verstecke den zusätzlichen Text standardmäßig */
+}
+
+.over_progressbar {
+    width: 220px;
+    height: 16px;
+    display: flex;
+    align-items: center;
 }
 
 .progress-bar-container {
-    width: 200px;
+    width: 128px;
     /* Breite der Fortschrittsleiste */
-    height: 20px;
+    height: 8px;
     /* Höhe der Fortschrittsleiste */
     border: 1px solid #ccc;
     /* Rand der Fortschrittsleiste */
@@ -254,10 +279,16 @@ body {
     /* Farbe des Füllstandes */
 }
 
+.progressbar_text{
+    width: 73px;
+    height: 14px;
+    font-size: 12px;
+}
+
 
 .drag-area {
-    height: 700px;
-    width: 200px;
+    height: 688px;
+    width: 252px;
     background-color: transparent;
     /* Transparente Hintergrundfarbe */
     border: none;
@@ -276,4 +307,56 @@ body {
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
+}
+
+.profile_badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 45px;
+    border: 1px;
+    background-color: #462F8A;
+    gap: 10px;
+    color: white;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile_badge1 {
+    width: 32px;
+    height: 32px;
+    border-radius: 45px;
+    border: 1px;
+    background-color: #1FD7C1;
+    gap: 10px;
+    color: white;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.profile_badge2 {
+    width: 32px;
+    height: 32px;
+    border-radius: 45px;
+    border: 1px;
+    background-color: #FF7A00;
+    gap: 10px;
+    color: white;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.over_profile_badge {
+    display: flex;
+}
+
+.profile_content{
+    display: flex;
+    justify-content: space-between;
 }
