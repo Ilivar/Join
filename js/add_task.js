@@ -1,3 +1,98 @@
+let contacts = [];
+let iconColors = [];
+
+async function init() {
+  includeHTML();
+  await loadPreviousMember();
+  await loadCurrentUserData();
+  await renderContacts();
+  }
+  
+  async function renderContacts() {
+    contacts = value[0].contacts;
+    document.getElementById("MemberField").innerHTML = "";
+    contacts.sort((a, b) => a.name.localeCompare(b.name));
+    generateIconColors();
+    for (let i = 0; i < contacts.length; i++) {
+        let contact = contacts[i];
+        document.getElementById("MemberField").innerHTML += `
+            <div id="holeContact${i}" class="hole_contact" onclick="changeCheckBox(${i})"> 
+                <div id="name_icon${i}" class="name_icon" style="background-color: ${iconColors[i]}"></div>  
+                <div class="contact">
+                    <h4> ${contact.name}</h4>
+                </div>
+                <input type="checkbox" id="checkBox${i}">
+            </div>`;}
+    changeIconColor(); 
+    addNameLetters();
+}
+
+function changeCheckBox(i) {
+    if (document.getElementById(`checkBox${i}`).checked == false) { 
+        document.getElementById(`checkBox${i}`).checked = true;
+        changeColorClickContact(i);
+        }
+        else {
+            document.getElementById(`checkBox${i}`).checked = false;
+            document.getElementById(`holeContact${i}`).classList.remove('active_contact');
+            document.getElementById(`holeContact${i}`).classList.add('hole_contact');
+            }
+        renderActiveMemberIcons();
+}
+
+function generateIconColors() {
+    for (let i = 0; i < contacts.length; i++) {
+        iconColors.push(`var(--${i+1})`);
+    }
+}
+
+function changeColorClickContact(i) {
+    if (document.getElementById(`checkBox${i}`).checked = true) {
+    document.getElementById(`holeContact${i}`).classList.add('active_contact');
+    document.getElementById(`holeContact${i}`).classList.remove('hole_contact');}
+}
+
+  function changeIconColor() {
+    for (let i = 0; i < contacts.length; i++) {
+      let icon = document.getElementById("name_icon" + i);
+      icon.style.backgroundColor = `var(--${i+1})`;
+    }
+  }
+  
+  function addNameLetters() {
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+        const names = contact.name.split(" ");
+        let initials = "";
+  
+        names.forEach(name => {
+        initials += name.charAt(0).toUpperCase();
+        });
+  
+        const nameIconElement = document.getElementById("name_icon" + i);
+        if (nameIconElement) {
+            nameIconElement.innerHTML = initials;
+        }
+    }
+  }
+    
+  async function renderActiveMemberIcons() {
+    const activeMemberIconsDiv = document.getElementById("aktiveMemberIcons");
+    activeMemberIconsDiv.innerHTML = ""; 
+    for (let i = 0; i < contacts.length; i++) {
+        if (document.getElementById(`checkBox${i}`).checked) {
+            const contact = contacts[i];
+            const nameIcon = document.getElementById(`name_icon${i}`).innerHTML; 
+            const iconColor = iconColors[i]; 
+            const activeContactElement = document.createElement('div');
+            activeContactElement.innerHTML = `
+                <div class="name_icon" style="background-color: ${iconColor}">${nameIcon}</div>
+                `;
+            activeMemberIconsDiv.appendChild(activeContactElement);
+        }
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     let acc = document.getElementById('accordion');
     if (acc) {
@@ -22,18 +117,31 @@ function toggleAccordion(element) {
     }
   }
 
-function checkFutureDate() {
-    let inputDate = document.getElementById('input_date').value;
-    let currentDate = new Date();
-    let inputDateArray = inputDate.split('/');
-    let inputDateObject = new Date(inputDateArray[2], inputDateArray[1] - 1, inputDateArray[0]);
+function futureDate() {
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+    document.getElementById("input_date").setAttribute("min", today);
+};
+
+// für später 
+
+// function checkFutureDate() {
+//     let inputDate = document.getElementById('input_date').value;
+//     let currentDate = new Date();
+//     let inputDateArray = inputDate.split('/');
+//     let inputDateObject = new Date(inputDateArray[2], inputDateArray[1] - 1, inputDateArray[0]);
     
-    if (inputDateObject > currentDate) {
-        alert('Das eingegebene Datum liegt in der Zukunft!');
-    } else {
-        alert('Das eingegebene Datum liegt nicht in der Zukunft.');
-    }
-}
+//     if (inputDateObject > currentDate) {
+//         alert('Das eingegebene Datum liegt in der Zukunft!');
+//     } else {
+//         alert('Das eingegebene Datum liegt nicht in der Zukunft.');
+//     }
+// }
+
 
 let activeButton = null;
 
@@ -67,6 +175,10 @@ function setActiveButton(buttonId, imgSrc, bgColor) {
         document.getElementById('lowImg').src = imgSrc; 
     }
     activeButton = buttonId;
+}
+
+function prioMediumOnLoad() {
+    setActiveButton('buttonMedium', '../assets/img/Prio media white.svg', 'orange');
 }
 
 function buttonUrgent() {

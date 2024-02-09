@@ -1,3 +1,21 @@
+:root {
+  --1: #ff7a00;
+  --2: #ff5eb3;
+  --3: #6e52ff;
+  --4: #9327ff;
+  --5: #00bee8;
+  --6: #1fd7c1;
+  --7: #ff745e;
+  --8: #ffa35e;
+  --9: #fc71ff;
+  --10: #ffc701;
+  --11: #0038ff;
+  --12: #c3ff2b;
+  --13: #ffe62b;
+  --14: #ff4646;
+  --15: #ffbb2b;
+}
+
 body {
   display: flex;
   height: 100vh;
@@ -322,12 +340,12 @@ h4 {
 
 .accordion-content {
   display: none;
-  /* padding: 10px; */
 }
 
 .column {
   display: flex;
   flex-direction: column;
+  overflow: auto;
 }
 
 .button_task {
@@ -344,4 +362,51 @@ h4 {
 
 .button_task:hover {
   background: var(--white, #d1d1d1);
+}
+
+.hole_contact {
+  display: flex;
+  align-items: center;
+  /* border: 2px solid blue; */
+}
+
+.hole_contact:hover {
+  background: rgba(238, 238, 238, 1);
+}
+
+.active_contact {
+  color: white;
+  display: flex;
+  align-items: center;
+  background-color: rgba(42, 54, 71, 1);
+}
+
+.active_contact:hover {
+  background: rgba(9, 25, 49, 1);
+}
+
+.contact {
+  /* border: 2px solid green; */
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.name_icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  line-height: 14.4px;
+  font-weight: 400;
+}
+
+#aktiveMemberIcons {
+  padding-top: 8px;
+  display: flex;
+  gap: 8px;
 }

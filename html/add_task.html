@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="../css/add_task.css">
 </head>
 
-<body onload="includeHTML()">
-    <!-- Header Template  -->
+<body onload="init(), includeHTML(), prioMediumOnLoad() ,futureDate()">
 
     <div class="side">
         <div w3-include-html="../assets/templates/sidebar_template.html"></div>
@@ -41,13 +40,11 @@
                                         <img src="../assets/img/arrow_drop_downaa.svg">
                                     </div>
                                     <div class="accordion-content">
-                                        <div class="column">
-                                        <button class="button_task">User 1</button>
-                                        <button class="button_task">User 2</button>
-                                        <button class="button_task">User 3</button>
+                                        <div id="MemberField" class="column">
                                         </div>
                                     </div>
                                 </div>
+                                <div id="aktiveMemberIcons"></div>
                             </div>
                         </div>
 
@@ -55,8 +52,7 @@
 
                         <div class="area_right">
                             <h4> Due date *</h4>
-                            <input class="input_field" id="input_date" type="text" placeholder="dd/mm/yyyy" required/>
-                            <button onclick="checkFutureDate()"> Datum - Test</button>
+                            <input class="input_field" id="input_date" type="date" min="" required/>
                             <h4> Prio </h4>
                             <div class="prio_area">
                                 <div id="buttonUrgent" class="prio" onclick="buttonUrgent()">
@@ -89,7 +85,7 @@
                          
                             <h4>Subtasks</h4>
                             <div class="assigned_area">
-                                <input class="input_field_subtask" id="input_date" type="text" placeholder="Add new subtask" required/>
+                                <input class="input_field_subtask" id="input_subtask" type="text" placeholder="Add new subtask" required/>
                                 <img src="../assets/img/plus icon.svg">
                             </div>
                         </div>
