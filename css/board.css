@@ -216,7 +216,33 @@ body {
     gap: 24px;
 }
 
+.card_content_dialog {
+    display: flex;
+    flex-direction: column;
+    height: 231px;
+    width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    gap: 24px;
+}
+
 .category {
+    background-color: #0038FF;
+    border-radius: 8px;
+    color: white;
+    Width: 113px;
+    Height: 27px;
+    Padding: 4px 16px 4px 16px;
+    Gap: 10px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+}
+
+.category_dialog {
     background-color: #0038FF;
     border-radius: 8px;
     color: white;
@@ -235,8 +261,8 @@ body {
 .title_description {
     display: flex;
     flex-direction: column;
-    Width: 220px; 
-    Height: 84px ;
+    Width: 220px;
+    Height: 84px;
     Gap: 8px;
 }
 
@@ -279,7 +305,7 @@ body {
     /* Farbe des Füllstandes */
 }
 
-.progressbar_text{
+.progressbar_text {
     width: 73px;
     height: 14px;
     font-size: 12px;
@@ -356,7 +382,132 @@ body {
     display: flex;
 }
 
-.profile_content{
+.profile_content {
     display: flex;
     justify-content: space-between;
+}
+
+.dialog_content {
+    position: fixed;
+    z-index: 3;
+    top: 50%;
+    bottom: 0;
+    left: 50%;
+    right: 0;
+    transform: translate(-50%, -50%);
+    height: 931px;
+    width: 525px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.16);
+    Padding: 48px 40px 48px 40px;
+    Gap: 24px;
+}
+
+
+.profile_content_dialog {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.category_x {
+    display: flex;
+    justify-content: space-between;
+    width: 445px;
+    height: 36px;
+}
+
+.title_dialog {
+    width: 445px;
+    height: 219px;
+    font-size: 61px;
+    font-weight: 700;
+}
+
+.description_dialog {
+    Width: 445px;
+    Height: 24px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.date_dialog {
+    Width: 445px;
+    Height: 24px;
+    Gap: 25px;
+}
+
+.prio_dialog {
+    Width: 445px;
+    Height: 32px;
+    display: flex;
+}
+
+
+.over_profile_badge_dialog {
+    display: flex;
+    justify-content: space-between;
+    Width: 230px;
+    Height: 42px;
+    gap: 16px;
+}
+
+.subtasks_dialog {
+    display: flex;
+    flex-direction: column;
+    Width: 24px;
+    Height: 24px;
+    gap: 8px;
+}
+
+.subtasks_dialog_text {
+    display: flex;
+    width: 445px;
+    height: 68px;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    gap: 16px;
+    Padding: 6px 16px 6px 16px;
+}
+
+
+.dialog_delete_edit {
+    margin-top: 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 24px;
+    width: 445px;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.dialog_delete_edit img {
+    Width: 16px; 
+    Height: 18px;
+    Top: 3px ;
+    Left: 4px;
+   
+}
+
+.close_button{
+    background-color: white;
+    border: white;
+    width: 24px;
+    height: 24px;
+
+}
+
+.close_button:hover {
+    background-color: lightgray;
+    border-radius: 45%;
 }

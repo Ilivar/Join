@@ -4,9 +4,9 @@ let todos = [{
     'title': 'Kochwelt Page & Recipe Recommender',
     'description': 'Build start page with recipe recommendation.',
     'due date': 'Due date: 10/05/2023',
-    'prio': 'Priority: Medium =',
-    'assigned to': 'assigned to: Emmanuel Mauer, Marcel Bauer, Anton Mayer',
-    'subtasks': 'Subtasks: Implement Recipe Recommendation Start page Layout',
+    'prio': 'Priority:',
+    'assigned to': 'assigned to:',
+    'subtasks': 'Subtasks: ',
     'name': 'drag_to_do'
 }, {
     'id': 1,
@@ -15,7 +15,7 @@ let todos = [{
     'description': 'Define CSS naming conventions and structure.',
     'due date': 'Due date: 02/09/2023',
     'prio': 'Priority: Urgent ^^',
-    'assigned to': 'assigned to: Sofia Müller (You) Benedikt Ziegler',
+    'assigned to': 'assigned to:',
     'subtasks': 'Subtasks: Establish CSS Methodology Setup Base Styles',
     'name': 'drag_in_progress'
 }, {
@@ -25,7 +25,7 @@ let todos = [{
     'description': 'Define CSS naming conventions and structure.',
     'due date': 'Due date: 02/09/2023',
     'prio': 'Priority: Urgent ^^',
-    'assigned to': 'assigned to: Sofia Müller (You) Benedikt Ziegler',
+    'assigned to': 'assigned to:',
     'subtasks': 'Subtasks: Establish CSS Methodology Setup Base Styles',
     'name': 'drag_await_feedback'
 }, {
@@ -35,7 +35,7 @@ let todos = [{
     'description': 'Define CSS naming conventions and structure.',
     'due date': 'Due date: 02/09/2023',
     'prio': 'Priority: Urgent ^^',
-    'assigned to': 'assigned to: Sofia Müller (You) Benedikt Ziegler',
+    'assigned to': 'assigned to: ',
     'subtasks': 'Subtasks: Establish CSS Methodology Setup Base Styles',
     'name': 'drag_done'
 }];
@@ -64,6 +64,7 @@ function updateHTML() {
     for (let index = 0; index < drag_in_progress.length; index++) {
         const element = drag_in_progress[index];
         document.getElementById('drag_in_progress').innerHTML += generateTodoHTML(element);
+        
     }
 
     let drag_await_feedback = todos.filter(t => t['name'] == 'drag_await_feedback');
@@ -73,6 +74,7 @@ function updateHTML() {
     for (let index = 0; index < drag_await_feedback.length; index++) {
         const element = drag_await_feedback[index];
         document.getElementById('drag_await_feedback').innerHTML += generateTodoHTML(element);
+        
     }
 
     let drag_done = todos.filter(t => t['name'] == 'drag_done');
@@ -82,6 +84,7 @@ function updateHTML() {
     for (let index = 0; index < drag_done.length; index++) {
         const element = drag_done[index];
         document.getElementById('drag_done').innerHTML += generateTodoHTML(element);
+    
     }
 
 }
@@ -93,7 +96,7 @@ function startDragging(id) {
 function generateTodoHTML(element) {
     return /*html*/`
   <div draggable="true" ondragstart="startDragging(${element['id']})">
-  <div class="task_content">
+  <div class="task_content" id="todo_HTML" onclick="openDialog(${element['id']})">
 
     <div class="card_content">
 
@@ -126,7 +129,9 @@ function generateTodoHTML(element) {
                            <div class="profile_badge"><span>MB</span></div>
                        </div>
 
-                       <div></div>
+                       <div>
+                        <img src="../assets/img/priority_medium.svg" alt="">
+                       </div>
 
                 </div>
     </div>
@@ -148,4 +153,69 @@ function highlight(id) {
 
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
+}
+
+
+function openDialog(todoIndex){
+    const todo = todos[todoIndex];
+    
+    document.getElementById('todo_HTML').innerHTML += /*html*/`
+    <div class="dialog_content" id="close_dialog">
+    
+    
+      <div class="category_x">
+        <div class="category_dialog">${todo['category']}</div>
+        <button class="close_button" onclick="closeDialog()"><img src="../assets/img/close.svg" alt=""></button>
+      </div>
+    
+      <div class="title_dialog">${todo['title']}</div>
+      <div class="description_dialog">${todo['description']}</div>
+    
+    
+      <div class="date_dialog">${todo['due date']}</div>
+      <div class="prio_dialog">${todo['prio']} Medium
+        <div>
+          <img src="../assets/img/priority_medium.svg" alt="">
+        </div>
+      </div>
+      <div>${todo['assigned to']}</div>
+    
+      <div class="">
+        <div class="over_profile_badge_dialog">
+          <div class="profile_badge2"><span>AM</span></div>Anton Mayer
+        </div>
+    
+        <div class="over_profile_badge_dialog">
+          <div class="profile_badge1"><span>EM</span></div>Emmanuel Mauer
+        </div>
+    
+        <div class="over_profile_badge_dialog">
+          <div class="profile_badge"><span>MB</span></div>Marcel Bauer
+        </div>
+      </div>
+      <div>
+          <div>${todo['subtasks']}</div>
+          <div class="subtasks_dialog">
+            <div class="subtasks_dialog_text">
+          <img src="../assets/img/check_button.svg" alt="">Implement Recipe Recommendation 
+          </div>
+          <div class="subtasks_dialog_text">
+          <img src="../assets/img/empty_check_button.svg" alt="">Start page Layout
+          </div>
+          </div>
+
+          
+      </div>
+
+      <div class="dialog_delete_edit">
+             <div><img src="../assets/img/property_1=delete.svg" alt="">delete</div>
+               <img src="../assets/img/vector_delete_edit.svg" alt="">
+             <div><img src="../assets/img/property_1=edit.svg" alt="">edit</div>
+      </div>
+    </div>
+    `;
+    }
+
+function closeDialog(){
+    document.getElementById('close_dialog').innerHTML = '';
 }
