@@ -96,7 +96,7 @@ function startDragging(id) {
 function generateTodoHTML(element) {
     return /*html*/`
   <div draggable="true" ondragstart="startDragging(${element['id']})">
-  <div class="task_content" id="todo_HTML" onclick="openDialog(${element['id']})">
+  <div class="task_content" onclick="openDialog(${element['id']})">
 
     <div class="card_content">
 
@@ -158,8 +158,9 @@ function removeHighlight(id) {
 
 function openDialog(todoIndex){
     const todo = todos[todoIndex];
+    document.getElementById('todo_HTML').style.display = 'flex';
     
-    document.getElementById('todo_HTML').innerHTML += /*html*/`
+    document.getElementById('todo_HTML').innerHTML = /*html*/`
     <div class="dialog_content" id="close_dialog">
     
     
@@ -218,4 +219,5 @@ function openDialog(todoIndex){
 
 function closeDialog(){
     document.getElementById('close_dialog').innerHTML = '';
+    document.getElementById('todo_HTML').style.display = 'none';
 }
