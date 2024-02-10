@@ -5,7 +5,6 @@ async function init() {
   await loadPreviousMember();
   await loadCurrentUserData();
   await renderContacts();
-  
 }
 
 function openNewContact() {
@@ -39,7 +38,6 @@ function addNewContact() {
   renderContacts();
 }
 
-
 async function renderContacts() {
   contacts = value[0].contacts;
   document.getElementById("conctactMemberField").innerHTML = "";
@@ -64,11 +62,12 @@ async function renderContacts() {
     }
 
     contactHTML += `
-     <div class= "hole_contact"> 
+     <div class= "hole_contact" id="contact_card${i}" onclick="openDetails(${i})"> 
           <div id="name_icon${i}" class="name_icon"></div>  
           <div class="contact">
-               <h2> ${contact.name}</h2>
-                <a href="#">${contact.email}</a>
+               <h2 id="piked_name${i}"> ${contact.name}</h2>
+                <a id="piked_email${i}"href="#">${contact.email}</a>
+                <p id="piked_phone${i}"class="invis">${contact.phone}</p>
           </div>
       </div>
         `;
@@ -85,7 +84,7 @@ async function renderContacts() {
 function changeIconColor() {
   for (let i = 0; i < contacts.length; i++) {
     let icon = document.getElementById("name_icon" + i);
-    icon.style.backgroundColor = `var(--${i+1})`;
+    icon.style.backgroundColor = `var(--${i + 1})`;
   }
 }
 
@@ -96,7 +95,7 @@ function addNameLetters() {
 
     let initials = "";
 
-    names.forEach(name => {
+    names.forEach((name) => {
       initials += name.charAt(0).toUpperCase();
     });
 
@@ -106,7 +105,6 @@ function addNameLetters() {
     }
   }
 }
-
 
 function addContactToUserData(newContact) {
   if (!currentUserData[0].contacts) {
@@ -131,4 +129,45 @@ function addNewContact() {
   addContactToUserData(newContact);
   closeAddContact();
   renderContacts();
+}
+
+function openDetails(i) {
+  let currentInfoName = document.getElementById("piked_name" + i).innerHTML;
+  let currentInfoEmail = document.getElementById("piked_email" + i).innerHTML;
+  let currentInfoPhone = document.getElementById("piked_phone" + i).innerHTML;
+  
+  document.getElementById("details_container").innerHTML = /*html*/`
+    <div id="details_name_area">
+                  <div id="details_name_icon"></div>
+                  <div>
+                    <p id="details_name">${currentInfoName}</p>
+                    <div id="edit_buttons">
+                      <button>Edit</button>
+                      <button>Delete</button>
+                    </div>                 
+                  </div>
+                </div>
+                <div id="contact_info">
+                  <span>Contact Inforamtion</span>
+                  <div id="detail_info">
+                    <p>Email</p>
+                    <a href="mailto:${currentInfoEmail}">${currentInfoEmail}</a>
+                    <p>Phone</p>
+                    <a href="tel:${currentInfoPhone}">${currentInfoPhone}</a> 
+                  
+                  </div>
+                </div>
+  `
+  changeDetailIconColor(i);
+  fillDetailIcon(i);
+}
+
+function changeDetailIconColor(i){
+  let currentUserColor = document.getElementById("name_icon"+i).style.backgroundColor;
+  document.getElementById("details_name_icon").style.backgroundColor = currentUserColor;
+}
+
+function fillDetailIcon(i){
+  let currentUserLetters = document.getElementById("name_icon"+i).innerHTML;
+  document.getElementById("details_name_icon").innerHTML = currentUserLetters;
 }
