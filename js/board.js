@@ -166,7 +166,7 @@ function openDialog(todoIndex){
     
       <div class="category_x">
         <div class="category_dialog">${todo['category']}</div>
-        <button class="close_button" onclick ="closeDialog()" ><img src="../assets/img/close.svg" alt=""></button>
+        <button class="close_button" onclick="closeDialog()"><img src="../assets/img/close.svg" alt=""></button>
       </div>
     
       <div class="title_dialog">${todo['title']}</div>
@@ -219,9 +219,5 @@ function openDialog(todoIndex){
 
 function closeDialog(){
     document.getElementById('close_dialog').innerHTML = '';
-<<<<<<< Updated upstream
     document.getElementById('todo_HTML').style.display = 'none';
-=======
-    document.getElementById('close_dialog').style.display = 'none';
->>>>>>> Stashed changes
 }
