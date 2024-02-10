@@ -23,21 +23,6 @@ function closeEditContact() {
   document.getElementById("editContact").style.display = "none";
 }
 
-function addNewContact() {
-  let name = document.getElementById("input_name").value;
-  let email = document.getElementById("input_email").value;
-  let phone = document.getElementById("input_phone").value;
-
-  const newContact = {
-    name: name,
-    email: email,
-    phone: phone,
-  };
-  addContactToUserData(newContact);
-  closeAddContact();
-  renderContacts();
-}
-
 async function renderContacts() {
   contacts = value[0].contacts;
   document.getElementById("conctactMemberField").innerHTML = "";
