@@ -41,6 +41,14 @@ h1 {
 }
 
 #text_container {
-    margin: 98px;
-    overflow-y: auto;
-  }
+  margin: 98px;
+  overflow-y: auto;
+}
+
+#Sub1 a {
+  color: #007cee;
+}
+
+#text_container::-webkit-scrollbar {
+  display: none;
+}
