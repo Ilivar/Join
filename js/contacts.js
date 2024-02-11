@@ -120,15 +120,15 @@ function openDetails(i) {
   let currentInfoName = document.getElementById("piked_name" + i).innerHTML;
   let currentInfoEmail = document.getElementById("piked_email" + i).innerHTML;
   let currentInfoPhone = document.getElementById("piked_phone" + i).innerHTML;
-  
-  document.getElementById("details_container").innerHTML = /*html*/`
+
+  document.getElementById("details_container").innerHTML = /*html*/ `
     <div id="details_name_area">
                   <div id="details_name_icon"></div>
                   <div>
                     <p id="details_name">${currentInfoName}</p>
                     <div id="edit_buttons">
-                      <button>Edit</button>
-                      <button>Delete</button>
+                      <button onclick="openEditContact()" >Edit</button>
+                      <button onclick="delContact()">Delete</button>
                     </div>                 
                   </div>
                 </div>
@@ -136,23 +136,48 @@ function openDetails(i) {
                   <span>Contact Inforamtion</span>
                   <div id="detail_info">
                     <p>Email</p>
-                    <a href="mailto:${currentInfoEmail}">${currentInfoEmail}</a>
+                    <a id="details_email" href="mailto:${currentInfoEmail}">${currentInfoEmail}</a>
                     <p>Phone</p>
                     <a href="tel:${currentInfoPhone}">${currentInfoPhone}</a> 
                   
                   </div>
                 </div>
-  `
+  `;
   changeDetailIconColor(i);
   fillDetailIcon(i);
 }
 
-function changeDetailIconColor(i){
-  let currentUserColor = document.getElementById("name_icon"+i).style.backgroundColor;
-  document.getElementById("details_name_icon").style.backgroundColor = currentUserColor;
+function changeDetailIconColor(i) {
+  let currentUserColor = document.getElementById("name_icon" + i).style
+    .backgroundColor;
+  document.getElementById("details_name_icon").style.backgroundColor =
+    currentUserColor;
 }
 
-function fillDetailIcon(i){
-  let currentUserLetters = document.getElementById("name_icon"+i).innerHTML;
+function fillDetailIcon(i) {
+  let currentUserLetters = document.getElementById("name_icon" + i).innerHTML;
   document.getElementById("details_name_icon").innerHTML = currentUserLetters;
+}
+
+function delContact() {
+  let contact = document.getElementById("details_email").innerHTML;
+  let contactIndex = contacts.findIndex((c) => c.email === contact);
+  contacts.splice(contactIndex, 1);
+  setItem("users", currentUserData);
+  closeEditContact();
+  renderContacts();
+  document.getElementById("details_container").innerHTML = "";
+}
+
+function editContact() {
+  let contact = document.getElementById("details_email").innerHTML;
+  let contactIndex = contacts.findIndex((c) => c.email === contact);
+  let contactToEdit = contacts[contactIndex];
+  contactToEdit.name = document.getElementById("edit_input_name").value;
+  contactToEdit.email = document.getElementById("edit_input_email").value;
+  contactToEdit.phone = document.getElementById("edit_input_phone").value;
+  document.getElementById("details_container").innerHTML = "";
+  setItem("users", currentUserData);
+  closeEditContact();
+  renderContacts();
 }
