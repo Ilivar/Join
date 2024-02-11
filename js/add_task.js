@@ -1,4 +1,4 @@
-let contacts = [];
+// let contacts = [];
 let iconColors = [];
 
 async function init() {
@@ -207,11 +207,11 @@ function replaceToUserStory() {
 function addNewAddTask() {
     let title = document.getElementById("input_title").value;
     let description = document.getElementById("description").value;
-    let assigned = document.getElementById("").value; //// Nachbessern
+    let assigned = document.getElementById("input_date").value; //// Nachbessern
     let dueDate = document.getElementById("input_date").value;
-    let prio = document.getElementById("").value; /// Nachbessern
-    let category = document.getElementById("").value; /// Nachbessern
-    let subtasks = document.getElementById("").value; /// Nachbessern
+    let prio = document.getElementById("input_date").value; /// Nachbessern
+    let category = document.getElementById("input_date").value; /// Nachbessern
+    let subtasks = document.getElementById("input_date").value; /// Nachbessern
 
     const newAddTask = {
       title: title,
@@ -225,13 +225,17 @@ function addNewAddTask() {
     addAddTaskToUserData(newAddTask);
   }
 
-//   function addAddTaskToUserData(newAddTask) {
+  function addAddTaskToUserData(newAddTask) {
+    currentUserData[0].newAddTask.push(newAddTask);
+  
+    setItem("users", currentUserData);
+  }
+
+//   function addContactToUserData(newContact) {
 //     if (!currentUserData[0].contacts) {
 //       currentUserData[0].contacts = [];
 //     }
-  
 //     currentUserData[0].contacts.push(newContact);
-  
 //     setItem("users", currentUserData);
 //   }
 
