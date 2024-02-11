@@ -152,11 +152,14 @@ function changeDetailIconColor(i) {
     .backgroundColor;
   document.getElementById("details_name_icon").style.backgroundColor =
     currentUserColor;
+    document.getElementById("edit_name_icon").style.backgroundColor =
+    currentUserColor;
 }
 
 function fillDetailIcon(i) {
   let currentUserLetters = document.getElementById("name_icon" + i).innerHTML;
   document.getElementById("details_name_icon").innerHTML = currentUserLetters;
+  document.getElementById("edit_name_icon").innerHTML = currentUserLetters;
 }
 
 function delContact() {
