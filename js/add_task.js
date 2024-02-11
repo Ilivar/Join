@@ -1,5 +1,7 @@
-// let contacts = [];
 let iconColors = [];
+let newAddTask = [];
+const selectedContacts = [];
+
 
 async function init() {
   includeHTML();
@@ -64,11 +66,9 @@ function changeColorClickContact(i) {
         const contact = contacts[i];
         const names = contact.name.split(" ");
         let initials = "";
-  
         names.forEach(name => {
         initials += name.charAt(0).toUpperCase();
         });
-  
         const nameIconElement = document.getElementById("name_icon" + i);
         if (nameIconElement) {
             nameIconElement.innerHTML = initials;
@@ -79,19 +79,32 @@ function changeColorClickContact(i) {
   async function renderActiveMemberIcons() {
     const activeMemberIconsDiv = document.getElementById("aktiveMemberIcons");
     activeMemberIconsDiv.innerHTML = ""; 
+
+    // const selectedContacts = []; // Array zur Speicherung der ausgewählten Kontakte
+
     for (let i = 0; i < contacts.length; i++) {
         if (document.getElementById(`checkBox${i}`).checked) {
             const contact = contacts[i];
-            const nameIcon = document.getElementById(`name_icon${i}`).innerHTML; 
-            const iconColor = iconColors[i]; 
-            const activeContactElement = document.createElement('div');
-            activeContactElement.innerHTML = `
-                <div class="name_icon" style="background-color: ${iconColor}">${nameIcon}</div>
-                `;
-            activeMemberIconsDiv.appendChild(activeContactElement);
+
+            // Überprüfe, ob der Kontakt bereits im Array enthalten ist
+            if (!selectedContacts.includes(contact)) {
+                const nameIcon = document.getElementById(`name_icon${i}`).innerHTML; 
+                const iconColor = iconColors[i]; 
+                const activeContactElement = document.createElement('div');
+                activeContactElement.innerHTML = `
+                    <div class="name_icon" style="background-color: ${iconColor}">${nameIcon}</div>
+                    `;
+                activeMemberIconsDiv.appendChild(activeContactElement);
+
+                selectedContacts.push(contact); // Füge den ausgewählten Kontakt dem Array hinzu
+            }
         }
     }
+
+    // Hier haben Sie alle ausgewählten Kontakte im `selectedContacts` Array, ohne Duplikate
+    console.log(selectedContacts);
 }
+
 
 document.addEventListener("DOMContentLoaded", function() {
     let acc = document.getElementById('accordion');
@@ -207,11 +220,12 @@ function replaceToUserStory() {
 function addNewAddTask() {
     let title = document.getElementById("input_title").value;
     let description = document.getElementById("description").value;
-    let assigned = document.getElementById("input_date").value; //// Nachbessern
+    let assigned = selectedContacts;
     let dueDate = document.getElementById("input_date").value;
-    let prio = document.getElementById("input_date").value; /// Nachbessern
-    let category = document.getElementById("input_date").value; /// Nachbessern
+    let prio = activeButton;
+    let category = document.querySelector('.head_arccordion_category p');
     let subtasks = document.getElementById("input_date").value; /// Nachbessern
+    let status =  document.getElementById("input_date").value;  // Lückenfüller
 
     const newAddTask = {
       title: title,
@@ -221,22 +235,18 @@ function addNewAddTask() {
       prio: prio,
       category: category,
       subtasks: subtasks,
+      status : status,
     };
     addAddTaskToUserData(newAddTask);
   }
-
-  function addAddTaskToUserData(newAddTask) {
-    currentUserData[0].newAddTask.push(newAddTask);
   
+  function addAddTaskToUserData(newAddTask) {
+    if (!currentUserData[0].newAddTask) {
+      currentUserData[0].newAddTask = []; // Wenn newAddTask noch nicht existiert, erstelle ein neues Array
+    }
+    currentUserData[0].newAddTask.push(newAddTask);
     setItem("users", currentUserData);
   }
-
-//   function addContactToUserData(newContact) {
-//     if (!currentUserData[0].contacts) {
-//       currentUserData[0].contacts = [];
-//     }
-//     currentUserData[0].contacts.push(newContact);
-//     setItem("users", currentUserData);
-//   }
+  
 
 
