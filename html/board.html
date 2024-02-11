@@ -33,11 +33,12 @@
               <div>
                 <div class="find_task">
                   <div class="find_task_content">
-                    <input class="find_task_input" type="text" placeholder="Find Task" />
+                    <input class="find_task_input" id="searchInput" type="text" placeholder="Find Task" oninput="performSearch(this.value)" />
                     <div class="board_find_task_vector">
                       <img src="../assets/img/vector_board_find_task.svg" alt="">
                       <img src="../assets/img/search_board_find_task.svg" alt="">
                     </div>
+                    
                   </div>
                 </div>
               </div>
@@ -116,8 +117,8 @@
 
       <div class="user_story_content" id="tasksBoard">
 
-        <div class="drag-area" id="drag_to_do" ondrop="moveTo('drag_to_do')" ondragleave="removeHighlight('drag_to_do')"
-          ondragover="allowDrop(event); highlight('drag_to_do')">
+        <div class="drag-area no_task"  id="drag_to_do" ondrop="moveTo('drag_to_do')" ondragleave="removeHighlight('drag_to_do')"
+          ondragover="allowDrop(event); highlight('drag_to_do')">No Tasks to do
         </div>
 
 

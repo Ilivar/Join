@@ -1,100 +1,100 @@
 let todos = [{
-    'id': 0,
-    'category': 'User Story',
-    'title': 'Kochwelt Page & Recipe Recommender',
-    'description': 'Build start page with recipe recommendation.',
-    'due date': 'Due date: 10/05/2023',
-    'prio': 'Priority:',
-    'assigned to': 'assigned to:',
-    'subtasks': 'Subtasks: ',
-    'name': 'drag_to_do'
+  'id': 0,
+  'category': 'User Story',
+  'title': 'Kochwelt Page & Recipe Recommender',
+  'description': 'Build start page with recipe recommendation.',
+  'due date': 'Due date: 10/05/2023',
+  'prio': 'Priority:',
+  'assigned to': 'assigned to:',
+  'subtasks': 'Subtasks: ',
+  'name': 'drag_to_do'
 }, {
-    'id': 1,
-    'category': 'Technical Task',
-    'title': 'CSS Architecture Planning',
-    'description': 'Define CSS naming conventions and structure.',
-    'due date': 'Due date: 02/09/2023',
-    'prio': 'Priority: Urgent ^^',
-    'assigned to': 'assigned to:',
-    'subtasks': 'Subtasks: Establish CSS Methodology Setup Base Styles',
-    'name': 'drag_in_progress'
+  'id': 1,
+  'category': 'Technical Task',
+  'title': 'CSS Architecture Planning',
+  'description': 'Define CSS naming conventions and structure.',
+  'due date': 'Due date: 02/09/2023',
+  'prio': 'Priority: Urgent ^^',
+  'assigned to': 'assigned to:',
+  'subtasks': 'Subtasks: Establish CSS Methodology Setup Base Styles',
+  'name': 'drag_in_progress'
 }, {
-    'id': 2,
-    'category': 'Technical Task',
-    'title': 'CSS Architecture Planning',
-    'description': 'Define CSS naming conventions and structure.',
-    'due date': 'Due date: 02/09/2023',
-    'prio': 'Priority: Urgent ^^',
-    'assigned to': 'assigned to:',
-    'subtasks': 'Subtasks: Establish CSS Methodology Setup Base Styles',
-    'name': 'drag_await_feedback'
+  'id': 2,
+  'category': 'Technical Task',
+  'title': 'CSS Architecture Planning',
+  'description': 'Define CSS naming conventions and structure.',
+  'due date': 'Due date: 02/09/2023',
+  'prio': 'Priority: Urgent ^^',
+  'assigned to': 'assigned to:',
+  'subtasks': 'Subtasks: Establish CSS Methodology Setup Base Styles',
+  'name': 'drag_await_feedback'
 }, {
-    'id': 3,
-    'category': 'Technical Task',
-    'title': 'CSS Architecture Planning',
-    'description': 'Define CSS naming conventions and structure.',
-    'due date': 'Due date: 02/09/2023',
-    'prio': 'Priority: Urgent ^^',
-    'assigned to': 'assigned to: ',
-    'subtasks': 'Subtasks: Establish CSS Methodology Setup Base Styles',
-    'name': 'drag_done'
+  'id': 3,
+  'category': 'Technical Task',
+  'title': 'CSS Architecture Planning',
+  'description': 'Define CSS naming conventions and structure.',
+  'due date': 'Due date: 02/09/2023',
+  'prio': 'Priority: Urgent ^^',
+  'assigned to': 'assigned to: ',
+  'subtasks': 'Subtasks: Establish CSS Methodology Setup Base Styles',
+  'name': 'drag_done'
 }];
 
 let currentDraggedElement;
 
 function init() {
-    includeHTML();
-    updateHTML();
+  includeHTML();
+  updateHTML();
 }
 
 function updateHTML() {
-    let drag_to_do = todos.filter(t => t['name'] == 'drag_to_do');
+  let drag_to_do = todos.filter(t => t['name'] == 'drag_to_do');
 
-    document.getElementById('drag_to_do').innerHTML = '';
+  document.getElementById('drag_to_do').innerHTML = '';
 
-    for (let index = 0; index < drag_to_do.length; index++) {
-        const element = drag_to_do[index];
-        document.getElementById('drag_to_do').innerHTML += generateTodoHTML(element);
-    }
+  for (let index = 0; index < drag_to_do.length; index++) {
+    const element = drag_to_do[index];
+    document.getElementById('drag_to_do').innerHTML += generateTodoHTML(element);
+  }
 
-    let drag_in_progress = todos.filter(t => t['name'] == 'drag_in_progress');
+  let drag_in_progress = todos.filter(t => t['name'] == 'drag_in_progress');
 
-    document.getElementById('drag_in_progress').innerHTML = '';
+  document.getElementById('drag_in_progress').innerHTML = '';
 
-    for (let index = 0; index < drag_in_progress.length; index++) {
-        const element = drag_in_progress[index];
-        document.getElementById('drag_in_progress').innerHTML += generateTodoHTML(element);
-        
-    }
+  for (let index = 0; index < drag_in_progress.length; index++) {
+    const element = drag_in_progress[index];
+    document.getElementById('drag_in_progress').innerHTML += generateTodoHTML(element);
 
-    let drag_await_feedback = todos.filter(t => t['name'] == 'drag_await_feedback');
+  }
 
-    document.getElementById('drag_await_feedback').innerHTML = '';
+  let drag_await_feedback = todos.filter(t => t['name'] == 'drag_await_feedback');
 
-    for (let index = 0; index < drag_await_feedback.length; index++) {
-        const element = drag_await_feedback[index];
-        document.getElementById('drag_await_feedback').innerHTML += generateTodoHTML(element);
-        
-    }
+  document.getElementById('drag_await_feedback').innerHTML = '';
 
-    let drag_done = todos.filter(t => t['name'] == 'drag_done');
+  for (let index = 0; index < drag_await_feedback.length; index++) {
+    const element = drag_await_feedback[index];
+    document.getElementById('drag_await_feedback').innerHTML += generateTodoHTML(element);
 
-    document.getElementById('drag_done').innerHTML = '';
+  }
 
-    for (let index = 0; index < drag_done.length; index++) {
-        const element = drag_done[index];
-        document.getElementById('drag_done').innerHTML += generateTodoHTML(element);
-    
-    }
+  let drag_done = todos.filter(t => t['name'] == 'drag_done');
+
+  document.getElementById('drag_done').innerHTML = '';
+
+  for (let index = 0; index < drag_done.length; index++) {
+    const element = drag_done[index];
+    document.getElementById('drag_done').innerHTML += generateTodoHTML(element);
+
+  }
 
 }
 
 function startDragging(id) {
-    currentDraggedElement = id;
+  currentDraggedElement = id;
 }
 
 function generateTodoHTML(element) {
-    return /*html*/`
+  return /*html*/`
   <div draggable="true" ondragstart="startDragging(${element['id']})">
   <div class="task_content" onclick="openDialog(${element['id']})">
 
@@ -139,28 +139,28 @@ function generateTodoHTML(element) {
 }
 
 function allowDrop(ev) {
-    ev.preventDefault();
+  ev.preventDefault();
 }
 
 function moveTo(category) {
-    todos[currentDraggedElement]['name'] = category;
-    updateHTML();
+  todos[currentDraggedElement]['name'] = category;
+  updateHTML();
 }
 
 function highlight(id) {
-    document.getElementById(id).classList.add('drag-area-highlight');
+  document.getElementById(id).classList.add('drag-area-highlight');
 }
 
 function removeHighlight(id) {
-    document.getElementById(id).classList.remove('drag-area-highlight');
+  document.getElementById(id).classList.remove('drag-area-highlight');
 }
 
 
-function openDialog(todoIndex){
-    const todo = todos[todoIndex];
-    document.getElementById('todo_HTML').style.display = 'flex';
-    
-    document.getElementById('todo_HTML').innerHTML = /*html*/`
+function openDialog(todoIndex) {
+  const todo = todos[todoIndex];
+  document.getElementById('todo_HTML').style.display = 'flex';
+
+  document.getElementById('todo_HTML').innerHTML = /*html*/`
     <div class="dialog_content" id="close_dialog">
     
     
@@ -215,9 +215,72 @@ function openDialog(todoIndex){
       </div>
     </div>
     `;
-    }
-
-function closeDialog(){
-    document.getElementById('close_dialog').innerHTML = '';
-    document.getElementById('todo_HTML').style.display = 'none';
 }
+
+function closeDialog() {
+  document.getElementById('close_dialog').innerHTML = '';
+  document.getElementById('todo_HTML').style.display = 'none';
+}
+
+
+function searchTasks(query) {
+  // Leeres Array für gefundene Aufgaben
+  let results = [];
+
+  // Durch alle Aufgaben iterieren
+  todos.forEach(todo => {
+    // Text in Titel und Beschreibung der Aufgabe suchen
+    if (todo.title.toLowerCase().includes(query.toLowerCase()) || todo.description.toLowerCase().includes(query.toLowerCase())) {
+      // Wenn ein Treffer gefunden wird, die Aufgabe zu den Ergebnissen hinzufügen
+      results.push(todo);
+    }
+  });
+
+  return results;
+}
+
+// Beispielaufruf der Suchfunktion mit dem Suchbegriff "CSS"
+let searchResults = searchTasks("CSS");
+console.log(searchResults);
+
+
+
+function performSearch(query) {
+  let searchResults = searchTasks(query);
+  updateSearchResults(searchResults);
+}
+
+function updateSearchResults(results) {
+  let searchResultsContainer = document.getElementById('searchResults');
+  searchResultsContainer.innerHTML = '';
+
+  results.forEach(result => {
+    let resultElement = document.createElement('div');
+    resultElement.textContent = result.title; // Anpassen, wie die Suchergebnisse angezeigt werden sollen
+    searchResultsContainer.appendChild(resultElement);
+  });
+}
+
+
+function delTask() {
+  let task = document.getElementById("details_email").innerHTML;
+  let taskIndex = contacts.findIndex((c) => c.email === contact);
+  contacts.splice(contactIndex, 1);
+  setItem("users", currentUserData);
+  closeEditContact();
+  renderContacts();
+  document.getElementById("details_container").innerHTML = "";
+}
+
+// function editTask() {
+//   let contact = document.getElementById("details_email").innerHTML;
+//   let contactIndex = contacts.findIndex((c) => c.email === contact);
+//   let contactToEdit = contacts[contactIndex];
+//   contactToEdit.name = document.getElementById("edit_input_name").value;
+//   contactToEdit.email = document.getElementById("edit_input_email").value;
+//   contactToEdit.phone = document.getElementById("edit_input_phone").value;
+//   document.getElementById("details_container").innerHTML = "";
+//   setItem("users", currentUserData);
+//   closeEditContact();
+//   renderContacts();
+// }

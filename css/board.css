@@ -493,14 +493,14 @@ body {
 }
 
 .dialog_delete_edit img {
-    Width: 16px; 
+    Width: 16px;
     Height: 18px;
-    Top: 3px ;
+    Top: 3px;
     Left: 4px;
-   
+
 }
 
-.close_button{
+.close_button {
     background-color: white;
     border: white;
     width: 24px;
@@ -511,4 +511,18 @@ body {
 .close_button:hover {
     background-color: lightgray;
     border-radius: 45%;
+}
+
+.no_task {
+    background-color: rgba(168, 168, 168, 1);
+    width: 246px;
+    height: 48px;
+    border-radius: 10px;
+    border: 1px solid black; /* Border-Stärke hinzugefügt */
+    gap: 10px; /* Abstand zwischen den flexiblen Elementen hinzugefügt */
+    display: flex;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    color: #000;
 }
