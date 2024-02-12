@@ -3,6 +3,7 @@ let newAddTask = [];
 const selectedContacts = [];
 
 
+
 async function init() {
   includeHTML();
   await loadPreviousMember();
@@ -80,7 +81,7 @@ function changeColorClickContact(i) {
     const activeMemberIconsDiv = document.getElementById("aktiveMemberIcons");
     activeMemberIconsDiv.innerHTML = ""; 
 
-    // const selectedContacts = []; // Array zur Speicherung der ausgewählten Kontakte
+    const selectedContacts = []; // Array zur Speicherung der ausgewählten Kontakte
 
     for (let i = 0; i < contacts.length; i++) {
         if (document.getElementById(`checkBox${i}`).checked) {
@@ -216,8 +217,10 @@ function replaceToUserStory() {
     heading.textContent = "User Story";
 }
 
+let taskIdCounter = 0;
 
 function addNewAddTask() {
+    
     let title = document.getElementById("input_title").value;
     let description = document.getElementById("description").value;
     let assigned = selectedContacts;
@@ -225,20 +228,25 @@ function addNewAddTask() {
     let prio = activeButton;
     let category = document.querySelector('.head_arccordion_category p');
     let subtasks = document.getElementById("input_date").value; /// Nachbessern
-    let status =  'todo' ;  // Lückenfüller
+    let status =  'todo';
 
     const newAddTask = {
-      title: title,
-      description: description,
-      assigned: assigned,
-      dueDate: dueDate,
-      prio: prio,
-      category: category,
-      subtasks: subtasks,
-      status : status,
+    id: taskIdCounter++,
+    title: title,
+    description: description,
+    assigned: assigned,
+    dueDate: dueDate,
+    prio: prio,
+    category: category,
+    subtasks: subtasks,
+    status : status,
     };
     addAddTaskToUserData(newAddTask);
   }
+
+//   function plusId() {
+//     id = id++;
+//   }
   
   function addAddTaskToUserData(newAddTask) {
     if (!currentUserData[0].newAddTask) {
@@ -248,9 +256,28 @@ function addNewAddTask() {
     setItem("users", currentUserData);
   }
 
-//   function addSubTask() {
-//     document.getElementById('sub_task_image_area').innerHTML = ;
-//   }
+  function clickInputSubTask() {
+    document.getElementById('sub_task_image_area').innerHTML = `
+    <img src="../assets/img/close.svg" onclick="closeInputSubTask()">
+    <img src="../assets/img/check.svg" onclick="checkInputSubTask()">`;
+  }
+
+  function closeInputSubTask() {
+    document.getElementById('input_subtask').value = ``;
+  }
+
+  function checkInputSubTask() {
+    let input = document.getElementById('input_subtask').value;
+    document.getElementById('sub_task_listelements').innerHTML += `
+    <li id="sub_task" onclick="editSubTask()"> ${input} </li>`;
+    document.getElementById('input_subtask').value = ``;
+  }
+
+
+
+  function deleteSubTask() {
+    
+  }
   
 
 
