@@ -52,7 +52,7 @@ async function init() {
   await loadCurrentUserData();
   separateArrays();
   includeHTML();
-  // updateHTML();
+  updateHTML();
   updateHTMLBackend();
 }
 
@@ -299,15 +299,15 @@ function updateSearchResults(results) {
 }
 
 
-function delTask() {
-  let task = document.getElementById("details_email").innerHTML;
-  let taskIndex = contacts.findIndex((c) => c.email === contact);
-  contacts.splice(contactIndex, 1);
-  setItem("users", currentUserData);
-  closeEditContact();
-  renderContacts();
-  document.getElementById("details_container").innerHTML = "";
-}
+// function delTask() {
+//   let task = document.getElementById("details_email").innerHTML;
+//   let taskIndex = contacts.findIndex((c) => c.email === contact);
+//   contacts.splice(contactIndex, 1);
+//   setItem("users", currentUserData);
+//   closeEditContact();
+//   renderContacts();
+//   document.getElementById("details_container").innerHTML = "";
+// }
 
 // function editTask() {
 //   let contact = document.getElementById("details_email").innerHTML;
@@ -323,21 +323,21 @@ function delTask() {
 // }
 
 
-function separateArrays(){
-    value[0].newAddTask.forEach(task => {
-        switch (task.status) {
-            case 'todo':
-                separatedTodo.push(task);
-                break;
-            case 'progress':
-                separatedProgress.push(task);
-                break;
-            case 'await':
-                separatedAwait.push(task);
-                break;
-            default:
-                separatedDone.push(task);
-                break;
-        }
-    });
-}
+// function separateArrays(){
+//     value[0].newAddTask.forEach(task => {
+//         switch (task.status) {
+//             case 'todo':
+//                 separatedTodo.push(task);
+//                 break;
+//             case 'progress':
+//                 separatedProgress.push(task);
+//                 break;
+//             case 'await':
+//                 separatedAwait.push(task);
+//                 break;
+//             default:
+//                 separatedDone.push(task);
+//                 break;
+//         }
+//     });
+// }
