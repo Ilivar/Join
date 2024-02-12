@@ -40,10 +40,10 @@ let todos = [{
   'status': 'drag_done'
 }];
 
-let separatedTodo = [];
-let separatedProgress = [];
-let separatedAwait = [];
-let separatedDone = [];
+// let separatedTodo = [];
+// let separatedProgress = [];
+// let separatedAwait = [];
+// let separatedDone = [];
 
 let currentDraggedElement;
 
