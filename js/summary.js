@@ -90,12 +90,12 @@ function getNearestTask() {
   const tasks = value[0].newAddTask;
 
   tasks.sort((a, b) => {
-    if (a.dueDate < b.dueDate) return -1;
-    if (a.dueDate > b.dueDate) return 1;
+    if (a.due_date < b.due_date) return -1;
+    if (a.due_date > b.due_date) return 1;
     return 0;
   });
 
-  const nearestTaskDate = formatDate(tasks[0].dueDate);
+  const nearestTaskDate = formatDate(tasks[0].due_date);
   document.getElementById("nearest_task").innerHTML = nearestTaskDate;
 }
 
