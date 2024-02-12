@@ -24,11 +24,11 @@ function setName() {
 }
 
 function setToDos() {
-  document.getElementById("todoNumber").innerHTML = countOccurences("todo");
+  document.getElementById("todoNumber").innerHTML = countOccurences("drag_to_do");
 }
 
 function setDones() {
-  document.getElementById("doneNumber").innerHTML = countOccurences("done");
+  document.getElementById("doneNumber").innerHTML = countOccurences("drag_done");
 }
 
 function setTaskInBoard() {
@@ -38,11 +38,11 @@ function setTaskInBoard() {
 
 function setInProgress() {
   document.getElementById("in_progress").innerHTML =
-    countOccurences("progress");
+    countOccurences("drag_in_progress");
 }
 
 function setAwaiting() {
-  document.getElementById("awaiting").innerHTML = countOccurences("awaiting");
+  document.getElementById("awaiting").innerHTML = countOccurences("drag_await_feedback");
 }
 
 function setUrgentTasks() {
