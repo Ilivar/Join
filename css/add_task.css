@@ -166,11 +166,6 @@ h4 {
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
-  border: unset;
-}
-
-input:focus {
-  border: none;
 }
 
 .button {

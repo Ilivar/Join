@@ -248,9 +248,9 @@ function addNewAddTask() {
     setItem("users", currentUserData);
   }
 
-  function addSubTask() {
-    document.getElementById('sub_task_image_area').innerHTML = 
-  }
+//   function addSubTask() {
+//     document.getElementById('sub_task_image_area').innerHTML = ;
+//   }
   
 
 
