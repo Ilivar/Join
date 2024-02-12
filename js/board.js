@@ -7,7 +7,7 @@ let todos = [{
   'prio': 'Priority:',
   'assigned to': 'assigned to:',
   'subtasks': 'Subtasks: ',
-  'name': 'drag_to_do'
+  'status': 'drag_to_do'
 }, {
   'id': 1,
   'category': 'Technical Task',
@@ -17,7 +17,7 @@ let todos = [{
   'prio': 'Priority: Urgent ^^',
   'assigned to': 'assigned to:',
   'subtasks': 'Subtasks: Establish CSS Methodology Setup Base Styles',
-  'name': 'drag_in_progress'
+  'status': 'drag_in_progress'
 }, {
   'id': 2,
   'category': 'Technical Task',
@@ -27,7 +27,7 @@ let todos = [{
   'prio': 'Priority: Urgent ^^',
   'assigned to': 'assigned to:',
   'subtasks': 'Subtasks: Establish CSS Methodology Setup Base Styles',
-  'name': 'drag_await_feedback'
+  'status': 'drag_await_feedback'
 }, {
   'id': 3,
   'category': 'Technical Task',
@@ -37,20 +37,60 @@ let todos = [{
   'prio': 'Priority: Urgent ^^',
   'assigned to': 'assigned to: ',
   'subtasks': 'Subtasks: Establish CSS Methodology Setup Base Styles',
-  'name': 'drag_done'
+  'status': 'drag_done'
 }];
+
+let separatedTodo = [];
+let separatedProgress = [];
+let separatedAwait = [];
+let separatedDone = [];
 
 let currentDraggedElement;
 
+function updateToDoArray() {
+  todos = value[0].newAddTask;
+}
+
+
 async function init() {
-  includeHTML();
-  updateHTML();
   await loadPreviousMember();
   await loadCurrentUserData();
+  // separateArrays();
+  includeHTML();
+  updateToDoArray();
+  updateHTML();
+  // updateHTMLBackend();
+}
+
+function updateHTMLBackend(){
+  // document.getElementById('drag_to_do').innerHTML = '';
+  for (let i = 0; i < separatedTodo.length; i++) {
+    const element = separatedTodo[i];
+    document.getElementById('drag_to_do').innerHTML += generateTodoHTML(element) ;
+  }
+
+  // document.getElementById('drag_in_progress').innerHTML = '';
+  for (let i = 0; i < separatedProgress.length; i++) {
+    const element = separatedProgress[i];
+    document.getElementById('drag_in_progress').innerHTML += generateTodoHTML(element) ;
+  }
+
+  // document.getElementById('drag_await_feedback').innerHTML = '';
+  for (let i = 0; i < separatedAwait.length; i++) {
+    const element = separatedAwait[i];
+    document.getElementById('drag_await_feedback').innerHTML += generateTodoHTML(element) ;
+  }
+
+  // document.getElementById('drag_done').innerHTML = '';
+  for (let i = 0; i < separatedDone.length; i++) {
+    const element = separatedDone[i];
+    document.getElementById('drag_done').innerHTML += generateTodoHTML(element) ;
+  }
+  
 }
 
 function updateHTML() {
-  let drag_to_do = todos.filter(t => t['name'] == 'drag_to_do');
+  let drag_to_do = todos.filter(t => t['status'] == 'drag_to_do');
 
   document.getElementById('drag_to_do').innerHTML = '';
 
@@ -59,7 +99,8 @@ function updateHTML() {
     document.getElementById('drag_to_do').innerHTML += generateTodoHTML(element);
   }
 
-  let drag_in_progress = todos.filter(t => t['name'] == 'drag_in_progress');
+ 
+  let drag_in_progress = todos.filter(t => t['status'] == 'drag_in_progress');
 
   document.getElementById('drag_in_progress').innerHTML = '';
 
@@ -69,7 +110,7 @@ function updateHTML() {
 
   }
 
-  let drag_await_feedback = todos.filter(t => t['name'] == 'drag_await_feedback');
+  let drag_await_feedback = todos.filter(t => t['status'] == 'drag_await_feedback');
 
   document.getElementById('drag_await_feedback').innerHTML = '';
 
@@ -79,7 +120,7 @@ function updateHTML() {
 
   }
 
-  let drag_done = todos.filter(t => t['name'] == 'drag_done');
+  let drag_done = todos.filter(t => t['status'] == 'drag_done');
 
   document.getElementById('drag_done').innerHTML = '';
 
@@ -145,7 +186,7 @@ function allowDrop(ev) {
 }
 
 function moveTo(category) {
-  todos[currentDraggedElement]['name'] = category;
+  todos[currentDraggedElement]['status'] = category;
   updateHTML();
 }
 
@@ -264,15 +305,15 @@ function updateSearchResults(results) {
 }
 
 
-function delTask() {
-  let task = document.getElementById("details_email").innerHTML;
-  let taskIndex = contacts.findIndex((c) => c.email === contact);
-  contacts.splice(contactIndex, 1);
-  setItem("users", currentUserData);
-  closeEditContact();
-  renderContacts();
-  document.getElementById("details_container").innerHTML = "";
-}
+// function delTask() {
+//   let task = document.getElementById("details_email").innerHTML;
+//   let taskIndex = contacts.findIndex((c) => c.email === contact);
+//   contacts.splice(contactIndex, 1);
+//   setItem("users", currentUserData);
+//   closeEditContact();
+//   renderContacts();
+//   document.getElementById("details_container").innerHTML = "";
+// }
 
 // function editTask() {
 //   let contact = document.getElementById("details_email").innerHTML;
@@ -285,4 +326,24 @@ function delTask() {
 //   setItem("users", currentUserData);
 //   closeEditContact();
 //   renderContacts();
+// }
+
+
+// function separateArrays(){
+//     value[0].newAddTask.forEach(task => {
+//         switch (task.status) {
+//             case 'todo':
+//                 separatedTodo.push(task);
+//                 break;
+//             case 'progress':
+//                 separatedProgress.push(task);
+//                 break;
+//             case 'await':
+//                 separatedAwait.push(task);
+//                 break;
+//             default:
+//                 separatedDone.push(task);
+//                 break;
+//         }
+//     });
 // }

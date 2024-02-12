@@ -4,6 +4,8 @@ async function init() {
   includeHTML();
   await loadPreviousMember();
   await loadCurrentUserData();
+  greetUser();
+  getNearestTask()
   setCardValues();
 }
 
@@ -13,7 +15,7 @@ function setCardValues() {
   setTaskInBoard();
   setDones();
   setInProgress();
-  setAwaiting()
+  setAwaiting();
   setUrgentTasks();
 }
 
@@ -26,49 +28,86 @@ function setToDos() {
 }
 
 function setDones() {
-    document.getElementById("doneNumber").innerHTML = countOccurences("done");
+  document.getElementById("doneNumber").innerHTML = countOccurences("done");
 }
 
 function setTaskInBoard() {
-    document.getElementById("task_in_board").innerHTML = value[0].newAddTask.length;
+  document.getElementById("task_in_board").innerHTML =
+    value[0].newAddTask.length;
 }
 
 function setInProgress() {
-    document.getElementById("in_progress").innerHTML = countOccurences("progress");
+  document.getElementById("in_progress").innerHTML =
+    countOccurences("progress");
 }
 
 function setAwaiting() {
-    document.getElementById("awaiting").innerHTML = countOccurences("awaiting");
+  document.getElementById("awaiting").innerHTML = countOccurences("awaiting");
 }
 
 function setUrgentTasks() {
-    findUrgentTasks();
-    document.getElementById("urgent_tasks").innerHTML = urgentTasks.length;
+  findUrgentTasks();
+  document.getElementById("urgent_tasks").innerHTML = urgentTasks.length;
 }
 
 function countOccurences(status) {
-    let count = 0;
-    for (let i = 0; i < value[0].newAddTask.length; i++) {
-        if (value[0].newAddTask[i].status === status) {
-            count++;
-        }
+  let count = 0;
+  for (let i = 0; i < value[0].newAddTask.length; i++) {
+    if (value[0].newAddTask[i].status === status) {
+      count++;
     }
-    return count;
+  }
+  return count;
 }
 
 function findUrgentTasks() {
-    value.forEach(value => {
-        if (value.newAddTask) {
-            value.newAddTask.forEach(task => {
-                if (task.prio === 'buttonUrgent') {
-                    urgentTasks.push(task);
-                }
-            });
+  value.forEach((value) => {
+    if (value.newAddTask) {
+      value.newAddTask.forEach((task) => {
+        if (task.prio === "buttonUrgent") {
+          urgentTasks.push(task);
         }
-    });
-    return urgentTasks;
+      });
+    }
+  });
+  return urgentTasks;
 }
 
+function greetUser() {
+  let now = new Date();
+  let hour = now.getHours();
+
+  if (hour >= 5 && hour < 12) {
+    document.getElementById("greeting_user").innerHTML = "Good morning, ";
+  } else if (hour >= 12 && hour < 18) {
+    document.getElementById("greeting_user").innerHTML = "Good afternoon, ";
+  } else {
+    document.getElementById("greeting_user").innerHTML = "Good evening, ";
+  }
+}
+
+function getNearestTask() {
+  const tasks = value[0].newAddTask;
+
+  tasks.sort((a, b) => {
+    if (a.dueDate < b.dueDate) return -1;
+    if (a.dueDate > b.dueDate) return 1;
+    return 0;
+  });
+
+  const nearestTaskDate = formatDate(tasks[0].dueDate);
+  document.getElementById("nearest_task").innerHTML = nearestTaskDate;
+}
+
+function formatDate(inputDate) {
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const parts = inputDate.split("-");
+  const year = parts[0];
+  const month = months[parseInt(parts[1]) - 1]; // Monatsindex beginnt bei 0
+  const day = parts[2];
+
+  return `${month} ${parseInt(day)}, ${year}`;
+}
 
 // Funktion zum Ändern des Bilds und beim Hover
 function changeImageCheck(element) {
