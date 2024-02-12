@@ -228,14 +228,14 @@ function addNewAddTask() {
     let prio = activeButton;
     let category = document.querySelector('.head_arccordion_category p');
     let subtasks = document.getElementById("input_date").value; /// Nachbessern
-    let status =  'todo';
+    let status =  'drag_to_do';
 
     const newAddTask = {
     id: taskIdCounter++,
     title: title,
     description: description,
-    assigned: assigned,
-    dueDate: dueDate,
+    assigned to: assigned,
+    due date: dueDate,
     prio: prio,
     category: category,
     subtasks: subtasks,
@@ -273,6 +273,20 @@ function addNewAddTask() {
     document.getElementById('input_subtask').value = ``;
   }
 
+  function editSubTask() {
+    let index = document.getElementById('edit_index').value;
+    let newText = document.getElementById('edit_text').value;
+    
+    let listItems = document.querySelectorAll('#sub_task_listelements li');
+    if (index >= 0 && index < listItems.length) {
+        listItems[index].innerText = newText;
+    } else {
+        alert("Invalid index!");
+    }
+    
+    document.getElementById('edit_index').value = '';
+    document.getElementById('edit_text').value = '';
+}
 
 
   function deleteSubTask() {
