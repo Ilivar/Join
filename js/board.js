@@ -42,9 +42,11 @@ let todos = [{
 
 let currentDraggedElement;
 
-function init() {
+async function init() {
   includeHTML();
   updateHTML();
+  await loadPreviousMember();
+  await loadCurrentUserData();
 }
 
 function updateHTML() {
