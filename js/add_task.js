@@ -225,7 +225,7 @@ function addNewAddTask() {
     let prio = activeButton;
     let category = document.querySelector('.head_arccordion_category p');
     let subtasks = document.getElementById("input_date").value; /// Nachbessern
-    let status =  document.getElementById("input_date").value;  // Lückenfüller
+    let status =  todo  // Lückenfüller
 
     const newAddTask = {
       title: title,
@@ -246,6 +246,10 @@ function addNewAddTask() {
     }
     currentUserData[0].newAddTask.push(newAddTask);
     setItem("users", currentUserData);
+  }
+
+  function addSubTask() {
+    document.getElementById('sub_task_image_area').innerHTML = 
   }
   
 
