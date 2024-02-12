@@ -47,13 +47,19 @@ let separatedDone = [];
 
 let currentDraggedElement;
 
+function updateToDoArray() {
+  todos = value[0].newAddTask;
+}
+
+
 async function init() {
   await loadPreviousMember();
   await loadCurrentUserData();
-  separateArrays();
+  // separateArrays();
   includeHTML();
+  updateToDoArray();
   updateHTML();
-  updateHTMLBackend();
+  // updateHTMLBackend();
 }
 
 function updateHTMLBackend(){
