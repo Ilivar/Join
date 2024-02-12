@@ -225,7 +225,7 @@ function addNewAddTask() {
     let prio = activeButton;
     let category = document.querySelector('.head_arccordion_category p');
     let subtasks = document.getElementById("input_date").value; /// Nachbessern
-    let status =  todo  // Lückenfüller
+    let status =  'todo' ;  // Lückenfüller
 
     const newAddTask = {
       title: title,
