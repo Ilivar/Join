@@ -9,7 +9,7 @@ async function init() {
 
 function openNewContact() {
   document.getElementById("overlayAddContact").style.display = "flex";
-  setTimeout(slideIn, 1);
+  setTimeout(slideIn, 0.1);
 }
 
 function closeAddContact() {
@@ -190,5 +190,6 @@ function editContact() {
 
 function slideIn(){
   let overlay = document.getElementById("overlay_card_add");
-  overlay.style.right = "0";
+  overlay.style.right = "50%";
+  overlay.style.transform = "translate(50%, 0%)"
 }
