@@ -5,7 +5,7 @@ async function init() {
   await loadPreviousMember();
   await loadCurrentUserData();
   greetUser();
-  getNearestTask()
+  getNearestTask();
   setCardValues();
 }
 
