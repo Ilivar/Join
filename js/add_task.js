@@ -217,10 +217,13 @@ function replaceToUserStory() {
     heading.textContent = "User Story";
 }
 
-let taskIdCounter = 0;
+
+
+
+
 
 function addNewAddTask() {
-    
+    let taskId = value[0].newAddTask.length+1;
     let title = document.getElementById("input_title").value;
     let description = document.getElementById("description").value;
     let assigned = selectedContacts;
@@ -230,8 +233,9 @@ function addNewAddTask() {
     let subtasks = document.getElementById("input_date").value; /// Nachbessern
     let status =  'drag_to_do';
 
+
     const newAddTask = {
-    id: taskIdCounter++,
+    id: taskId,
     title: title,
     description: description,
     assigned_to: assigned,
@@ -243,10 +247,6 @@ function addNewAddTask() {
     };
     addAddTaskToUserData(newAddTask);
   }
-
-//   function plusId() {
-//     id = id++;
-//   }
   
   function addAddTaskToUserData(newAddTask) {
     if (!currentUserData[0].newAddTask) {
@@ -255,6 +255,8 @@ function addNewAddTask() {
     currentUserData[0].newAddTask.push(newAddTask);
     setItem("users", currentUserData);
   }
+
+
 
   function clickInputSubTask() {
     document.getElementById('sub_task_image_area').innerHTML = `
