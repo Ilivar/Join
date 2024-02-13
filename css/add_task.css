@@ -33,6 +33,10 @@ body {
   font-family: inter;
 }
 
+.red-star {
+  color: red;
+}
+
 a {
   text-decoration: none;
   color: white;
@@ -132,7 +136,7 @@ h4 {
 }
 
 .input_field:focus {
-  
+  border: 1px solid rgba(41, 171, 226, 1);
 }
 
 .textarea_field {
@@ -158,9 +162,8 @@ h4 {
 }
 
 .textarea_field:focus {
-  outline: blue;
+  border: 1px solid rgba(41, 171, 226, 1);
 }
-
 
 .input_field_subtask {
   position: relative;

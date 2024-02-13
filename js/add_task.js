@@ -7,6 +7,9 @@ async function init() {
   await loadPreviousMember();
   await loadCurrentUserData();
   await renderContacts();
+  includeHTML();
+  prioMediumOnLoad();
+  futureDate();
 }
 
 async function renderContacts() {
