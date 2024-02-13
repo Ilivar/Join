@@ -136,7 +136,7 @@ function openDetails(i) {
                   </div>
                 </div>
                 <div id="contact_info">
-                  <span>Contact Inforamtion</span>
+                  <span>Contact Information</span>
                   <div id="detail_info">
                     <p>Email</p>
                     <a id="details_email" href="mailto:${currentInfoEmail}">${currentInfoEmail}</a>
