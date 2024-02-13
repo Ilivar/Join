@@ -58,8 +58,8 @@ h2 {
 #overlay_card_add{
   position: fixed;
   right: -100%;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
   transition: right 0.5s ease-in-out; 
+  border-radius: 10%;
 }
 
 
