@@ -9,10 +9,13 @@ async function init() {
 
 function openNewContact() {
   document.getElementById("overlayAddContact").style.display = "flex";
+  setTimeout(slideIn, 1);
 }
 
 function closeAddContact() {
   document.getElementById("overlayAddContact").style.display = "none";
+  let overlay = document.getElementById("overlay_card_add");
+  overlay.style.right = "-100%";
 }
 
 function openEditContact() {
@@ -183,4 +186,9 @@ function editContact() {
   setItem("users", currentUserData);
   closeEditContact();
   renderContacts();
+}
+
+function slideIn(){
+  let overlay = document.getElementById("overlay_card_add");
+  overlay.style.right = "0";
 }

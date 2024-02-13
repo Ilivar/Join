@@ -55,6 +55,18 @@ h2 {
   top: 0;
 }
 
+#overlay_card_add{
+  position: fixed;
+  top: 0;
+  right: -100%; /* Startposition außerhalb des sichtbaren Bereichs */
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: right 0.5s ease-in-out; /* Animationsübergang */
+}
+
+.overlay_opened{
+  right: 0;
+}
+
 * {
   font-family: inter;
 }
