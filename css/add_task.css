@@ -131,6 +131,10 @@ h4 {
   outline:none;
 }
 
+.input_field:focus {
+  
+}
+
 .textarea_field {
   position: relative;
   display: flex;
@@ -152,6 +156,11 @@ h4 {
   border: 1px solid var(--Style, #d1d1d1);
   outline: none;
 }
+
+.textarea_field:focus {
+  outline: blue;
+}
+
 
 .input_field_subtask {
   position: relative;

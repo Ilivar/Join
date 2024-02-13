@@ -241,7 +241,7 @@ function addNewAddTask() {
   let dueDate = document.getElementById("input_date").value;
   let prio = activeButton;
   let category = document.querySelector(".head_arccordion_category p");
-  let subtasks = document.getElementById("input_date").value; /// Nachbessern
+  let subtasks = document.getElementById("input_subtask").value; /// Nachbessern
   let status = "drag_to_do";
 
   const newAddTask = {
