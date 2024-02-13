@@ -232,7 +232,7 @@ function replaceToUserStory() {
   heading.textContent = "User Story";
 }
 
-let taskId = 0;
+let taskId = -1;
 
 function addNewAddTask() {
   let title = document.getElementById("input_title").value;
@@ -261,7 +261,6 @@ function addNewAddTask() {
     taskId = latestEntry;
     addAddTaskToUserData(newAddTask);
   } catch (error) {
-    taskId = 1;
     addAddTaskToUserData(newAddTask);
   }
 
