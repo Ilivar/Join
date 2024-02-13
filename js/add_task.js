@@ -220,10 +220,10 @@ function replaceToUserStory() {
 
 
 
-
+let taskId = 1;
 
 function addNewAddTask() {
-    let taskId = value[0].newAddTask.length+1;
+    
     let title = document.getElementById("input_title").value;
     let description = document.getElementById("description").value;
     let assigned = selectedContacts;
@@ -245,14 +245,19 @@ function addNewAddTask() {
     subtasks: subtasks,
     status : status,
     };
+
+
     addAddTaskToUserData(newAddTask);
   }
   
   function addAddTaskToUserData(newAddTask) {
     if (!currentUserData[0].newAddTask) {
       currentUserData[0].newAddTask = []; // Wenn newAddTask noch nicht existiert, erstelle ein neues Array
+
     }
     currentUserData[0].newAddTask.push(newAddTask);
+    currentUserData[0].newAddTask.counter = taskId+1;
+    taskId++;
     setItem("users", currentUserData);
   }
 
