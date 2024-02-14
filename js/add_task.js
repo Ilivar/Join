@@ -1,6 +1,7 @@
 let iconColors = [];
 let newAddTask = [];
-const selectedContacts = [];
+
+
 
 async function init() {
   includeHTML();
@@ -83,14 +84,19 @@ function addNameLetters() {
 
 async function renderActiveMemberIcons() {
   const activeMemberIconsDiv = document.getElementById("aktiveMemberIcons");
+  if (!activeMemberIconsDiv) {
+    console.error("später abchecken - aber funcktioniert erstmal");
+    return; // Beende die Funktion, wenn das Element nicht gefunden wurde
+  }
   activeMemberIconsDiv.innerHTML = "";
 
   // Array zur Speicherung der ausgewählten Kontakte
+  const selectedContacts = [];
 
   for (let i = 0; i < contacts.length; i++) {
     if (document.getElementById(`checkBox${i}`).checked) {
       const contact = contacts[i];
-
+      
       // Überprüfe, ob der Kontakt bereits im Array enthalten ist
       if (!selectedContacts.includes(contact)) {
         const nameIcon = document.getElementById(`name_icon${i}`).innerHTML;
@@ -100,15 +106,22 @@ async function renderActiveMemberIcons() {
                     <div class="name_icon" style="background-color: ${iconColor}">${nameIcon}</div>
                     `;
         activeMemberIconsDiv.appendChild(activeContactElement);
-
-        selectedContacts.push(contact); // Füge den ausgewählten Kontakt dem Array hinzu
+        selectedContacts.push(contact); 
       }
     }
-  }
-
-  // Hier haben Sie alle ausgewählten Kontakte im `selectedContacts` Array, ohne Duplikate
-  console.log(selectedContacts);
+  }   
+  return selectedContacts;
 }
+
+// async function useSelectedContacts() {
+//   // Rufe renderActiveMemberIcons asynchron auf und warte auf den Rückgabewert
+//   const selectedContacts = await renderActiveMemberIcons();
+
+//   // Verwende den Rückgabewert in dieser Funktion
+//   console.log(selectedContacts);
+// }
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
   let acc = document.getElementById("accordion");
@@ -237,14 +250,15 @@ function replaceToUserStory() {
 
 let taskId = -1;
 
-function addNewAddTask() {
+async function addNewAddTask() {
+  const selectedContacts = await renderActiveMemberIcons();
   let button  = activeButton.replace("button", "");
   let title = document.getElementById("input_title").value;
   let description = document.getElementById("description").value;
   let assigned = selectedContacts;
   let dueDate = document.getElementById("input_date").value;
   let prio = button;
-  let category = document.querySelector(".head_arccordion_category p");
+  let category = document.getElementById('user_category').innerHTML;
   let subtasks = document.getElementById("input_subtask").value; /// Nachbessern
   let status = "drag_to_do";
 
@@ -291,9 +305,13 @@ function closeInputSubTask() {
 }
 
 function checkInputSubTask() {
+  let listItems = document.querySelectorAll("#sub_task_listelements li");
   let input = document.getElementById("input_subtask").value;
-  document.getElementById("sub_task_listelements").innerHTML += `
-    <li id="sub_task" onclick="editSubTask()"> ${input} </li>`;
+  for (let i = 0; i < listItems.length; i++) {
+    document.getElementById("sub_task_listelements").innerHTML += `
+    <li id="sub_task${i}" onclick="editSubTask()"> ${input} </li>`;
+  }
+  
   document.getElementById("input_subtask").value = ``;
 }
 
