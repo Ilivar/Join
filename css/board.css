@@ -8,6 +8,24 @@ body {
     font-family: inter;
 }
 
+:root {
+    --1: #ff7a00;
+    --2: #ff5eb3;
+    --3: #6e52ff;
+    --4: #9327ff;
+    --5: #00bee8;
+    --6: #1fd7c1;
+    --7: #ff745e;
+    --8: #ffa35e;
+    --9: #fc71ff;
+    --10: #ffc701;
+    --11: #0038ff;
+    --12: #c3ff2b;
+    --13: #ffe62b;
+    --14: #ff4646;
+    --15: #ffbb2b;
+  }
+
 #content {
     display: flex;
     margin: auto;
@@ -526,3 +544,32 @@ body {
     z-index: 999;
     color: #000;
 }
+
+
+.name_icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    line-height: 14.4px;
+    font-weight: 400;
+  }
+
+  .hole_contact {
+    display: flex;
+    align-items: center;
+    /* border: 2px solid blue; */
+  }
+  
+
+  .contact {
+    /* border: 2px solid green; */
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  

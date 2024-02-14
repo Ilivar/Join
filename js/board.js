@@ -1,51 +1,8 @@
-let todos = [{
-  'id': 0,
-  'category': 'User Story',
-  'title': 'Kochwelt Page & Recipe Recommender',
-  'description': 'Build start page with recipe recommendation.',
-  'due date': 'Due date: 10/05/2023',
-  'prio': 'Priority:',
-  'assigned to': 'assigned to:',
-  'subtasks': 'Subtasks: ',
-  'status': 'drag_to_do'
-}, {
-  'id': 1,
-  'category': 'Technical Task',
-  'title': 'CSS Architecture Planning',
-  'description': 'Define CSS naming conventions and structure.',
-  'due date': 'Due date: 02/09/2023',
-  'prio': 'Priority: Urgent ^^',
-  'assigned to': 'assigned to:',
-  'subtasks': 'Subtasks: Establish CSS Methodology Setup Base Styles',
-  'status': 'drag_in_progress'
-}, {
-  'id': 2,
-  'category': 'Technical Task',
-  'title': 'CSS Architecture Planning',
-  'description': 'Define CSS naming conventions and structure.',
-  'due date': 'Due date: 02/09/2023',
-  'prio': 'Priority: Urgent ^^',
-  'assigned to': 'assigned to:',
-  'subtasks': 'Subtasks: Establish CSS Methodology Setup Base Styles',
-  'status': 'drag_await_feedback'
-}, {
-  'id': 3,
-  'category': 'Technical Task',
-  'title': 'CSS Architecture Planning',
-  'description': 'Define CSS naming conventions and structure.',
-  'due date': 'Due date: 02/09/2023',
-  'prio': 'Priority: Urgent ^^',
-  'assigned to': 'assigned to: ',
-  'subtasks': 'Subtasks: Establish CSS Methodology Setup Base Styles',
-  'status': 'drag_done'
-}];
-
-// let separatedTodo = [];
-// let separatedProgress = [];
-// let separatedAwait = [];
-// let separatedDone = [];
-
 let currentDraggedElement;
+
+let todos = [];
+
+let iconColors = [];
 
 function updateToDoArray() {
   todos = value[0].newAddTask;
@@ -55,39 +12,12 @@ function updateToDoArray() {
 async function init() {
   await loadPreviousMember();
   await loadCurrentUserData();
-  // separateArrays();
   includeHTML();
   updateToDoArray();
   updateHTML();
-  // updateHTMLBackend();
 }
 
-function updateHTMLBackend(){
-  // document.getElementById('drag_to_do').innerHTML = '';
-  for (let i = 0; i < separatedTodo.length; i++) {
-    const element = separatedTodo[i];
-    document.getElementById('drag_to_do').innerHTML += generateTodoHTML(element) ;
-  }
 
-  // document.getElementById('drag_in_progress').innerHTML = '';
-  for (let i = 0; i < separatedProgress.length; i++) {
-    const element = separatedProgress[i];
-    document.getElementById('drag_in_progress').innerHTML += generateTodoHTML(element) ;
-  }
-
-  // document.getElementById('drag_await_feedback').innerHTML = '';
-  for (let i = 0; i < separatedAwait.length; i++) {
-    const element = separatedAwait[i];
-    document.getElementById('drag_await_feedback').innerHTML += generateTodoHTML(element) ;
-  }
-
-  // document.getElementById('drag_done').innerHTML = '';
-  for (let i = 0; i < separatedDone.length; i++) {
-    const element = separatedDone[i];
-    document.getElementById('drag_done').innerHTML += generateTodoHTML(element) ;
-  }
-  
-}
 
 function updateHTML() {
   let drag_to_do = todos.filter(t => t['status'] == 'drag_to_do');
@@ -132,6 +62,8 @@ function updateHTML() {
 
 }
 
+
+
 function startDragging(id) {
   currentDraggedElement = id;
 }
@@ -151,9 +83,9 @@ function generateTodoHTML(element) {
          </div>
       <div class="additional-text">
 
-        <div>${element['due date']}</div>
+        <div>${element['due_date']}</div>
         <div>${element['prio']}</div>
-        <div>${element['assigned to']}</div>
+        <div>${element['assigned_to']}</div>
         <div>${element['subtasks']}</div>
 
       </div>
@@ -201,6 +133,16 @@ function removeHighlight(id) {
 
 function openDialog(todoIndex) {
   const todo = todos[todoIndex];
+  contactsboard = todos[11].assigned_to;
+
+// document.getElementById('member_icons_names').innerHTML = ``;
+
+
+
+
+
+
+  
   document.getElementById('todo_HTML').style.display = 'flex';
 
   document.getElementById('todo_HTML').innerHTML = /*html*/`
@@ -216,27 +158,15 @@ function openDialog(todoIndex) {
       <div class="description_dialog">${todo['description']}</div>
     
     
-      <div class="date_dialog">${todo['due date']}</div>
+      <div class="date_dialog">${todo['due_date']}</div>
       <div class="prio_dialog">${todo['prio']} Medium
         <div>
           <img src="../assets/img/priority_medium.svg" alt="">
         </div>
       </div>
-      <div>${todo['assigned to']}</div>
+      <div id="member_icons_names"></div>
     
-      <div class="">
-        <div class="over_profile_badge_dialog">
-          <div class="profile_badge2"><span>AM</span></div>Anton Mayer
-        </div>
-    
-        <div class="over_profile_badge_dialog">
-          <div class="profile_badge1"><span>EM</span></div>Emmanuel Mauer
-        </div>
-    
-        <div class="over_profile_badge_dialog">
-          <div class="profile_badge"><span>MB</span></div>Marcel Bauer
-        </div>
-      </div>
+      
       <div>
           <div>${todo['subtasks']}</div>
           <div class="subtasks_dialog">
@@ -258,52 +188,41 @@ function openDialog(todoIndex) {
       </div>
     </div>
     `;
+
+
+// Leere zuerst das Element, um sicherzustellen, dass keine vorherigen Inhalte vorhanden sind
+document.getElementById('member_icons_names').innerHTML = '';
+
+// Iteriere durch das contactsboard-Array
+for (let i = 0; i < contactsboard.length; i++) {
+  // Greife auf das aktuelle Element im Array zu
+  const contact = contactsboard[i];
+  
+  // Generiere den HTML-Code für das aktuelle Kontakt-Element
+  const contactHTML = `
+    <div id="holeContact${i}" class="hole_contact">        
+      <div id="name_icon${i}" class="name_icon" style="background-color: ${iconColors[i]}"></div>  
+      <div class="contact">
+        <h4>${contact.name}</h4>
+      </div>
+    </div>
+  `;
+  
+  // Füge das generierte HTML dem Element mit der ID 'member_icons_names' hinzu
+  document.getElementById('member_icons_names').innerHTML += contactHTML;
+}
+
+
+
+generateIconColors();
+  changeIconColor();
+  addNameLetters();
 }
 
 function closeDialog() {
   document.getElementById('close_dialog').innerHTML = '';
   document.getElementById('todo_HTML').style.display = 'none';
 }
-
-
-function searchTasks(query) {
-  // Leeres Array für gefundene Aufgaben
-  let results = [];
-
-  // Durch alle Aufgaben iterieren
-  todos.forEach(todo => {
-    // Text in Titel und Beschreibung der Aufgabe suchen
-    if (todo.title.toLowerCase().includes(query.toLowerCase()) || todo.description.toLowerCase().includes(query.toLowerCase())) {
-      // Wenn ein Treffer gefunden wird, die Aufgabe zu den Ergebnissen hinzufügen
-      results.push(todo);
-    }
-  });
-
-  return results;
-}
-
-// Beispielaufruf der Suchfunktion mit dem Suchbegriff "CSS"
-let searchResults = searchTasks("CSS");
-console.log(searchResults);
-
-
-
-function performSearch(query) {
-  let searchResults = searchTasks(query);
-  updateSearchResults(searchResults);
-}
-
-function updateSearchResults(results) {
-  let searchResultsContainer = document.getElementById('searchResults');
-  searchResultsContainer.innerHTML = '';
-
-  results.forEach(result => {
-    let resultElement = document.createElement('div');
-    resultElement.textContent = result.title; // Anpassen, wie die Suchergebnisse angezeigt werden sollen
-    searchResultsContainer.appendChild(resultElement);
-  });
-}
-
 
 // function delTask() {
 //   let task = document.getElementById("details_email").innerHTML;
@@ -329,21 +248,93 @@ function updateSearchResults(results) {
 // }
 
 
-// function separateArrays(){
-//     value[0].newAddTask.forEach(task => {
-//         switch (task.status) {
-//             case 'todo':
-//                 separatedTodo.push(task);
-//                 break;
-//             case 'progress':
-//                 separatedProgress.push(task);
-//                 break;
-//             case 'await':
-//                 separatedAwait.push(task);
-//                 break;
-//             default:
-//                 separatedDone.push(task);
-//                 break;
-//         }
-//     });
+
+
+
+
+
+
+function filterTodosTitle() {
+  let searchText = document.getElementById('filter_input').value.trim().toLowerCase();
+
+  // Filtern der Todos, deren Titel die ersten drei Buchstaben mit dem Suchtext übereinstimmen
+  let filteredTodos = separatedTodo.filter(t => t['title'].toLowerCase().startsWith(searchText));
+
+  // Leeren Sie die Inhalte aller Spalten
+  document.getElementById('drag_to_do').innerHTML = '';
+  document.getElementById('drag_in_progress').innerHTML = '';
+  document.getElementById('drag_await_feedback').innerHTML = '';
+  document.getElementById('drag_done').innerHTML = '';
+
+  // Durchlaufen Sie die gefilterten Todos und fügen Sie sie nur in die entsprechende Spalte ein
+  for (let index = 0; index < filteredTodos.length; index++) {
+    let element = filteredTodos[index];
+    if (element.category === 'User Story') {
+      document.getElementById('drag_to_do').innerHTML += generateTodoHTML(element);
+    } else if (element.category === 'Technical Task') {
+      if (element.status === 'drag_in_progress') {
+        document.getElementById('drag_in_progress').innerHTML += generateTodoHTML(element);
+      } else if (element.status === 'drag_await_feedback') {
+        document.getElementById('drag_await_feedback').innerHTML += generateTodoHTML(element);
+      } else if (element.status === 'drag_done') {
+        document.getElementById('drag_done').innerHTML += generateTodoHTML(element);
+      }
+    }
+  }
+}
+
+
+
+
+
+// async function renderContacts() {
+//   contacts = value[0].contacts;
+//   document.getElementById("MemberField").innerHTML = "";
+//   contacts.sort((a, b) => a.name.localeCompare(b.name));
+//   generateIconColors();
+//   for (let i = 0; i < contacts.length; i++) {
+//     let contact = contacts[i];
+//     document.getElementById("MemberField").innerHTML += 
+//             <div id="holeContact${i}" class="hole_contact" onclick="changeCheckBox(${i})"> 
+//                 <div id="name_icon${i}" class="name_icon" style="background-color: ${iconColors[i]}"></div>  
+//                 <div class="contact">
+//                     <h4> ${contact.name}</h4>
+//                 </div>
+//                 <input type="checkbox" id="checkBox${i}">
+//             </div>;
+//   }
+//   changeIconColor();
+//   addNameLetters();
 // }
+
+
+
+function generateIconColors() {
+  for (let i = 0; i < contactsboard.length; i++) {
+    iconColors.push(`var(--${i + 1})`);
+  }
+}
+
+
+function changeIconColor() {
+  for (let i = 0; i < contactsboard.length; i++) {
+    let icon = document.getElementById("name_icon" + i);
+    icon.style.backgroundColor = `var(--${i + 1})`;
+  }
+}
+
+function addNameLetters() {
+  for (let i = 0; i < contactsboard.length; i++) {
+    const contact = contactsboard[i];
+    const names = contact.name.split(" ");
+    let initials = "";
+    names.forEach((name) => {
+      initials += name.charAt(0).toUpperCase();
+    });
+    const nameIconElement = document.getElementById("name_icon" + i);
+    if (nameIconElement) {
+      nameIconElement.innerHTML = initials;
+    }
+  }
+}
+
