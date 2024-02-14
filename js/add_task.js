@@ -85,7 +85,7 @@ async function renderActiveMemberIcons() {
   const activeMemberIconsDiv = document.getElementById("aktiveMemberIcons");
   activeMemberIconsDiv.innerHTML = "";
 
-  const selectedContacts = []; // Array zur Speicherung der ausgewählten Kontakte
+  // Array zur Speicherung der ausgewählten Kontakte
 
   for (let i = 0; i < contacts.length; i++) {
     if (document.getElementById(`checkBox${i}`).checked) {
@@ -238,11 +238,12 @@ function replaceToUserStory() {
 let taskId = -1;
 
 function addNewAddTask() {
+  let button  = activeButton.replace("button", "");
   let title = document.getElementById("input_title").value;
   let description = document.getElementById("description").value;
   let assigned = selectedContacts;
   let dueDate = document.getElementById("input_date").value;
-  let prio = activeButton;
+  let prio = button;
   let category = document.querySelector(".head_arccordion_category p");
   let subtasks = document.getElementById("input_subtask").value; /// Nachbessern
   let status = "drag_to_do";
