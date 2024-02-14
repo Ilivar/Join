@@ -16,12 +16,15 @@
 
     <div class="side">
       <div class="overlay_add_contact" id="overlayAddContact">
-        <div id="overlay_card_add"
+        <div
+          id="overlay_card_add"
           w3-include-html="../assets/templates/add_contact_overlay.html"
         ></div>
       </div>
       <div class="overlay_add_contact" id="editContact">
-        <div w3-include-html="../assets/templates/edit_contact.html"></div>
+        <div id="overlay_card_edit">
+          <div w3-include-html="../assets/templates/edit_contact.html"></div>
+        </div>
       </div>
 
       <div w3-include-html="../assets/templates/sidebar_template.html"></div>
@@ -34,6 +37,11 @@
                 <p class="add_new_contact">Add new contact</p>
                 <img src="../assets/img/person_add.svg" />
               </div>
+              <div id="current_user_data_block">
+                <h2 id="current_user_name"></h2>
+                <a id="current_unser_email"href="#"></a>
+                <p id="current_user_phone"></p>
+              </div>
               <div id="conctactMemberField" class="contact_member"></div>
             </div>
             <div id="right_content">
@@ -42,11 +50,9 @@
                 <div class="headline_between">
                   <img src="../assets/img/vektor_senkrecht.svg" alt="" />
                 </div>
-                <span class="headline_metrics">Better with a team</span>             
+                <span class="headline_metrics">Better with a team</span>
               </div>
-              <div id="details_container">
-                
-              </div>
+              <div id="details_container"></div>
             </div>
           </div>
         </div>

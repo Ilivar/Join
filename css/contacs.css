@@ -55,14 +55,12 @@ h2 {
   top: 0;
 }
 
-#overlay_card_add{
+#overlay_card_add {
   position: fixed;
   right: -100%;
-  transition: right 0.5s ease-in-out; 
+  transition: right 0.5s ease-in-out;
   border-radius: 10%;
 }
-
-
 
 * {
   font-family: inter;
@@ -171,17 +169,17 @@ h2 {
   line-height: 56.4px;
 }
 
-#detail_info{
+#detail_info {
   margin-top: 52px;
 }
 
-#detail_info p{
+#detail_info p {
   font-weight: 700;
   font-size: 16px;
   line-height: 19.2px;
-} 
+}
 
-#detail_info a{
+#detail_info a {
   color: #007cee;
 }
 
@@ -274,31 +272,46 @@ h2 {
   background-position: center right 21px;
 }
 
-.create_task {
+#save_button_edit {
   display: flex;
   height: 50px;
-  padding-left: 8px;
-  padding-right: 8px;
+  width: 111px;
   justify-content: center;
   align-items: center;
   gap: 4px;
   border-radius: 10px;
   background: #2a3647;
   color: white;
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
 }
 
-.clear_task {
+#save_button_edit:hover {
+  color: #29abe2;
+  scale: 1.1;
+}
+
+
+#del_button_edit {
   display: flex;
   height: 50px;
-  padding-left: 8px;
-  padding-right: 8px;
+  width: 113px;
   justify-content: center;
   align-items: center;
   gap: 4px;
   border-radius: 10px;
   border: 1px solid var(--Version-2-main-color, #2a3647);
   background: #f6f7f8;
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
 }
+#del_button_edit:hover {
+  color: #29abe2;
+  scale: 1.1;
+}
+
 
 .input_field {
   position: relative;
@@ -327,4 +340,77 @@ h2 {
 ::-webkit-scrollbar-thumb {
   background: #a8a8a8;
   border-radius: 5px;
+}
+
+#edit_buttons{
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+#del_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 81px;
+  height: 24px;
+  gap: 8px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#del_button:hover {
+  color: #29abe2;
+  scale: 1.1;
+}
+
+#edit_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 24px;
+  gap: 13px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#edit_button:hover {
+  color: #29abe2;
+  scale: 1.1;
+
+}
+
+#overlay_card_edit {
+  position: fixed;
+  right: -100%;
+  transition: right 0.5s ease-in-out;
+  border-radius: 10%;
+}
+
+#editContact{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+}
+
+#current_user_data_block{
+  display: flex;
+  flex-direction: column;
+justify-content: center;
+align-items: center;
+margin-top: 24px;
+}
+
+#current_unser_email{
+  color: #7e7cee;
 }

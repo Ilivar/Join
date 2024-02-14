@@ -5,6 +5,7 @@ async function init() {
   await loadPreviousMember();
   await loadCurrentUserData();
   await renderContacts();
+  renderCurrentUserDataBlock();
 }
 
 function openNewContact() {
@@ -20,10 +21,25 @@ function closeAddContact() {
 
 function openEditContact() {
   document.getElementById("editContact").style.display = "flex";
+  setTimeout(slideInEdit, 0.1);
+  fillWithCurrentData();
 }
 
 function closeEditContact() {
   document.getElementById("editContact").style.display = "none";
+  let overlay = document.getElementById("overlay_card_edit");
+  overlay.style.right = "-100%";
+}
+
+function fillWithCurrentData() {
+  edit_input_name.value = details_name.innerHTML;
+  edit_input_email.value = details_email.innerHTML;
+  edit_input_phone.value = details_phone.innerHTML;
+}
+
+function renderCurrentUserDataBlock() {
+  document.getElementById("current_user_name").innerHTML = value[0].name+" (me)";
+  document.getElementById("current_unser_email").innerHTML = value[0].email;
 }
 
 async function renderContacts() {
@@ -130,8 +146,8 @@ function openDetails(i) {
                   <div>
                     <p id="details_name">${currentInfoName}</p>
                     <div id="edit_buttons">
-                      <button onclick="openEditContact()" >Edit</button>
-                      <button onclick="delContact()">Delete</button>
+                      <button id="edit_button" onclick="openEditContact()" ><img src="../assets/img/edit.svg" alt="">Edit</button>
+                      <button id="del_button" onclick="delContact()"><img src="../assets/img/delete.svg" alt="">Delete</button>
                     </div>                 
                   </div>
                 </div>
@@ -141,7 +157,7 @@ function openDetails(i) {
                     <p>Email</p>
                     <a id="details_email" href="mailto:${currentInfoEmail}">${currentInfoEmail}</a>
                     <p>Phone</p>
-                    <a href="tel:${currentInfoPhone}">${currentInfoPhone}</a> 
+                    <a id="details_phone" href="tel:${currentInfoPhone}">${currentInfoPhone}</a> 
                   
                   </div>
                 </div>
@@ -190,6 +206,12 @@ function editContact() {
 
 function slideIn(){
   let overlay = document.getElementById("overlay_card_add");
+  overlay.style.right = "50%";
+  overlay.style.transform = "translate(50%, 0%)"
+}
+
+function slideInEdit(){
+  let overlay = document.getElementById("overlay_card_edit");
   overlay.style.right = "50%";
   overlay.style.transform = "translate(50%, 0%)"
 }

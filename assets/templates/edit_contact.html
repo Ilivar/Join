@@ -33,13 +33,10 @@
       />
       <div class="button_area">
         <div class="clear_task">
-          <button onclick="delContact()">del</button>
-          <p>Delete</p>
+          <button id="del_button_edit" onclick="delContact()">Delete</button>
         </div>
         <div class="create_task">
-          <button onclick="editContact()">edit</button>
-          <p>Save</p>
-          <img src="../assets/img/check.svg" />
+          <button id="save_button_edit" onclick="editContact()">Save<img src="../assets/img/check_button_create.svg" alt=""></button>
         </div>
       </div>
     </div>
@@ -160,9 +157,12 @@
   }
 
   .button_area {
-    /* border: 1px solid green; */
-    /* padding-left: 20px; */
     display: flex;
-    gap: 12px;
+    flex-direction: row;
+    gap: 25px;
+    margin-top: 16px;
   }
+
+  #cre
+
 </style>
