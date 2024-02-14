@@ -12,53 +12,56 @@
     <link rel="icon" href="../assets/img/favicon.svg" type="image/x-icon" />
   </head>
   <body onload="init()">
-    
     <div id="mainContainer">
       <img id="joinIcon" src="../assets/img/Capa 2.svg" alt="" />
       <div class="invis">
-      <div id="signUpField">
-        <p>Not a Join user?</p>
-        <a href="sign_up.html">
-          <button class="buttonDark">Sign up</button>
-        </a>
-      </div>
-      
-      <div id="loginContainer">
-        <div id="loginHeader">
-          <p>Log in</p>
-          <img id="seperatorLogin" src="../assets/img/Vector 5.svg" alt="" />
+        <div id="signUpField">
+          <p>Not a Join user?</p>
+          <a href="sign_up.html">
+            <button class="buttonDark">Sign up</button>
+          </a>
         </div>
-        <form id="inputFields" onsubmit="login(); return false;">
-          <input
-            class="inputField imgMail"
-            id="inputMail"
-            type="email"
-            placeholder="Email"
-          />
-          <div>
+
+        <div id="loginContainer">
+          <div id="loginHeader">
+            <p>Log in</p>
+            <img id="seperatorLogin" src="../assets/img/Vector 5.svg" alt="" />
+          </div>
+          <form id="inputFields" onsubmit="login(); return false;">
             <input
-              class="inputField imgLock"
-              id="inputPassword"
-              type="password"
-              placeholder="Password"
+              class="inputField imgMail"
+              id="inputMail"
+              type="email"
+              placeholder="Email"
             />
-            <span id="wrong_data">Wrong email or password.</span>
-          </div>
-          <div id="loginCheckbox">
-            <input id="remember_check" style="width: 24px; height: 24px" type="checkbox" />
-            <p>Remember me</p>
-          </div>
-          <div id="loginButtons">
-            <button type="submit" class="buttonDark" style="height: 48px">
-              Log in
-            </button>
-            <a href="../html/summary.html">
-              <button type="button" class="buttonBright">Guest Log in</button>
-            </a>
-          </div>
-        </form>
+            <div>
+              <input
+                class="inputField imgLock"
+                id="inputPassword"
+                type="password"
+                placeholder="Password"
+              />
+              <span id="wrong_data">Wrong email or password.</span>
+            </div>
+            <div id="loginCheckbox">
+              <input
+                id="remember_check"
+                style="width: 24px; height: 24px"
+                type="checkbox"
+              />
+              <p>Remember me</p>
+            </div>
+            <div id="loginButtons">
+              <button type="submit" class="buttonDark" style="height: 48px">
+                Log in
+              </button>
+              <a href="../html/summary.html">
+                <button type="button" class="buttonBright">Guest Log in</button>
+              </a>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
       <div id="loginFooter">
         <a href="privacy_policy.html">Privacy Policy</a>
         <a href="legal_notice.html">Legal notice</a>

@@ -3,8 +3,14 @@
     <h3>Kanban Project Management Tool</h3>
   </div>
   <div class="header_pictures">
-    <a href="help.html"><img src="../assets/img/help.svg"></a>
-    <img src="../assets/img/group 9.svg" class="layer_circle" />
+    <a href="help.html"><img src="../assets/img/help.svg" /></a>
+    <div onclick="openBurgerMenu()" id="user_icon_login"></div>
+  </div>
+  <div id="burger_menu">
+    <a href="legal_notice.html">Legal Notice</a>
+    <a href="privacy_policy.html">Privacy Policy</a>
+    <a class="invis" href="#">Help</a>
+    <a href="index.html">Log out</a>
   </div>
 </div>
 
@@ -12,9 +18,32 @@
   .header {
     display: flex;
     width: 100%;
+    height: 96px;
     justify-content: space-between;
+    align-items: center;
     background: #fff;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  #burger_menu {
+    width: 150px;
+    height: 158px;
+    background-color: #2a3647;
+    position: absolute;
+    top: 96px;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 20px 0px 20px 20px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  #burger_menu a:hover {
+    scale: 1.1;
   }
 
   .headtext {
@@ -25,10 +54,7 @@
 
   .header_pictures {
     display: flex;
-    align-items: center;
-    gap: 16px;
-    display: inline-block;
-    padding: 8px;
+    margin-right: 48px;
   }
 
   .header_pictures img {
@@ -37,8 +63,19 @@
     padding: 5px;
   }
 
-  .layer_circle {
-    border: 2px solid black;
+  #user_icon_login {
+    width: 48px;
+    height: 48px;
+    border: 3px solid black;
     border-radius: 50%;
+    cursor: pointer;
+  }
+
+  #user_icon_login:hover {
+    background-color: #e1e5ec;
+  }
+
+  .invis {
+    display: none;
   }
 </style>
