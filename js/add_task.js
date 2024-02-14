@@ -20,7 +20,7 @@ async function renderContacts() {
   generateIconColors();
   for (let i = 0; i < contacts.length; i++) {
     let contact = contacts[i];
-    document.getElementById("MemberField").innerHTML += `
+    document.getElementById('MemberField').innerHTML += `
             <div id="holeContact${i}" class="hole_contact" onclick="changeCheckBox(${i})"> 
                 <div id="name_icon${i}" class="name_icon" style="background-color: ${iconColors[i]}"></div>  
                 <div class="contact">
@@ -53,13 +53,6 @@ function generateIconColors() {
   }
 }
 
-function changeColorClickContact(i) {
-  if ((document.getElementById(`checkBox${i}`).checked = true)) {
-    document.getElementById(`holeContact${i}`).classList.add("active_contact");
-    document.getElementById(`holeContact${i}`).classList.remove("hole_contact");
-  }
-}
-
 function changeIconColor() {
   for (let i = 0; i < contacts.length; i++) {
     let icon = document.getElementById("name_icon" + i);
@@ -79,6 +72,13 @@ function addNameLetters() {
     if (nameIconElement) {
       nameIconElement.innerHTML = initials;
     }
+  }
+}
+
+function changeColorClickContact(i) {
+  if ((document.getElementById(`checkBox${i}`).checked = true)) {
+    document.getElementById(`holeContact${i}`).classList.add("active_contact");
+    document.getElementById(`holeContact${i}`).classList.remove("hole_contact");
   }
 }
 
@@ -259,7 +259,7 @@ async function addNewAddTask() {
   let dueDate = document.getElementById("input_date").value;
   let prio = button;
   let category = document.getElementById('user_category').innerHTML;
-  let subtasks = document.getElementById("input_subtask").value; /// Nachbessern
+  let subtasks = inputValues; 
   let status = "drag_to_do";
 
   const newAddTask = {
@@ -304,30 +304,39 @@ function closeInputSubTask() {
   document.getElementById("input_subtask").value = ``;
 }
 
+let inputValues = []; // Leeres Array zum Speichern der Werte
+
 function checkInputSubTask() {
   let listItems = document.querySelectorAll("#sub_task_listelements li");
   let input = document.getElementById("input_subtask").value;
-  for (let i = 0; i < listItems.length; i++) {
-    document.getElementById("sub_task_listelements").innerHTML += `
-    <li id="sub_task${i}" onclick="editSubTask()"> ${input} </li>`;
-  }
-  
-  document.getElementById("input_subtask").value = ``;
+  let i = listItems.length + 1;
+
+  // Füge den eingegebenen Wert dem Array hinzu
+  inputValues.push(input);
+
+  document.getElementById("sub_task_listelements").innerHTML += `
+    <li id="sub_task${i}" onclick="editSubTask(sub_task${i})"> ${input} </li>`;
 }
 
-function editSubTask() {
-  let index = document.getElementById("edit_index").value;
-  let newText = document.getElementById("edit_text").value;
 
-  let listItems = document.querySelectorAll("#sub_task_listelements li");
-  if (index >= 0 && index < listItems.length) {
-    listItems[index].innerText = newText;
-  } else {
-    alert("Invalid index!");
+// function checkInputSubTask() {
+//   let listItems = document.querySelectorAll("#sub_task_listelements li");
+//   let input = document.getElementById("input_subtask").value;
+//   let i = listItems.length + 1; // Generiere eine eindeutige ID
+//   document.getElementById("sub_task_listelements").innerHTML += `
+//     <li id="sub_task${i}" onclick="editSubTask(sub_task${i})"> ${input} </li>`;
+// }
+
+function editSubTask(elementId) {
+    let newText = document.getElementById("edit_text").value;
+    let listItem = document.getElementById(elementId);
+    if (listItem) {
+      listItem.innerText = newText;
+    } else {
+      alert("Ungültige ID!");
+    }
   }
 
-  document.getElementById("edit_index").value = "";
-  document.getElementById("edit_text").value = "";
-}
+
 
 function deleteSubTask() {}
