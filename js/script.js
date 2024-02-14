@@ -40,6 +40,10 @@ function includeHTML() {
   }
 }
 
+function openBurgerMenu() {
+  document.getElementById("burger_menu").style.display = "flex";
+}
+
 async function setItem(key, value) {
   const payload = { key, value, token: STORAGE_TOKEN };
   return fetch(STORAGE_URL, {

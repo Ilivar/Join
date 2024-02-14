@@ -144,12 +144,13 @@ input::placeholder {
   justify-content: space-evenly;
   margin-left: auto;
   margin-top: 67px;
-  margin-right: 122px;
+  margin-right: -20%;
 }
 
 #loginContainer {
   width: 652px;
   height: 493px;
+  margin-top: 80px;
   display: inline-flex;
   padding: 48px 115px;
   flex-direction: column;
