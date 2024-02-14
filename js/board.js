@@ -158,8 +158,13 @@ function openDialog(todoIndex) {
       <div class="description_dialog">${todo['description']}</div>
     
     
+<<<<<<< Updated upstream
       <div class="date_dialog">${todo['due_date']}</div>
       <div class="prio_dialog">${todo['prio']} Medium
+=======
+      <div class="date_dialog">${todo['due date']}</div>
+      <div class="prio_dialog">${todo['prio']}
+>>>>>>> Stashed changes
         <div>
           <img src="../assets/img/priority_medium.svg" alt="">
         </div>

@@ -14,6 +14,7 @@
         <img src="../assets/img/close.png" onclick="closeAddContact()" />
       </div>
       <form onsubmit="addNewContact(); return false;">
+        <div id="cotact_data_field">
         <input
           class="input_field img_person"
           id="input_name"
@@ -32,17 +33,12 @@
           type="phone"
           placeholder="Phone"
         />
-      
-      <div class="button_area">
-        <!-- <div class="clear_task">
-          <p>Cancel</p>
-          <img src="../assets/img/iconoir_cancel.svg" />
         </div>
-        <div class="create_task">
-          <p>Create contact</p>
-          <img src="../assets/img/check.svg" /> -->
-            <button>Cancle</button>
-            <button>Create contact</button>
+      
+      <div class="button_area_overlay">
+          
+            <button id="cancle_button" >Cancle <img src="../assets/img/close.svg" alt=""> </button>
+            <button  id="create_button" >Create contact <img src="../assets/img/check_button_create.svg" alt=""></button>
         
         </div>
     </form>
@@ -57,8 +53,6 @@
     width: 1212px;
     height: 592px;
     border-radius: 30px;
-
-    
   }
 
   .color_section {
@@ -98,6 +92,13 @@
     background-color: var(--white, #fff);
   }
 
+  #cotact_data_field{
+    display: flex;
+    flex-direction: column;
+    height: 215px;
+    justify-content: space-between;
+  }
+
   .picture_area {
     display: flex;
     justify-content: center;
@@ -107,9 +108,8 @@
 
   .close {
     /* border: 1px solid blueviolet; */
-    padding-left: 45px;
-    padding-bottom: 45px;
-    width: 375px;
+    margin-right: 45px;
+    /* margin-bottom: 80px; */
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
@@ -124,7 +124,6 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
-    /* border: 1px solid blue; */
     gap: 32px;
   }
 
@@ -158,10 +157,54 @@
     background-image: url("../assets/img/call.svg");
   }
 
-  .button_area {
-    /* border: 1px solid green; */
-    /* padding-left: 20px; */
+  .button_area_overlay {
+    margin-top: 48px;
+    width: 364px;
     display: flex;
-    gap: 12px;
+    justify-content: space-between;
+
   }
+
+  #cancle_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 126px;
+    height: 56px;
+    background-color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    gap: 4px;
+    cursor: pointer;
+    ;
+  }
+
+  #create_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 214px;
+    height: 56px;
+    background-color: #2a3647;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    gap: 4px;
+    cursor: pointer;
+  }
+
+  #create_button:hover {
+    background-color: #29abe2 ;
+    scale: 1.1;
+  }
+
+  #cancle_button:hover {
+    color: #29abe2;
+    border-color: #29abe2;
+    scale: 1.1;
+  }
+
+  
 </style>
