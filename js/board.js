@@ -17,8 +17,6 @@ async function init() {
   updateHTML();
 }
 
-
-
 function updateHTML() {
   let drag_to_do = todos.filter(t => t['status'] == 'drag_to_do');
 
@@ -29,7 +27,6 @@ function updateHTML() {
     document.getElementById('drag_to_do').innerHTML += generateTodoHTML(element);
   }
 
- 
   let drag_in_progress = todos.filter(t => t['status'] == 'drag_in_progress');
 
   document.getElementById('drag_in_progress').innerHTML = '';
@@ -59,10 +56,7 @@ function updateHTML() {
     document.getElementById('drag_done').innerHTML += generateTodoHTML(element);
 
   }
-
 }
-
-
 
 function startDragging(id) {
   currentDraggedElement = id;
@@ -130,29 +124,31 @@ function removeHighlight(id) {
   document.getElementById(id).classList.remove('drag-area-highlight');
 }
 
-
 function openDialog(todoIndex) {
+  // Abrufen des entsprechenden Todos anhand des Index
   const todo = todos[todoIndex];
-  contactsboard = todos[11].assigned_to;
-
-// document.getElementById('member_icons_names').innerHTML = ``;
-
-
-
-
-
-
   
+  // Extrahieren der assigned_to-Daten des Todos in die Variable contactsboard
+  const contactsboard = todo.assigned_to;
+
+  // Anzeige des Dialogfelds
   document.getElementById('todo_HTML').style.display = 'flex';
 
-  document.getElementById('todo_HTML').innerHTML = /*html*/`
+  // Aufbau des HTML-Inhalts für das Dialogfeld
+  document.getElementById('todo_HTML').innerHTML = `
     <div class="dialog_content" id="close_dialog">
-    
-    
       <div class="category_x">
-        <div class="category_dialog">${todo['category']}</div>
-        <button class="close_button" onclick="closeDialog()"><img src="../assets/img/close.svg" alt=""></button>
+        <div class="category_dialog">${todo.category}</div>
+        <button class="close_button" onclick="closeDialog()">
+          <img src="../assets/img/close.svg" alt="">
+        </button>
       </div>
+<<<<<<< HEAD
+      <div class="title_dialog">${todo.title}</div>
+      <div class="description_dialog">${todo.description}</div>
+      <div class="date_dialog">${todo.due_date}</div>
+      <div class="prio_dialog">${todo.prio} Medium
+=======
     
       <div class="title_dialog">${todo['title']}</div>
       <div class="description_dialog">${todo['description']}</div>
@@ -165,63 +161,52 @@ function openDialog(todoIndex) {
       <div class="date_dialog">${todo['due date']}</div>
       <div class="prio_dialog">${todo['prio']}
 >>>>>>> Stashed changes
+>>>>>>> 0b4d2a46496d3a43710fa1dc01586a0d17fcd582
         <div>
           <img src="../assets/img/priority_medium.svg" alt="">
         </div>
       </div>
       <div id="member_icons_names"></div>
-    
-      
       <div>
-          <div>${todo['subtasks']}</div>
-          <div class="subtasks_dialog">
-            <div class="subtasks_dialog_text">
-          <img src="../assets/img/check_button.svg" alt="">Implement Recipe Recommendation 
+        <div>${todo.subtasks}</div>
+        <div class="subtasks_dialog">
+          <div class="subtasks_dialog_text">
+            <img src="../assets/img/check_button.svg" alt="">Implement Recipe Recommendation 
           </div>
           <div class="subtasks_dialog_text">
-          <img src="../assets/img/empty_check_button.svg" alt="">Start page Layout
+            <img src="../assets/img/empty_check_button.svg" alt="">Start page Layout
           </div>
-          </div>
-
-          
+        </div>
       </div>
-
       <div class="dialog_delete_edit">
-             <div><img src="../assets/img/property_1=delete.svg" alt="">delete</div>
-               <img src="../assets/img/vector_delete_edit.svg" alt="">
-             <div><img src="../assets/img/property_1=edit.svg" alt="">edit</div>
-      </div>
-    </div>
-    `;
-
-
-// Leere zuerst das Element, um sicherzustellen, dass keine vorherigen Inhalte vorhanden sind
-document.getElementById('member_icons_names').innerHTML = '';
-
-// Iteriere durch das contactsboard-Array
-for (let i = 0; i < contactsboard.length; i++) {
-  // Greife auf das aktuelle Element im Array zu
-  const contact = contactsboard[i];
-  
-  // Generiere den HTML-Code für das aktuelle Kontakt-Element
-  const contactHTML = `
-    <div id="holeContact${i}" class="hole_contact">        
-      <div id="name_icon${i}" class="name_icon" style="background-color: ${iconColors[i]}"></div>  
-      <div class="contact">
-        <h4>${contact.name}</h4>
+        <div><img src="../assets/img/property_1=delete.svg" alt="">delete</div>
+        <img src="../assets/img/vector_delete_edit.svg" alt="">
+        <div><img src="../assets/img/property_1=edit.svg" alt="">edit</div>
       </div>
     </div>
   `;
-  
-  // Füge das generierte HTML dem Element mit der ID 'member_icons_names' hinzu
-  document.getElementById('member_icons_names').innerHTML += contactHTML;
-}
 
+  // Leere das Element, um sicherzustellen, dass keine vorherigen Inhalte vorhanden sind
+  document.getElementById('member_icons_names').innerHTML = '';
 
+  // Iteriere durch das contactsboard-Array und baue das HTML für die Kontakte auf
+  for (let i = 0; i < contactsboard.length; i++) {
+    const contact = contactsboard[i];
+    const contactHTML = `
+      <div id="holeContact${i}" class="hole_contact">        
+        <div id="name_icon${i}" class="name_icon"></div>  
+        <div class="contact">
+          <h4>${contact.name}</h4>
+        </div>
+      </div>
+    `;
+    document.getElementById('member_icons_names').innerHTML += contactHTML;
+  }
 
-generateIconColors();
-  changeIconColor();
-  addNameLetters();
+  // Generiere Farben für die Icons, ändere die Icon-Farben und füge Buchstaben hinzu
+  const iconColors = generateIconColors(contactsboard);
+  changeIconColor(contactsboard);
+  addNameLetters(contactsboard);
 }
 
 function closeDialog() {
@@ -229,35 +214,37 @@ function closeDialog() {
   document.getElementById('todo_HTML').style.display = 'none';
 }
 
-// function delTask() {
-//   let task = document.getElementById("details_email").innerHTML;
-//   let taskIndex = contacts.findIndex((c) => c.email === contact);
-//   contacts.splice(contactIndex, 1);
-//   setItem("users", currentUserData);
-//   closeEditContact();
-//   renderContacts();
-//   document.getElementById("details_container").innerHTML = "";
-// }
+function generateIconColors(contactsboard) {
+  const iconColors = [];
+  for (let i = 0; i < contactsboard.length; i++) {
+    iconColors.push(`var(--${i + 1})`);
+  }
+  return iconColors;
+}
 
-// function editTask() {
-//   let contact = document.getElementById("details_email").innerHTML;
-//   let contactIndex = contacts.findIndex((c) => c.email === contact);
-//   let contactToEdit = contacts[contactIndex];
-//   contactToEdit.name = document.getElementById("edit_input_name").value;
-//   contactToEdit.email = document.getElementById("edit_input_email").value;
-//   contactToEdit.phone = document.getElementById("edit_input_phone").value;
-//   document.getElementById("details_container").innerHTML = "";
-//   setItem("users", currentUserData);
-//   closeEditContact();
-//   renderContacts();
-// }
+function changeIconColor(contactsboard) {
+  for (let i = 0; i < contactsboard.length; i++) {
+    let icon = document.getElementById("name_icon" + i);
+    if (icon) {
+      icon.style.backgroundColor = `var(--${i + 1})`;
+    }
+  }
+}
 
-
-
-
-
-
-
+function addNameLetters(contactsboard) {
+  for (let i = 0; i < contactsboard.length; i++) {
+    const contact = contactsboard[i];
+    const names = contact.name.split(" ");
+    let initials = "";
+    names.forEach((name) => {
+      initials += name.charAt(0).toUpperCase();
+    });
+    const nameIconElement = document.getElementById("name_icon" + i);
+    if (nameIconElement) {
+      nameIconElement.innerHTML = initials;
+    }
+  }
+}
 
 function filterTodosTitle() {
   let searchText = document.getElementById('filter_input').value.trim().toLowerCase();
@@ -287,59 +274,3 @@ function filterTodosTitle() {
     }
   }
 }
-
-
-
-
-
-// async function renderContacts() {
-//   contacts = value[0].contacts;
-//   document.getElementById("MemberField").innerHTML = "";
-//   contacts.sort((a, b) => a.name.localeCompare(b.name));
-//   generateIconColors();
-//   for (let i = 0; i < contacts.length; i++) {
-//     let contact = contacts[i];
-//     document.getElementById("MemberField").innerHTML += 
-//             <div id="holeContact${i}" class="hole_contact" onclick="changeCheckBox(${i})"> 
-//                 <div id="name_icon${i}" class="name_icon" style="background-color: ${iconColors[i]}"></div>  
-//                 <div class="contact">
-//                     <h4> ${contact.name}</h4>
-//                 </div>
-//                 <input type="checkbox" id="checkBox${i}">
-//             </div>;
-//   }
-//   changeIconColor();
-//   addNameLetters();
-// }
-
-
-
-function generateIconColors() {
-  for (let i = 0; i < contactsboard.length; i++) {
-    iconColors.push(`var(--${i + 1})`);
-  }
-}
-
-
-function changeIconColor() {
-  for (let i = 0; i < contactsboard.length; i++) {
-    let icon = document.getElementById("name_icon" + i);
-    icon.style.backgroundColor = `var(--${i + 1})`;
-  }
-}
-
-function addNameLetters() {
-  for (let i = 0; i < contactsboard.length; i++) {
-    const contact = contactsboard[i];
-    const names = contact.name.split(" ");
-    let initials = "";
-    names.forEach((name) => {
-      initials += name.charAt(0).toUpperCase();
-    });
-    const nameIconElement = document.getElementById("name_icon" + i);
-    if (nameIconElement) {
-      nameIconElement.innerHTML = initials;
-    }
-  }
-}
-
