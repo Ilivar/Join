@@ -80,7 +80,7 @@ h2 {
 .contact_list {
   display: flex;
   width: 456px;
-  height: 940px;
+  height: 928px;
   flex-shrink: 0;
   background: var(--white, #fff);
   box-shadow: 4px 0px 6px 0px rgba(0, 0, 0, 0.08);

@@ -10,11 +10,12 @@ function updateToDoArray() {
 
 
 async function init() {
+  await includeHTML();
   await loadPreviousMember();
   await loadCurrentUserData();
-  includeHTML();
   updateToDoArray();
   updateHTML();
+  renderUserInitial();
 }
 
 function updateHTML() {

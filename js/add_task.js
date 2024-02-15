@@ -4,13 +4,14 @@ let newAddTask = [];
 
 
 async function init() {
-  includeHTML();
+  await includeHTML();
   await loadPreviousMember();
   await loadCurrentUserData();
   await renderContacts();
   includeHTML();
   prioMediumOnLoad();
   futureDate();
+  renderUserInitial();
 }
 
 async function renderContacts() {

@@ -1,12 +1,13 @@
 let urgentTasks = [];
 
 async function init() {
-  includeHTML();
+  await includeHTML();
   await loadPreviousMember();
   await loadCurrentUserData();
   greetUser();
   getNearestTask();
   setCardValues();
+  renderUserInitial();
 }
 
 function setCardValues() {

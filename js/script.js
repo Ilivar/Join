@@ -8,7 +8,7 @@ let currentUserData = [];
 
 // Template -> Header Sidebar //
 
-function includeHTML() {
+async function includeHTML() {
   var z, i, elmnt, file, xhttp;
   /* Loop through a collection of all HTML elements: */
   z = document.getElementsByTagName("*");
@@ -40,8 +40,24 @@ function includeHTML() {
   }
 }
 
+async function renderUserInitial() {
+  let currentUserName = value[0].name;
+  let names = currentUserName.split(" ");
+  let initials = "";
+  
+  names.forEach((name) => {
+    initials += name.charAt(0).toUpperCase();
+  });
+
+  document.getElementById("user_icon_login").innerHTML = initials;
+}
+
 function openBurgerMenu() {
   document.getElementById("burger_menu").style.display = "flex";
+}
+
+function backToLastPage() {
+  window.history.back();
 }
 
 async function setItem(key, value) {
@@ -72,8 +88,8 @@ async function loadCurrentUser() {
 }
 
 async function loadCurrentUserData() {
-  loadCurrentUser();
-  findUserByEmail(currentUser);
+  await loadCurrentUser();
+  await findUserByEmail(currentUser);
 }
 
 async function findUserByEmail(emailToFind) {
