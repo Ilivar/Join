@@ -117,22 +117,22 @@
 
       <div class="user_story_content" id="tasksBoard">
 
-        <div class="drag-area"  id="drag_to_do" ondrop="moveTo('drag_to_do')" ondragleave="removeHighlight('drag_to_do')"
+        <div class="drag-area"  id="drag_to_do" ondrop="moveTo('drag_to_do'), setStatusValue('drag_to_do')" ondragleave="removeHighlight('drag_to_do')"
           ondragover="allowDrop(event); highlight('drag_to_do')">
         </div>
 
 
-        <div class="drag-area" id="drag_in_progress" ondrop="moveTo('drag_in_progress')"
+        <div class="drag-area" id="drag_in_progress" ondrop="moveTo('drag_in_progress'),setStatusValue('drag_in_progress')"
           ondragleave="removeHighlight('drag_in_progress')"
           ondragover="allowDrop(event); highlight('drag_in_progress')">
         </div>
 
-        <div class="drag-area" id="drag_await_feedback" ondrop="moveTo('drag_await_feedback')"
+        <div class="drag-area" id="drag_await_feedback" ondrop="moveTo('drag_await_feedback'), setStatusValue('drag_await_feedback')"
           ondragleave="removeHighlight('drag_await_feedback')"
           ondragover="allowDrop(event); highlight('drag_await_feedback')">
 
         </div>
-        <div class="drag-area" id="drag_done" ondrop="moveTo('drag_done')" ondragleave="removeHighlight('drag_done')"
+        <div class="drag-area" id="drag_done" ondrop="moveTo('drag_done'), setStatusValue('drag_done')" ondragleave="removeHighlight('drag_done')"
           ondragover="allowDrop(event); highlight('drag_done')">
         </div>
       </div>

@@ -1,4 +1,5 @@
 let currentDraggedElement;
+let currentStatusValue;
 
 let todos = [];
 
@@ -109,29 +110,37 @@ function generateTodoHTML(element) {
 </div>`;
 }
 
-
 function changeStatus(id, status) {
-  let currentStatusArray = value[0].newAddTask;
-  let foundIndex = currentStatusArray.findIndex((item) => item.id === id);
-  let formFix= value;
-  let updatedArray = [...currentStatusArray];
+  if (currentDraggedElement != null) {
+    let currentStatusArray = value[0].newAddTask;
+    let foundIndex = currentStatusArray.findIndex((item) => item.id === id);
+    let formFix = value;
+    let updatedArray = [...currentStatusArray];
 
-  if (foundIndex !== -1) {
-    currentStatusArray[foundIndex].status = status;
-  } else {
-    console.error("ID:", id, "didnt exist!");
-    return;
+    if (foundIndex !== -1) {
+      currentStatusArray[foundIndex].status = status;
+    } else {
+      console.error("ID:", id, "didnt exist!");
+      return;
+    }
+
+    value[0].newAddTask = [];
+
+    for (let i = 0; i < updatedArray.length; i++) {
+      value[0].newAddTask.push(updatedArray[i]);
+    }
+
+    formFix[0].newAddTask = [];
+    formFix[0].newAddTask = currentStatusArray;
+    setItem("users", formFix);
+  }else{
+    console.log("currentDraggedElement is null");
   }
+}
 
-  value[0].newAddTask = [];
-
-  for (let i = 0; i < updatedArray.length; i++) {
-    value[0].newAddTask.push(updatedArray[i]);
-  }
-
-  formFix[0].newAddTask = [];
-  formFix[0].newAddTask.push(currentStatusArray);
-  setItem("users", formFix);
+function setStatusValue(updateValue) {
+  currentStatusValue = updateValue;
+  changeStatus(currentDraggedElement, currentStatusValue)
 }
 
 function allowDrop(ev) {
