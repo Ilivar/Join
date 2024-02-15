@@ -34,7 +34,7 @@ function rememberMe() {
 }
 
 function loadFromLocalStorage() {
-  let inputMail = localStorage.getItem("inputMail");
+  let inputMail = localStorage.getItem("email");
   if (inputMail) {
     document.getElementById("remember_check").checked = true;
     document.getElementById("inputMail").value = inputMail;

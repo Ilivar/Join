@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="../css/privacy_policy.css" />
     <link rel="stylesheet" href="../css/fonts.css" />
     <script src="../js/script.js"></script>
+    <script src="../js/privacy_policy.js"></script>
 </head>
 
 
-<body onload="includeHTML()">
+<body onload="init();">
     <div id="main_container">
       <div w3-include-html="../assets/templates/sidebar_template.html"></div>
       <div id="main_content">
@@ -18,7 +19,7 @@
         <div id="text_container">
             <div id="text_header">
               <h1>Privacy Policy</h1>
-              <img src="../assets/img/arrow-left-line.svg" alt="" />
+              <img onclick="backToLastPage()" id="back_arrow_policy" src="../assets/img/arrow-left-line.svg" alt="" />
             </div>
 
             <div id="Sub1">

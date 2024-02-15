@@ -106,6 +106,7 @@ input::placeholder {
     position: absolute;
     left: 32px;
     top: 32px;
+    cursor: pointer;
 }
 
 #input_fields {

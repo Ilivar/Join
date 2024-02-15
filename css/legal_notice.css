@@ -29,6 +29,10 @@ h1 {
   margin: auto;
 }
 
+#back_arrow_legal{
+  cursor: pointer;
+}
+
 #main_content {
   width: 100%;
   display: flex;

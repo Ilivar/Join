@@ -1,11 +1,12 @@
 let contacts = [];
 
 async function init() {
-  includeHTML();
+  await includeHTML();
   await loadPreviousMember();
   await loadCurrentUserData();
   await renderContacts();
   renderCurrentUserDataBlock();
+  renderUserInitial();
 }
 
 function openNewContact() {
