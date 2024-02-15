@@ -15,6 +15,7 @@ async function init() {
   includeHTML();
   updateToDoArray();
   updateHTML();
+  filterTodosTitle();
 }
 
 function updateHTML() {
@@ -63,6 +64,11 @@ function startDragging(id) {
 }
 
 function generateTodoHTML(element) {
+
+
+
+
+  
   return /*html*/`
   <div draggable="true" ondragstart="startDragging(${element['id']})">
   <div class="task_content" onclick="openDialog(${element['id']})">
@@ -92,7 +98,7 @@ function generateTodoHTML(element) {
         </div>
 
                 <div class=profile_content>
-                     <div class="over_profile_badge">
+                     <div id="member_icons_card" class="over_profile_badge">
                            <div class="profile_badge2"><span>AM</span></div>
                            <div class="profile_badge1"><span>EM</span></div>
                            <div class="profile_badge"><span>MB</span></div>
@@ -106,6 +112,9 @@ function generateTodoHTML(element) {
     </div>
 </div>`;
 }
+
+
+
 
 function allowDrop(ev) {
   ev.preventDefault();
@@ -145,15 +154,15 @@ function openDialog(todoIndex) {
       </div>
       <div class="title_dialog">${todo.title}</div>
       <div class="description_dialog">${todo.description}</div>
-      <div class="date_dialog">${todo.due_date}</div>
-      <div class="prio_dialog">${todo.prio} Medium
+      <div class="date_dialog">Due Date: ${todo.due_date}</div>
+      <div class="prio_dialog">Priority: ${todo.prio} Medium
         <div>
           <img src="../assets/img/priority_medium.svg" alt="">
         </div>
       </div>
       <div id="member_icons_names"></div>
       <div>
-        <div>${todo.subtasks}</div>
+        <div>Subtasks: ${todo.subtasks}</div>
         <div class="subtasks_dialog">
           <div class="subtasks_dialog_text">
             <img src="../assets/img/check_button.svg" alt="">Implement Recipe Recommendation 
@@ -235,7 +244,7 @@ function filterTodosTitle() {
   let searchText = document.getElementById('filter_input').value.trim().toLowerCase();
 
   // Filtern der Todos, deren Titel die ersten drei Buchstaben mit dem Suchtext übereinstimmen
-  let filteredTodos = separatedTodo.filter(t => t['title'].toLowerCase().startsWith(searchText));
+  let filteredTodos = todos.filter(t => t['title'].toLowerCase().startsWith(searchText));
 
   // Leeren Sie die Inhalte aller Spalten
   document.getElementById('drag_to_do').innerHTML = '';
@@ -246,10 +255,9 @@ function filterTodosTitle() {
   // Durchlaufen Sie die gefilterten Todos und fügen Sie sie nur in die entsprechende Spalte ein
   for (let index = 0; index < filteredTodos.length; index++) {
     let element = filteredTodos[index];
-    if (element.category === 'User Story') {
+    if (element.status === 'drag_to_do') {
       document.getElementById('drag_to_do').innerHTML += generateTodoHTML(element);
-    } else if (element.category === 'Technical Task') {
-      if (element.status === 'drag_in_progress') {
+    } else if (element.status === 'drag_in_progress') {
         document.getElementById('drag_in_progress').innerHTML += generateTodoHTML(element);
       } else if (element.status === 'drag_await_feedback') {
         document.getElementById('drag_await_feedback').innerHTML += generateTodoHTML(element);
@@ -258,4 +266,3 @@ function filterTodosTitle() {
       }
     }
   }
-}

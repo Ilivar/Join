@@ -473,3 +473,33 @@ let todos = [{
     }
     
   }
+ 
+
+
+
+
+
+
+
+
+
+  function assignedIcons(){
+    document.getElementById('member_icons_card').innerHTML = '';
+  
+  for (let i = 0; i < contactsboard.length; i++) {
+    const contact = contactsboard[i];
+    const contactHTML = `
+      <div id="holeContact${i}" class="hole_contact">        
+        <div id="name_icon${i}" class="name_icon"></div>  
+        <div class="contact">
+          <h4>${contact.name}</h4>
+        </div>
+      </div>
+    `;
+    document.getElementById('member_icons_card').innerHTML += contactHTML;
+  }
+  
+  const iconColors = generateIconColors(contactsboard);
+  changeIconColor(contactsboard);
+  addNameLetters(contactsboard);
+  }
