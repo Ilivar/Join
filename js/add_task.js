@@ -90,8 +90,6 @@ async function renderActiveMemberIcons() {
     return; // Beende die Funktion, wenn das Element nicht gefunden wurde
   }
   activeMemberIconsDiv.innerHTML = "";
-
-  // Array zur Speicherung der ausgewählten Kontakte
   const selectedContacts = [];
 
   for (let i = 0; i < contacts.length; i++) {
@@ -114,15 +112,6 @@ async function renderActiveMemberIcons() {
   return selectedContacts;
 }
 
-// async function useSelectedContacts() {
-//   // Rufe renderActiveMemberIcons asynchron auf und warte auf den Rückgabewert
-//   const selectedContacts = await renderActiveMemberIcons();
-
-//   // Verwende den Rückgabewert in dieser Funktion
-//   console.log(selectedContacts);
-// }
-
-
 
 document.addEventListener("DOMContentLoaded", function () {
   let acc = document.getElementById("accordion");
@@ -140,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function toggleAccordion(element) {
-  var content = element.nextElementSibling;
+  let content = element.nextElementSibling;
   if (content.style.display === "block") {
     content.style.display = "none";
   } else {
@@ -308,36 +297,89 @@ function closeInputSubTask() {
 let inputValues = []; // Leeres Array zum Speichern der Werte
 
 function checkInputSubTask() {
-  let listItems = document.querySelectorAll("#sub_task_listelements li");
   let input = document.getElementById("input_subtask").value;
-  let i = listItems.length + 1;
+  let i = inputValues.length + 1;
 
   // Füge den eingegebenen Wert dem Array hinzu
   inputValues.push(input);
 
-  document.getElementById("sub_task_listelements").innerHTML += `
-    <li id="sub_task${i}" onclick="editSubTask(sub_task${i})"> ${input} </li>`;
+  // Erstelle ein div-Element als Container für das Listenelement und das Bild
+  let container = document.createElement('div');
+  container.classList.add('subtask_area'); // Füge der Klasse hinzu
+  
+  let listItem = document.createElement('li');
+  listItem.classList.add('list_subtask');
+  listItem.id = `sub_task${i}`;
+  listItem.textContent = input;
+  listItem.onclick = function() {
+    editSubTask(`sub_task${i}`);
+  };
+
+  let deleteIcon = document.createElement('img');
+  deleteIcon.src = "../assets/img/delete.svg";
+  deleteIcon.onclick = function() {
+    deleteSubTask(`sub_task${i}`);
+  };
+
+  container.appendChild(listItem);
+  container.appendChild(deleteIcon);
+
+  document.getElementById("sub_task_listelements").appendChild(container);
+}
+
+function editSubTask(id) {
+  let listItem = document.getElementById(id);
+  let index = parseInt(id.replace('sub_task', '')) - 1;
+  let newValue = prompt("Bearbeite die Teilaufgabe:", listItem.textContent);
+  
+  if (newValue) {
+      listItem.textContent = newValue;
+      inputValues[index] = newValue; // Aktualisiere den Wert im Array
+  }
+}
+
+function deleteSubTask(id) {
+  let listItem = document.getElementById(id);
+  let index = parseInt(id.replace('sub_task', '')) - 1;
+  console.log("Index zu löschenden Elements:", index);
+  console.log("Zu löschender Wert:", inputValues[index]);
+
+  listItem.parentNode.remove(); // Lösche den übergeordneten Container
+  inputValues.splice(index, 1); // Entferne den Wert aus dem Array
+  console.log("Array nach Löschen:", inputValues);
+
+  // Leere die aktuelle Liste
+  document.getElementById("sub_task_listelements").innerHTML = '';
+
+  // Rendere die Liste neu basierend auf den aktuellen inputValues
+  inputValues.forEach((value, idx) => {
+    let itemId = `sub_task${idx + 1}`;
+    let container = document.createElement('div');
+    container.classList.add('subtask_area');
+
+    let listItem = document.createElement('li');
+    listItem.classList.add('list_subtask');
+    listItem.id = itemId;
+    listItem.textContent = value;
+    listItem.onclick = function() {
+      editSubTask(itemId);
+    };
+
+    let deleteIcon = document.createElement('img');
+    deleteIcon.src = "../assets/img/delete.svg";
+    deleteIcon.onclick = function() {
+      deleteSubTask(itemId);
+    };
+
+    container.appendChild(listItem);
+    container.appendChild(deleteIcon);
+    document.getElementById("sub_task_listelements").appendChild(container);
+  });
 }
 
 
-// function checkInputSubTask() {
-//   let listItems = document.querySelectorAll("#sub_task_listelements li");
-//   let input = document.getElementById("input_subtask").value;
-//   let i = listItems.length + 1; // Generiere eine eindeutige ID
-//   document.getElementById("sub_task_listelements").innerHTML += `
-//     <li id="sub_task${i}" onclick="editSubTask(sub_task${i})"> ${input} </li>`;
-// }
-
-function editSubTask(elementId) {
-    let newText = document.getElementById("edit_text").value;
-    let listItem = document.getElementById(elementId);
-    if (listItem) {
-      listItem.innerText = newText;
-    } else {
-      alert("Ungültige ID!");
-    }
-  }
 
 
 
-function deleteSubTask() {}
+
+
