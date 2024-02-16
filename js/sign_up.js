@@ -46,13 +46,34 @@ async function createSampleTasks(user) {
 }
 
 async function addSampleToData(sampleTasks) {
-  loadPreviousMember();
-  loadCurrentUserData();
+  await loadPreviousMember();
+  await loadCurrentUserData();
   if (!value[0].newAddTask) {
     value[0].newAddTask = [];
   }
   value[0].newAddTask.push(sampleTasks);
   setItem("users", currentUserData);
+  addNewSampleContact();
+}
+
+function addSampleContactToUserData(newContact) {
+  if (!value[0].contacts) {
+    value[0].contacts = [];
+  }
+
+  value[0].contacts.push(newContact);
+
+  setItem("users", currentUserData);
+}
+
+function addNewSampleContact() {
+
+  const newContact = {
+    name: value[0].name,
+    email: value[0].email,
+    phone: '-',
+  };
+  addSampleContactToUserData(newContact);
 }
 
 async function isUserNew(user, email) {
