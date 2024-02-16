@@ -133,7 +133,7 @@ function changeStatus(id, status) {
     formFix[0].newAddTask = [];
     formFix[0].newAddTask = currentStatusArray;
     setItem("users", formFix);
-  }else{
+  } else {
     console.log("currentDraggedElement is null");
   }
 }
@@ -182,7 +182,7 @@ function openDialog(todoIndex) {
       <div class="title_dialog">${todo.title}</div>
       <div class="description_dialog">${todo.description}</div>
       <div class="date_dialog">Due Date: ${todo.due_date}</div>
-      <div class="prio_dialog">Priority: ${todo.prio} Medium
+      <div class="prio_dialog">Priority: ${todo.prio}
         <div>
           <img src="../assets/img/priority_medium.svg" alt="">
         </div>
