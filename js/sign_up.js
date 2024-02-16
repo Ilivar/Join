@@ -1,3 +1,8 @@
+async function init() {
+  await loadPreviousMember();
+  await loadCurrentUserData();
+}
+
 
 async function createNewMember(event) {
   event.preventDefault();
@@ -21,7 +26,33 @@ async function createNewMember(event) {
     };
     await loadPreviousMember();
     isUserNew(user, email);
+    createSampleTasks(user);
   }
+}
+
+async function createSampleTasks(user) {
+  let sampleTasks = {
+    id: 0,
+    title: "Sample Task",
+    description: "have a nice day!",
+    assigned_to: user.name,
+    due_date: "2033-02-22",
+    prio: "Urgent",
+    category: "User Story",
+    subtasks: "",
+    status: "drag_in_progress"
+  }
+  addSampleToData(sampleTasks);
+}
+
+async function addSampleToData(sampleTasks) {
+  loadPreviousMember();
+  loadCurrentUserData();
+  if (!value[0].newAddTask) {
+    value[0].newAddTask = [];
+  }
+  value[0].newAddTask.push(sampleTasks);
+  setItem("users", currentUserData);
 }
 
 async function isUserNew(user, email) {
@@ -43,3 +74,4 @@ function signInSuccess() {
     window.location.href = "index.html";
   }, 2000);
 }
+

@@ -40,6 +40,10 @@ async function includeHTML() {
   }
 }
 
+async function createSampleTasks() {}
+
+async function fillUserToContacts() {}
+
 async function renderUserInitial() {
   let currentUserName = value[0].name;
   let names = currentUserName.split(" ");
