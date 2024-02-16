@@ -28,25 +28,25 @@ function updateHTML() {
     const element = drag_to_do[index];
     document.getElementById("drag_to_do").innerHTML +=
     generateTodoHTML(element, index);
-  //// New
+  //////////////////////// New
     let contactsboard = element.assigned_to;
     for (let i = 0; i < contactsboard.length; i++) {
         const contact = contactsboard[i];
         let contactHTMLIcons = document.getElementById('member_icons_card'+index).innerHTML;
         contactHTMLIcons += `
-          <div id="holeContact${i}" class="hole_contact">        
-            <div id="name_icon${i}" class="name_icon"></div>  
+          <div id="holeContact${i}${index}" class="hole_contact">        
+            <div id="name_icon${i}${index}" class="name_icon"></div>  
             <div class="contact">
             </div>
           </div>
         `;
-      document.getElementById('member_icons_card'+index).innerHTML += contactHTMLIcons;
+      document.getElementById('member_icons_card'+index).innerHTML = contactHTMLIcons;
     
       
     }
-    const iconColors = generateIconColors(contactsboard);
-      changeIconColor(contactsboard);
-      addNameLetters(contactsboard);
+    const iconColors = generateIconColors(contactsboard, index);
+      changeIconColor(contactsboard, index);
+      addNameLetters(contactsboard, index);
 
     /// New End
   }
@@ -59,6 +59,7 @@ function updateHTML() {
     const element = drag_in_progress[index];
     document.getElementById("drag_in_progress").innerHTML +=
     generateTodoHTML(element);
+
   }
 
   let drag_await_feedback = todos.filter(
@@ -89,8 +90,8 @@ function startDragging(id) {
 
 function generateTodoHTML(element, i) {
   return /*html*/ `
-  <div draggable="true" ondragstart="startDragging(${element["id"]})">
-  <div class="task_content" onclick="openDialog(${element["id"]})">
+  <div draggable="true" ondragstart="startDragging(${element['id']})">
+  <div class="task_content" onclick="openDialog(${element['id']})">
 
     <div class="card_content">
 
@@ -263,16 +264,16 @@ function generateIconColors(contactsboard) {
   return iconColors;
 }
 
-function changeIconColor(contactsboard) {
+function changeIconColor(contactsboard, index) {
   for (let i = 0; i < contactsboard.length; i++) {
-    let icon = document.getElementById("name_icon" + i);
+    let icon = document.getElementById("name_icon" + i + index);
     if (icon) {
       icon.style.backgroundColor = `var(--${i + 1})`;
     }
   }
 }
 
-function addNameLetters(contactsboard) {
+function addNameLetters(contactsboard, index) {
   for (let i = 0; i < contactsboard.length; i++) {
     const contact = contactsboard[i];
     const names = contact.name.split(" ");
@@ -280,7 +281,7 @@ function addNameLetters(contactsboard) {
     names.forEach((name) => {
       initials += name.charAt(0).toUpperCase();
     });
-    const nameIconElement = document.getElementById("name_icon" + i);
+    const nameIconElement = document.getElementById("name_icon" + i +index);
     if (nameIconElement) {
       nameIconElement.innerHTML = initials;
     }
