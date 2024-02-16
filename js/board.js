@@ -235,8 +235,8 @@ function openDialog(todoIndex) {
   for (let i = 0; i < contactsboard.length; i++) {
     const contact = contactsboard[i];
     const contactHTML = `
-      <div id="holeContact${i}" class="hole_contact">        
-        <div id="name_icon${i}" class="name_icon"></div>  
+      <div id="contact_dialog${i}" class="hole_contact">        
+        <div id="name_icon_dialog${i}" class="name_icon"></div>  
         <div class="contact">
           <h4>${contact.name}</h4>
         </div>
@@ -267,6 +267,7 @@ function generateIconColors(contactsboard) {
 function changeIconColor(contactsboard, index) {
   for (let i = 0; i < contactsboard.length; i++) {
     let icon = document.getElementById("name_icon" + i + index);
+    // document.getElementById("name_icon_dialog" + i + index);
     if (icon) {
       icon.style.backgroundColor = `var(--${i + 1})`;
     }
@@ -282,6 +283,7 @@ function addNameLetters(contactsboard, index) {
       initials += name.charAt(0).toUpperCase();
     });
     const nameIconElement = document.getElementById("name_icon" + i +index);
+    // nameIconElement = document.getElementById("name_icon_dialog" + i +index);
     if (nameIconElement) {
       nameIconElement.innerHTML = initials;
     }
