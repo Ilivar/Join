@@ -19,6 +19,7 @@ async function init() {
 }
 
 function updateHTML() {
+  
   let drag_to_do = todos.filter((t) => t["status"] == "drag_to_do");
 
   document.getElementById("drag_to_do").innerHTML = "";
@@ -26,7 +27,28 @@ function updateHTML() {
   for (let index = 0; index < drag_to_do.length; index++) {
     const element = drag_to_do[index];
     document.getElementById("drag_to_do").innerHTML +=
-      generateTodoHTML(element);
+    generateTodoHTML(element, index);
+  //// New
+    let contactsboard = element.assigned_to;
+    for (let i = 0; i < contactsboard.length; i++) {
+        const contact = contactsboard[i];
+        let contactHTMLIcons = document.getElementById('member_icons_card'+index).innerHTML;
+        contactHTMLIcons += `
+          <div id="holeContact${i}" class="hole_contact">        
+            <div id="name_icon${i}" class="name_icon"></div>  
+            <div class="contact">
+            </div>
+          </div>
+        `;
+      document.getElementById('member_icons_card'+index).innerHTML += contactHTMLIcons;
+    
+      
+    }
+    const iconColors = generateIconColors(contactsboard);
+      changeIconColor(contactsboard);
+      addNameLetters(contactsboard);
+
+    /// New End
   }
 
   let drag_in_progress = todos.filter((t) => t["status"] == "drag_in_progress");
@@ -36,7 +58,7 @@ function updateHTML() {
   for (let index = 0; index < drag_in_progress.length; index++) {
     const element = drag_in_progress[index];
     document.getElementById("drag_in_progress").innerHTML +=
-      generateTodoHTML(element);
+    generateTodoHTML(element);
   }
 
   let drag_await_feedback = todos.filter(
@@ -65,7 +87,7 @@ function startDragging(id) {
   currentDraggedElement = id;
 }
 
-function generateTodoHTML(element) {
+function generateTodoHTML(element, i) {
   return /*html*/ `
   <div draggable="true" ondragstart="startDragging(${element["id"]})">
   <div class="task_content" onclick="openDialog(${element["id"]})">
@@ -95,10 +117,8 @@ function generateTodoHTML(element) {
         </div>
 
                 <div class=profile_content>
-                     <div id="member_icons_card" class="over_profile_badge">
-                           <div class="profile_badge2"><span>AM</span></div>
-                           <div class="profile_badge1"><span>EM</span></div>
-                           <div class="profile_badge"><span>MB</span></div>
+                     <div id="member_icons_card${i}" class="over_profile_badge">
+                           
                        </div>
 
                        <div>
@@ -221,24 +241,14 @@ function openDialog(todoIndex) {
         </div>
       </div>
     `;
-    const contactHTMLCard = `<div id="holeContact${i}" class="hole_contact">        
-    <div id="name_icon${i}" class="name_icon"></div>  `;
     document.getElementById("member_icons_names").innerHTML += contactHTML;
-    document.getElementById('member_icons_card').innerHTML += contactHTMLCard;
   }
 
   // Generiere Farben für die Icons, ändere die Icon-Farben und füge Buchstaben hinzu
-  const iconColors = generateIconColors(contactsboard);
+  generateIconColors(contactsboard);
   changeIconColor(contactsboard);
   addNameLetters(contactsboard);
 }
-
-
-
-
-
-
-
 
 function closeDialog() {
   document.getElementById("close_dialog").innerHTML = "";
@@ -312,3 +322,4 @@ function filterTodosTitle() {
     }
   }
 }
+
