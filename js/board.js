@@ -221,7 +221,10 @@ function openDialog(todoIndex) {
         </div>
       </div>
     `;
+    const contactHTMLCard = `<div id="holeContact${i}" class="hole_contact">        
+    <div id="name_icon${i}" class="name_icon"></div>  `;
     document.getElementById("member_icons_names").innerHTML += contactHTML;
+    document.getElementById('member_icons_card').innerHTML += contactHTMLCard;
   }
 
   // Generiere Farben für die Icons, ändere die Icon-Farben und füge Buchstaben hinzu
@@ -229,6 +232,13 @@ function openDialog(todoIndex) {
   changeIconColor(contactsboard);
   addNameLetters(contactsboard);
 }
+
+
+
+
+
+
+
 
 function closeDialog() {
   document.getElementById("close_dialog").innerHTML = "";
