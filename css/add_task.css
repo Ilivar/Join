@@ -70,7 +70,8 @@ h4 {
 
 .area {
   width: 1208px;
-  height: 800px;
+  height: 924px;
+  /* border: 2px solid blue; */
 }
 
 .left_stroke_right_area {
@@ -309,6 +310,8 @@ h4 {
 .last_section {
   width: 90%;
   padding-left: 100px;
+  padding-top: 150px;
+
   /* border: 2px solid greenyellow; */
   display: flex;
   justify-content: space-between;
@@ -379,20 +382,23 @@ h4 {
   text-align: left;
   outline: none;
   transition: 0.4s;
+  
 }
 
 #searchField {
   border-radius: 10px;
-  border: none;
+  border: 1px solid var(--Style, #d1d1d1);
   background: var(--white, #fff);
   color: #000000;
   cursor: pointer;
   padding-left: 16px;
   padding-right: 16px;
-  width: 75%;
+  margin-bottom: 16px;
+  width: 90%;
   height: 40px;
   text-align: left;
   outline:none;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .subtask_area {
@@ -428,6 +434,7 @@ h4 {
 .column {
   display: flex;
   flex-direction: column;
+  gap:8px;
   overflow: auto;
 }
 
@@ -448,16 +455,20 @@ h4 {
 }
 
 .hole_contact {
+  width: 100%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   /* border: 2px solid blue; */
 }
 
 .hole_contact:hover {
+  border-radius: 10px;
   background: rgba(238, 238, 238, 1);
 }
 
 .active_contact {
+  border-radius: 10px;
   color: white;
   display: flex;
   align-items: center;
@@ -465,14 +476,22 @@ h4 {
 }
 
 .active_contact:hover {
+  border-radius: 10px;
   background: rgba(9, 25, 49, 1);
 }
 
 .contact {
   /* border: 2px solid green; */
+  width: 80%;
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.contact h4 {
+  display: flex;
+  padding: 0px;
 }
 
 .name_icon {
@@ -492,4 +511,9 @@ h4 {
   padding-top: 8px;
   display: flex;
   gap: 8px;
+}
+
+#MemberField {
+  height: 150px;
+  overflow-y: scroll;
 }

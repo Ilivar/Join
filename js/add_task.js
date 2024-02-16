@@ -19,6 +19,8 @@ async function renderContacts() {
   document.getElementById("MemberField").innerHTML = "";
   contacts.sort((a, b) => a.name.localeCompare(b.name));
   generateIconColors();
+  document.getElementById('MemberFiel_Search').innerHTML += `
+  <input type="text" id="searchField" oninput="filterContacts()" placeholder="Suche..."></input>`;
   for (let i = 0; i < contacts.length; i++) {
     let contact = contacts[i];
     document.getElementById('MemberField').innerHTML += `
@@ -153,6 +155,7 @@ function toggleAccordion(element) {
     content.style.display = "none";
   } else {
     content.style.display = "block";
+   
   }
 }
 
