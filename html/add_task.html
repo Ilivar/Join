@@ -44,6 +44,7 @@
                                     </div>
                                 </div>
                                 <div id="aktiveMemberIcons"></div>
+                                <input type="text" id="searchField" oninput="filterContacts()" placeholder="Suche...">
                             </div>
                         </div>
 
@@ -51,7 +52,7 @@
 
                         <div class="area_right">
                             <h4> Due date *</h4>
-                            <input class="input_field" id="input_date" type="date" min="" required/>
+                            <input class="input_field_date" id="input_date" type="date" min="" required/>
                             <h4> Prio </h4>
                             <div class="prio_area">
                                 <div id="buttonUrgent" class="prio" onclick="buttonUrgent()">

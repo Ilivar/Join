@@ -34,6 +34,25 @@ async function renderContacts() {
   addNameLetters();
 }
 
+function filterContacts() {
+  let searchField = document.getElementById('searchField');
+  let filter = searchField.value.toUpperCase();
+  let contactsDiv = document.getElementById('MemberField');
+  let contacts = contactsDiv.getElementsByClassName('hole_contact');
+
+  for (let i = 0; i < contacts.length; i++) {
+    let contactName = contacts[i].getElementsByTagName('h4')[0];
+    if (contactName) {
+      let txtValue = contactName.textContent || contactName.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        contacts[i].style.display = "";
+      } else {
+        contacts[i].style.display = "none";
+      }
+    }
+  }
+}
+
 function changeCheckBox(i) {
   if (document.getElementById(`checkBox${i}`).checked == false) {
     document.getElementById(`checkBox${i}`).checked = true;
