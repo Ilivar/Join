@@ -35,7 +35,7 @@ async function createSampleTasks(user) {
     id: 0,
     title: "Sample Task",
     description: "have a nice day!",
-    assigned_to: user.name,
+    assigned_to: "",
     due_date: "2033-02-22",
     prio: "Urgent",
     category: "User Story",
