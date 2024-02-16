@@ -65,7 +65,7 @@ function findUrgentTasks() {
   value.forEach((value) => {
     if (value.newAddTask) {
       value.newAddTask.forEach((task) => {
-        if (task.prio === "buttonUrgent") {
+        if (task.prio === "Urgent") {
           urgentTasks.push(task);
         }
       });
