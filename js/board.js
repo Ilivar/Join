@@ -18,6 +18,10 @@ async function init() {
   renderUserInitial();
 }
 
+function openAddTask() {
+  document.getElementById("overlayAddTask").style.display = "flex";
+}
+
 function updateHTML() {
   // Definiere alle "drag" Spalten
   const dragColumns = ["drag_to_do", "drag_in_progress", "drag_await_feedback", "drag_done"];
