@@ -38,7 +38,7 @@ function filterContacts() {
   let searchField = document.getElementById('searchField');
   let filter = searchField.value.toUpperCase();
   let contactsDiv = document.getElementById('MemberField');
-  let contacts = contactsDiv.getElementsByClassName('hole_contact');
+  let contacts = contactsDiv.getElementsByClassName('hole_contact_add');
 
   for (let i = 0; i < contacts.length; i++) {
     let contactName = contacts[i].getElementsByTagName('h4')[0];
@@ -63,7 +63,7 @@ function changeCheckBox(i) {
     document
       .getElementById(`holeContact${i}`)
       .classList.remove("active_contact");
-    document.getElementById(`holeContact${i}`).classList.add("hole_contact");
+    document.getElementById(`holeContact${i}`).classList.add("hole_contact_add");
   }
   renderActiveMemberIcons();
 }
@@ -73,7 +73,7 @@ function generateIconColorsA() {
     addTaskIconColors.push(`var(--${i + 1})`);
   }
 }
-changeIconColor
+
 function changeIconColorA() {
   for (let i = 0; i < contacts.length; i++) {
     let icon = document.getElementById("name_icon" + i);
@@ -99,7 +99,7 @@ function addNameLettersA() {
 function changeColorClickContact(i) {
   if ((document.getElementById(`checkBox${i}`).checked = true)) {
     document.getElementById(`holeContact${i}`).classList.add("active_contact");
-    document.getElementById(`holeContact${i}`).classList.remove("hole_contact");
+    document.getElementById(`holeContact${i}`).classList.remove("hole_contact_add");
   }
 }
 
@@ -122,7 +122,7 @@ async function renderActiveMemberIcons() {
         const iconColor = addTaskIconColors[i];
         const activeContactElement = document.createElement("div");
         activeContactElement.innerHTML = `
-                    <div class="name_icon" style="background-color: ${iconColor}">${nameIcon}</div>
+                    <div class="name_icon_add" style="background-color: ${iconColor}">${nameIcon}</div>
                     `;
         activeMemberIconsDiv.appendChild(activeContactElement);
         selectedContacts.push(contact); 
