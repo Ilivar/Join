@@ -55,6 +55,10 @@ body {
   display: none;
 }
 
+#overlayAddTask {
+    display: none;
+  }
+
 .find_task {
     display: flex;
     width: 312px;

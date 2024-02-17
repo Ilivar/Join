@@ -1,9 +1,7 @@
-let iconColors = [];
+let addTaskIconColors = [];
 let newAddTask = [];
 
-
-
-async function init() {
+async function initAddTask() {
   await includeHTML();
   await loadPreviousMember();
   await loadCurrentUserData();
@@ -25,7 +23,7 @@ async function renderContacts() {
     let contact = contacts[i];
     document.getElementById('MemberField').innerHTML += `
             <div id="holeContact${i}" class="hole_contact" onclick="changeCheckBox(${i})"> 
-                <div id="name_icon${i}" class="name_icon" style="background-color: ${iconColors[i]}"></div>  
+                <div id="name_icon${i}" class="name_icon" style="background-color: ${addTaskIconColors[i]}"></div>  
                 <div class="contact">
                     <h4> ${contact.name}</h4>
                 </div>
@@ -55,6 +53,7 @@ function filterContacts() {
   }
 }
 
+
 function changeCheckBox(i) {
   if (document.getElementById(`checkBox${i}`).checked == false) {
     document.getElementById(`checkBox${i}`).checked = true;
@@ -71,7 +70,7 @@ function changeCheckBox(i) {
 
 function generateIconColors() {
   for (let i = 0; i < contacts.length; i++) {
-    iconColors.push(`var(--${i + 1})`);
+    addTaskIconColors.push(`var(--${i + 1})`);
   }
 }
 
@@ -120,7 +119,7 @@ async function renderActiveMemberIcons() {
       // Überprüfe, ob der Kontakt bereits im Array enthalten ist
       if (!selectedContacts.includes(contact)) {
         const nameIcon = document.getElementById(`name_icon${i}`).innerHTML;
-        const iconColor = iconColors[i];
+        const iconColor = addTaskIconColors[i];
         const activeContactElement = document.createElement("div");
         activeContactElement.innerHTML = `
                     <div class="name_icon" style="background-color: ${iconColor}">${nameIcon}</div>

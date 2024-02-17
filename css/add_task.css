@@ -42,6 +42,15 @@ a {
   color: white;
 }
 
+.background_template {
+  border: 1px solid var(--Style, #d1d1d1);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  height: 1024px;
+  background: #f6f7f8;
+  /* border: 2px solid red; */
+}
+
 .background {
   height: 1024px;
   background: #f6f7f8;
@@ -55,7 +64,7 @@ h1 {
   font-weight: 700;
   line-height: 120%;
   padding-left: 95px;
-  padding-top: 50px;
+  padding-top : 0px;
 }
 
 h4 {
@@ -72,6 +81,33 @@ h4 {
   width: 1208px;
   height: 924px;
   /* border: 2px solid blue; */
+}
+
+
+
+.header_line {
+  width: 91%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  /* border: 1px solid blue; */
+}
+
+.flex_end {
+  display: flex;
+  align-items: center;
+  /* border: 1px solid brown; */
+}
+
+.header_line img {
+  width: 20px;
+  height: 20px;
+}
+
+.header_line img:hover {
+  cursor: pointer;
+  border-radius: 20px;
+  background-color: #c1c1c1;
 }
 
 .left_stroke_right_area {
@@ -108,7 +144,7 @@ h4 {
 }
 
 .stroke {
-  width: 2px;
+  width: 1px;
   height: 460px;
   stroke-width: 1px;
   background-color: rgb(192, 192, 192);

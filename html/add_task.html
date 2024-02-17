@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../css/add_task.css">
 </head>
 
-<body onload="init()">
+<body onload="initAddTask()">
     <div class="side">
         <div w3-include-html="../assets/templates/sidebar_template.html"></div>
         <div class="content">
@@ -115,7 +115,10 @@
         </div>
     </div>
 
-   
+    <div
+        id="overlay_card_add"
+        w3-include-html="../assets/templates/add_task_template.html"
+      ></div>
 </body>
 
 </html>
