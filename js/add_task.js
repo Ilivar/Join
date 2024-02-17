@@ -16,22 +16,22 @@ async function renderContacts() {
   contacts = value[0].contacts;
   document.getElementById("MemberField").innerHTML = "";
   contacts.sort((a, b) => a.name.localeCompare(b.name));
-  generateIconColors();
+  generateIconColorsA();
   document.getElementById('MemberFiel_Search').innerHTML += `
   <input type="text" id="searchField" oninput="filterContacts()" placeholder="Suche..."></input>`;
   for (let i = 0; i < contacts.length; i++) {
     let contact = contacts[i];
     document.getElementById('MemberField').innerHTML += `
-            <div id="holeContact${i}" class="hole_contact" onclick="changeCheckBox(${i})"> 
-                <div id="name_icon${i}" class="name_icon" style="background-color: ${addTaskIconColors[i]}"></div>  
-                <div class="contact">
+            <div id="holeContact${i}" class="hole_contact_add" onclick="changeCheckBox(${i})"> 
+                <div id="name_icon${i}" class="name_icon_add" style="background-color: ${addTaskIconColors[i]}"></div>  
+                <div class="contact_add">
                     <h4> ${contact.name}</h4>
                 </div>
                 <input type="checkbox" id="checkBox${i}">
             </div>`;
   }
-  changeIconColor();
-  addNameLetters();
+  changeIconColorA();
+  addNameLettersA();
 }
 
 function filterContacts() {
@@ -68,20 +68,20 @@ function changeCheckBox(i) {
   renderActiveMemberIcons();
 }
 
-function generateIconColors() {
+function generateIconColorsA() {
   for (let i = 0; i < contacts.length; i++) {
     addTaskIconColors.push(`var(--${i + 1})`);
   }
 }
-
-function changeIconColor() {
+changeIconColor
+function changeIconColorA() {
   for (let i = 0; i < contacts.length; i++) {
     let icon = document.getElementById("name_icon" + i);
     icon.style.backgroundColor = `var(--${i + 1})`;
   }
 }
 
-function addNameLetters() {
+function addNameLettersA() {
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     const names = contact.name.split(" ");

@@ -490,7 +490,7 @@ h4 {
   background: var(--white, #d1d1d1);
 }
 
-.hole_contact {
+.hole_contact_add {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -498,7 +498,7 @@ h4 {
   /* border: 2px solid blue; */
 }
 
-.hole_contact:hover {
+.hole_contact_add:hover {
   border-radius: 10px;
   background: rgba(238, 238, 238, 1);
 }
@@ -516,7 +516,7 @@ h4 {
   background: rgba(9, 25, 49, 1);
 }
 
-.contact {
+.contact_add {
   /* border: 2px solid green; */
   width: 80%;
   height: 100%;
@@ -530,7 +530,7 @@ h4 {
   padding: 0px;
 }
 
-.name_icon {
+.name_icon_add {
   width: 40px;
   height: 40px;
   border-radius: 50%;
