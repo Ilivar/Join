@@ -503,3 +503,81 @@ let todos = [{
   changeIconColor(contactsboard);
   addNameLetters(contactsboard);
   }
+
+
+
+
+
+
+
+
+// stand vor änderung 17.02
+
+
+
+
+  function updateHTML() {
+  
+    let drag_to_do = todos.filter((t) => t["status"] == "drag_to_do");
+  
+    document.getElementById("drag_to_do").innerHTML = "";
+  
+    for (let index = 0; index < drag_to_do.length; index++) {
+      const element = drag_to_do[index];
+      document.getElementById("drag_to_do").innerHTML +=
+      generateTodoHTML(element, index);
+    //////////////////////// New
+      let contactsboard = element.assigned_to;
+      for (let i = 0; i < contactsboard.length; i++) {
+          const contact = contactsboard[i];
+          let contactHTMLIcons = document.getElementById('member_icons_card'+index).innerHTML;
+          contactHTMLIcons += `
+            <div id="holeContact${i}${index}" class="hole_contact">        
+              <div id="name_icon${i}${index}" class="name_icon"></div>  
+              <div class="contact">
+              </div>
+            </div>
+          `;
+        document.getElementById('member_icons_card'+index).innerHTML = contactHTMLIcons;
+      
+        
+      }
+      const iconColors = generateIconColors(contactsboard, index);
+        changeIconColor(contactsboard, index);
+        addNameLetters(contactsboard, index);
+  
+      /// New End
+    }
+  
+    let drag_in_progress = todos.filter((t) => t["status"] == "drag_in_progress");
+  
+    document.getElementById("drag_in_progress").innerHTML = "";
+  
+    for (let index = 0; index < drag_in_progress.length; index++) {
+      const element = drag_in_progress[index];
+      document.getElementById("drag_in_progress").innerHTML +=
+      generateTodoHTML(element);
+  
+    }
+  
+    let drag_await_feedback = todos.filter(
+      (t) => t["status"] == "drag_await_feedback"
+    );
+  
+    document.getElementById("drag_await_feedback").innerHTML = "";
+  
+    for (let index = 0; index < drag_await_feedback.length; index++) {
+      const element = drag_await_feedback[index];
+      document.getElementById("drag_await_feedback").innerHTML +=
+        generateTodoHTML(element);
+    }
+  
+    let drag_done = todos.filter((t) => t["status"] == "drag_done");
+  
+    document.getElementById("drag_done").innerHTML = "";
+  
+    for (let index = 0; index < drag_done.length; index++) {
+      const element = drag_done[index];
+      document.getElementById("drag_done").innerHTML += generateTodoHTML(element);
+    }
+  }

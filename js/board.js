@@ -19,68 +19,53 @@ async function init() {
 }
 
 function updateHTML() {
-  
-  let drag_to_do = todos.filter((t) => t["status"] == "drag_to_do");
+  // Definiere alle "drag" Spalten
+  const dragColumns = ["drag_to_do", "drag_in_progress", "drag_await_feedback", "drag_done"];
 
-  document.getElementById("drag_to_do").innerHTML = "";
+  // Iteriere über jede "drag" Spalte
+  for (const column of dragColumns) {
+    // Filtere Todos entsprechend dem Status der aktuellen Spalte
+    const filteredTodos = todos.filter((t) => t["status"] === column);
+    // Hole das entsprechende DOM-Element für die aktuelle Spalte
+    const columnElement = document.getElementById(column);
+    // Leere den HTML-Inhalt der aktuellen Spalte
+    columnElement.innerHTML = "";
 
-  for (let index = 0; index < drag_to_do.length; index++) {
-    const element = drag_to_do[index];
-    document.getElementById("drag_to_do").innerHTML +=
-    generateTodoHTML(element, index);
-  //////////////////////// New
-    let contactsboard = element.assigned_to;
-    for (let i = 0; i < contactsboard.length; i++) {
-        const contact = contactsboard[i];
-        let contactHTMLIcons = document.getElementById('member_icons_card'+index).innerHTML;
+    // Iteriere über jedes gefilterte Todo in der aktuellen Spalte
+    for (let index = 0; index < filteredTodos.length; index++) {
+      // Hole das aktuelle Todo
+      const element = filteredTodos[index];
+      // Berechne den Index basierend auf dem Gesamtindex im Todos-Array
+      const i = todos.findIndex(todo => todo === element);
+
+      // Füge das HTML des Todos in die aktuelle Spalte ein
+      columnElement.innerHTML += generateTodoHTML(element, i);
+
+      // Handle member icons
+      const contactsboard = element.assigned_to;
+      let contactHTMLIcons = document.getElementById('member_icons_card' + i)?.innerHTML || '';
+
+      // Iteriere durch die zugewiesenen Mitglieder und generiere das HTML für die Icons
+      for (let j = 0; j < contactsboard.length; j++) {
+        const contact = contactsboard[j];
         contactHTMLIcons += `
-          <div id="holeContact${i}${index}" class="hole_contact">        
-            <div id="name_icon${i}${index}" class="name_icon"></div>  
-            <div class="contact">
-            </div>
+          <div id="holeContact${j}${i}" class="hole_contact">        
+            <div id="name_icon${j}${i}" class="name_icon"></div>  
+            <div class="contact"></div>
           </div>
         `;
-      document.getElementById('member_icons_card'+index).innerHTML = contactHTMLIcons;
-    
-      
+      }
+
+      // Füge das HTML für die Icons in das entsprechende Element ein
+      if (document.getElementById('member_icons_card' + i)) {
+        document.getElementById('member_icons_card' + i).innerHTML = contactHTMLIcons;
+      }
+
+      // Generiere Farben für die Icons und wende andere Funktionen an
+      const iconColors = generateIconColors(contactsboard, i);
+      changeIconColor(contactsboard, i);
+      addNameLetters(contactsboard, i);
     }
-    const iconColors = generateIconColors(contactsboard, index);
-      changeIconColor(contactsboard, index);
-      addNameLetters(contactsboard, index);
-
-    /// New End
-  }
-
-  let drag_in_progress = todos.filter((t) => t["status"] == "drag_in_progress");
-
-  document.getElementById("drag_in_progress").innerHTML = "";
-
-  for (let index = 0; index < drag_in_progress.length; index++) {
-    const element = drag_in_progress[index];
-    document.getElementById("drag_in_progress").innerHTML +=
-    generateTodoHTML(element);
-
-  }
-
-  let drag_await_feedback = todos.filter(
-    (t) => t["status"] == "drag_await_feedback"
-  );
-
-  document.getElementById("drag_await_feedback").innerHTML = "";
-
-  for (let index = 0; index < drag_await_feedback.length; index++) {
-    const element = drag_await_feedback[index];
-    document.getElementById("drag_await_feedback").innerHTML +=
-      generateTodoHTML(element);
-  }
-
-  let drag_done = todos.filter((t) => t["status"] == "drag_done");
-
-  document.getElementById("drag_done").innerHTML = "";
-
-  for (let index = 0; index < drag_done.length; index++) {
-    const element = drag_done[index];
-    document.getElementById("drag_done").innerHTML += generateTodoHTML(element);
   }
 }
 
@@ -119,8 +104,7 @@ function generateTodoHTML(element, i) {
 
                 <div class=profile_content>
                      <div id="member_icons_card${i}" class="over_profile_badge">
-                           
-                       </div>
+                     </div>
 
                        <div>
                         <img src="../assets/img/priority_medium.svg" alt="">
