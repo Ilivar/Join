@@ -7,7 +7,7 @@
   <title>Board</title>
   <link rel="stylesheet" href="../css/board.css" />
   <link rel="stylesheet" href="../css/fonts.css">
-  <!-- <link rel="stylesheet" href="../css/add_task.css"> -->
+  <link rel="stylesheet" href="../css/add_task.css">
   <script src="../js/script.js"></script>
   <!-- <script src="../js/board_test.js"></script> -->
   <script src="../js/board.js"></script>
@@ -17,14 +17,10 @@
 <body onload="init()">
   <div id="content">
    
-    <!-- New  -->
-    <!-- <div class="overlay_add_contact" id="overlayAddContact">
-      <div
-        id="overlay_card_add"
-        w3-include-html="../assets/templates/add_task_template.html"
-      ></div>
-    </div> -->
-    <!-- New End  -->
+    <!-- Add Task Overlay -->
+      <div id="overlayAddTask" w3-include-html="../assets/templates/add_task_template.html"></div>
+    
+    
 
      <!-- Header Template  -->
      <div w3-include-html="../assets/templates/sidebar_template.html"></div>
@@ -56,7 +52,7 @@
               </div>
 
               <div>
-                <div class="button_design" onclick="openAddTask">
+                <div class="button_design" onclick="openAddTask()">
                   <span class="add_task_text">Add task</span>
                   <img class="add_task_img" src="../assets/img/add_task_plus.svg" />
                 </div>

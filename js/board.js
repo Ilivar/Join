@@ -18,6 +18,10 @@ async function init() {
   renderUserInitial();
 }
 
+function openAddTask() {
+  document.getElementById("overlayAddTask").style.display = "flex";
+}
+
 function updateHTML() {
   // Definiere alle "drag" Spalten
   const dragColumns = ["drag_to_do", "drag_in_progress", "drag_await_feedback", "drag_done"];
@@ -172,8 +176,6 @@ function openDialog(todoIndex) {
   // Extrahieren der assigned_to-Daten des Todos in die Variable contactsboard
   const contactsboard = todo.assigned_to;
 
-  console.log("contactsboard-Daten:", contactsboard);
-
   // Anzeige des Dialogfelds
   document.getElementById("todo_HTML").style.display = "flex";
 
@@ -218,10 +220,9 @@ function openDialog(todoIndex) {
   document.getElementById("member_icons_names").innerHTML = "";
 
   // Iteriere durch das contactsboard-Array und baue das HTML für die Kontakte auf
-  let contactHTMLIcons = ""; // HTML für die Icons
   for (let i = 0; i < contactsboard.length; i++) {
     const contact = contactsboard[i];
-    contactHTMLIcons += `
+    const contactHTML = `
       <div id="contact_dialog${i}" class="hole_contact">        
         <div id="name_icon_dialog${i}" class="name_icon"></div>  
         <div class="contact">
@@ -229,24 +230,14 @@ function openDialog(todoIndex) {
         </div>
       </div>
     `;
+    document.getElementById("member_icons_names").innerHTML += contactHTML;
   }
 
-  // Füge das HTML für die Icons in das entsprechende Element ein
-  document.getElementById("member_icons_names").innerHTML = contactHTMLIcons;
-
-  // Update der Mitglieder-Icons im Dialogfeld
-  updateMemberIconsForDialog(contactsboard);
-
-  // Generiere Farben für die Icons im Dialogfeld
-  generateIconColorsForDialog(contactsboard);
-
-  // Ändere die Icon-Farben im Dialogfeld
-  changeIconColorForDialog(contactsboard);
-
-  // Füge Buchstaben hinzu im Dialogfeld
-  addNameLettersForDialog(contactsboard);
+  // Generiere Farben für die Icons, ändere die Icon-Farben und füge Buchstaben hinzu
+  generateIconColors(contactsboard);
+  changeIconColor(contactsboard);
+  addNameLetters(contactsboard);
 }
-
 
 function closeDialog() {
   document.getElementById("close_dialog").innerHTML = "";
@@ -321,58 +312,5 @@ function filterTodosTitle() {
         generateTodoHTML(element);
     }
   }
-}
-
-
-
-function generateMemberIconsForDialog(contactsboard) {
-  let contactHTMLIcons = "";
-  for (let i = 0; i < contactsboard.length; i++) {
-    const contact = contactsboard[i];
-    contactHTMLIcons += `
-      <div class="hole_contact">        
-        <div class="name_icon"></div>  
-        <div class="contact">
-          <h4>${contact.name}</h4>
-        </div>
-      </div>
-    `;
-  }
-  return contactHTMLIcons;
-}
-
-function updateMemberIconsForDialog(contactsboard) {
-  const contactHTMLIcons = generateMemberIconsForDialog(contactsboard);
-  document.getElementById("member_icons_names").innerHTML = contactHTMLIcons;
-}
-
-function generateIconColorsForDialog(contactsboard) {
-  const iconColors = [];
-  for (let i = 0; i < contactsboard.length; i++) {
-    iconColors.push(`var(--${i + 1})`);
-  }
-  return iconColors;
-}
-
-function changeIconColorForDialog(contactsboard) {
-  for (let i = 0; i < contactsboard.length; i++) {
-    let icon = document.querySelector(`#member_icons_names .name_icon:nth-child(${i + 1})`);
-    if (icon) {
-      icon.style.backgroundColor = `var(--${i + 1})`;
-    }
-  }
-}
-
-function addNameLettersForDialog(contactsboard) {
-  const nameIconElements = document.querySelectorAll('#member_icons_names .name_icon');
-  nameIconElements.forEach((nameIconElement, i) => {
-    const contact = contactsboard[i];
-    const names = contact.name.split(" ");
-    let initials = "";
-    names.forEach((name) => {
-      initials += name.charAt(0).toUpperCase();
-    });
-    nameIconElement.innerHTML = initials;
-  });
 }
 
