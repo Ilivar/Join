@@ -367,7 +367,7 @@ body {
     border: none;
     /* Keine Grenzen */
     margin-bottom: 50px;
-    position: relative;
+    /* position: relative; */
 }
 
 .drag-area-highlight {
