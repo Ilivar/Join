@@ -287,15 +287,9 @@ async function addNewAddTask() {
   let assigned = selectedContacts;
   let dueDate = document.getElementById("input_date").value;
   let prio = button;
-<<<<<<< Updated upstream
   let category = document.getElementById('user_category').innerHTML;
   let subtasks = inputValues; 
   let status = currentStatus;
-=======
-  let category = document.getElementById("user_category").innerHTML;
-  let subtasks = inputValues;
-  let status = "drag_to_do";
->>>>>>> Stashed changes
 
   let subtasksData = subtasks.map((subtask, index) => ({
     id: index + 1,
