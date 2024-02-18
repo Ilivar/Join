@@ -404,3 +404,22 @@ function addNameLettersForDialog(contactsboard, todoIndex) {
     }
   });
 }
+
+
+function displayImagePrio(prio) {
+  if (prio === "urgent") {
+      console.log("Join/assets/img/Prio up.svg");
+      // Hier Code einfügen, um das Bild für "urgent" anzuzeigen
+      // src.Join/assets/img/Prio up.svg;
+  } else if (prio === "medium") {
+      console.log("../assets/img/priority_medium.svg");
+      // Hier Code einfügen, um das Bild für "medium" anzuzeigen
+      // src.assets/img/priority_medium.svg;
+  } else if (prio === "low") {
+      console.log("../assets/img/Prio baja.svg");
+      // Hier Code einfügen, um das Bild für "low" anzuzeigen
+      // src.assets/img/Prio baja.svg;
+  } else {
+      console.log("Ungültige Kategorie");
+  }
+}
