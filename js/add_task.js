@@ -1,21 +1,24 @@
 let addTaskIconColors = [];
 let newAddTask = [];
+let currentStatus = "drag_to_do";
+let contacts = [];
 
 async function initAddTask() {
   await includeHTML();
   await loadPreviousMember();
   await loadCurrentUserData();
-  await renderContacts();
+  await renderContacts(); 
+  await renderActiveMemberIcons(); 
   includeHTML();
   prioMediumOnLoad();
   futureDate();
   renderUserInitial();
 }
 
+
 async function renderContacts() {
   contacts = value[0].contacts;
   document.getElementById("MemberField").innerHTML = "";
-  contacts.sort((a, b) => a.name.localeCompare(b.name));
   generateIconColorsA();
   document.getElementById('MemberFiel_Search').innerHTML += `
   <input type="text" id="searchField" oninput="filterContacts()" placeholder="Suche..."></input>`;
@@ -249,6 +252,20 @@ function buttonLow() {
   );
 }
 
+function toggleAccordionCatergory(element) {
+  let accordionContent = element.nextElementSibling;
+  if (accordionContent.style.maxHeight) {
+      accordionContent.style.maxHeight = null;
+  } else {
+      // Schließen aller geöffneten Akkordeons
+      let allAccordionContents = document.querySelectorAll('.accordion-content');
+      allAccordionContents.forEach(content => {
+          content.style.maxHeight = null;
+      });
+      accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+  }
+}
+
 function replaceToTechnicalTask() {
   let heading = document.querySelector(".head_arccordion_category p");
   heading.textContent = "Technical Task";
@@ -271,7 +288,7 @@ async function addNewAddTask() {
   let prio = button;
   let category = document.getElementById('user_category').innerHTML;
   let subtasks = inputValues; 
-  let status = "drag_to_do";
+  let status = currentStatus;
 
   const newAddTask = {
     id: taskId,

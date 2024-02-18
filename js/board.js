@@ -18,12 +18,35 @@ async function init() {
   renderUserInitial();
 }
 
-function openAddTask() {
+async function openAddTask() {
   document.getElementById("overlayAddTask").style.display = "flex";
+  
+  contacts = value[0].contacts;
+  await renderContacts(); 
+  prioMediumOnLoad();
+  futureDate();
 }
 
 function closeAddTask() {
   document.getElementById("overlayAddTask").style.display = "none";
+}
+
+function AddTaskToDo(drag_to_do) {
+  currentStatus = "drag_to_do";
+  openAddTask();
+  updateHTML();
+}
+
+function AddTaskProgress(drag_in_progress) {
+  currentStatus = "drag_in_progress";
+  openAddTask();
+  updateHTML();
+}
+
+function AddTaskAwaitFeedback(drag_await_feedback) {
+  currentStatus = "drag_await_feedback";
+  openAddTask();
+  updateHTML();
 }
 
 function updateHTML() {

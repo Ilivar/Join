@@ -220,6 +220,11 @@ body {
     border: 2px solid var(--Version-2-main-color, #2A3647);
 }
 
+.todo_plus_content:hover {
+    cursor: pointer;
+    border: 2px solid #29ABE2;
+}
+
 .user_story_content {
     display: flex;
     width: 1076px;
