@@ -318,6 +318,9 @@ async function addNewAddTask() {
   } catch (error) {
     addAddTaskToUserData(newAddTask);
   }
+
+  // window.location.href = "board.html";
+ 
 }
 
 function addAddTaskToUserData(newAddTask) {
@@ -327,6 +330,7 @@ function addAddTaskToUserData(newAddTask) {
   newAddTask.id = taskId + 1;
   currentUserData[0].newAddTask.push(newAddTask);
   setItem("users", currentUserData);
+  
 }
 
 function clickInputSubTask() {

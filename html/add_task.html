@@ -19,7 +19,7 @@
             
             <div class="background">
                 <div w3-include-html="../assets/templates/header_template.html"></div>
-                <div class="area">
+                <form class="area" onsubmit="addNewAddTask(); return false;">
                     <h1> Add Task </h1> 
                     <div class="left_stroke_right_area">
                         <div class="area_left"> 
@@ -29,7 +29,7 @@
                             </div>
                             <div class="description_area">
                                 <h4> Description</h4>
-                                <textarea class="textarea_field" id="description" name="w3review" rows="4" cols="50" placeholder="Enter a Description"></textarea>
+                                <textarea class="textarea_field" id="description"  rows="4" cols="50" placeholder="Enter a Description"></textarea>
                             </div>
                             <div class="assi_area">
                                 <h4>Assigned to</h4>
@@ -78,8 +78,8 @@
                                     </div>
                                     <div class="accordion-content">
                                         <div class="column">
-                                            <button class="button_task" onclick="replaceToTechnicalTask()">Technical Task</button>
-                                            <button class="button_task" onclick="replaceToUserStory()">User Story</button>
+                                            <button type="button" class="button_task" onclick="replaceToTechnicalTask()">Technical Task</button>
+                                            <button type="button" class="button_task" onclick="replaceToUserStory()">User Story</button>
                                         </div>
                                     </div>
                                 </div>
@@ -87,7 +87,7 @@
                          
                             <h4>Subtasks</h4>
                             <div class="assigned_area">
-                                <input class="input_field_subtask" id="input_subtask" type="text" placeholder="Add new subtask" required onclick="clickInputSubTask()"/>
+                                <input class="input_field_subtask" id="input_subtask" type="text" placeholder="Add new subtask" onclick="clickInputSubTask()"/>
                                 <div id="sub_task_image_area"><img src="../assets/img/plus icon.svg"></div>
                             </div>
                             <div id="sub_task_listelements"></div>
@@ -99,17 +99,17 @@
                             <p> *This field is required</p>
                         </div>
                         <div class="task">
-                            <div class="clear_task"> 
+                            <button type="button" class="clear_task"> 
                                 <p> Clear</p>
                                 <img src="../assets/img/iconoir_cancel.svg">
-                            </div>
-                            <div class="create_task" onclick="addNewAddTask()"> 
+                            </button>
+                            <button type="submit" class="create_task" > 
                                 <p> Create Task</p>
                                 <img src="../assets/img/check.svg">
-                            </div>
+                            </button>
                         </div>
                     </div>
-                </div>
+                </form>
                 
             </div>
         </div>
