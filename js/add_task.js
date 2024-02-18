@@ -20,11 +20,11 @@ async function renderContacts() {
   contacts = value[0].contacts;
   document.getElementById("MemberField").innerHTML = "";
   generateIconColorsA();
-  document.getElementById('MemberFiel_Search').innerHTML += `
+  document.getElementById("MemberFiel_Search").innerHTML += `
   <input type="text" id="searchField" oninput="filterContacts()" placeholder="Suche..."></input>`;
   for (let i = 0; i < contacts.length; i++) {
     let contact = contacts[i];
-    document.getElementById('MemberField').innerHTML += `
+    document.getElementById("MemberField").innerHTML += `
             <div id="holeContact${i}" class="hole_contact_add" onclick="changeCheckBox(${i})"> 
                 <div id="name_icon${i}" class="name_icon_add" style="background-color: ${addTaskIconColors[i]}"></div>  
                 <div class="contact_add">
@@ -38,13 +38,13 @@ async function renderContacts() {
 }
 
 function filterContacts() {
-  let searchField = document.getElementById('searchField');
+  let searchField = document.getElementById("searchField");
   let filter = searchField.value.toUpperCase();
-  let contactsDiv = document.getElementById('MemberField');
-  let contacts = contactsDiv.getElementsByClassName('hole_contact_add');
+  let contactsDiv = document.getElementById("MemberField");
+  let contacts = contactsDiv.getElementsByClassName("hole_contact_add");
 
   for (let i = 0; i < contacts.length; i++) {
-    let contactName = contacts[i].getElementsByTagName('h4')[0];
+    let contactName = contacts[i].getElementsByTagName("h4")[0];
     if (contactName) {
       let txtValue = contactName.textContent || contactName.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -56,7 +56,6 @@ function filterContacts() {
   }
 }
 
-
 function changeCheckBox(i) {
   if (document.getElementById(`checkBox${i}`).checked == false) {
     document.getElementById(`checkBox${i}`).checked = true;
@@ -66,7 +65,9 @@ function changeCheckBox(i) {
     document
       .getElementById(`holeContact${i}`)
       .classList.remove("active_contact");
-    document.getElementById(`holeContact${i}`).classList.add("hole_contact_add");
+    document
+      .getElementById(`holeContact${i}`)
+      .classList.add("hole_contact_add");
   }
   renderActiveMemberIcons();
 }
@@ -102,7 +103,9 @@ function addNameLettersA() {
 function changeColorClickContact(i) {
   if ((document.getElementById(`checkBox${i}`).checked = true)) {
     document.getElementById(`holeContact${i}`).classList.add("active_contact");
-    document.getElementById(`holeContact${i}`).classList.remove("hole_contact_add");
+    document
+      .getElementById(`holeContact${i}`)
+      .classList.remove("hole_contact_add");
   }
 }
 
@@ -118,7 +121,7 @@ async function renderActiveMemberIcons() {
   for (let i = 0; i < contacts.length; i++) {
     if (document.getElementById(`checkBox${i}`).checked) {
       const contact = contacts[i];
-      
+
       // Überprüfe, ob der Kontakt bereits im Array enthalten ist
       if (!selectedContacts.includes(contact)) {
         const nameIcon = document.getElementById(`name_icon${i}`).innerHTML;
@@ -128,13 +131,12 @@ async function renderActiveMemberIcons() {
                     <div class="name_icon_add" style="background-color: ${iconColor}">${nameIcon}</div>
                     `;
         activeMemberIconsDiv.appendChild(activeContactElement);
-        selectedContacts.push(contact); 
+        selectedContacts.push(contact);
       }
     }
-  }   
+  }
   return selectedContacts;
 }
-
 
 document.addEventListener("DOMContentLoaded", function () {
   let acc = document.getElementById("accordion");
@@ -157,7 +159,6 @@ function toggleAccordion(element) {
     content.style.display = "none";
   } else {
     content.style.display = "block";
-   
   }
 }
 
@@ -280,15 +281,27 @@ let taskId = -1;
 
 async function addNewAddTask() {
   const selectedContacts = await renderActiveMemberIcons();
-  let button  = activeButton.replace("button", "");
+  let button = activeButton.replace("button", "");
   let title = document.getElementById("input_title").value;
   let description = document.getElementById("description").value;
   let assigned = selectedContacts;
   let dueDate = document.getElementById("input_date").value;
   let prio = button;
+<<<<<<< Updated upstream
   let category = document.getElementById('user_category').innerHTML;
   let subtasks = inputValues; 
   let status = currentStatus;
+=======
+  let category = document.getElementById("user_category").innerHTML;
+  let subtasks = inputValues;
+  let status = "drag_to_do";
+>>>>>>> Stashed changes
+
+  let subtasksData = subtasks.map((subtask, index) => ({
+    id: index + 1,
+    title: subtask,
+    completed: false,
+  }));
 
   const newAddTask = {
     id: taskId,
@@ -298,26 +311,26 @@ async function addNewAddTask() {
     due_date: dueDate,
     prio: prio,
     category: category,
-    subtasks: subtasks,
+    subtasks: subtasksData,
     status: status,
   };
 
   try {
-    let latestEntry = currentUserData[0].newAddTask[currentUserData[0].newAddTask.length-1].id;
+    let latestEntry =
+      currentUserData[0].newAddTask[currentUserData[0].newAddTask.length - 1]
+        .id;
     taskId = latestEntry;
     addAddTaskToUserData(newAddTask);
   } catch (error) {
     addAddTaskToUserData(newAddTask);
   }
-
-  // addAddTaskToUserData(newAddTask);
 }
 
 function addAddTaskToUserData(newAddTask) {
   if (!currentUserData[0].newAddTask) {
     currentUserData[0].newAddTask = []; // Wenn newAddTask noch nicht existiert, erstelle ein neues Array
   }
-  newAddTask.id = taskId+1;
+  newAddTask.id = taskId + 1;
   currentUserData[0].newAddTask.push(newAddTask);
   setItem("users", currentUserData);
 }
@@ -342,20 +355,20 @@ function checkInputSubTask() {
   inputValues.push(input);
 
   // Erstelle ein div-Element als Container für das Listenelement und das Bild
-  let container = document.createElement('div');
-  container.classList.add('subtask_area'); // Füge der Klasse hinzu
-  
-  let listItem = document.createElement('li');
-  listItem.classList.add('list_subtask');
+  let container = document.createElement("div");
+  container.classList.add("subtask_area"); // Füge der Klasse hinzu
+
+  let listItem = document.createElement("li");
+  listItem.classList.add("list_subtask");
   listItem.id = `sub_task${i}`;
   listItem.textContent = input;
-  listItem.onclick = function() {
+  listItem.onclick = function () {
     editSubTask(`sub_task${i}`);
   };
 
-  let deleteIcon = document.createElement('img');
+  let deleteIcon = document.createElement("img");
   deleteIcon.src = "../assets/img/delete.svg";
-  deleteIcon.onclick = function() {
+  deleteIcon.onclick = function () {
     deleteSubTask(`sub_task${i}`);
   };
 
@@ -367,18 +380,18 @@ function checkInputSubTask() {
 
 function editSubTask(id) {
   let listItem = document.getElementById(id);
-  let index = parseInt(id.replace('sub_task', '')) - 1;
+  let index = parseInt(id.replace("sub_task", "")) - 1;
   let newValue = prompt("Bearbeite die Teilaufgabe:", listItem.textContent);
-  
+
   if (newValue) {
-      listItem.textContent = newValue;
-      inputValues[index] = newValue; // Aktualisiere den Wert im Array
+    listItem.textContent = newValue;
+    inputValues[index] = newValue; // Aktualisiere den Wert im Array
   }
 }
 
 function deleteSubTask(id) {
   let listItem = document.getElementById(id);
-  let index = parseInt(id.replace('sub_task', '')) - 1;
+  let index = parseInt(id.replace("sub_task", "")) - 1;
   console.log("Index zu löschenden Elements:", index);
   console.log("Zu löschender Wert:", inputValues[index]);
 
@@ -387,25 +400,25 @@ function deleteSubTask(id) {
   console.log("Array nach Löschen:", inputValues);
 
   // Leere die aktuelle Liste
-  document.getElementById("sub_task_listelements").innerHTML = '';
+  document.getElementById("sub_task_listelements").innerHTML = "";
 
   // Rendere die Liste neu basierend auf den aktuellen inputValues
   inputValues.forEach((value, idx) => {
     let itemId = `sub_task${idx + 1}`;
-    let container = document.createElement('div');
-    container.classList.add('subtask_area');
+    let container = document.createElement("div");
+    container.classList.add("subtask_area");
 
-    let listItem = document.createElement('li');
-    listItem.classList.add('list_subtask');
+    let listItem = document.createElement("li");
+    listItem.classList.add("list_subtask");
     listItem.id = itemId;
     listItem.textContent = value;
-    listItem.onclick = function() {
+    listItem.onclick = function () {
       editSubTask(itemId);
     };
 
-    let deleteIcon = document.createElement('img');
+    let deleteIcon = document.createElement("img");
     deleteIcon.src = "../assets/img/delete.svg";
-    deleteIcon.onclick = function() {
+    deleteIcon.onclick = function () {
       deleteSubTask(itemId);
     };
 
@@ -414,10 +427,3 @@ function deleteSubTask(id) {
     document.getElementById("sub_task_listelements").appendChild(container);
   });
 }
-
-
-
-
-
-
-

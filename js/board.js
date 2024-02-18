@@ -51,7 +51,12 @@ function AddTaskAwaitFeedback(drag_await_feedback) {
 
 function updateHTML() {
   // Definiere alle "drag" Spalten
-  const dragColumns = ["drag_to_do", "drag_in_progress", "drag_await_feedback", "drag_done"];
+  const dragColumns = [
+    "drag_to_do",
+    "drag_in_progress",
+    "drag_await_feedback",
+    "drag_done",
+  ];
 
   // Iteriere über jede "drag" Spalte
   for (const column of dragColumns) {
@@ -67,14 +72,15 @@ function updateHTML() {
       // Hole das aktuelle Todo
       const element = filteredTodos[index];
       // Berechne den Index basierend auf dem Gesamtindex im Todos-Array
-      const i = todos.findIndex(todo => todo === element);
+      const i = todos.findIndex((todo) => todo === element);
 
       // Füge das HTML des Todos in die aktuelle Spalte ein
       columnElement.innerHTML += generateTodoHTML(element, i);
 
       // Handle member icons
       const contactsboard = element.assigned_to;
-      let contactHTMLIcons = document.getElementById('member_icons_card' + i)?.innerHTML || '';
+      let contactHTMLIcons =
+        document.getElementById("member_icons_card" + i)?.innerHTML || "";
 
       // Iteriere durch die zugewiesenen Mitglieder und generiere das HTML für die Icons
       for (let j = 0; j < contactsboard.length; j++) {
@@ -88,8 +94,9 @@ function updateHTML() {
       }
 
       // Füge das HTML für die Icons in das entsprechende Element ein
-      if (document.getElementById('member_icons_card' + i)) {
-        document.getElementById('member_icons_card' + i).innerHTML = contactHTMLIcons;
+      if (document.getElementById("member_icons_card" + i)) {
+        document.getElementById("member_icons_card" + i).innerHTML =
+          contactHTMLIcons;
       }
 
       // Generiere Farben für die Icons und wende andere Funktionen an
@@ -98,7 +105,6 @@ function updateHTML() {
       addNameLetters(contactsboard, i);
     }
   }
- 
 }
 
 function startDragging(id) {
@@ -107,7 +113,7 @@ function startDragging(id) {
 
 function generateTodoHTML(element, i) {
   return /*html*/ `
-  <div draggable="true" ondragstart="startDragging(${element['id']})">
+  <div draggable="true" ondragstart="startDragging(${element["id"]})">
   <div class="task_content" onclick="openDialog(${i})">
 
     <div class="card_content">
@@ -147,6 +153,41 @@ function generateTodoHTML(element, i) {
 </div>`;
 }
 
+function generateProgressbar(){
+
+}
+
+function updateSubtaskStatus(subtaskIndex, isChecked) {
+  // subtaskIndex: Index des Subtasks im Array subtasks
+  // isChecked: Boolean-Wert, der angibt, ob das Input-Feld ausgewählt ist oder nicht
+
+  // Überprüfen, ob der Subtask-Index gültig ist
+  if (subtaskIndex >= 0 && subtaskIndex < subtasks.length) {
+    // Den Status des Subtasks aktualisieren basierend auf dem isChecked-Wert
+    subtasks[subtaskIndex].completed = isChecked;
+
+    // Hier könntest du weitere Logik einfügen, z.B. um den Fortschritt neu zu berechnen
+    // und die Fortschrittsleiste zu aktualisieren
+
+    // Beispiel: Neuberechnung des Gesamtfortschritts
+    let completedSubtasksCount = subtasks.filter(subtask => subtask.completed).length;
+    let totalSubtasksCount = subtasks.length;
+    let overallProgress = (completedSubtasksCount / totalSubtasksCount) * 100;
+
+    // Beispiel: Aktualisierung der Fortschrittsleiste
+    updateProgressBar(overallProgress);
+
+    // Hier könntest du auch die Daten an das Backend senden, um die Änderungen zu speichern
+    // Beispiel: sendSubtaskStatusToBackend(subtaskIndex, isChecked);
+
+    // Rückmeldung, dass der Status erfolgreich aktualisiert wurde
+    console.log(`Der Status des Subtasks ${subtaskIndex + 1} wurde erfolgreich aktualisiert.`);
+  } else {
+    console.error("Ungültiger Subtask-Index.");
+  }
+}
+
+
 function changeStatus(id, status) {
   if (currentDraggedElement != null) {
     let currentStatusArray = value[0].newAddTask;
@@ -177,7 +218,7 @@ function changeStatus(id, status) {
 
 function setStatusValue(updateValue) {
   currentStatusValue = updateValue;
-  changeStatus(currentDraggedElement, currentStatusValue)
+  changeStatus(currentDraggedElement, currentStatusValue);
 }
 
 function allowDrop(ev) {
@@ -264,7 +305,8 @@ function openDialog(todoIndex) {
   }
 
   // Füge das HTML für die Icons in das entsprechende Element ein
-  document.getElementById(`member_icons_names_${todoIndex}`).innerHTML = contactHTMLIcons;
+  document.getElementById(`member_icons_names_${todoIndex}`).innerHTML =
+    contactHTMLIcons;
 
   // Update der Mitglieder-Icons im Dialogfeld
   updateMemberIconsForDialog(contactsboard, todoIndex);
@@ -278,7 +320,6 @@ function openDialog(todoIndex) {
   // Füge Buchstaben hinzu im Dialogfeld
   addNameLettersForDialog(contactsboard, todoIndex);
 }
-
 
 function closeDialog() {
   document.getElementById("close_dialog").innerHTML = "";
@@ -311,7 +352,7 @@ function addNameLetters(contactsboard, index) {
     names.forEach((name) => {
       initials += name.charAt(0).toUpperCase();
     });
-    const nameIconElement = document.getElementById("name_icon" + i +index);
+    const nameIconElement = document.getElementById("name_icon" + i + index);
     // nameIconElement = document.getElementById("name_icon_dialog" + i +index);
     if (nameIconElement) {
       nameIconElement.innerHTML = initials;
@@ -326,7 +367,12 @@ function filterTodosTitle() {
     .toLowerCase();
 
   // Leeren Sie den HTML-Inhalt aller Spalten
-  const dragColumns = ["drag_to_do", "drag_in_progress", "drag_await_feedback", "drag_done"];
+  const dragColumns = [
+    "drag_to_do",
+    "drag_in_progress",
+    "drag_await_feedback",
+    "drag_done",
+  ];
   for (const column of dragColumns) {
     const columnElement = document.getElementById(column);
     columnElement.innerHTML = "";
@@ -336,7 +382,7 @@ function filterTodosTitle() {
   for (const todo of todos) {
     if (todo.title.toLowerCase().includes(searchText)) {
       // Generiere das HTML für das Todo
-      const i = todos.findIndex(t => t === todo);
+      const i = todos.findIndex((t) => t === todo);
       const todoHTML = generateTodoHTML(todo, i);
 
       // Füge das Todo in die entsprechende Spalte ein
@@ -346,7 +392,8 @@ function filterTodosTitle() {
 
         // Handle member icons
         const contactsboard = todo.assigned_to;
-        let contactHTMLIcons = document.getElementById('member_icons_card' + i)?.innerHTML || '';
+        let contactHTMLIcons =
+          document.getElementById("member_icons_card" + i)?.innerHTML || "";
 
         // Iteriere durch die zugewiesenen Mitglieder und generiere das HTML für die Icons
         for (let j = 0; j < contactsboard.length; j++) {
@@ -360,8 +407,9 @@ function filterTodosTitle() {
         }
 
         // Füge das HTML für die Icons in das entsprechende Element ein
-        if (document.getElementById('member_icons_card' + i)) {
-          document.getElementById('member_icons_card' + i).innerHTML = contactHTMLIcons;
+        if (document.getElementById("member_icons_card" + i)) {
+          document.getElementById("member_icons_card" + i).innerHTML =
+            contactHTMLIcons;
         }
 
         // Generiere Farben für die Icons und wende andere Funktionen an
@@ -372,7 +420,6 @@ function filterTodosTitle() {
     }
   }
 }
-
 
 function generateMemberIconsForDialog(contactsboard, todoIndex) {
   let contactHTMLIcons = "";
@@ -391,8 +438,12 @@ function generateMemberIconsForDialog(contactsboard, todoIndex) {
 }
 
 function updateMemberIconsForDialog(contactsboard, todoIndex) {
-  const contactHTMLIcons = generateMemberIconsForDialog(contactsboard, todoIndex);
-  document.getElementById(`member_icons_names_${todoIndex}`).innerHTML = contactHTMLIcons;
+  const contactHTMLIcons = generateMemberIconsForDialog(
+    contactsboard,
+    todoIndex
+  );
+  document.getElementById(`member_icons_names_${todoIndex}`).innerHTML =
+    contactHTMLIcons;
 }
 
 function generateIconColorsForDialog(contactsboard, todoIndex) {
@@ -405,7 +456,9 @@ function generateIconColorsForDialog(contactsboard, todoIndex) {
 
 function changeIconColorForDialog(contactsboard, todoIndex) {
   for (let i = 0; i < contactsboard.length; i++) {
-    let icon = document.querySelector(`#member_icons_names_${todoIndex} .name_icon:nth-child(${i + 1})`);
+    let icon = document.querySelector(
+      `#member_icons_names_${todoIndex} .name_icon:nth-child(${i + 1})`
+    );
     if (icon) {
       icon.style.backgroundColor = `var(--${i + 1})`;
     }
@@ -413,7 +466,9 @@ function changeIconColorForDialog(contactsboard, todoIndex) {
 }
 
 function addNameLettersForDialog(contactsboard, todoIndex) {
-  const nameIconElements = document.querySelectorAll(`#member_icons_names_${todoIndex} .name_icon`);
+  const nameIconElements = document.querySelectorAll(
+    `#member_icons_names_${todoIndex} .name_icon`
+  );
   nameIconElements.forEach((nameIconElement, i) => {
     const contact = contactsboard[i];
     if (contact) {
