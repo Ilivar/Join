@@ -246,6 +246,7 @@ function openDialog(todoIndex) {
 
   // Aufbau des HTML-Inhalts für das Dialogfeld
   document.getElementById("todo_HTML").innerHTML = `
+  <div class="edit_dialog_content" id="edit_dialog"></div>
     <div class="dialog_content" id="close_dialog">
       <div class="category_x">
         <div class="category_dialog" style="background-color: ${categoryBackgroundColor};">${todo["category"]}</div>
@@ -261,13 +262,20 @@ function openDialog(todoIndex) {
         <img src="${prioImage}" alt="Priority" class="priority_image">
         </div>
       </div>
+      
+      <div class="dialog_delete_edit">
+        <div><img src="../assets/img/property_1=delete.svg" alt="" onclick="deleteTodo(${todo.id})">delete</div> 
+        <img src="../assets/img/vector_delete_edit.svg" alt="" >
+        <div onclick="openDialogEdit(${todoIndex})"><img src="../assets/img/property_1=edit.svg" alt="">edit</div>
+      </div>
+
       <div id="member_icons_names_${todoIndex}"></div>
       <div id="subtask_list">
       
       <div class="dialog_delete_edit">
         <div><img src="../assets/img/property_1=delete.svg" alt="" onclick="deleteTodo(${todo.id})">delete</div> 
         <img src="../assets/img/vector_delete_edit.svg" alt="" >
-        <div><img src="../assets/img/property_1=edit.svg" alt="" >edit</div>
+        <div><img src="../assets/img/property_1=edit.svg" alt="">edit</div>
       </div>
     </div>
   `;
@@ -308,6 +316,105 @@ function openDialog(todoIndex) {
   
 }
 
+////////////////////////////////////////////////
+
+/////////////////////////////////////////////
+
+async function openDialogEdit(todoIndex) {
+
+const todo = todos[todoIndex];
+  // const contactsboard = todo.assigned_to;
+  let title = todos[todoIndex].title;
+  let description = todos[todoIndex].description;
+  let due_date = todos[todoIndex].due_date;
+  let prio = todos[todoIndex].prio;
+  let assigned_to = todos[todoIndex].assigned_to;
+  let subtask = todos[todoIndex].subtask;
+
+  document.getElementById("todo_HTML").style.display = "none";
+  document.getElementById("edit_dialog").style.display = "flex";
+  document.getElementById("edit_dialog").innerHTML = /*html*/`
+    
+  <div class="column">
+    <div class="right">
+        <button class="close_button" onclick="closeDialog()">
+          <img src="../assets/img/close.svg" alt="">
+        </button>
+    </div>
+
+  
+    <div class="title_area">
+      <h4> Title</h4>
+      <input class="input_field" id="input_title" type="text" placeholder="Enter a title" required/>
+    </div>
+    
+    <div class="description_area">
+      <h4> Description</h4>
+      <textarea class="textarea_field" id="description"  rows="4" cols="50" placeholder="Enter a Description"></textarea>
+    </div>
+
+    <h4> Due date *</h4>
+    <input class="input_field_date" id="input_date" type="date" min="" required/>
+  	
+    <h4> Prio </h4>
+        <div class="prio_area">
+            <div id="buttonUrgent" class="prio" onclick="buttonUrgent()">
+                <h4>Urgent</h4>
+                <img id="prioImg" src="../assets/img/Prio up.svg">
+            </div>
+            <div id="buttonMedium" class="prio_orange" onclick="buttonMedium()">
+                <h4>Medium</h4>
+                <img id="mediumImg" src="../assets/img/Prio media.svg">
+            </div>
+            <div id="buttonLow" class="prio" onclick="buttonLow()">
+                <h4>Low</h4>
+                <img id="lowImg" src="../assets/img/Prio down.svg">
+            </div>
+        </div>
+
+        <div class="assi_area">
+            <h4>Assigned to</h4>
+            <div class="accordion">
+                <div class="head_arccordion" onclick="toggleAccordion(this)">
+                    <div id="search_area"><p>Select contacts to assign</p></div>
+                    <img src="../assets/img/arrow_drop_downaa.svg">
+                </div>
+                <div class="accordion-content">
+                    <div id="MemberFiel_Search"></div>
+                    <div id="MemberField" class="column">
+                    </div>
+                </div>
+            </div>
+            <div id="aktiveMemberIcons"></div>
+        </div>
+
+        <h4>Subtasks</h4>
+          <div class="assigned_area">
+              <input class="input_field_subtask" id="input_subtask" type="text" placeholder="Add new subtask" onclick="clickInputSubTask()"/>
+              <div id="sub_task_image_area"><img src="../assets/img/plus icon.svg"></div>
+          </div>
+          <div id="sub_task_listelements"></div>
+
+          <button type="submit" class="create_task" > 
+              <p> Ok</p>
+              <!-- <img src="../assets/img/check.svg"> -->
+          </button>
+
+  </div>
+  `;
+
+ document.getElementById('input_title').value = title;
+ document.getElementById('description').value = description;
+ document.getElementById('input_date').value = due_date;
+
+ contacts = value[0].contacts;
+  await renderContacts();
+  prioMediumOnLoad();
+  futureDate();
+
+   // Leere das Element, um sicherzustellen, dass keine vorherigen Inhalte vorhanden sind
+   
+}
 
 
 
