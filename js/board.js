@@ -113,13 +113,14 @@ function startDragging(id) {
 
 function generateTodoHTML(element, i) {
   const prioImage = displayImagePrio(element["prio"]); // Hier wird die Funktion aufgerufen, um das entsprechende Bild zu erhalten
+  const categoryBackgroundColor = backgroundColorCategory(element.category);
   return /*html*/ `
   <div draggable="true" ondragstart="startDragging(${element["id"]})">
   <div class="task_content" onclick="openDialog(${i})">
 
     <div class="card_content">
 
-      <div class="category">${element["category"]}</div>
+      <div class="category" style="background-color: ${categoryBackgroundColor};">${element["category"]}</div>
         <p class="invis">${element["id"]}</p>
          <div class="title_description">
            <div class="title">${element["title"]}</div>
@@ -516,3 +517,15 @@ function displayImagePrio(prio) {
     return ""; // Rückgabe eines leeren Strings im Falle einer ungültigen Priorität
   }
 }
+
+function backgroundColorCategory(category) {
+  if (category === "User Story") {
+    return "#0038FF"; // Hintergrundfarbe für die Kategorie "User Story"
+  } else if (category === "Technical Task") {
+    return "#1FD7C1"; // Hintergrundfarbe für die Kategorie "Technical Task"
+  } else {
+    return ""; // Falls keine Übereinstimmung gefunden wurde, wird eine leere Zeichenfolge zurückgegeben
+  }
+}
+
+
