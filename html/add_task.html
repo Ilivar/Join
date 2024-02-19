@@ -1,77 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Task</title>
     <link rel="icon" href="../assets/img/favicon.svg" type="image/x-icon" />
     <script src="../js/script.js"></script>
     <script src="../js/add_task.js"></script>
-    <link rel="stylesheet" href="../css/fonts.css">
-    <link rel="stylesheet" href="../css/add_task.css">
-</head>
+    <link rel="stylesheet" href="../css/fonts.css" />
+    <link rel="stylesheet" href="../css/add_task.css" />
+  </head>
 
-<body onload="initAddTask()">
+  <body onload="initAddTask()">
     <div class="side">
-        <div w3-include-html="../assets/templates/sidebar_template.html"></div>
-        <div class="content">
-            
-            <div class="background">
-                <div w3-include-html="../assets/templates/header_template.html"></div>
-                <form class="area" onsubmit="addNewAddTask(); return false;">
-                    <h1> Add Task </h1> 
-                    <div class="left_stroke_right_area">
-                        <div class="area_left"> 
-                            <div class="title_area">
-                                <h4> Title*</h4>
-                                <input class="input_field" id="input_title" type="text" placeholder="Enter a title" required/>
-                            </div>
-                            <div class="description_area">
-                                <h4> Description</h4>
-                                <textarea class="textarea_field" id="description"  rows="4" cols="50" placeholder="Enter a Description"></textarea>
-                            </div>
-                            <div class="assi_area">
-                                <h4>Assigned to</h4>
-                                <div class="accordion">
-                                    <div class="head_arccordion" onclick="toggleAccordion(this)">
-                                        <div id="search_area"><p>Select contacts to assign</p></div>
-                                        <img src="../assets/img/arrow_drop_downaa.svg">
-                                    </div>
-                                    <div class="accordion-content">
-                                        <div id="MemberFiel_Search"></div>
-                                        <div id="MemberField" class="column">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="aktiveMemberIcons"></div>
-                        
-                    
-                            </div>
-                        </div>
+      <div w3-include-html="../assets/templates/sidebar_template.html"></div>
+      <div class="content">
+        <div class="background">
+          <div w3-include-html="../assets/templates/header_template.html"></div>
+          <form class="area" onsubmit="addNewAddTask(); return false;">
+            <h1>Add Task</h1>
+            <div class="left_stroke_right_area">
+              <div class="area_left">
+                <div class="title_area">
+                  <h4>Title*</h4>
+                  <input
+                    class="input_field"
+                    id="input_title"
+                    type="text"
+                    placeholder="Enter a title"
+                    required
+                  />
+                </div>
+                <div class="description_area">
+                  <h4>Description</h4>
+                  <textarea
+                    class="textarea_field"
+                    id="description"
+                    rows="4"
+                    cols="50"
+                    placeholder="Enter a Description"
+                  ></textarea>
+                </div>
+                <div class="assi_area">
+                  <h4>Assigned to</h4>
+                  <div class="accordion">
+                    <div
+                      class="head_arccordion"
+                      onclick="toggleAccordion(this)"
+                    >
+                      <div id="search_area">
+                        <p>Select contacts to assign</p>
+                      </div>
+                      <img src="../assets/img/arrow_drop_downaa.svg" />
+                    </div>
+                    <div class="accordion-content">
+                      <div id="MemberFiel_Search"></div>
+                      <div id="MemberField" class="column"></div>
+                    </div>
+                  </div>
+                  <div id="aktiveMemberIcons"></div>
+                </div>
+              </div>
 
-                        <div class="stroke"></div>
+              <div class="stroke"></div>
 
-                        <div class="area_right">
-                            <h4> Due date *</h4>
-                            <input class="input_field_date" id="input_date" type="date" min="" required/>
-                            <h4> Prio </h4>
-                            <div class="prio_area">
-                                <div id="buttonUrgent" class="prio" onclick="buttonUrgent()">
-                                    <h4>Urgent</h4>
-                                    <img id="prioImg" src="../assets/img/Prio up.svg">
-                                </div>
-                                <div id="buttonMedium" class="prio_orange" onclick="buttonMedium()">
-                                    <h4>Medium</h4>
-                                    <img id="mediumImg" src="../assets/img/Prio media.svg">
-                                </div>
-                                <div id="buttonLow" class="prio" onclick="buttonLow()">
-                                    <h4>Low</h4>
-                                    <img id="lowImg" src="../assets/img/Prio down.svg">
-                                </div>
-                            </div>
-                            <h4> Category*</h4>
-                                <!-- <div class="accordion">
+              <div class="area_right">
+                <h4>Due date *</h4>
+                <input
+                  class="input_field_date"
+                  id="input_date"
+                  type="date"
+                  min=""
+                  required
+                />
+                <h4>Prio</h4>
+                <div class="prio_area">
+                  <div id="buttonUrgent" class="prio" onclick="buttonUrgent()">
+                    <h4>Urgent</h4>
+                    <img id="prioImg" src="../assets/img/Prio up.svg" />
+                  </div>
+                  <div
+                    id="buttonMedium"
+                    class="prio_orange"
+                    onclick="buttonMedium()"
+                  >
+                    <h4>Medium</h4>
+                    <img id="mediumImg" src="../assets/img/Prio media.svg" />
+                  </div>
+                  <div id="buttonLow" class="prio" onclick="buttonLow()">
+                    <h4>Low</h4>
+                    <img id="lowImg" src="../assets/img/Prio down.svg" />
+                  </div>
+                </div>
+                <h4>Category*</h4>
+                <!-- <div class="accordion">
                                     <div class="head_arccordion_category" onclick="toggleAccordion(this)">
                                         <p id="user_category">Select task category</p>
                                         <img src="../assets/img/arrow_drop_downaa.svg">
@@ -84,44 +106,53 @@
                                     </div>
                                 </div> -->
 
-                                <select name="catergory" id="category" class="select_area" required>
-                                    <option value="" disabled selected hidden>Select a Task</option>
-                                    <option value="User Story"> Userstory</option>
-                                    <option value="Technical Task"> Technical </option>
-                                </select>
-                              
-                         
-                            <h4>Subtasks</h4>
-                            <div class="assigned_area">
-                                <input class="input_field_subtask" id="input_subtask" type="text" placeholder="Add new subtask" onclick="clickInputSubTask()"/>
-                                <div id="sub_task_image_area"><img src="../assets/img/plus icon.svg"></div>
-                            </div>
-                            <div id="sub_task_listelements"></div>
+                <select
+                  name="catergory"
+                  id="category"
+                  class="select_area"
+                  required
+                >
+                  <option value="" disabled selected hidden>
+                    Select a Task
+                  </option>
+                  <option value="User Story">Userstory</option>
+                  <option value="Technical Task">Technical</option>
+                </select>
 
-                        </div>
-                    </div>
-                    <div class="last_section"> 
-                        <div class="required_text">
-                            <p> *This field is required</p>
-                        </div>
-                        <div class="task">
-                            <button type="button" class="clear_task"> 
-                                <p> Clear</p>
-                                <img src="../assets/img/iconoir_cancel.svg">
-                            </button>
-                            <button type="submit" class="create_task" > 
-                                <p> Create Task</p>
-                                <img src="../assets/img/check.svg">
-                            </button>
-                        </div>
-                    </div>
-                </form>
-                
+                <h4>Subtasks</h4>
+                <div class="assigned_area">
+                  <input
+                    class="input_field_subtask"
+                    id="input_subtask"
+                    type="text"
+                    placeholder="Add new subtask"
+                    onclick="clickInputSubTask()"
+                  />
+                  <div id="sub_task_image_area">
+                    <img src="../assets/img/plus icon.svg" />
+                  </div>
+                </div>
+                <div id="sub_task_listelements"></div>
+              </div>
             </div>
+            <div class="last_section">
+              <div class="required_text">
+                <p>*This field is required</p>
+              </div>
+              <div class="task">
+                <button type="button" class="clear_task">
+                  <p>Clear</p>
+                  <img src="../assets/img/iconoir_cancel.svg" />
+                </button>
+                <button type="submit" class="create_task">
+                  <p>Create Task</p>
+                  <img src="../assets/img/check.svg" />
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
+      </div>
     </div>
-
-   
-</body>
-
+  </body>
 </html>

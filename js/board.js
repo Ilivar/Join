@@ -5,6 +5,8 @@ let todos = [];
 
 let iconColors = [];
 
+let htmlReady = false; 
+
 function updateToDoArray() {
   todos = value[0].newAddTask;
 }
@@ -23,11 +25,19 @@ async function openAddTask() {
   document.getElementById('overlay').innerHTML = `
   <div id="overlayAddTask" w3-include-html="../assets/templates/add_task_template.html"></div>`;
   document.getElementById("overlayAddTask").style.display = "flex";
+  
+  if (htmlReady) {
+    contacts = value[0].contacts;
+    renderContacts();
+    prioMediumOnLoad();
+    futureDate();
+  }
+}
 
-  contacts = value[0].contacts;
-  await renderContacts();
-  prioMediumOnLoad();
-  futureDate();
+async function include() {
+  await includeHTML();
+  htmlReady = true;
+  
 }
 
 function closeAddTask() {
@@ -316,6 +326,7 @@ function openDialog(todoIndex) {
 /////////////////////////////////////////////
 
 async function openDialogEdit(todoIndex) {
+  console.log(todos);
   const todo = todos[todoIndex];
   // const contactsboard = todo.assigned_to;
   let title = todos[todoIndex].title;
@@ -326,6 +337,8 @@ async function openDialogEdit(todoIndex) {
   let subtask = todos[todoIndex].subtask;
 
   newtitle = document.getElementById('title').innerHTML;
+
+ 
 
   document.getElementById("todo_HTML").style.display = "flex";
   document.getElementById("close_dialog").style.display = "none";
@@ -391,7 +404,7 @@ async function openDialogEdit(todoIndex) {
           </div>
           <div id="sub_task_listelements"></div>
 
-          <button type="submit" class="create_task" > 
+          <button type="submit" class="create_task" onclick="dataToBackend(${todoIndex})" > 
               <p> Ok</p>
               <!-- <img src="../assets/img/check.svg"> -->
           </button>
@@ -411,28 +424,22 @@ async function openDialogEdit(todoIndex) {
   // Leere das Element, um sicherzustellen, dass keine vorherigen Inhalte vorhanden sind
 }
 
-//////////DELETE FUNKTION ANGEFANGEN!!!!
+function dataToBackend(todoIndex) {
+  let newtitle = document.getElementById('input_title').value;
+  todos[todoIndex].title = newtitle;
+  setItem("users", currentUserData);
+}
 
-// async function deleteTodo(todoIndex) {
-//   const index = todos[todoIndex];
-//   if (index !== -1) {
-//     todos.splice(index, 1); // Entferne das Todo aus dem Array
+function deleteTodo(todoIndex) {
+  const index = todos[todoIndex];
+  if (index !== -1) {
+    todos.splice(todoIndex, 1); // Entferne das Todo aus dem Array
+    setItem("users", currentUserData);
+    updateHTML(); // Aktualisiere die Anzeige
+    closeDialog();
+  }
+}
 
-//     const deletedTodo = todos[index]; // Das gelöschte Todo
-//     try {
-//       // Annahme: Hier wird eine Funktion aufgerufen, die das Todo im Backend aktualisiert
-//       await updateTodoInBackend(deletedTodo); // Diese Funktion müsste implementiert werden
-//     } catch (error) {
-//       console.error('Fehler beim Aktualisieren des Todos im Backend:', error);
-//     }
-
-//     updateHTML(); // Aktualisiere die Anzeige
-//   }
-// }
-
-
-
-////////DELETE FUNKTION ENDE!!!!!!
 
 function renderSubtasks(todoIndex) {
   const subtaskList = document.getElementById("subtask_list");
@@ -489,6 +496,10 @@ function updateSubtaskStatus(todoIndex, subtaskIndex, isChecked) {
 function closeDialog() {
   document.getElementById("close_dialog").innerHTML = "";
   document.getElementById("todo_HTML").style.display = "none";
+  let editDialog = document.getElementById('edit_dialog');
+  if (editDialog) {
+    document.getElementById('edit_dialog').innerHTML = ``;
+  }
 }
 
 function generateIconColors(contactsboard, index) {
