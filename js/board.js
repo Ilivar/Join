@@ -250,6 +250,7 @@ function openDialog(todoIndex) {
 
   // Anzeige des Dialogfelds
   document.getElementById("todo_HTML").style.display = "flex";
+  const prioImage = displayImagePrio(todo["prio"]); // Hier wird die Funktion aufgerufen, um das entsprechende Bild zu erhalten
 
   // Aufbau des HTML-Inhalts für das Dialogfeld
   document.getElementById("todo_HTML").innerHTML = `
@@ -265,7 +266,7 @@ function openDialog(todoIndex) {
       <div class="date_dialog">Due Date: ${todo.due_date}</div>
       <div class="prio_dialog">Priority: ${todo.prio}
         <div>
-          <img src="../assets/img/priority_medium.svg" alt="">
+        <img src="${prioImage}" alt="Priority" class="priority_image">
         </div>
       </div>
       <div id="member_icons_names_${todoIndex}"></div>
