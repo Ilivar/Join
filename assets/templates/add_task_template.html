@@ -2,7 +2,7 @@
     <div class="overlay_add_Task">
         <div class="content">
             <div class="background_template">
-                <form class="area">
+                <form class="area" onsubmit="addNewAddTask(); return false;">
                     <div class="header_line">
                         <h1> Add Task </h1> 
                         <div class="flex_end">
@@ -59,18 +59,11 @@
                                 </div>
                             </div>
                             <h4> Category*</h4>
-                                <div class="accordion">
-                                    <div class="head_arccordion_category" onclick="toggleAccordion(this)">
-                                        <p id="user_category">Select task category</p>
-                                        <img src="../assets/img/arrow_drop_downaa.svg">
-                                    </div>
-                                    <div class="accordion-content">
-                                        <div class="column">
-                                            <button class="button_task" onclick="replaceToTechnicalTask()">Technical Task</button>
-                                            <button class="button_task" onclick="replaceToUserStory()">User Story</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                <select name="catergory" id="category" class="select_area" required>
+                                    <option value="" disabled selected hidden>Select a Task</option>
+                                    <option value="User Story"> Userstory</option>
+                                    <option value="Technical Task"> Technical </option>
+                                </select>
                               
                          
                             <h4>Subtasks</h4>
@@ -87,18 +80,17 @@
                             <p> *This field is required</p>
                         </div>
                         <div class="task">
-                            <div class="clear_task"> 
+                            <button type="button" class="clear_task"> 
                                 <p> Clear</p>
                                 <img src="../assets/img/iconoir_cancel.svg">
-                            </div>
-                            <div class="create_task" onclick="addNewAddTask()"> 
+                            </button>
+                            <button type="submit" class="create_task" >
                                 <p> Create Task</p>
                                 <img src="../assets/img/check.svg">
-                            </div>
+                            </button> 
                         </div>
                     </div>
-                </div>
-                
+                </form>              
             </div>
         </div>
     </div>
