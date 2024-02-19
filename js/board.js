@@ -76,7 +76,7 @@ function updateHTML() {
 
       // Füge das HTML des Todos in die aktuelle Spalte ein
       columnElement.innerHTML += generateTodoHTML(element, i);
-
+      
       // Handle member icons
       const contactsboard = element.assigned_to;
       let contactHTMLIcons =
@@ -105,6 +105,7 @@ function updateHTML() {
       addNameLetters(contactsboard, i);
     }
   }
+  
 }
 
 function startDragging(id) {
@@ -114,6 +115,7 @@ function startDragging(id) {
 function generateTodoHTML(element, i) {
   const prioImage = displayImagePrio(element["prio"]); // Hier wird die Funktion aufgerufen, um das entsprechende Bild zu erhalten
   const categoryBackgroundColor = backgroundColorCategory(element.category);
+
   return /*html*/ `
   <div draggable="true" ondragstart="startDragging(${element["id"]})">
   <div class="task_content" onclick="openDialog(${i})">
@@ -137,9 +139,9 @@ function generateTodoHTML(element, i) {
 
         <div class="over_progressbar">
             <div class="progress-bar-container ">
-              <div class="progress-bar"></div>
+              <div id="progress_bar${i}" class="progress-bar"></div>
              </div>
-                <span class="progressbar_text">1/2 Subtasks</span>
+                <span id="progress_text${i}" class="progressbar_text">1/2 Subtasks</span>
         </div>
 
                 <div class=profile_content>
@@ -155,42 +157,21 @@ function generateTodoHTML(element, i) {
 </div>`;
 }
 
-function generateProgressbar() {}
+
 
 function updateSubtaskStatus(subtaskIndex, isChecked) {
-  // subtaskIndex: Index des Subtasks im Array subtasks
-  // isChecked: Boolean-Wert, der angibt, ob das Input-Feld ausgewählt ist oder nicht
-
-  // Überprüfen, ob der Subtask-Index gültig ist
+  
   if (subtaskIndex >= 0 && subtaskIndex < subtasks.length) {
-    // Den Status des Subtasks aktualisieren basierend auf dem isChecked-Wert
     subtasks[subtaskIndex].completed = isChecked;
 
-    // Hier könntest du weitere Logik einfügen, z.B. um den Fortschritt neu zu berechnen
-    // und die Fortschrittsleiste zu aktualisieren
-
-    // Beispiel: Neuberechnung des Gesamtfortschritts
     let completedSubtasksCount = subtasks.filter(
       (subtask) => subtask.completed
     ).length;
     let totalSubtasksCount = subtasks.length;
     let overallProgress = (completedSubtasksCount / totalSubtasksCount) * 100;
 
-    // Beispiel: Aktualisierung der Fortschrittsleiste
-    updateProgressBar(overallProgress);
-
-    // Hier könntest du auch die Daten an das Backend senden, um die Änderungen zu speichern
-    // Beispiel: sendSubtaskStatusToBackend(subtaskIndex, isChecked);
-
-    // Rückmeldung, dass der Status erfolgreich aktualisiert wurde
-    console.log(
-      `Der Status des Subtasks ${
-        subtaskIndex + 1
-      } wurde erfolgreich aktualisiert.`
-    );
-  } else {
-    console.error("Ungültiger Subtask-Index.");
-  }
+    updateProgressBar(overallProgress);   
+  }   
 }
 
 function changeStatus(id, status) {
@@ -337,28 +318,49 @@ function deleteTodo(todoId) {
 
 
 function renderSubtasks(todoIndex) {
+  const subtaskList = document.getElementById("subtask_list");
+  subtaskList.innerHTML = "";
 
   for (let i = 0; i < todos[todoIndex].subtasks.length; i++) {
     const subtask = todos[todoIndex].subtasks[i];
-    const subtaskHTML = /*html*/`
+    const subtaskCheckboxId = `subtask_checkbox_${todoIndex}_${i}`;
+    const isChecked = subtask.completed ? "checked" : "";
+
+    const subtaskHTML = `
       <div class="subtask_container">
-        <input type="checkbox" id="subtask_checkbox_${todoIndex}_${i}" onclick="updateSubtaskStatus(${todoIndex}, ${i}, this.checked)">
+        <input type="checkbox" id="${subtaskCheckboxId}" onclick="updateSubtaskStatus(${todoIndex}, ${i}, this.checked)" ${isChecked}>
         <span>${subtask.title}</span>
       </div>
-    `
-    document.getElementById("subtask_list").innerHTML += subtaskHTML;
+    `;
+    subtaskList.innerHTML += subtaskHTML;
   }
+}
 
+function renderProgressBar(todoIndex) {
+  const totalSubtasks = todos[todoIndex].subtasks.length;
+  let completedSubtasks = 0;
 
+  todos[todoIndex].subtasks.forEach(subtask => {
+    if (subtask.completed) {
+      completedSubtasks++;
+    }
+  });
+
+  const progressPercentage = Math.floor((completedSubtasks / totalSubtasks) * 100);
+
+  const progressBar = document.getElementById("progress_bar"+todoIndex);
+  progressBar.style.width = `${progressPercentage}%`;
+
+  const progressText = document.getElementById("progress_text"+todoIndex);
+  progressText.textContent = `${completedSubtasks}/${totalSubtasks}`;
 }
 
 function updateSubtaskStatus(todoIndex, subtaskIndex, isChecked) {
-  const subtask = todos[todoIndex].subtasks[subtaskIndex];
-  subtask.status = isChecked;
-  updateSubtask(todoIndex, subtaskIndex, subtask);
+  let holeValue = value[0];
+  holeValue.newAddTask[todoIndex].subtasks[subtaskIndex].completed = isChecked;
+  setItem("users", value);
+  renderProgressBar(todoIndex);
 }
-
-
 
 function closeDialog() {
   document.getElementById("close_dialog").innerHTML = "";
