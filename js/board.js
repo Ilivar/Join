@@ -76,7 +76,7 @@ function updateHTML() {
 
       // Füge das HTML des Todos in die aktuelle Spalte ein
       columnElement.innerHTML += generateTodoHTML(element, i);
-      
+
       // Handle member icons
       const contactsboard = element.assigned_to;
       let contactHTMLIcons =
@@ -163,10 +163,7 @@ function generateTodoHTML(element, i) {
 </div>`;
 }
 
-
-
 function updateSubtaskStatus(subtaskIndex, isChecked) {
-  
   if (subtaskIndex >= 0 && subtaskIndex < subtasks.length) {
     subtasks[subtaskIndex].completed = isChecked;
 
@@ -176,8 +173,8 @@ function updateSubtaskStatus(subtaskIndex, isChecked) {
     let totalSubtasksCount = subtasks.length;
     let overallProgress = (completedSubtasksCount / totalSubtasksCount) * 100;
 
-    updateProgressBar(overallProgress);   
-  }   
+    updateProgressBar(overallProgress);
+  }
 }
 
 function changeStatus(id, status) {
@@ -263,20 +260,14 @@ function openDialog(todoIndex) {
         </div>
       </div>
       
-      <div class="dialog_delete_edit">
-        <div><img src="../assets/img/property_1=delete.svg" alt="" onclick="deleteTodo(${todo.id})">delete</div> 
-        <img src="../assets/img/vector_delete_edit.svg" alt="" >
-        <div onclick="openDialogEdit(${todoIndex})"><img src="../assets/img/property_1=edit.svg" alt="">edit</div>
-      </div>
-
       <div id="member_icons_names_${todoIndex}"></div>
-      <div id="subtask_list">
+      <p>Subtasks:</p>
+      <div id="subtask_list"> </div>
       
       <div class="dialog_delete_edit">
         <div><img src="../assets/img/property_1=delete.svg" alt="" onclick="deleteTodo(${todo.id})">delete</div> 
         <img src="../assets/img/vector_delete_edit.svg" alt="" >
         <div><img src="../assets/img/property_1=edit.svg" alt="">edit</div>
-      </div>
     </div>
   `;
 
@@ -313,7 +304,6 @@ function openDialog(todoIndex) {
   // Füge Buchstaben hinzu im Dialogfeld
   addNameLettersForDialog(contactsboard, todoIndex);
   renderSubtasks(todoIndex);
-  
 }
 
 ////////////////////////////////////////////////
@@ -321,8 +311,7 @@ function openDialog(todoIndex) {
 /////////////////////////////////////////////
 
 async function openDialogEdit(todoIndex) {
-
-const todo = todos[todoIndex];
+  const todo = todos[todoIndex];
   // const contactsboard = todo.assigned_to;
   let title = todos[todoIndex].title;
   let description = todos[todoIndex].description;
@@ -333,7 +322,7 @@ const todo = todos[todoIndex];
 
   document.getElementById("todo_HTML").style.display = "none";
   document.getElementById("edit_dialog").style.display = "flex";
-  document.getElementById("edit_dialog").innerHTML = /*html*/`
+  document.getElementById("edit_dialog").innerHTML = /*html*/ `
     
   <div class="column">
     <div class="right">
@@ -403,25 +392,22 @@ const todo = todos[todoIndex];
   </div>
   `;
 
- document.getElementById('input_title').value = title;
- document.getElementById('description').value = description;
- document.getElementById('input_date').value = due_date;
+  document.getElementById("input_title").value = title;
+  document.getElementById("description").value = description;
+  document.getElementById("input_date").value = due_date;
 
- contacts = value[0].contacts;
+  contacts = value[0].contacts;
   await renderContacts();
   prioMediumOnLoad();
   futureDate();
 
-   // Leere das Element, um sicherzustellen, dass keine vorherigen Inhalte vorhanden sind
-   
+  // Leere das Element, um sicherzustellen, dass keine vorherigen Inhalte vorhanden sind
 }
-
-
 
 //////////DELETE FUNKTION ANGEFANGEN!!!!
 
 function deleteTodo(todoId) {
-  const index = todos.findIndex(todo => todo.id === todoId);
+  const index = todos.findIndex((todo) => todo.id === todoId);
   if (index !== -1) {
     todos.splice(index, 1); // Entferne das Todo aus dem Array
     updateHTML(); // Aktualisiere die Anzeige
@@ -429,7 +415,6 @@ function deleteTodo(todoId) {
 }
 
 ////////DELETE FUNKTION ENDE!!!!!!
-
 
 function renderSubtasks(todoIndex) {
   const subtaskList = document.getElementById("subtask_list");
@@ -442,7 +427,6 @@ function renderSubtasks(todoIndex) {
 
     const subtaskHTML = `
       <div class="subtask_container">
-        <p>Subtask:</p>
         <input type="checkbox" id="${subtaskCheckboxId}" onclick="updateSubtaskStatus(${todoIndex}, ${i}, this.checked)" ${isChecked}>
         <span>${subtask.title}</span>
       </div>
@@ -452,28 +436,29 @@ function renderSubtasks(todoIndex) {
 }
 
 function renderProgressBar(todoIndex) {
-  try{
-  const totalSubtasks = todos[todoIndex].subtasks.length;
-  let completedSubtasks = 0;
+  try {
+    const totalSubtasks = todos[todoIndex].subtasks.length;
+    let completedSubtasks = 0;
 
-  todos[todoIndex].subtasks.forEach(subtask => {
-    if (subtask.completed) {
-      completedSubtasks++;
-    
-    }
-  });
+    todos[todoIndex].subtasks.forEach((subtask) => {
+      if (subtask.completed) {
+        completedSubtasks++;
+      }
+    });
 
-  
-  const progressPercentage = Math.floor((completedSubtasks / totalSubtasks) * 100);
+    const progressPercentage = Math.floor(
+      (completedSubtasks / totalSubtasks) * 100
+    );
 
-  const progressBar = document.getElementById("progress_bar"+todoIndex);
-  progressBar.style.width = `${progressPercentage}%`;
+    const progressBar = document.getElementById("progress_bar" + todoIndex);
+    progressBar.style.width = `${progressPercentage}%`;
 
-  const progressText = document.getElementById("progress_text"+todoIndex);
-  progressText.textContent = `${completedSubtasks}/${totalSubtasks} Subtask`;
-}catch{
-  document.getElementById("over_progressbar"+todoIndex).style.display = "none";
-};
+    const progressText = document.getElementById("progress_text" + todoIndex);
+    progressText.textContent = `${completedSubtasks}/${totalSubtasks} Subtask`;
+  } catch {
+    document.getElementById("over_progressbar" + todoIndex).style.display =
+      "none";
+  }
 }
 
 function updateSubtaskStatus(todoIndex, subtaskIndex, isChecked) {
@@ -667,5 +652,3 @@ function backgroundColorCategory(category) {
     return ""; // Falls keine Übereinstimmung gefunden wurde, wird eine leere Zeichenfolge zurückgegeben
   }
 }
-
-
