@@ -1,7 +1,7 @@
 body {
     height: 100vh;
+    width: 1920px;
     margin: 0;
-    display: flex;
 }
 
 * {
@@ -29,7 +29,7 @@ body {
 #content {
     display: flex;
     margin: auto;
-    height: 1024px;
+    height: 100vh;
 
 }
 
@@ -86,7 +86,7 @@ body {
 
 .board_background_color {
     background: #f6f7f8;
-    width: 1208px;
+    width: 100%;
 }
 
 .board_main {
@@ -229,7 +229,7 @@ body {
 .user_story_content {
     display: flex;
     width: 1076px;
-    height: 790px;
+    height: 62%;
     padding: 0px 64px;
     align-items: flex-start;
     justify-content: space-between;
@@ -367,7 +367,7 @@ body {
 
 
 .drag-area {
-    height: 688px;
+    height: 100%;
     width: 252px;
     background-color: transparent;
     /* Transparente Hintergrundfarbe */
