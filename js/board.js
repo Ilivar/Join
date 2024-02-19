@@ -19,6 +19,9 @@ async function init() {
 }
 
 async function openAddTask() {
+  
+  document.getElementById('overlay').innerHTML = `
+  <div id="overlayAddTask" w3-include-html="../assets/templates/add_task_template.html"></div>`;
   document.getElementById("overlayAddTask").style.display = "flex";
 
   contacts = value[0].contacts;
@@ -29,6 +32,8 @@ async function openAddTask() {
 
 function closeAddTask() {
   document.getElementById("overlayAddTask").style.display = "none";
+  document.getElementById('overlay').innerHTML = ``;
+  // document.getElementById("overlayAddTask").remove();
 }
 
 function AddTaskToDo(drag_to_do) {
@@ -336,7 +341,7 @@ async function openDialogEdit(todoIndex) {
 
     <div class="title_area">
       <h4> Title</h4>
-      <input class="input_field" id="edit_input_title" type="text" placeholder="Enter a title" required/>
+      <input class="input_field" id="input_title" type="text" placeholder="Enter a title" required/>
     </div>
     
     <div class="description_area">
@@ -394,7 +399,7 @@ async function openDialogEdit(todoIndex) {
   </div>
   `;
 
-  document.getElementById("edit_input_title").value = newtitle;
+  document.getElementById("input_title").value = newtitle;
   document.getElementById("description").value = description;
   document.getElementById("input_date").value = due_date;
 
