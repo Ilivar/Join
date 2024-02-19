@@ -112,8 +112,9 @@ function startDragging(id) {
 }
 
 function generateTodoHTML(element, i) {
+  const prioImage = displayImagePrio(element["prio"]); // Hier wird die Funktion aufgerufen, um das entsprechende Bild zu erhalten
   return /*html*/ `
-  <div draggable="true" ondragstart="startDragging(${element["id"]})">
+  <div draggable="true" ondragstart="startDragging(${element['id']})">
   <div class="task_content" onclick="openDialog(${i})">
 
     <div class="card_content">
@@ -145,7 +146,7 @@ function generateTodoHTML(element, i) {
                      </div>
 
                        <div>
-                        <img src="../assets/img/priority_medium.svg" alt="">
+                       <img src="${prioImage}" alt="Priority" class="priority_image">
                        </div>
 
                 </div>
@@ -485,19 +486,16 @@ function addNameLettersForDialog(contactsboard, todoIndex) {
 
 
 function displayImagePrio(prio) {
-  if (prio === "urgent") {
-      console.log("Join/assets/img/Prio up.svg");
-      // Hier Code einfügen, um das Bild für "urgent" anzuzeigen
-      // src.Join/assets/img/Prio up.svg;
-  } else if (prio === "medium") {
-      console.log("../assets/img/priority_medium.svg");
-      // Hier Code einfügen, um das Bild für "medium" anzuzeigen
-      // src.assets/img/priority_medium.svg;
-  } else if (prio === "low") {
-      console.log("../assets/img/Prio baja.svg");
-      // Hier Code einfügen, um das Bild für "low" anzuzeigen
-      // src.assets/img/Prio baja.svg;
+  if (prio === "Urgent") {
+    return "../assets/img/priority_Urgent.svg";
+  } else if (prio === "Medium") {
+    return "../assets/img/priority_medium.svg";
+  } else if (prio === "Low") {
+    return "../assets/img/priority_Low.svg";
   } else {
-      console.log("Ungültige Kategorie");
+    console.error("Ungültige Priorität");
+    return ""; // Rückgabe eines leeren Strings im Falle einer ungültigen Priorität
   }
 }
+
+
