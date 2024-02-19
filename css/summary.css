@@ -2,6 +2,7 @@ body {
   height: 100vh;
   margin: 0;
   display: flex;
+  max-width: 1920px;
 }
 
 * {
@@ -12,7 +13,7 @@ body {
   display: flex;
   margin: auto;
   height: 1024px;
-  width: 1440px;
+  /* width: 1440px; */
 }
 
 .summary_background_color {
