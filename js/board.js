@@ -278,9 +278,9 @@ function openDialog(todoIndex) {
       <div id="subtask_list">
       
       <div class="dialog_delete_edit">
-        <div><img src="../assets/img/property_1=delete.svg" alt="">delete</div>
-        <img src="../assets/img/vector_delete_edit.svg" alt="">
-        <div><img src="../assets/img/property_1=edit.svg" alt="">edit</div>
+        <div><img src="../assets/img/property_1=delete.svg" alt="" onclick="deleteTodo(${todo.id})">delete</div> 
+        <img src="../assets/img/vector_delete_edit.svg" alt="" >
+        <div><img src="../assets/img/property_1=edit.svg" alt="" >edit</div>
       </div>
     </div>
   `;
@@ -319,6 +319,22 @@ function openDialog(todoIndex) {
   addNameLettersForDialog(contactsboard, todoIndex);
   renderSubtasks(todoIndex);
 }
+
+
+
+
+//////////DELETE FUNKTION ANGEFANGEN!!!!
+
+function deleteTodo(todoId) {
+  const index = todos.findIndex(todo => todo.id === todoId);
+  if (index !== -1) {
+    todos.splice(index, 1); // Entferne das Todo aus dem Array
+    updateHTML(); // Aktualisiere die Anzeige
+  }
+}
+
+////////DELETE FUNKTION ENDE!!!!!!
+
 
 function renderSubtasks(todoIndex) {
 
