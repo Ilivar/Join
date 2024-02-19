@@ -8,8 +8,9 @@
 body {
   font-family: inter;
   margin: 0;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
+  width: 1920px;
 }
 
 h1 {
@@ -20,11 +21,15 @@ h1 {
   line-height: 120%;
 }
 
+.header{
+  position: sticky;
+}
+
 #main_container {
   position: relative;
   background-color: var(--Background);
-  width: 1440px;
-  height: 1024px;
+  width: 100%;
+  height: 100%;
   display: flex;
   margin: auto;
 }
@@ -55,4 +60,8 @@ h1 {
 
 #text_container::-webkit-scrollbar {
   display: none;
+}
+
+#burgermenu{
+  
 }

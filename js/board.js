@@ -76,7 +76,7 @@ function updateHTML() {
 
       // Füge das HTML des Todos in die aktuelle Spalte ein
       columnElement.innerHTML += generateTodoHTML(element, i);
-      
+
       // Handle member icons
       const contactsboard = element.assigned_to;
       let contactHTMLIcons =
@@ -163,10 +163,7 @@ function generateTodoHTML(element, i) {
 </div>`;
 }
 
-
-
 function updateSubtaskStatus(subtaskIndex, isChecked) {
-  
   if (subtaskIndex >= 0 && subtaskIndex < subtasks.length) {
     subtasks[subtaskIndex].completed = isChecked;
 
@@ -176,8 +173,8 @@ function updateSubtaskStatus(subtaskIndex, isChecked) {
     let totalSubtasksCount = subtasks.length;
     let overallProgress = (completedSubtasksCount / totalSubtasksCount) * 100;
 
-    updateProgressBar(overallProgress);   
-  }   
+    updateProgressBar(overallProgress);
+  }
 }
 
 function changeStatus(id, status) {
@@ -254,7 +251,7 @@ function openDialog(todoIndex) {
           <img src="../assets/img/close.svg" alt="">
         </button>
       </div>
-      <div class="title_dialog">${todo.title}</div>
+      <div id="title" class="title_dialog">${todo.title}</div>
       <div class="description_dialog">${todo.description}</div>
       <div class="date_dialog">Due Date: ${todo.due_date}</div>
       <div class="prio_dialog">Priority: ${todo.prio}
@@ -263,20 +260,14 @@ function openDialog(todoIndex) {
         </div>
       </div>
       
-      <div class="dialog_delete_edit">
-        <div><img src="../assets/img/property_1=delete.svg" alt="" onclick="deleteTodo(${todo.id})">delete</div> 
-        <img src="../assets/img/vector_delete_edit.svg" alt="" >
-        <div onclick="openDialogEdit(${todoIndex})"><img src="../assets/img/property_1=edit.svg" alt="">edit</div>
-      </div>
-
       <div id="member_icons_names_${todoIndex}"></div>
-      <div id="subtask_list">
+      <p>Subtasks:</p>
+      <div id="subtask_list"> </div>
       
       <div class="dialog_delete_edit">
-        <div><img src="../assets/img/property_1=delete.svg" alt="" onclick="deleteTodo(${todo.id})">delete</div> 
+        <div onclick="deleteTodo(${todoIndex})"><img src="../assets/img/property_1=delete.svg" alt="">delete</div> 
         <img src="../assets/img/vector_delete_edit.svg" alt="" >
-        <div><img src="../assets/img/property_1=edit.svg" alt="">edit</div>
-      </div>
+        <div onclick="openDialogEdit(${todoIndex})"><img src="../assets/img/property_1=edit.svg" alt="">edit</div>
     </div>
   `;
 
@@ -313,7 +304,6 @@ function openDialog(todoIndex) {
   // Füge Buchstaben hinzu im Dialogfeld
   addNameLettersForDialog(contactsboard, todoIndex);
   renderSubtasks(todoIndex);
-  
 }
 
 ////////////////////////////////////////////////
@@ -321,8 +311,7 @@ function openDialog(todoIndex) {
 /////////////////////////////////////////////
 
 async function openDialogEdit(todoIndex) {
-
-const todo = todos[todoIndex];
+  const todo = todos[todoIndex];
   // const contactsboard = todo.assigned_to;
   let title = todos[todoIndex].title;
   let description = todos[todoIndex].description;
@@ -331,9 +320,12 @@ const todo = todos[todoIndex];
   let assigned_to = todos[todoIndex].assigned_to;
   let subtask = todos[todoIndex].subtask;
 
-  document.getElementById("todo_HTML").style.display = "none";
+  newtitle = document.getElementById('title').innerHTML;
+
+  document.getElementById("todo_HTML").style.display = "flex";
+  document.getElementById("close_dialog").style.display = "none";
   document.getElementById("edit_dialog").style.display = "flex";
-  document.getElementById("edit_dialog").innerHTML = /*html*/`
+  document.getElementById("edit_dialog").innerHTML = /*html*/ `
     
   <div class="column">
     <div class="right">
@@ -342,10 +334,9 @@ const todo = todos[todoIndex];
         </button>
     </div>
 
-  
     <div class="title_area">
       <h4> Title</h4>
-      <input class="input_field" id="input_title" type="text" placeholder="Enter a title" required/>
+      <input class="input_field" id="edit_input_title" type="text" placeholder="Enter a title" required/>
     </div>
     
     <div class="description_area">
@@ -403,33 +394,40 @@ const todo = todos[todoIndex];
   </div>
   `;
 
- document.getElementById('input_title').value = title;
- document.getElementById('description').value = description;
- document.getElementById('input_date').value = due_date;
+  document.getElementById("edit_input_title").value = newtitle;
+  document.getElementById("description").value = description;
+  document.getElementById("input_date").value = due_date;
 
- contacts = value[0].contacts;
+  contacts = value[0].contacts;
   await renderContacts();
   prioMediumOnLoad();
   futureDate();
 
-   // Leere das Element, um sicherzustellen, dass keine vorherigen Inhalte vorhanden sind
-   
+  // Leere das Element, um sicherzustellen, dass keine vorherigen Inhalte vorhanden sind
 }
-
-
 
 //////////DELETE FUNKTION ANGEFANGEN!!!!
 
-function deleteTodo(todoId) {
-  const index = todos.findIndex(todo => todo.id === todoId);
-  if (index !== -1) {
-    todos.splice(index, 1); // Entferne das Todo aus dem Array
-    updateHTML(); // Aktualisiere die Anzeige
-  }
-}
+// async function deleteTodo(todoIndex) {
+//   const index = todos[todoIndex];
+//   if (index !== -1) {
+//     todos.splice(index, 1); // Entferne das Todo aus dem Array
+
+//     const deletedTodo = todos[index]; // Das gelöschte Todo
+//     try {
+//       // Annahme: Hier wird eine Funktion aufgerufen, die das Todo im Backend aktualisiert
+//       await updateTodoInBackend(deletedTodo); // Diese Funktion müsste implementiert werden
+//     } catch (error) {
+//       console.error('Fehler beim Aktualisieren des Todos im Backend:', error);
+//     }
+
+//     updateHTML(); // Aktualisiere die Anzeige
+//   }
+// }
+
+
 
 ////////DELETE FUNKTION ENDE!!!!!!
-
 
 function renderSubtasks(todoIndex) {
   const subtaskList = document.getElementById("subtask_list");
@@ -442,7 +440,6 @@ function renderSubtasks(todoIndex) {
 
     const subtaskHTML = `
       <div class="subtask_container">
-        <p>Subtask:</p>
         <input type="checkbox" id="${subtaskCheckboxId}" onclick="updateSubtaskStatus(${todoIndex}, ${i}, this.checked)" ${isChecked}>
         <span>${subtask.title}</span>
       </div>
@@ -452,28 +449,29 @@ function renderSubtasks(todoIndex) {
 }
 
 function renderProgressBar(todoIndex) {
-  try{
-  const totalSubtasks = todos[todoIndex].subtasks.length;
-  let completedSubtasks = 0;
+  try {
+    const totalSubtasks = todos[todoIndex].subtasks.length;
+    let completedSubtasks = 0;
 
-  todos[todoIndex].subtasks.forEach(subtask => {
-    if (subtask.completed) {
-      completedSubtasks++;
-    
-    }
-  });
+    todos[todoIndex].subtasks.forEach((subtask) => {
+      if (subtask.completed) {
+        completedSubtasks++;
+      }
+    });
 
-  
-  const progressPercentage = Math.floor((completedSubtasks / totalSubtasks) * 100);
+    const progressPercentage = Math.floor(
+      (completedSubtasks / totalSubtasks) * 100
+    );
 
-  const progressBar = document.getElementById("progress_bar"+todoIndex);
-  progressBar.style.width = `${progressPercentage}%`;
+    const progressBar = document.getElementById("progress_bar" + todoIndex);
+    progressBar.style.width = `${progressPercentage}%`;
 
-  const progressText = document.getElementById("progress_text"+todoIndex);
-  progressText.textContent = `${completedSubtasks}/${totalSubtasks} Subtask`;
-}catch{
-  document.getElementById("over_progressbar"+todoIndex).style.display = "none";
-};
+    const progressText = document.getElementById("progress_text" + todoIndex);
+    progressText.textContent = `${completedSubtasks}/${totalSubtasks} Subtask`;
+  } catch {
+    document.getElementById("over_progressbar" + todoIndex).style.display =
+      "none";
+  }
 }
 
 function updateSubtaskStatus(todoIndex, subtaskIndex, isChecked) {
@@ -667,5 +665,3 @@ function backgroundColorCategory(category) {
     return ""; // Falls keine Übereinstimmung gefunden wurde, wird eine leere Zeichenfolge zurückgegeben
   }
 }
-
-

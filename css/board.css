@@ -51,6 +51,7 @@ body {
 
 }
 
+
 #overlayAddTask {
   display: none;
 }
@@ -256,6 +257,7 @@ body {
     background-color: white;
     box-shadow: #42526E;
     gap: 10px;
+    margin-bottom: 24px;
 }
 
 .card_content {
