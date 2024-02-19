@@ -255,12 +255,13 @@ function openDialog(todoIndex) {
   // Anzeige des Dialogfelds
   document.getElementById("todo_HTML").style.display = "flex";
   const prioImage = displayImagePrio(todo["prio"]); // Hier wird die Funktion aufgerufen, um das entsprechende Bild zu erhalten
+  const categoryBackgroundColor = backgroundColorCategory(todo.category);
 
   // Aufbau des HTML-Inhalts für das Dialogfeld
   document.getElementById("todo_HTML").innerHTML = `
     <div class="dialog_content" id="close_dialog">
       <div class="category_x">
-        <div class="category_dialog">${todo.category}</div>
+        <div class="category_dialog" style="background-color: ${categoryBackgroundColor};">${todo["category"]}</div>
         <button class="close_button" onclick="closeDialog()">
           <img src="../assets/img/close.svg" alt="">
         </button>
