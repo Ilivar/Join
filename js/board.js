@@ -105,7 +105,13 @@ function updateHTML() {
       addNameLetters(contactsboard, i);
     }
   }
-  
+  initRenderProgressBar();
+}
+
+function initRenderProgressBar() {
+  for (let i = 0; i < value[0].newAddTask.length; i++) {
+    renderProgressBar(i);
+  }
 }
 
 function startDragging(id) {
@@ -137,7 +143,7 @@ function generateTodoHTML(element, i) {
 
       </div>
 
-        <div class="over_progressbar">
+        <div id="over_progressbar${i}" class="over_progressbar">
             <div class="progress-bar-container ">
               <div id="progress_bar${i}" class="progress-bar"></div>
              </div>
@@ -307,6 +313,7 @@ function openDialog(todoIndex) {
   // Füge Buchstaben hinzu im Dialogfeld
   addNameLettersForDialog(contactsboard, todoIndex);
   renderSubtasks(todoIndex);
+  
 }
 
 ////////////////////////////////////////////////
@@ -435,6 +442,7 @@ function renderSubtasks(todoIndex) {
 
     const subtaskHTML = `
       <div class="subtask_container">
+        <p>Subtask:</p>
         <input type="checkbox" id="${subtaskCheckboxId}" onclick="updateSubtaskStatus(${todoIndex}, ${i}, this.checked)" ${isChecked}>
         <span>${subtask.title}</span>
       </div>
@@ -444,12 +452,14 @@ function renderSubtasks(todoIndex) {
 }
 
 function renderProgressBar(todoIndex) {
+  try{
   const totalSubtasks = todos[todoIndex].subtasks.length;
   let completedSubtasks = 0;
 
   todos[todoIndex].subtasks.forEach(subtask => {
     if (subtask.completed) {
       completedSubtasks++;
+    
     }
   });
 
@@ -459,7 +469,10 @@ function renderProgressBar(todoIndex) {
   progressBar.style.width = `${progressPercentage}%`;
 
   const progressText = document.getElementById("progress_text"+todoIndex);
-  progressText.textContent = `${completedSubtasks}/${totalSubtasks}`;
+  progressText.textContent = `${completedSubtasks}/${totalSubtasks} Subtask`;
+}catch{
+  document.getElementById("over_progressbar"+todoIndex).style.display = "none";
+};
 }
 
 function updateSubtaskStatus(todoIndex, subtaskIndex, isChecked) {
