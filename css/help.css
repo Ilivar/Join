@@ -10,7 +10,8 @@ body {
   margin: 0;
   height: 100vh;
   display: flex;
-  width: 1920px;
+  max-width: 1920px;
+  width: 100%;
 }
 
 .header{
@@ -76,3 +77,6 @@ body {
   font-weight: 700;
   line-height: 120%;
 }
+
+/* responsive */
+
