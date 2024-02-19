@@ -20,9 +20,9 @@ async function init() {
 
 async function openAddTask() {
   document.getElementById("overlayAddTask").style.display = "flex";
-  
+
   contacts = value[0].contacts;
-  await renderContacts(); 
+  await renderContacts();
   prioMediumOnLoad();
   futureDate();
 }
@@ -114,7 +114,7 @@ function startDragging(id) {
 function generateTodoHTML(element, i) {
   const prioImage = displayImagePrio(element["prio"]); // Hier wird die Funktion aufgerufen, um das entsprechende Bild zu erhalten
   return /*html*/ `
-  <div draggable="true" ondragstart="startDragging(${element['id']})">
+  <div draggable="true" ondragstart="startDragging(${element["id"]})">
   <div class="task_content" onclick="openDialog(${i})">
 
     <div class="card_content">
@@ -154,9 +154,7 @@ function generateTodoHTML(element, i) {
 </div>`;
 }
 
-function generateProgressbar(){
-
-}
+function generateProgressbar() {}
 
 function updateSubtaskStatus(subtaskIndex, isChecked) {
   // subtaskIndex: Index des Subtasks im Array subtasks
@@ -171,7 +169,9 @@ function updateSubtaskStatus(subtaskIndex, isChecked) {
     // und die Fortschrittsleiste zu aktualisieren
 
     // Beispiel: Neuberechnung des Gesamtfortschritts
-    let completedSubtasksCount = subtasks.filter(subtask => subtask.completed).length;
+    let completedSubtasksCount = subtasks.filter(
+      (subtask) => subtask.completed
+    ).length;
     let totalSubtasksCount = subtasks.length;
     let overallProgress = (completedSubtasksCount / totalSubtasksCount) * 100;
 
@@ -182,12 +182,15 @@ function updateSubtaskStatus(subtaskIndex, isChecked) {
     // Beispiel: sendSubtaskStatusToBackend(subtaskIndex, isChecked);
 
     // Rückmeldung, dass der Status erfolgreich aktualisiert wurde
-    console.log(`Der Status des Subtasks ${subtaskIndex + 1} wurde erfolgreich aktualisiert.`);
+    console.log(
+      `Der Status des Subtasks ${
+        subtaskIndex + 1
+      } wurde erfolgreich aktualisiert.`
+    );
   } else {
     console.error("Ungültiger Subtask-Index.");
   }
 }
-
 
 function changeStatus(id, status) {
   if (currentDraggedElement != null) {
@@ -270,17 +273,8 @@ function openDialog(todoIndex) {
         </div>
       </div>
       <div id="member_icons_names_${todoIndex}"></div>
-      <div>
-        <div>Subtasks: ${todo.subtasks}</div>
-        <div class="subtasks_dialog">
-          <div class="subtasks_dialog_text">
-            <img src="../assets/img/check_button.svg" alt="">Implement Recipe Recommendation 
-          </div>
-          <div class="subtasks_dialog_text">
-            <img src="../assets/img/empty_check_button.svg" alt="">Start page Layout
-          </div>
-        </div>
-      </div>
+      <div id="subtask_list">
+      
       <div class="dialog_delete_edit">
         <div><img src="../assets/img/property_1=delete.svg" alt="">delete</div>
         <img src="../assets/img/vector_delete_edit.svg" alt="">
@@ -321,7 +315,32 @@ function openDialog(todoIndex) {
 
   // Füge Buchstaben hinzu im Dialogfeld
   addNameLettersForDialog(contactsboard, todoIndex);
+  renderSubtasks(todoIndex);
 }
+
+function renderSubtasks(todoIndex) {
+
+  for (let i = 0; i < todos[todoIndex].subtasks.length; i++) {
+    const subtask = todos[todoIndex].subtasks[i];
+    const subtaskHTML = /*html*/`
+      <div class="subtask_container">
+        <input type="checkbox" id="subtask_checkbox_${todoIndex}_${i}" onclick="updateSubtaskStatus(${todoIndex}, ${i}, this.checked)">
+        <span>${subtask.title}</span>
+      </div>
+    `
+    document.getElementById("subtask_list").innerHTML += subtaskHTML;
+  }
+
+
+}
+
+function updateSubtaskStatus(todoIndex, subtaskIndex, isChecked) {
+  const subtask = todos[todoIndex].subtasks[subtaskIndex];
+  subtask.status = isChecked;
+  updateSubtask(todoIndex, subtaskIndex, subtask);
+}
+
+
 
 function closeDialog() {
   document.getElementById("close_dialog").innerHTML = "";
@@ -485,7 +504,6 @@ function addNameLettersForDialog(contactsboard, todoIndex) {
   });
 }
 
-
 function displayImagePrio(prio) {
   if (prio === "Urgent") {
     return "../assets/img/priority_Urgent.svg";
@@ -498,5 +516,3 @@ function displayImagePrio(prio) {
     return ""; // Rückgabe eines leeren Strings im Falle einer ungültigen Priorität
   }
 }
-
-
