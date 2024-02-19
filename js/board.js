@@ -251,7 +251,7 @@ function openDialog(todoIndex) {
           <img src="../assets/img/close.svg" alt="">
         </button>
       </div>
-      <div class="title_dialog">${todo.title}</div>
+      <div id="title" class="title_dialog">${todo.title}</div>
       <div class="description_dialog">${todo.description}</div>
       <div class="date_dialog">Due Date: ${todo.due_date}</div>
       <div class="prio_dialog">Priority: ${todo.prio}
@@ -265,9 +265,9 @@ function openDialog(todoIndex) {
       <div id="subtask_list"> </div>
       
       <div class="dialog_delete_edit">
-        <div><img src="../assets/img/property_1=delete.svg" alt="" onclick="deleteTodo(${todo.id})">delete</div> 
+        <div onclick="deleteTodo(${todoIndex})"><img src="../assets/img/property_1=delete.svg" alt="">delete</div> 
         <img src="../assets/img/vector_delete_edit.svg" alt="" >
-        <div><img src="../assets/img/property_1=edit.svg" alt="">edit</div>
+        <div onclick="openDialogEdit(${todoIndex})"><img src="../assets/img/property_1=edit.svg" alt="">edit</div>
     </div>
   `;
 
@@ -320,7 +320,10 @@ async function openDialogEdit(todoIndex) {
   let assigned_to = todos[todoIndex].assigned_to;
   let subtask = todos[todoIndex].subtask;
 
-  document.getElementById("todo_HTML").style.display = "none";
+  newtitle = document.getElementById('title').innerHTML;
+
+  document.getElementById("todo_HTML").style.display = "flex";
+  document.getElementById("close_dialog").style.display = "none";
   document.getElementById("edit_dialog").style.display = "flex";
   document.getElementById("edit_dialog").innerHTML = /*html*/ `
     
@@ -331,10 +334,9 @@ async function openDialogEdit(todoIndex) {
         </button>
     </div>
 
-  
     <div class="title_area">
       <h4> Title</h4>
-      <input class="input_field" id="input_title" type="text" placeholder="Enter a title" required/>
+      <input class="input_field" id="edit_input_title" type="text" placeholder="Enter a title" required/>
     </div>
     
     <div class="description_area">
@@ -392,7 +394,7 @@ async function openDialogEdit(todoIndex) {
   </div>
   `;
 
-  document.getElementById("input_title").value = title;
+  document.getElementById("edit_input_title").value = newtitle;
   document.getElementById("description").value = description;
   document.getElementById("input_date").value = due_date;
 
@@ -406,13 +408,24 @@ async function openDialogEdit(todoIndex) {
 
 //////////DELETE FUNKTION ANGEFANGEN!!!!
 
-function deleteTodo(todoId) {
-  const index = todos.findIndex((todo) => todo.id === todoId);
-  if (index !== -1) {
-    todos.splice(index, 1); // Entferne das Todo aus dem Array
-    updateHTML(); // Aktualisiere die Anzeige
-  }
-}
+// async function deleteTodo(todoIndex) {
+//   const index = todos[todoIndex];
+//   if (index !== -1) {
+//     todos.splice(index, 1); // Entferne das Todo aus dem Array
+
+//     const deletedTodo = todos[index]; // Das gelöschte Todo
+//     try {
+//       // Annahme: Hier wird eine Funktion aufgerufen, die das Todo im Backend aktualisiert
+//       await updateTodoInBackend(deletedTodo); // Diese Funktion müsste implementiert werden
+//     } catch (error) {
+//       console.error('Fehler beim Aktualisieren des Todos im Backend:', error);
+//     }
+
+//     updateHTML(); // Aktualisiere die Anzeige
+//   }
+// }
+
+
 
 ////////DELETE FUNKTION ENDE!!!!!!
 
