@@ -356,6 +356,7 @@ function renderProgressBar(todoIndex) {
     }
   });
 
+  
   const progressPercentage = Math.floor((completedSubtasks / totalSubtasks) * 100);
 
   const progressBar = document.getElementById("progress_bar"+todoIndex);
