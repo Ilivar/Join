@@ -335,6 +335,7 @@ function renderSubtasks(todoIndex) {
 
     const subtaskHTML = `
       <div class="subtask_container">
+        <p>Subtask:</p>
         <input type="checkbox" id="${subtaskCheckboxId}" onclick="updateSubtaskStatus(${todoIndex}, ${i}, this.checked)" ${isChecked}>
         <span>${subtask.title}</span>
       </div>
@@ -361,7 +362,7 @@ function renderProgressBar(todoIndex) {
   progressBar.style.width = `${progressPercentage}%`;
 
   const progressText = document.getElementById("progress_text"+todoIndex);
-  progressText.textContent = `${completedSubtasks}/${totalSubtasks}`;
+  progressText.textContent = `${completedSubtasks}/${totalSubtasks} Subtask`;
 }catch{
   document.getElementById("over_progressbar"+todoIndex).style.display = "none";
 };
