@@ -431,6 +431,19 @@ h4 {
   text-align: left;
   outline: none;
   transition: 0.4s;
+}
+
+.select_area {
+  width: 98%;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid var(--Style, #d1d1d1);
+  background: var(--white, #fff);
+  color: #000000;
+  cursor: pointer;
+  padding-left: 16px;
+  text-align: left;
+  outline: none;
   
 }
 

@@ -287,7 +287,7 @@ async function addNewAddTask() {
   let assigned = selectedContacts;
   let dueDate = document.getElementById("input_date").value;
   let prio = button;
-  let category = document.getElementById('user_category').innerHTML;
+  let category = document.getElementById('category').value;
   let subtasks = inputValues; 
   let status = currentStatus;
 
@@ -314,16 +314,19 @@ async function addNewAddTask() {
       currentUserData[0].newAddTask[currentUserData[0].newAddTask.length - 1]
         .id;
     taskId = latestEntry;
-    addAddTaskToUserData(newAddTask);
+    await addAddTaskToUserData(newAddTask);
+    setTimeout(function(){
+      window.location.href = "board.html";
+  }, 1500);
   } catch (error) {
-    addAddTaskToUserData(newAddTask);
+    await addAddTaskToUserData(newAddTask);
+    setTimeout(function(){
+      window.location.href = "board.html";
+  }, 1500);
   }
-
-  // window.location.href = "board.html";
- 
 }
 
-function addAddTaskToUserData(newAddTask) {
+async function addAddTaskToUserData(newAddTask) {
   if (!currentUserData[0].newAddTask) {
     currentUserData[0].newAddTask = []; // Wenn newAddTask noch nicht existiert, erstelle ein neues Array
   }
