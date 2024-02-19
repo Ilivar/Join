@@ -428,6 +428,8 @@ function dataToBackend(todoIndex) {
   let newtitle = document.getElementById('input_title').value;
   todos[todoIndex].title = newtitle;
   setItem("users", currentUserData);
+  updateHTML();
+  closeDialog();
 }
 
 function deleteTodo(todoIndex) {
