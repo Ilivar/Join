@@ -282,6 +282,7 @@ input::placeholder {
 
 #loginCheckbox{
   width: 100%;
+  padding: 0px 0px 0px 24px;
 }
 
 @keyframes moveIcon {
@@ -298,7 +299,7 @@ input::placeholder {
 }
 
 #signUpField{
-  position: fixed;
+  position: absolute;
   bottom: 100px;
   display: flex;
   align-items: center;
