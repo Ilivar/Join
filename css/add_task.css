@@ -401,6 +401,7 @@ h4 {
 .required_text {
   width: 200px;
   display: flex;
+  padding-left: 60px;
 }
 
 .create_task:hover {
@@ -576,14 +577,18 @@ h4 {
 
 @media(max-width: 1000px) {
 
+  .required_text {
+    padding-left: 50px;
+  }
+
   .area {
     height: 100%;
   }
   
   .last_section {
     width: 100%;
-    padding-top: 0px;
-    padding-bottom: 90px;
+    padding-top: 30px;
+    padding-bottom: 70px;
   }
 
    .left_stroke_right_area {
@@ -591,11 +596,25 @@ h4 {
     align-items: center;
     flex-direction: column;
    }
+
+  .task {
+    padding:0px;
+  }
 }
 
-@media(max-width: 420px) {
+@media(max-width: 450px) {
+
+  .clear_task {
+    display: none;
+  }
+
+  .required_text {
+    padding-left: 10px;
+  }
 
   .area_left {
+    height: ;
+    padding: 0px;
     width: 280px;
   }
 
@@ -603,11 +622,18 @@ h4 {
     padding:8px;
   }
 
+  .input_field_date {
+    padding: 22px;
+  }
+
   .area_right {
+    height: ;
     width: 280px;
   }
 
   .prio_area {
+    flex-direction: column;
+    padding-bottom: 40px;
     width: 280px;
   }
 }
