@@ -317,12 +317,12 @@ async function addNewAddTask() {
     await addAddTaskToUserData(newAddTask);
     setTimeout(function(){
       window.location.href = "board.html";
-  }, 1500);
+  }, 1000);
   } catch (error) {
     await addAddTaskToUserData(newAddTask);
     setTimeout(function(){
       window.location.href = "board.html";
-  }, 1500);
+  }, 1000);
   }
 }
 

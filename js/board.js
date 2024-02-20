@@ -5,7 +5,7 @@ let todos = [];
 
 let iconColors = [];
 
-let htmlReady = false; 
+
 
 function updateToDoArray() {
   todos = value[0].newAddTask;
@@ -25,20 +25,14 @@ async function openAddTask() {
   document.getElementById('overlay').innerHTML = `
   <div id="overlayAddTask" w3-include-html="../assets/templates/add_task_template.html"></div>`;
   document.getElementById("overlayAddTask").style.display = "flex";
-  
-  if (htmlReady) {
-    contacts = value[0].contacts;
-    renderContacts();
-    prioMediumOnLoad();
-    futureDate();
+     await includeHTML();
+    setTimeout(function(){
+      contacts = value[0].contacts;
+      prioMediumOnLoad();
+      futureDate();
+      renderContacts();
+    }, 1000);
   }
-}
-
-async function include() {
-  await includeHTML();
-  htmlReady = true;
-  
-}
 
 function closeAddTask() {
   document.getElementById("overlayAddTask").style.display = "none";
