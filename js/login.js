@@ -44,3 +44,11 @@ function loadFromLocalStorage() {
 function setCurrentUser(currentMail) {
   localStorage.setItem("user", currentMail, username);
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  var mobileAnimation = document.getElementById('mobile_animation');
+
+  mobileAnimation.addEventListener('animationend', function() {
+      mobileAnimation.style.display = 'none';
+  });
+});
