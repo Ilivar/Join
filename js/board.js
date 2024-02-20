@@ -316,23 +316,18 @@ function openDialog(todoIndex) {
 }
 
 ////////////////////////////////////////////////
-
+////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////
 
 async function openDialogEdit(todoIndex) {
+  
   const todo = todos[todoIndex];
   let newtitle = document.getElementById('title').innerHTML;
   let description = document.getElementById('description').innerHTML;
   let due_date = document.getElementById('dialogDueDate').innerHTML;
-  // let prio = document.getElementById('dialogPrio').innerHTML;
-  // let assigned_to = todos[todoIndex].assigned_to;
-  // let subtask = document.getElementById('subtask_list').innerHTML;
 
-  for (let i = 0; i < todos[todoIndex].subtasks.length; i++) {
-  const subtask = todos[todoIndex].subtasks[i];
-  }
-
-  
+  // for (let i = 0; i < todos[todoIndex].subtasks.length; i++) {
+  //   const subtask = todos[todoIndex].subtasks[i]; }
 
   document.getElementById("todo_HTML").style.display = "flex";
   document.getElementById("close_dialog").style.display = "none";
@@ -396,6 +391,7 @@ async function openDialogEdit(todoIndex) {
               <input class="input_field_subtask" id="input_subtask" type="text" placeholder="Add new subtask" onclick="clickInputSubTask()"/>
               <div id="sub_task_image_area"><img src="../assets/img/plus icon.svg"></div>
           </div>
+          
           <div id="sub_task_listelements"></div>
 
           <button type="submit" class="create_task" onclick="dataToBackend(${todoIndex})" > 
@@ -416,6 +412,7 @@ async function openDialogEdit(todoIndex) {
   await renderContacts();
   prioMediumOnLoad();
   futureDate();
+  renderSubTask()
 
   
  
@@ -427,13 +424,21 @@ function dataToBackend(todoIndex) {
   let due_Date = document.getElementById('input_date').value;
   let button = activeButton.replace("button", "");
   let prioButton = button;
-  
+  const selectedContacts = renderActiveMemberIcons();
+  let assigned = selectedContacts;
+  let subtasks = inputValues; 
+  let subtasksData = subtasks.map((subtask, index) => ({
+    id: index + 1,
+    title: subtask,
+    completed: false,
+  }));
  
   todos[todoIndex].title = newtitle;
   todos[todoIndex].description = description;
   todos[todoIndex].due_date = due_Date;
   todos[todoIndex].prio = prioButton;
-  // todos[todoIndex].prio = prio;
+  todos[todoIndex].subtasks = subtasksData;
+  todos[todoIndex].assigned_to = assigned;
 
   setItem("users", currentUserData);
   updateHTML();
