@@ -426,7 +426,7 @@ async function openDialogEdit(todoIndex) {
 function dataToBackend(todoIndex) {
   let newtitle = document.getElementById('input_title').value;
   let description = document.getElementById('description').value;
-  let due_Date = document.getElementById('dialogDueDate').value;
+  let due_Date = document.getElementById('input_date').value;
   // let prio = document.getElementById('dialogPrio').value;
   // const newsSubtask = todos[todoIndex].subtasks[i];
   
