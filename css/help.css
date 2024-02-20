@@ -10,7 +10,8 @@ body {
   margin: 0;
   height: 100vh;
   display: flex;
-  width: 1920px;
+  max-width: 1920px;
+  width: 100%;
 }
 
 .header{
@@ -75,4 +76,21 @@ body {
   font-style: normal;
   font-weight: 700;
   line-height: 120%;
+}
+
+/* responsive */
+
+@media (max-width: 1000px){
+  #explanation{
+    margin-bottom: 40px;
+  }
+  #text_container{
+    padding-top: 64px;
+  }
+}
+
+@media (max-width: 500px){
+  #text_container{
+    margin: 36px;
+  }
 }

@@ -2,7 +2,7 @@ body {
   height: 100vh;
   margin: 0;
   display: flex;
-  width: 1920px;
+  width: 100%;
 }
 
 * {
@@ -25,7 +25,7 @@ body {
 
 .summary_main {
   display: flex;
-  width: 560px;
+  width: 40%;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
@@ -83,7 +83,7 @@ body {
 
 .todo_main {
   display: flex;
-  width: 560px;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
@@ -409,4 +409,29 @@ body {
   font-style: normal;
   font-weight: 400;
   line-height: 120%;
+}
+
+
+@media (max-width: 320px) {
+  .urgent {
+    width: calc(100% - 20px); /* Verhindern, dass das Element über den Bildschirmrand hinausragt */
+    margin-left: 10px; /* Kleiner Seitenabstand für bessere Ausrichtung */
+    margin-right: 10px; /* Kleiner Seitenabstand für bessere Ausrichtung */
+  }
+}
+
+@media (max-width: 1340px) {
+  .welcome {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  /* Hier kommen die Styles für Bildschirmbreiten kleiner oder gleich 700px */
+  body {
+    font-size: 14px; /* Beispiel: Schriftgröße verkleinern */
+  }
+
+
+  /* Weitere Klassen hier anpassen, um sie proportional zu verkleinern */
 }
