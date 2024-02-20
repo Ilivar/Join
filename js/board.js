@@ -129,15 +129,22 @@ function startDragging(id) {
 
 function generateTodoHTML(element, i) {
   const prioImage = displayImagePrio(element["prio"]); // Hier wird die Funktion aufgerufen, um das entsprechende Bild zu erhalten
+  const todoId = `${element['id']}`;
   const categoryBackgroundColor = backgroundColorCategory(element.category);
 
   return /*html*/ `
-  <div draggable="true" ondragstart="startDragging(${element["id"]})">
+  <div draggable="true" ondragstart="startDragging(${element['id']})">
   <div class="task_content" onclick="openDialog(${i})">
 
     <div class="card_content">
 
+    <div class="d_flex">
       <div class="category" style="background-color: ${categoryBackgroundColor};">${element["category"]}</div>
+      
+        <div id="arrow_down" class=" display_none_media_1000 arrow_down" onclick="moveTodo('${todoId}', 'down', event)"><img src="../assets/img/arrow_down.png" alt=""></div>
+        <div id="arrow_up" class="display_none_media_1000 arrow_up"  onclick="moveTodo('${todoId}', 'up', event)"><img src="../assets/img/arrow_up.png" alt=""></div>
+      </div>  
+
         <p class="invis">${element["id"]}</p>
          <div class="title_description">
            <div class="title">${element["title"]}</div>
@@ -170,6 +177,53 @@ function generateTodoHTML(element, i) {
                 </div>
     </div>
 </div>`;
+}
+
+// "drag_to_do",
+// "drag_in_progress",
+// "drag_await_feedback",
+// "drag_done"
+
+function moveTodo(todoId, direction, event) {
+  event.stopPropagation();
+  const todoElement = document.getElementById(todoId);
+  const parentElement = todos.id;
+  const category = todos.id;
+  let nextCategory;
+  if (direction === 'up') {
+      switch (category) {
+          case 'drag_to_do':  
+              nextCategory = 'drag_in_progress';  
+              break;
+          case 'drag_in_progress':  
+              nextCategory = 'drag_await_feedback';  
+              break;
+          case 'drag_await_feedback':   
+              nextCategory = 'drag_done';  
+              break;
+          default:
+              nextCategory = null;
+      }
+  } else if (direction === 'down') {
+      switch (category) {
+          case 'drag_in_progress': 
+              nextCategory = 'drag_to_do'; 
+              break;
+          case 'drag_await_feedback': 
+              nextCategory = 'drag_in_progress';  
+              break;
+          case 'drag_done': 
+              nextCategory = 'drag_await_feedback'; 
+              break;
+          default:
+              nextCategory = null;
+      }
+  }
+  if (nextCategory) {
+      todos['status'] = nextCategory;
+      parentElement.removeChild(todoElement);
+      document.getElementById(nextCategory).appendChild(todoElement);
+  }
 }
 
 function updateSubtaskStatus(subtaskIndex, isChecked) {
@@ -552,6 +606,14 @@ function filterTodosTitle() {
     .value.trim()
     .toLowerCase();
 
+    let searchTextMedia = document
+    .getElementById("filter_input_media")
+    .value.trim()
+    .toLowerCase();
+
+
+
+    
   // Leeren Sie den HTML-Inhalt aller Spalten
   const dragColumns = [
     "drag_to_do",
@@ -566,7 +628,72 @@ function filterTodosTitle() {
 
   // Iteriere über jedes Todo und überprüfe, ob der Titel den Suchbegriff enthält
   for (const todo of todos) {
-    if (todo.title.toLowerCase().includes(searchText)) {
+    if (todo.title.toLowerCase().includes(searchText, searchTextMedia)) {
+      // Generiere das HTML für das Todo
+      const i = todos.findIndex((t) => t === todo);
+      const todoHTML = generateTodoHTML(todo, i);
+
+      // Füge das Todo in die entsprechende Spalte ein
+      const columnElement = document.getElementById(todo.status);
+      if (columnElement) {
+        columnElement.innerHTML += todoHTML;
+
+        // Handle member icons
+        const contactsboard = todo.assigned_to;
+        let contactHTMLIcons =
+          document.getElementById("member_icons_card" + i)?.innerHTML || "";
+
+        // Iteriere durch die zugewiesenen Mitglieder und generiere das HTML für die Icons
+        for (let j = 0; j < contactsboard.length; j++) {
+          const contact = contactsboard[j];
+          contactHTMLIcons += `
+            <div id="holeContact${j}${i}" class="hole_contact">        
+              <div id="name_icon${j}${i}" class="name_icon"></div>  
+              <div class="contact"></div>
+            </div>
+          `;
+        }
+
+        // Füge das HTML für die Icons in das entsprechende Element ein
+        if (document.getElementById("member_icons_card" + i)) {
+          document.getElementById("member_icons_card" + i).innerHTML =
+            contactHTMLIcons;
+        }
+
+        // Generiere Farben für die Icons und wende andere Funktionen an
+        const iconColors = generateIconColors(contactsboard, i);
+        changeIconColor(contactsboard, i);
+        addNameLetters(contactsboard, i);
+      }
+    }
+  }
+}
+
+function filterTodosTitleMedia() {
+
+    let searchTextMedia = document
+    .getElementById("filter_input_media")
+    .value.trim()
+    .toLowerCase();
+
+
+
+    
+  // Leeren Sie den HTML-Inhalt aller Spalten
+  const dragColumns = [
+    "drag_to_do",
+    "drag_in_progress",
+    "drag_await_feedback",
+    "drag_done",
+  ];
+  for (const column of dragColumns) {
+    const columnElement = document.getElementById(column);
+    columnElement.innerHTML = "";
+  }
+
+  // Iteriere über jedes Todo und überprüfe, ob der Titel den Suchbegriff enthält
+  for (const todo of todos) {
+    if (todo.title.toLowerCase().includes(searchTextMedia)) {
       // Generiere das HTML für das Todo
       const i = todos.findIndex((t) => t === todo);
       const todoHTML = generateTodoHTML(todo, i);

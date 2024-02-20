@@ -62,6 +62,8 @@
 
           </div>
 
+         
+
 
           <div class="to_do_main display_none_media">
 
@@ -118,7 +120,18 @@
 
         </div>
 
-
+        <div class="find_task_media_over display_none_media_1000">
+          <div class="find_task_media">
+            <div class="find_task_content">
+              <input class="find_task_input" id="filter_input_media" type="text" placeholder="Find Task" oninput="filterTodosTitleMedia()" />
+              <div class="board_find_task_vector">
+                <img src="../assets/img/vector_board_find_task.svg" alt="">
+                <img src="../assets/img/search_board_find_task.svg" alt="">
+              </div>
+              
+            </div>
+          </div>
+        </div>
 
       </div>
 
@@ -190,12 +203,17 @@
         <div class="drag-area" id="drag_done" ondrop="moveTo('drag_done'), setStatusValue('drag_done')" ondragleave="removeHighlight('drag_done')"
           ondragover="allowDrop(event); highlight('drag_done')">
         </div>
+        
       </div>
+
+     
 
 <div id="todo_HTML"></div>
 
     </div>
   </div>
+
+  <div class="margin_top"></div>
 
 </body>
 
