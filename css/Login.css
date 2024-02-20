@@ -227,9 +227,8 @@ input::placeholder {
 }
 
 @media (max-width: 1300px) {
-
   #loginContainer {
-    width: 300px; 
+    width: 300px;
     height: 515px;
     padding: 0;
     margin-top: 180px;
@@ -266,7 +265,7 @@ input::placeholder {
   #inputPassword {
     width: 260px;
     height: 40px;
-    padding:0px 0px 0px 16px ;
+    padding: 0px 0px 0px 16px;
   }
 
   #loginButtons {
@@ -280,34 +279,33 @@ input::placeholder {
     height: 40px;
   }
 
-#loginCheckbox{
-  width: 100%;
-  padding: 0px 0px 0px 24px;
-}
-
-@keyframes moveIcon {
-  0% {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
+  #loginCheckbox {
+    width: 100%;
+    padding: 0px 0px 0px 24px;
   }
-  100% {
-    top: -20px;
-    left: -40px;
-    transform: scale(0.3);
+
+  @keyframes moveIcon {
+    0% {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+      top: -20px;
+      left: -40px;
+      transform: scale(0.3);
+    }
   }
-}
 
-#signUpField{
-  position: absolute;
-  bottom: 100px;
-  display: flex;
-  align-items: center;
-}
+  #signUpField {
+    position: absolute;
+    bottom: 100px;
+    display: flex;
+    align-items: center;
+  }
 
-#signUpField button{
-  width: 104px ;
-  font-size: 14px;
-}
-
+  #signUpField button {
+    width: 104px;
+    font-size: 14px;
+  }
 }

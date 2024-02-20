@@ -3,7 +3,7 @@
   --Background: #f6f7f8;
   --icon: #a8a8a8;
   --Version-2-main-color: #2a3647;
-  --warning: #FF8190;
+  --warning: #ff8190;
 }
 
 body {
@@ -11,7 +11,7 @@ body {
   margin: 0;
   display: flex;
   height: 100vh;
-  width: 1920px;
+  max-width: 1920px;
 }
 
 a {
@@ -103,11 +103,11 @@ input::placeholder {
 }
 
 #arrow_back {
-    width: 32px;
-    position: absolute;
-    left: 32px;
-    top: 32px;
-    cursor: pointer;
+  width: 32px;
+  position: absolute;
+  left: 32px;
+  top: 32px;
+  cursor: pointer;
 }
 
 #input_fields {
@@ -213,4 +213,78 @@ input::placeholder {
   line-height: 24px;
   color: #fff;
   border-radius: 20px;
+}
+
+@media (max-width: 1300px) {
+  #joinIcon {
+    width: 200px;
+    height: 242px;
+    flex-shrink: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: moveIcon 0s ease-in-out forwards;
+    animation-delay: 0;
+  }
+
+  @keyframes moveIcon {
+    0% {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+      top: -20px;
+      left: -40px;
+      transform: scale(0.3);
+    }
+  }
+
+  #arrow_back {
+    margin-left: -16px;
+  }
+
+  #seperator{
+    width: 60%;
+  }
+
+  #sign_up_container {
+    width: 300px;
+    height: 615px;
+    padding: 0;
+    margin-top: 180px;
+  }
+
+  #sign_up_header {
+    margin: 0;
+    margin-top: -32px;
+    gap: 36px;
+  }
+
+  #sign_up_header p {
+    font-size: 47px;
+  }
+
+  #input_fields {
+    width: 300px;
+    height: 600px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #input_fields input {
+    width: 260px;
+    height: 40px;
+    padding: 0px 0px 0px 16px;
+  }
+
+#loginCheckbox{
+  padding: 0 0 0 16px;
+}
+
+.buttonDark{
+  font-size: 14px;
+}
+
 }
