@@ -109,7 +109,7 @@ function changeColorClickContact(i) {
   }
 }
 
-async function renderActiveMemberIcons() {
+function renderActiveMemberIcons() {
   const activeMemberIconsDiv = document.getElementById("aktiveMemberIcons");
   if (!activeMemberIconsDiv) {
     console.error("später abchecken - aber funcktioniert erstmal");
@@ -219,7 +219,6 @@ function setActiveButton(buttonId, imgSrc, bgColor) {
     document.getElementById("lowImg").src = imgSrc;
   }
   activeButton = buttonId;
-  console.log( 'Add Tas Zeile 222',activeButton) 
 }
 
 function prioMediumOnLoad() {
@@ -405,6 +404,10 @@ function deleteSubTask(id) {
   document.getElementById("sub_task_listelements").innerHTML = "";
 
   // Rendere die Liste neu basierend auf den aktuellen inputValues
+  renderSubTask();
+}
+
+function renderSubTask() {
   inputValues.forEach((value, idx) => {
     let itemId = `sub_task${idx + 1}`;
     let container = document.createElement("div");
