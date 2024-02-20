@@ -245,7 +245,7 @@ input::placeholder {
     margin-left: -16px;
   }
 
-  #seperator{
+  #seperator {
     width: 60%;
   }
 
@@ -279,12 +279,13 @@ input::placeholder {
     padding: 0px 0px 0px 16px;
   }
 
-#loginCheckbox{
-  padding: 0 0 0 16px;
-}
+  #loginCheckbox {
+    padding: 0 0 0 16px;
+  }
 
-.buttonDark{
-  font-size: 14px;
-}
+  .buttonDark {
+    font-size: 14px;
+  }
 
+  
 }
