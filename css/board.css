@@ -24,7 +24,7 @@ body {
     --13: #ffe62b;
     --14: #ff4646;
     --15: #ffbb2b;
-  }
+}
 
 #content {
     display: flex;
@@ -53,12 +53,12 @@ body {
 
 
 #overlayAddTask {
-  display: none;
+    display: none;
 }
 
 #overlayAddTask {
     display: none;
-  }
+}
 
 .find_task {
     display: flex;
@@ -168,13 +168,13 @@ body {
     border-radius: 10px;
     background: #2a3647;
     color: white;
-  }
-  
-  .button_design:hover {
+}
+
+.button_design:hover {
     cursor: pointer;
     background-color: #29abe2;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  }
+}
 
 
 .add_task_img {
@@ -595,8 +595,10 @@ body {
     width: 246px;
     height: 48px;
     border-radius: 10px;
-    border: 1px solid black; /* Border-Stärke hinzugefügt */
-    gap: 10px; /* Abstand zwischen den flexiblen Elementen hinzugefügt */
+    border: 1px solid black;
+    /* Border-Stärke hinzugefügt */
+    gap: 10px;
+    /* Abstand zwischen den flexiblen Elementen hinzugefügt */
     display: flex;
     top: 0;
     left: 0;
@@ -616,19 +618,39 @@ body {
     font-size: 12px;
     line-height: 14.4px;
     font-weight: 400;
-  }
+}
 
-  .hole_contact {
+.hole_contact {
     display: flex;
     align-items: center;
     /* border: 2px solid blue; */
-  }
-  
+}
 
-  .contact {
+
+.contact {
     /* border: 2px solid green; */
     height: 100%;
     display: flex;
     align-items: center;
-  }
-  
+}
+
+@media (min-width: 1000px){
+
+    .display_none_media_1000 {
+        display: none;
+    }
+}
+
+
+@media (max-width: 1000px) {
+
+    .display_none_media {
+
+        display: none;
+    }
+
+    .user_story_content {
+        flex-direction: column;
+        /* Ändert das Layout wieder auf oben nach unten für Bildschirme <= 1000px */
+    }
+}
