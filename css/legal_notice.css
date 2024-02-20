@@ -9,7 +9,7 @@ body {
   font-family: inter;
   margin: 0;
   height: 100vh;
-  width: 1920px;
+  max-width: 1920px;
   display: flex;
 }
 
@@ -56,4 +56,21 @@ h1 {
 
 #text_container::-webkit-scrollbar {
   display: none;
+}
+
+@media (max-width: 1000px){
+
+  #text_container{
+    padding-top: 64px;
+  }
+}
+
+@media (max-width: 500px){
+  #text_container{
+    margin: 36px;
+    padding-bottom: 56px;
+  }
+  h1{
+   font-size: 47px;
+  }
 }

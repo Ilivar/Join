@@ -10,7 +10,7 @@ body {
   margin: 0;
   height: 100dvh;
   display: flex;
-  width: 1920px;
+  max-width: 1920px;
 }
 
 h1 {
@@ -62,6 +62,19 @@ h1 {
   display: none;
 }
 
-#burgermenu{
-  
+@media (max-width: 1000px){
+
+  #text_container{
+    padding-top: 64px;
+  }
+}
+
+@media (max-width: 500px){
+  #text_container{
+    margin: 36px;
+    padding-bottom: 40px;
+  }
+  #headline{
+   font-size: 47px;
+  }
 }
