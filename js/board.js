@@ -332,7 +332,7 @@ async function openDialogEdit(todoIndex) {
   const subtask = todos[todoIndex].subtasks[i];
   }
 
-  // let activeButton = null;
+  
 
   document.getElementById("todo_HTML").style.display = "flex";
   document.getElementById("close_dialog").style.display = "none";
@@ -405,35 +405,34 @@ async function openDialogEdit(todoIndex) {
   </div>
   `;
 
-  console.log(due_date);
-  // console.log(prio);
-  console.log(document.getElementById("input_date").value);
-
   document.getElementById("input_title").value = newtitle;
   document.getElementById("description").value = description;
   document.getElementById("input_date").value = due_date;
-  // document.getElementById('dialogPrio').value = prio;
-  // document.getElementById('subtask_list').value = subtask;
 
+  
+
+  
   contacts = value[0].contacts;
   await renderContacts();
   prioMediumOnLoad();
   futureDate();
 
-  // Leere das Element, um sicherzustellen, dass keine vorherigen Inhalte vorhanden sind
+  
+ 
 }
 
 function dataToBackend(todoIndex) {
   let newtitle = document.getElementById('input_title').value;
   let description = document.getElementById('description').value;
   let due_Date = document.getElementById('input_date').value;
-  // let prio = document.getElementById('dialogPrio').value;
-  // const newsSubtask = todos[todoIndex].subtasks[i];
+  let button = activeButton.replace("button", "");
+  let prioButton = button;
   
  
   todos[todoIndex].title = newtitle;
   todos[todoIndex].description = description;
   todos[todoIndex].due_date = due_Date;
+  todos[todoIndex].prio = prioButton;
   // todos[todoIndex].prio = prio;
 
   setItem("users", currentUserData);
