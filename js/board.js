@@ -243,7 +243,7 @@ function openDialog(todoIndex) {
   // Extrahieren der assigned_to-Daten des Todos in die Variable contactsboard
   const contactsboard = todo.assigned_to;
 
-  console.log("contactsboard-Daten:", contactsboard);
+  // console.log("contactsboard-Daten:", contactsboard);
 
   // Anzeige des Dialogfelds
   document.getElementById("todo_HTML").style.display = "flex";
@@ -261,9 +261,9 @@ function openDialog(todoIndex) {
         </button>
       </div>
       <div id="title" class="title_dialog">${todo.title}</div>
-      <div class="description_dialog">${todo.description}</div>
-      <div class="date_dialog">Due Date: ${todo.due_date}</div>
-      <div class="prio_dialog">Priority: ${todo.prio}
+      <div id="description" class="description_dialog">${todo.description}</div>
+      <div><p>Due date: <p><div id="dialogDueDate"class="date_dialog">${todo.due_date}</div></div>
+      <div><p>Priority:</p><div id="dialogPrio" class="prio_dialog">${todo.prio}</div>
         <div>
         <img src="${prioImage}" alt="Priority" class="priority_image">
         </div>
@@ -320,19 +320,19 @@ function openDialog(todoIndex) {
 /////////////////////////////////////////////
 
 async function openDialogEdit(todoIndex) {
-  console.log(todos);
   const todo = todos[todoIndex];
-  // const contactsboard = todo.assigned_to;
-  let title = todos[todoIndex].title;
-  let description = todos[todoIndex].description;
-  let due_date = todos[todoIndex].due_date;
-  let prio = todos[todoIndex].prio;
-  let assigned_to = todos[todoIndex].assigned_to;
-  let subtask = todos[todoIndex].subtask;
+  let newtitle = document.getElementById('title').innerHTML;
+  let description = document.getElementById('description').innerHTML;
+  let due_date = document.getElementById('dialogDueDate').innerHTML;
+  // let prio = document.getElementById('dialogPrio').innerHTML;
+  // let assigned_to = todos[todoIndex].assigned_to;
+  // let subtask = document.getElementById('subtask_list').innerHTML;
 
-  newtitle = document.getElementById('title').innerHTML;
+  for (let i = 0; i < todos[todoIndex].subtasks.length; i++) {
+  const subtask = todos[todoIndex].subtasks[i];
+  }
 
- 
+  // let activeButton = null;
 
   document.getElementById("todo_HTML").style.display = "flex";
   document.getElementById("close_dialog").style.display = "none";
@@ -402,13 +402,18 @@ async function openDialogEdit(todoIndex) {
               <p> Ok</p>
               <!-- <img src="../assets/img/check.svg"> -->
           </button>
-
   </div>
   `;
+
+  console.log(due_date);
+  // console.log(prio);
+  console.log(document.getElementById("input_date").value);
 
   document.getElementById("input_title").value = newtitle;
   document.getElementById("description").value = description;
   document.getElementById("input_date").value = due_date;
+  // document.getElementById('dialogPrio').value = prio;
+  // document.getElementById('subtask_list').value = subtask;
 
   contacts = value[0].contacts;
   await renderContacts();
@@ -420,7 +425,17 @@ async function openDialogEdit(todoIndex) {
 
 function dataToBackend(todoIndex) {
   let newtitle = document.getElementById('input_title').value;
+  let description = document.getElementById('description').value;
+  let due_Date = document.getElementById('dialogDueDate').value;
+  // let prio = document.getElementById('dialogPrio').value;
+  // const newsSubtask = todos[todoIndex].subtasks[i];
+  
+ 
   todos[todoIndex].title = newtitle;
+  todos[todoIndex].description = description;
+  todos[todoIndex].due_date = due_Date;
+  // todos[todoIndex].prio = prio;
+
   setItem("users", currentUserData);
   updateHTML();
   closeDialog();
