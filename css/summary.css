@@ -25,7 +25,7 @@ body {
 
 .summary_main {
   display: flex;
-  width: 100%;
+  width: 40%;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
