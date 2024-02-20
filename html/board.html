@@ -22,10 +22,10 @@
     
 
      <!-- Header Template  -->
-     <div w3-include-html="../assets/templates/sidebar_template.html"></div>
+     <div w3-include-html="../assets/templates/sidebar_template.html"></div> <div w3-include-html="../assets/templates/mobile_bot_template.html"></div>
 
     <div class="board_background_color">
-      <div w3-include-html="../assets/templates/header_template.html"></div>
+      <div w3-include-html="../assets/templates/header_template.html"></div> <div w3-include-html="../assets/templates/mobile_header_template.html"></div>
 
       <div>
 
@@ -71,9 +71,9 @@
                 To do
               </div>
 
-              <div class="todo_plus_content">
+              <div class="todo_plus_content" onclick="AddTaskToDo(drag_to_do)">
 
-                <img class="todo_plus_img" onclick="AddTaskToDo(drag_to_do)" src="../assets/img/plus_icon_small.svg" alt="" />
+                <img class="todo_plus_img"  src="../assets/img/plus_icon_small.svg" alt="" />
 
               </div>
 
@@ -85,9 +85,9 @@
                 In progress
               </div>
 
-              <div class="todo_plus_content">
+              <div class="todo_plus_content" onclick="AddTaskProgress(drag_in_progress)">
 
-                <img class="todo_plus_img" onclick="AddTaskProgress(drag_in_progress)" src="../assets/img/plus_icon_small.svg" alt="" />
+                <img class="todo_plus_img"  src="../assets/img/plus_icon_small.svg" alt="" />
 
               </div>
 
@@ -99,9 +99,9 @@
                 Await feedback
               </div>
 
-              <div class="todo_plus_content">
+              <div class="todo_plus_content" onclick="AddTaskAwaitFeedback(drag_await_feedback)">
 
-                <img class="todo_plus_img" onclick="AddTaskAwaitFeedback(drag_await_feedback)" src="../assets/img/plus_icon_small.svg" alt="" />
+                <img class="todo_plus_img"  src="../assets/img/plus_icon_small.svg" alt="" />
 
               </div>
 

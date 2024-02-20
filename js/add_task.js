@@ -219,6 +219,7 @@ function setActiveButton(buttonId, imgSrc, bgColor) {
     document.getElementById("lowImg").src = imgSrc;
   }
   activeButton = buttonId;
+  console.log( 'Add Tas Zeile 222',activeButton) 
 }
 
 function prioMediumOnLoad() {
