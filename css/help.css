@@ -80,3 +80,17 @@ body {
 
 /* responsive */
 
+@media (max-width: 1000px){
+  #explanation{
+    margin-bottom: 40px;
+  }
+  #text_container{
+    padding-top: 64px;
+  }
+}
+
+@media (max-width: 500px){
+  #text_container{
+    margin: 36px;
+  }
+}
