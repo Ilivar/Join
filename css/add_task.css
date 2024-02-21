@@ -739,6 +739,21 @@ h4 {
 
 @media(max-width: 450px) {
 
+  .prio_area {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .input_field_board { 
+    width: 92%;
+    padding: 7px 7px 7px 7px;
+  }
+
+  .input_field_date_board { 
+    width: 92%;
+    padding: 7px 7px 7px 7px;
+  }
+
   .clear_task {
     display: none;
   }
