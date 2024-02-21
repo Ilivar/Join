@@ -133,8 +133,8 @@ function generateTodoHTML(element, i) {
 
   return `
     <div draggable="true" ondragstart="startDragging(${element['id']})">
-    <button class="z_index" onclick="moveTodo(${i}, 'up')">↑</button>
-    <button class="z_index" onclick="moveTodo(${i}, 'down')">↓</button>
+    <button class="z_index display_none_media_1000" onclick="moveTodo(${i}, 'up')">↑</button>
+    <button class="z_index display_none_media_1000" onclick="moveTodo(${i}, 'down')">↓</button>
       <div class="task_content" onclick="openDialog(${i})">
         <div class="card_content">
           <div class="d_flex">
