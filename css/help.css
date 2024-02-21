@@ -12,6 +12,7 @@ body {
   display: flex;
   max-width: 1920px;
   width: 100%;
+  flex-direction: column;
 }
 
 .header{
