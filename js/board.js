@@ -132,7 +132,7 @@ function generateTodoHTML(element, i) {
   const categoryBackgroundColor = backgroundColorCategory(element.category);
 
   return `
-    <div draggable="true" ondragstart="startDragging(${element['id']})">
+    <div class="drag_div_height" draggable="true" ondragstart="startDragging(${element['id']})">
     <button class="z_index display_none_media_1000" onclick="moveTodo(${i}, 'up')">↑</button>
     <button class="z_index display_none_media_1000" onclick="moveTodo(${i}, 'down')">↓</button>
       <div class="task_content" onclick="openDialog(${i})">

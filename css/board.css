@@ -696,9 +696,9 @@ body {
     .user_story_content {
         flex-direction: column; 
             display: flex;
-            width: 0px;
+            width: 100%;
             height: 62%;
-            padding: 0px 20px;
+            padding: 0px 0px;
             align-items: flex-start;
             justify-content: space-between;
             gap: 26px;
@@ -711,9 +711,12 @@ body {
 
     .drag-area {
         display: flex;
-        height: 252px;
-        width: 100%;
+        height: 100%;
+        width: 270px;
         background-color: transparent;
+        overflow: auto;
+        min-height: 310px;
+    overflow-y: hidden;
         /* Transparente Hintergrundfarbe */
         border: none;
         gap: 10px;
@@ -723,7 +726,7 @@ body {
     }
 
     .drag_area_done{
-        padding-bottom: 150px;
+        /* padding-bottom: 150px; */
     }
 
     .board_main {
@@ -851,6 +854,10 @@ body {
 
 .d_flex{
     display: flex;
+}
+
+.drag_div_height{
+    height: 350px;
 }
 
 /* button {
