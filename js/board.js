@@ -208,6 +208,7 @@ function moveTodo(todoIndex, direction) {
   todos[todoIndex].status = targetColumn;
 
   // Aktualisieren der Anzeige
+  setItem("users", currentUserData);
   updateHTML();
 }
 
