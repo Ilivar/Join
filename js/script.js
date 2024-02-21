@@ -40,9 +40,6 @@ async function includeHTML() {
   }
 }
 
-async function createSampleTasks() {}
-
-async function fillUserToContacts() {}
 
 async function renderUserInitial() {
   let currentUserName = value[0].name;
@@ -54,10 +51,23 @@ async function renderUserInitial() {
   });
 
   document.getElementById("user_icon_login").innerHTML = initials;
+  document.getElementById("user_icon_login_mobile").innerHTML = initials;
 }
 
 function openBurgerMenu() {
   document.getElementById("burger_menu").style.display = "flex";
+}
+
+function closeBurgerMenu() {
+  document.getElementById("burger_menu").style.display = "none";
+}
+
+function openBurgerMenuMobile() {
+  document.getElementById("burger_menu_mobile").style.display = "flex";
+}
+
+function closeBurgerMenuMobile() {
+  document.getElementById("burger_menu_mobile").style.display = "none";
 }
 
 function backToLastPage() {

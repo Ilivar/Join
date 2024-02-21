@@ -1,11 +1,17 @@
 <div id="mobile_header">
   <img src="../assets/img/Capa 2.svg" alt="" />
-  <div onclick="openBurgerMenu()" id="user_icon_login_mobile"></div>
+  <div onclick="openBurgerMenuMobile()" id="user_icon_login_mobile"></div>
+</div>
+<div id="burger_menu_mobile">
+  <a href="legal_notice.html">Legal Notice</a>
+  <a href="privacy_policy.html">Privacy Policy</a>
+  <a href="help.html">Help</a>
+  <a href="index.html">Log out</a>
 </div>
 
 <style>
   #mobile_header {
-    position: fixed;
+    position: relative;
     z-index: 1;
     top: 0;
     left: 0;
@@ -33,9 +39,24 @@
     margin-right: 32px;
   }
 
-
   #mobile_header img {
     width: 32px;
+  }
+
+  #burger_menu_mobile {
+    width: 150px;
+    height: 158px;
+    background-color: #2a3647;
+    position: absolute;
+    top: 96px;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 20px 0px 20px 20px;
+    font-size: 16px;
+    font-weight: 400;
   }
 
   @media (max-width: 1000px) {
