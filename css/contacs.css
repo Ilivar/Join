@@ -20,7 +20,7 @@
 body {
  display: flex;
   height: 100vh;
-  width: 1920px;
+  max-width: 1920px;
   margin: 0;
 }
 
@@ -83,7 +83,7 @@ h2 {
 
 .content_area {
   display: flex;
-  width: 1202px;
+  width: 100%;
   height: 80%;
 }
 
@@ -421,6 +421,69 @@ align-items: center;
 margin-top: 24px;
 }
 
+
+
 #current_unser_email{
   color: #7e7cee;
+}
+
+@media (max-width: 1200px) {
+  .contact_list{
+    width: 340px;
+  }
+
+  .button_design{
+    width: 300px;
+  }
+
+  .headline_metrics{
+    display: none;
+  }
+  #details_name_area{
+    width: 100%;
+  }
+  #details_name_icon{
+    scale: 0.5;
+  }
+  #details_name{
+    font-size: 36px ;
+  }
+}
+
+@media (max-width: 1000px) {
+  #right_content{
+    display: none;
+  }
+
+  .content_area{
+    margin-top: 80px;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact_list{
+    height: 100%;
+  }
+
+  #help_container{
+    position: relative;
+  }
+
+.button_design{
+  position: fixed;
+  width: 56px;
+  height: 56px;
+  border-radius: 50px;
+  padding: 0;
+  right: 16px;
+  bottom: 0px;
+}
+
+  .button_design p{
+    display: none;
+  
+  }
+
 }

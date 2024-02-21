@@ -18,7 +18,7 @@
       <div class="overlay_add_contact" id="overlayAddContact">
         <div
           id="overlay_card_add"
-          w3-include-html="../assets/templates/add_contact_overlay.html"  
+          w3-include-html="../assets/templates/add_contact_overlay.html"
         ></div>
       </div>
       <div class="overlay_add_contact" id="editContact">
@@ -27,31 +27,37 @@
         </div>
       </div>
 
-      <div w3-include-html="../assets/templates/sidebar_template.html"></div>  <div w3-include-html="../assets/templates/mobile_bot_template.html"></div>
+      <div w3-include-html="../assets/templates/sidebar_template.html"></div>
+      <div w3-include-html="../assets/templates/mobile_bot_template.html"></div>
       <div class="content">
         <div class="background">
-          <div w3-include-html="../assets/templates/header_template.html"></div>  <div w3-include-html="../assets/templates/mobile_header_template.html"></div>
+          <div w3-include-html="../assets/templates/header_template.html"></div>
+          <div
+            w3-include-html="../assets/templates/mobile_header_template.html"
+          ></div>
           <div class="content_area">
             <div class="contact_list">
-              <div class="button_design" onclick="openNewContact()">
-                <p class="add_new_contact">Add new contact</p>
-                <img src="../assets/img/person_add.svg" />
-              </div>
-              <div id="current_user_data_block">
-                <h2 id="current_user_name"></h2>
-                <a id="current_unser_email"href="#"></a>
-                <p id="current_user_phone"></p>
-              </div>
-              <div id="conctactMemberField" class="contact_member"></div>
-            </div>
-            <div id="right_content">
-              <div class="text_right">
-                <span class="title">Contacts</span>
-                <div class="headline_between">
-                  <img src="../assets/img/vektor_senkrecht.svg" alt="" />
+              <!-- TODO eventuell helper div!  -->
+                <div class="button_design" onclick="openNewContact()">
+                  <p class="add_new_contact">Add new contact</p>
+                  <img src="../assets/img/person_add.svg" />
                 </div>
-                <span class="headline_metrics">Better with a team</span>
+                <div id="current_user_data_block">
+                  <h2 id="current_user_name"></h2>
+                  <a id="current_unser_email" href="#"></a>
+                  <p id="current_user_phone"></p>
+                </div>
+                <div id="conctactMemberField" class="contact_member"></div>
               </div>
+              <div id="right_content">
+                <div class="text_right">
+                  <span class="title">Contacts</span>
+                  <div class="headline_between">
+                    <img src="../assets/img/vektor_senkrecht.svg" alt="" />
+                  </div>
+                  <span class="headline_metrics">Better with a team</span>
+                </div>
+              
               <div id="details_container"></div>
             </div>
           </div>
