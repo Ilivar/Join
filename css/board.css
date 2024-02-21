@@ -640,6 +640,10 @@ body {
         width: 350px;
     }
 
+    .edit_dialog_content {
+        width: 350px;
+    }
+
     .dialog_delete_edit { 
         width: 225px;
     }
@@ -653,6 +657,11 @@ body {
     .dialog_content {
         width: 210px;
     }
+
+    .edit_dialog_content {
+        width: 210px;
+    }
+
 
     .category_x {
         width: 220px;
