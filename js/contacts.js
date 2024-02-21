@@ -7,6 +7,8 @@ async function init() {
   await renderContacts();
   renderCurrentUserDataBlock();
   renderUserInitial();
+  openBurgerMenu();
+  openBurgerMenuMobile();
 }
 
 function openNewContact() {
@@ -136,11 +138,24 @@ function addNewContact() {
   renderContacts();
 }
 
+function changeTargetOfDetails() {
+  if (window.innerWidth < 1000) {
+    let detail_info = document.getElementById("right_content");
+    detail_info.style.display = "flex";
+    detail_info.style.position = "absolute";
+    detail_info.style.top = "0";
+    detail_info.style.right = "0";
+    detail_info.style.width = "300px";
+    detail_info.style.zIndex = "100";
+  }
+}
+
 function openDetails(i) {
   let currentInfoName = document.getElementById("piked_name" + i).innerHTML;
   let currentInfoEmail = document.getElementById("piked_email" + i).innerHTML;
   let currentInfoPhone = document.getElementById("piked_phone" + i).innerHTML;
-
+  
+  if (window.innerWidth < 1000) {}
   document.getElementById("details_container").innerHTML = /*html*/ `
     <div id="details_name_area">
                   <div id="details_name_icon"></div>
@@ -216,3 +231,19 @@ function slideInEdit(){
   overlay.style.right = "50%";
   overlay.style.transform = "translate(50%, 0%)"
 }
+
+function setOverlayPath() {
+  var overlayDiv = document.getElementById('overlay_card_add');
+  if (window.innerWidth > 1000) {
+      overlayDiv.setAttribute('w3-include-html', '../assets/templates/add_contact_overlay.html');
+  } else {
+      overlayDiv.setAttribute('w3-include-html', '../assets/templates/mobile_add_contact_overlay.html');
+  }
+}
+
+window.addEventListener('resize', setOverlayPath);
+document.addEventListener('DOMContentLoaded', function() {
+  setOverlayPath();
+});
+
+

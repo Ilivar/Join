@@ -19,9 +19,10 @@
 
 body {
   display: flex;
-  height: 100vh;
+  max-height: 100vh;
   max-width: 1920px;
   margin: 0;
+  flex-direction: column;
 }
 
 h2 {
@@ -36,14 +37,9 @@ h2 {
   display: none;
 }
 
-.header {
-  position: sticky;
-}
-
 .side {
   display: flex;
   width: 100%;
-  height: 100vh;
 }
 
 .overlay_add_contact {
@@ -77,20 +73,17 @@ h2 {
 
 .background {
   width: 100%;
-  height: 100vh;
   background: #f6f7f8;
 }
 
 .content_area {
   display: flex;
   width: 100%;
-  height: 80%;
 }
 
 .contact_list {
   display: flex;
-  width: 456px;
-  height: 111.5%;
+  max-width: 312px;
   flex-shrink: 0;
   background: var(--white, #fff);
   box-shadow: 4px 0px 6px 0px rgba(0, 0, 0, 0.08);
@@ -460,13 +453,31 @@ h2 {
 }
 
 @media (max-width: 1000px) {
+  body {
+    height: 100vh;
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
 
   #right_content {
     display: none;
   }
 
+  #mobile_header {
+    z-index: 1;
+  }
+
+  #burger_menu_mobile {
+    z-index: 1;
+    top: 80px !important;
+  }
+
+  #helper_div {
+    z-index: 0;
+  }
+
   .content_area {
-    height: 100vh;
     align-items: center;
     justify-content: center;
   }
@@ -475,8 +486,9 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    height:100%;
     max-width: 320px;
+    overflow: auto;
+    position: relative;
   }
 
   .hole_contact {
@@ -485,27 +497,19 @@ h2 {
     padding: 0;
   }
 
-  .contact{
-    width: 100%;
-  }
-
   .contact_member {
     width: 100%;
+    height: calc(100vh - 260px);
   }
 
   .contact-group {
     display: flex;
     flex-direction: column;
     justify-content: center;
-   
   }
 
   .contact-group img {
     width: 100%;
-  }
-
-  #helper_div {
-    position: relative;
   }
 
   .button_design {
@@ -515,11 +519,14 @@ h2 {
     border-radius: 50px;
     padding: 0;
     right: 16px;
-    bottom: 0px;
+    bottom: 90px;
   }
 
   .button_design p {
     display: none;
+  }
+  #card{
+    margin-left: 200px;
   }
 
 }
