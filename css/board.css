@@ -451,7 +451,7 @@ body {
     left: 50%;
     right: 0;
     transform: translate(-50%, -50%);
-    height: 931px;
+    height: 900px;
     width: 525px;
     display: flex;
     flex-direction: column;
@@ -632,6 +632,31 @@ body {
     height: 100%;
     display: flex;
     align-items: center;
+}
+
+@media(max-width: 650px) {
+
+    .dialog_content {
+        width: 350px;
+    }
+
+    .dialog_delete_edit { 
+        width: 225px;
+    }
+
+    .category_x {
+        width: 350px;
+    }
+}
+
+@media(max-width: 460px) {
+    .dialog_content {
+        width: 210px;
+    }
+
+    .category_x {
+        width: 220px;
+    }
 }
 
 @media (min-width: 1000px){
