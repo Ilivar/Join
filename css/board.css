@@ -451,7 +451,7 @@ body {
     left: 50%;
     right: 0;
     transform: translate(-50%, -50%);
-    height: 900px;
+    height: 750px;
     width: 525px;
     display: flex;
     flex-direction: column;
@@ -473,7 +473,7 @@ body {
     left: 50%;
     right: 0;
     transform: translate(-50%, -50%);
-    height: 931px;
+    height: 750px;
     width: 525px;
     display: none;
     flex-direction: column;
@@ -557,7 +557,6 @@ body {
 
 
 .dialog_delete_edit {
-    margin-top: 100px;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
