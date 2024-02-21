@@ -18,7 +18,7 @@
 }
 
 body {
- display: flex;
+  display: flex;
   height: 100vh;
   max-width: 1920px;
   margin: 0;
@@ -36,7 +36,7 @@ h2 {
   display: none;
 }
 
-.header{
+.header {
   position: sticky;
 }
 
@@ -44,11 +44,11 @@ h2 {
   display: flex;
   width: 100%;
   height: 100vh;
- 
 }
 
 .overlay_add_contact {
   display: none;
+  z-index: 1;
   position: fixed;
   top: 0;
   left: 0;
@@ -60,7 +60,7 @@ h2 {
   top: 0;
 }
 
-.content{
+.content {
   width: 100%;
 }
 
@@ -259,7 +259,7 @@ h2 {
 .contact_member {
   /* border: 2px solid rebeccapurple; */
   width: 350px;
-  /* overflow:auto; */
+  overflow:auto;
 }
 
 .button {
@@ -302,7 +302,6 @@ h2 {
   scale: 1.1;
 }
 
-
 #del_button_edit {
   display: flex;
   height: 50px;
@@ -321,7 +320,6 @@ h2 {
   color: #29abe2;
   scale: 1.1;
 }
-
 
 .input_field {
   position: relative;
@@ -352,7 +350,7 @@ h2 {
   border-radius: 5px;
 }
 
-#edit_buttons{
+#edit_buttons {
   display: flex;
   flex-direction: row;
   gap: 8px;
@@ -390,7 +388,6 @@ h2 {
 #edit_button:hover {
   color: #29abe2;
   scale: 1.1;
-
 }
 
 #overlay_card_edit {
@@ -400,7 +397,7 @@ h2 {
   border-radius: 10%;
 }
 
-#editContact{
+#editContact {
   display: none;
   position: fixed;
   top: 0;
@@ -413,77 +410,110 @@ h2 {
   top: 0;
 }
 
-#current_user_data_block{
+#current_user_data_block {
   display: flex;
   flex-direction: column;
-justify-content: center;
-align-items: center;
-margin-top: 24px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
 }
 
+#helper_div {
+  display: flex;
+  position: relative;
+}
 
-
-#current_unser_email{
+#current_unser_email {
   color: #7e7cee;
 }
 
 @media (max-width: 1200px) {
-  .contact_list{
+  .contact_list {
     width: 340px;
   }
 
-  .button_design{
+  .button_design {
     width: 300px;
   }
 
-  .headline_metrics{
-    display: none;
+  .contact-group img {
+    width: 90%;
   }
-  #details_name_area{
+
+  .contact_member {
     width: 100%;
   }
-  #details_name_icon{
+
+  .headline_metrics {
+    display: none;
+  }
+  #details_name_area {
+    width: 100%;
+  }
+  #details_name_icon {
     scale: 0.5;
   }
-  #details_name{
-    font-size: 36px ;
+  #details_name {
+    font-size: 36px;
   }
 }
 
 @media (max-width: 1000px) {
-  #right_content{
+
+  #right_content {
     display: none;
   }
 
-  .content_area{
-    margin-top: 80px;
+  .content_area {
     width: 100%;
     height: 100%;
     align-items: center;
     justify-content: center;
   }
 
-  .contact_list{
-    height: 100%;
+  .contact_list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 500px;
+    overflow:auto;
+
   }
 
-  #help_container{
+  .hole_contact {
+    width: 100%;
+  }
+
+  .contact_member {
+    width: 100%;
+  }
+
+  .contact-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-group img {
+    width: 90%;
+  }
+
+  #helper_div {
     position: relative;
+
   }
 
-.button_design{
-  position: fixed;
-  width: 56px;
-  height: 56px;
-  border-radius: 50px;
-  padding: 0;
-  right: 16px;
-  bottom: 0px;
-}
+  .button_design {
+    position: fixed;
+    width: 56px;
+    height: 56px;
+    border-radius: 50px;
+    padding: 0;
+    right: 16px;
+    bottom: 0px;
+  }
 
-  .button_design p{
+  .button_design p {
     display: none;
-  
   }
 
 }
