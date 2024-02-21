@@ -13,7 +13,10 @@
 
   <body onload="init()">
     <!-- Header Template  -->
-
+    <div w3-include-html="../assets/templates/header_template.html"></div>
+    <div
+      w3-include-html="../assets/templates/mobile_header_template.html"
+    ></div>
     <div class="side">
       <div class="overlay_add_contact" id="overlayAddContact">
         <div
@@ -26,15 +29,9 @@
           <div w3-include-html="../assets/templates/edit_contact.html"></div>
         </div>
       </div>
-
       <div w3-include-html="../assets/templates/sidebar_template.html"></div>
-      <div w3-include-html="../assets/templates/mobile_bot_template.html"></div>
       <div class="content">
         <div class="background">
-          <div w3-include-html="../assets/templates/header_template.html"></div>
-          <div
-            w3-include-html="../assets/templates/mobile_header_template.html"
-          ></div>
           <div class="content_area">
             <div id="helper_div">
               <div class="contact_list">
@@ -57,7 +54,6 @@
                   </div>
                   <span class="headline_metrics">Better with a team</span>
                 </div>
-
                 <div id="details_container"></div>
               </div>
             </div>
@@ -65,5 +61,6 @@
         </div>
       </div>
     </div>
+    <div w3-include-html="../assets/templates/mobile_bot_template.html"></div>
   </body>
 </html>

@@ -40,12 +40,11 @@ async function includeHTML() {
   }
 }
 
-
 async function renderUserInitial() {
   let currentUserName = value[0].name;
   let names = currentUserName.split(" ");
   let initials = "";
-  
+
   names.forEach((name) => {
     initials += name.charAt(0).toUpperCase();
   });
@@ -55,19 +54,21 @@ async function renderUserInitial() {
 }
 
 function openBurgerMenu() {
-  document.getElementById("burger_menu").style.display = "flex";
-}
-
-function closeBurgerMenu() {
-  document.getElementById("burger_menu").style.display = "none";
+  let burgerMenuDisplay = document.getElementById("burger_menu").style.display;
+  if (burgerMenuDisplay=== "none") {
+    document.getElementById("burger_menu").style.display = "flex";
+  } else {
+    document.getElementById("burger_menu").style.display = "none";
+  }
 }
 
 function openBurgerMenuMobile() {
-  document.getElementById("burger_menu_mobile").style.display = "flex";
-}
-
-function closeBurgerMenuMobile() {
-  document.getElementById("burger_menu_mobile").style.display = "none";
+  let burgerMenuMobile = document.getElementById("burger_menu_mobile").style.display;
+  if (burgerMenuMobile === "none") {
+    document.getElementById("burger_menu_mobile").style.display = "flex";
+  } else {
+    document.getElementById("burger_menu_mobile").style.display = "none";
+  }
 }
 
 function backToLastPage() {
