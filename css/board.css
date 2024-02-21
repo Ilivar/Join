@@ -451,7 +451,7 @@ body {
     left: 50%;
     right: 0;
     transform: translate(-50%, -50%);
-    height: 931px;
+    height: 750px;
     width: 525px;
     display: flex;
     flex-direction: column;
@@ -473,7 +473,7 @@ body {
     left: 50%;
     right: 0;
     transform: translate(-50%, -50%);
-    height: 931px;
+    height: 750px;
     width: 525px;
     display: none;
     flex-direction: column;
@@ -557,7 +557,6 @@ body {
 
 
 .dialog_delete_edit {
-    margin-top: 100px;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
@@ -634,6 +633,40 @@ body {
     align-items: center;
 }
 
+@media(max-width: 650px) {
+
+    .dialog_content {
+        width: 350px;
+    }
+
+    .edit_dialog_content {
+        width: 350px;
+    }
+
+    .dialog_delete_edit { 
+        width: 225px;
+    }
+
+    .category_x {
+        width: 350px;
+    }
+}
+
+@media(max-width: 460px) {
+    .dialog_content {
+        width: 210px;
+    }
+
+    .edit_dialog_content {
+        width: 210px;
+    }
+
+
+    .category_x {
+        width: 220px;
+    }
+}
+
 @media (min-width: 1000px){
 
     .display_none_media_1000 {
@@ -644,10 +677,10 @@ body {
 
 @media (max-width: 1000px) {
 
-    .background_color {
+    .board_background_color {
         background: #F6F7F8;
         width: 100%;
-        height: 100%;
+        height: 1900px;
     }
 
     .margin_top{
@@ -664,7 +697,7 @@ body {
     .user_story_content {
         flex-direction: column; 
             display: flex;
-            width: 1076px;
+            width: 0px;
             height: 62%;
             padding: 0px 20px;
             align-items: flex-start;
@@ -690,15 +723,19 @@ body {
         /* position: relative; */
     }
 
+    .drag_area_done{
+        padding-bottom: 150px;
+    }
+
     .board_main {
         display: flex;
-        flex-direction: column;
+        /* flex-direction: column; */
         width: 300px;
         height: 152px;
         flex-shrink: 0;
-        margin-top: 100px;
         /* margin-bottom: 79.5px; */
         margin-right: 20px;
+        margin-top: 0px;
     }
 
     .board_content {
@@ -782,6 +819,7 @@ body {
     border: 1px solid var(--icon, #A8A8A8);
     background: #FFF;
     margin-left: 10px;
+    margin-bottom: 20px;
    }
 
    .find_task_input {
@@ -822,9 +860,9 @@ body {
     box-shadow: white;
 } */
 
-.z_index{
+/* .z_index{
     position: relative;
     z-index: 1;
-}
+} */
 
 }
