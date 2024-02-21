@@ -367,9 +367,6 @@ async function openDialogEdit(todoIndex) {
   let description = document.getElementById('description').innerHTML;
   let due_date = document.getElementById('dialogDueDate').innerHTML;
 
-  // for (let i = 0; i < todos[todoIndex].subtasks.length; i++) {
-  //   const subtask = todos[todoIndex].subtasks[i]; }
-
   document.getElementById("todo_HTML").style.display = "flex";
   document.getElementById("close_dialog").style.display = "none";
   document.getElementById("edit_dialog").style.display = "flex";
@@ -381,20 +378,16 @@ async function openDialogEdit(todoIndex) {
           <img src="../assets/img/close.svg" alt="">
         </button>
     </div>
-
-    <div class="title_area">
+    <div class="title_area_board">
       <h4> Title</h4>
-      <input class="input_field" id="input_title" type="text" placeholder="Enter a title" required/>
+      <input class="input_field_board" id="input_title" type="text" placeholder="Enter a title" required/>
     </div>
-    
-    <div class="description_area">
+    <div class="description_area_board">
       <h4> Description</h4>
-      <textarea class="textarea_field" id="description"  rows="4" cols="50" placeholder="Enter a Description"></textarea>
+      <textarea class="textarea_field_board" id="description"  rows="4" cols="50" placeholder="Enter a Description"></textarea>
     </div>
-
     <h4> Due date *</h4>
-    <input class="input_field_date" id="input_date" type="date" min="" required/>
-  	
+    <input class="input_field_date_board" id="input_date" type="date" min="" required/>
     <h4> Prio </h4>
         <div class="prio_area">
             <div id="buttonUrgent" class="prio" onclick="buttonUrgent()">
@@ -410,11 +403,10 @@ async function openDialogEdit(todoIndex) {
                 <img id="lowImg" src="../assets/img/Prio down.svg">
             </div>
         </div>
-
         <div class="assi_area">
             <h4>Assigned to</h4>
             <div class="accordion">
-                <div class="head_arccordion" onclick="toggleAccordion(this)">
+                <div class="head_arccordion_board" onclick="toggleAccordion(this)">
                     <div id="search_area"><p>Select contacts to assign</p></div>
                     <img src="../assets/img/arrow_drop_downaa.svg">
                 </div>
@@ -426,18 +418,14 @@ async function openDialogEdit(todoIndex) {
             </div>
             <div id="aktiveMemberIcons"></div>
         </div>
-
         <h4>Subtasks</h4>
-          <div class="assigned_area">
+          <div class="assigned_area_board">
               <input class="input_field_subtask" id="input_subtask" type="text" placeholder="Add new subtask" onclick="clickInputSubTask()"/>
               <div id="sub_task_image_area"><img src="../assets/img/plus icon.svg"></div>
           </div>
-          
           <div id="sub_task_listelements"></div>
-
-          <button type="submit" class="create_task" onclick="dataToBackend(${todoIndex})" > 
+          <button type="submit" class="create_task_board" onclick="dataToBackend(${todoIndex})" > 
               <p> Ok</p>
-              <!-- <img src="../assets/img/check.svg"> -->
           </button>
   </div>
   `;
