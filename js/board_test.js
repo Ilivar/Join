@@ -581,3 +581,51 @@ let todos = [{
       document.getElementById("drag_done").innerHTML += generateTodoHTML(element);
     }
   }
+
+
+
+  function moveTask(todoId, direction, event) {
+    event.stopPropagation();
+    const todoElement = document.getElementById(todoId);
+    const parentElement = todoElement.parentNode; 
+    const category = parentElement.id;
+  
+    let nextCategory;
+    if (direction === 'up') {
+        switch (category) {
+            case 'drag_to_do':  
+                nextCategory = 'drag_in_progress';  
+                break;
+            case 'drag_in_progress':  
+                nextCategory = 'drag_await_feedback';  
+                break;
+            case 'drag_await_feedback':   
+                nextCategory = 'drag_done';  
+                break;
+            default:
+                nextCategory = null;
+        }
+    } else if (direction === 'down') {
+        switch (category) {
+            case 'drag_in_progress': 
+                nextCategory = 'drag_to_do'; 
+                break;
+            case 'drag_await_feedback': 
+                nextCategory = 'drag_in_progress';  
+                break;
+            case 'drag_done': 
+                nextCategory = 'drag_await_feedback'; 
+                break;
+            default:
+                nextCategory = null;
+        }
+    }
+    if (nextCategory) {
+        todos['status'] = nextCategory;
+        parentElement.removeChild(todoElement);
+        document.getElementById(nextCategory).appendChild(todoElement);
+    }
+  }
+
+
+  const todoId = `todo_${element['id']}`;

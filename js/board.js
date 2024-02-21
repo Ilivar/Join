@@ -128,103 +128,90 @@ function startDragging(id) {
 }
 
 function generateTodoHTML(element, i) {
-  const prioImage = displayImagePrio(element["prio"]); // Hier wird die Funktion aufgerufen, um das entsprechende Bild zu erhalten
-  const todoId = `${element['id']}`;
+  const prioImage = displayImagePrio(element["prio"]);
   const categoryBackgroundColor = backgroundColorCategory(element.category);
 
-  return /*html*/ `
-  <div draggable="true" ondragstart="startDragging(${element['id']})">
-  <div class="task_content" onclick="openDialog(${i})">
-
-    <div class="card_content">
-
-    <div class="d_flex">
-      <div class="category" style="background-color: ${categoryBackgroundColor};">${element["category"]}</div>
-      
-        <div id="arrow_down" class=" display_none_media_1000 arrow_down" onclick="moveTodo('${todoId}', 'down', event)"><img src="../assets/img/arrow_down.png" alt=""></div>
-        <div id="arrow_up" class="display_none_media_1000 arrow_up"  onclick="moveTodo('${todoId}', 'up', event)"><img src="../assets/img/arrow_up.png" alt=""></div>
-      </div>  
-
-        <p class="invis">${element["id"]}</p>
-         <div class="title_description">
-           <div class="title">${element["title"]}</div>
-           <div class="description">${element["description"]}</div>
-         </div>
-      <div class="additional-text">
-
-        <div>${element["due_date"]}</div>
-        <div>${element["prio"]}</div>
-        <div>${element["assigned_to"]}</div>
-        <div>${element["subtasks"]}</div>
-
-      </div>
-
-        <div id="over_progressbar${i}" class="over_progressbar">
+  return `
+    <div draggable="true" ondragstart="startDragging(${element['id']})">
+    <button class="z_index" onclick="moveTodo(${i}, 'up')">↑</button>
+    <button class="z_index" onclick="moveTodo(${i}, 'down')">↓</button>
+      <div class="task_content" onclick="openDialog(${i})">
+        <div class="card_content">
+          <div class="d_flex">
+            <div class="category" style="background-color: ${categoryBackgroundColor};">${element["category"]}</div>
+            <div class="move-buttons">
+           
+          </div>
+          </div>
+          <p class="invis">${element["id"]}</p>
+          <div class="title_description">
+            <div class="title">${element["title"]}</div>
+            <div class="description">${element["description"]}</div>
+          </div>
+          <div class="additional-text">
+            <div>${element["due_date"]}</div>
+            <div>${element["prio"]}</div>
+            <div>${element["assigned_to"]}</div>
+            <div>${element["subtasks"]}</div>
+          </div>
+          <div id="over_progressbar${i}" class="over_progressbar">
             <div class="progress-bar-container ">
               <div id="progress_bar${i}" class="progress-bar"></div>
-             </div>
-                <span id="progress_text${i}" class="progressbar_text">1/2 Subtasks</span>
+            </div>
+            <span id="progress_text${i}" class="progressbar_text">1/2 Subtasks</span>
+          </div>
+          <div class=profile_content>
+            <div id="member_icons_card${i}" class="over_profile_badge"></div>
+            <div>
+              <img src="${prioImage}" alt="Priority" class="priority_image">
+            </div>
+          </div>
+         
         </div>
-
-                <div class=profile_content>
-                     <div id="member_icons_card${i}" class="over_profile_badge">
-                     </div>
-
-                       <div>
-                       <img src="${prioImage}" alt="Priority" class="priority_image">
-                       </div>
-
-                </div>
-    </div>
-</div>`;
+      </div>
+    </div>`;
 }
 
-// "drag_to_do",
-// "drag_in_progress",
-// "drag_await_feedback",
-// "drag_done"
+function moveTodo(todoIndex, direction) {
+  // Richtung überprüfen (hoch oder runter)
+  if (direction !== "up" && direction !== "down") {
+    console.error("Ungültige Richtung angegeben. Bitte geben Sie 'up' oder 'down' an.");
+    return;
+  }
 
-function moveTodo(todoId, direction, event) {
-  event.stopPropagation();
-  const todoElement = document.getElementById(todoId);
-  const parentElement = todos.id;
-  const category = todos.id;
-  let nextCategory;
-  if (direction === 'up') {
-      switch (category) {
-          case 'drag_to_do':  
-              nextCategory = 'drag_in_progress';  
-              break;
-          case 'drag_in_progress':  
-              nextCategory = 'drag_await_feedback';  
-              break;
-          case 'drag_await_feedback':   
-              nextCategory = 'drag_done';  
-              break;
-          default:
-              nextCategory = null;
-      }
-  } else if (direction === 'down') {
-      switch (category) {
-          case 'drag_in_progress': 
-              nextCategory = 'drag_to_do'; 
-              break;
-          case 'drag_await_feedback': 
-              nextCategory = 'drag_in_progress';  
-              break;
-          case 'drag_done': 
-              nextCategory = 'drag_await_feedback'; 
-              break;
-          default:
-              nextCategory = null;
-      }
+  // Spalten des Kanban-Boards definieren
+  const columns = ["drag_to_do", "drag_in_progress", "drag_await_feedback", "drag_done"];
+
+  // Index der aktuellen Spalte und Todo
+  const currentColumnIndex = columns.findIndex(column => {
+    return todos[todoIndex].status === column;
+  });
+
+  // Zielindex der Spalte basierend auf der Richtung
+  let targetColumnIndex;
+  if (direction === "up") {
+    targetColumnIndex = currentColumnIndex - 1;
+  } else if (direction === "down") {
+    targetColumnIndex = currentColumnIndex + 1;
   }
-  if (nextCategory) {
-      todos['status'] = nextCategory;
-      parentElement.removeChild(todoElement);
-      document.getElementById(nextCategory).appendChild(todoElement);
+
+  // Überprüfen, ob die Ziel-Spalte gültig ist
+  if (targetColumnIndex < 0 || targetColumnIndex >= columns.length) {
+    console.error("Die Aufgabe kann nicht weiter bewegt werden.");
+    return;
   }
+
+  // Spalte der Ziel-Spalte
+  const targetColumn = columns[targetColumnIndex];
+
+  // Aktualisieren des Status der Aufgabe
+  todos[todoIndex].status = targetColumn;
+
+  // Aktualisieren der Anzeige
+  updateHTML();
 }
+
+
 
 function updateSubtaskStatus(subtaskIndex, isChecked) {
   if (subtaskIndex >= 0 && subtaskIndex < subtasks.length) {
