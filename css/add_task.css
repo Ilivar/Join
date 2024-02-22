@@ -824,6 +824,10 @@ h4 {
 
 @media(max-width: 450px) {
 
+  .content_overlay{ 
+    padding-left 16px;
+  }
+
   .textarea_field {
     width: 99%;
   }
@@ -849,14 +853,14 @@ h4 {
   }
 
   .background_template { 
-    width: 286px;
+    width: 310px;
   }
 
 
   .left_stroke_right_area_board {
     padding-left: 8px;
   
-    width: 265px;
+    width: 280px;
    }
 
   .last_section {
