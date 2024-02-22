@@ -355,7 +355,7 @@ h4 {
 .last_section {
   width: 92%;
   padding-left: 0px;
-  padding-top: 150px;
+  padding-top: 60px;
   /* border: 2px solid greenyellow; */
   display: flex;
   justify-content: space-between;
@@ -700,8 +700,7 @@ h4 {
 @media(max-width: 1100px) {
 
   h1 {
-    padding-top: 40px;
-    padding-left: 0px;
+    padding-top: 0px;
     padding-bottom: 0px;
     text-align: center;
   }
@@ -723,6 +722,8 @@ h4 {
 
   .content{
     height: 525px;
+    overflow-x:scroll;
+    z-index: 25;
   }
 
   .required_text {
