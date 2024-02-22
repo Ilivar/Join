@@ -712,6 +712,19 @@ h4 {
 
 @media(max-width: 1000px) {
 
+  .area {
+    position: relative;
+    top: 0px;
+    height: 525px;
+    overflow-x:scroll;
+    z-index: 25;
+  }
+  
+
+  .content{
+    height: 525px;
+  }
+
   .required_text {
     padding-left: 50px;
   }
