@@ -369,6 +369,7 @@ h4 {
 .last_section {
   display: flex;
   height: 100px;
+  width: 86%;
   /* border: 1px solid black */
 }
 
@@ -759,7 +760,7 @@ h4 {
   }
   
   .last_section {
-    width: 100%;
+    width: 90%;
   }
 
    .left_stroke_right_area {
