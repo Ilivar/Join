@@ -251,9 +251,9 @@ input::placeholder {
 
   #sign_up_container {
     width: 300px;
-    height: 615px;
+    height: 515px;
     padding: 0;
-    margin-top: 180px;
+    margin-top: 160px;
   }
 
   #sign_up_header {
@@ -267,9 +267,10 @@ input::placeholder {
   }
 
   #input_fields {
+    position: relative;
     width: 300px;
-    height: 600px;
-    justify-content: center;
+    height: 500px;
+    justify-content: space-around;
     align-items: center;
   }
 
@@ -283,8 +284,17 @@ input::placeholder {
     padding: 0 0 0 16px;
   }
 
+#loginButtons {
+  position: absolute;
+  margin-left: 50%;
+  margin-right: 50%;
+  bottom: 42px;
+  width: 128px!important;
+}
+
   .buttonDark {
     font-size: 14px;
+    scale: 0.8;
   }
 
   

@@ -301,6 +301,7 @@ input::placeholder {
   #signUpField {
     position: absolute;
     bottom: 8%;
+    scale: 0.6;
     left: center;
     display: flex;
     align-items: center;
