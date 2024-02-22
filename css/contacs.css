@@ -588,4 +588,10 @@ h2 {
     justify-content: space-between;
     align-items: start;
   }
+
+  .background {
+    width: 100%;
+    height: 100%;
+    background: #f6f7f8;
+  }
 }
