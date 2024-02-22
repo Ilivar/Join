@@ -151,12 +151,17 @@ function changeTargetOfDetails() {
 }
 
 function openDetails(i) {
+  document.getElementById("right_content").style.display = "block";
   let currentInfoName = document.getElementById("piked_name" + i).innerHTML;
   let currentInfoEmail = document.getElementById("piked_email" + i).innerHTML;
   let currentInfoPhone = document.getElementById("piked_phone" + i).innerHTML;
   
   if (window.innerWidth < 1000) {}
   document.getElementById("details_container").innerHTML = /*html*/ `
+    <div id="contacts_icon_mobile_block">
+    <img id="contacts_icon_mobile" src="../assets/img/Frame 208.svg" alt="">
+    <img id="contacts_icon_mobile_arrow" src="../assets/img/arrow-left-line.svg" onclick="closeDetailMobile()" alt="">
+    </div>
     <div id="details_name_area">
                   <div id="details_name_icon"></div>
                   <div>
@@ -180,6 +185,11 @@ function openDetails(i) {
   `;
   changeDetailIconColor(i);
   fillDetailIcon(i);
+}
+
+function closeDetailMobile() {
+  document.getElementById("details_container").innerHTML = "";
+  document.getElementById("right_content").style.display = "none";
 }
 
 function changeDetailIconColor(i) {
@@ -247,3 +257,16 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+function setOverlayPathEdit() {
+  var overlayDiv = document.getElementById('overlay_card_edit');
+  if (window.innerWidth > 1000) {
+      overlayDiv.setAttribute('w3-include-html', '../assets/templates/edit_contact.html');
+  } else {
+      overlayDiv.setAttribute('w3-include-html', '../assets/templates/mobile_edit_contact.html');
+  }
+}
+
+window.addEventListener('resize', setOverlayPathEdit);
+document.addEventListener('DOMContentLoaded', function() {
+  setOverlayPathEdit();
+});
