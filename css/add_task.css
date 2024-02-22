@@ -18,7 +18,11 @@
 
 ::-webkit-scrollbar {
   background: transparent;
+  width: 0;
 }
+
+
+
 html{
   display: flex;
 }
@@ -746,7 +750,7 @@ h4 {
   .area {
     position: relative;
     /* height: 920px; */
-    overflow-x:scroll;
+    /* overflow-x:scroll; */
     z-index: 25;
   }
   
@@ -825,7 +829,7 @@ h4 {
 @media(max-width: 450px) {
 
   .content_overlay{ 
-    padding-left 16px;
+    padding-left: 16px;
   }
 
   .textarea_field {
