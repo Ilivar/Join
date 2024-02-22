@@ -119,6 +119,7 @@ h4 {
 /* Overlay  */
 
 .area_board {
+  
   width: 100%;
 }
 .header_line {
@@ -741,17 +742,23 @@ h4 {
 
 @media(max-width: 1000px) {
 
+  .content {
+    background: #f6f7f8;
+  }
+
   .background {
     /* height: calc(100vh - 80px); */
   }
 
   .background_template { 
+    
     width: 700px;
   }
 
   .area {
     position: relative;
-    /* height: 920px; */
+    height: 100%;
+    
     /* overflow-x:scroll; */
     z-index: 25;
   }
@@ -831,6 +838,7 @@ h4 {
 @media(max-width: 450px) {
 
   .content_overlay{ 
+    
     padding-left: 16px;
   }
 
