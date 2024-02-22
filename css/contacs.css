@@ -83,6 +83,7 @@ h2 {
 }
 
 .contact_list {
+  height: 100vh;
   display: flex;
   max-width: 312px;
   flex-shrink: 0;
