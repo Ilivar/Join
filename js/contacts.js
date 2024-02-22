@@ -228,6 +228,7 @@ function editContact() {
   setItem("users", currentUserData);
   closeEditContact();
   renderContacts();
+  closeDetailMobile();
 }
 
 function slideIn(){
