@@ -13,6 +13,8 @@ async function initAddTask() {
   prioMediumOnLoad();
   futureDate();
   renderUserInitial();
+  openBurgerMenu();
+  openBurgerMenuMobile();
 }
 
 
