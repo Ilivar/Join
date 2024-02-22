@@ -1,0 +1,181 @@
+<div id="card">
+  <div id="topside">
+    <div class="close">
+      <img src="../assets/img/close_white.svg" onclick="closeEditContact()" />
+    </div>
+    <div id="headline_Add">
+      <!-- <h1>Add contact</h1>
+          <span>Tasks are better with a team!</span> -->
+      <img id="headline_img" src="../assets/img/Frame 211.png" alt="" />
+    </div>
+  </div>
+  <div class="picture_area">
+    <div id="edit_name_icon"></div>
+  </div>
+  <div id="botside">
+    <form onsubmit="addNewContact(); return false;">
+      <div id="cotact_data_field">
+        <input
+          class="input_field_mobile img_person"
+          id="edit_input_name"
+          type="name"
+          placeholder="Name"
+        />
+        <input
+          class="input_field_mobile img_email"
+          id="edit_input_email"
+          type="email"
+          placeholder="Email"
+        />
+        <input
+          class="input_field_mobile img_phone"
+          id="edit_input_phone"
+          type="phone"
+          placeholder="Phone"
+        />
+      </div>
+      <div class="button_area">
+        <div class="clear_task">
+          <button id="del_button_edit" onclick="delContact()">Delete</button>
+        </div>
+        <div class="create_task">
+          <button id="save_button_edit" onclick="editContact()">
+            Save<img src="../assets/img/check_button_create.svg" alt="" />
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+  h1 {
+    color: white;
+    font-size: 47px;
+    font-weight: 700;
+    padding: 0;
+    margin: 0;
+  }
+
+  span {
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  form {
+    display: flex;
+    width: 300px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  #headline_Add {
+    display: flex;
+  }
+
+  #headline_img {
+    margin-left: 16px;
+    width: 240px;
+  }
+
+  #card {
+    position: relative;
+    border-radius: 20px;
+    width: 300px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  #topside {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 20px 20px 0 0;
+    background-color: #2a3647;
+    height: 350px;
+  }
+
+  #botside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 0 0 20px 20px;
+    gap: 32px;
+  }
+
+  .img_person {
+    background-image: url("../assets/img/person.svg");
+  }
+
+  .img_email {
+    background-image: url("../assets/img/mail.svg");
+  }
+
+  .img_phone {
+    background-image: url("../assets/img/call.svg");
+  }
+
+  .input_field_mobile {
+    position: relative;
+    display: flex;
+    width: 230px;
+    /* padding: 12px 21px; */
+    align-items: center;
+    gap: 8px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    color: black;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    background-repeat: no-repeat;
+    background-position: center right 21px;
+  }
+
+  #edit_name_icon {
+    position: absolute;
+    top: 38%;
+    left: 27%;
+  }
+
+  .close {
+    position: absolute;
+    top: 24px;
+    right: 16px;
+  }
+
+  .close img:hover {
+    cursor: pointer;
+  }
+
+  .button_area {
+   display: flex;
+   justify-content: center;
+    align-items: center;
+    gap: 16px
+  }
+
+  #save_button_edit {
+    width: 82px;
+    height: 51px;
+  }
+
+  #del_button_edit {
+    width: 99px;
+    height: 51px;
+  }
+
+  #cotact_data_field {
+    display: flex;
+    flex-direction: column;
+    height: 180px;
+    justify-content: space-around;
+    margin-top: 64px;
+  }
+</style>

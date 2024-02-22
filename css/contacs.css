@@ -421,6 +421,10 @@ h2 {
   color: #7e7cee;
 }
 
+#contacts_icon_mobile_block{
+  display: none;
+}
+
 @media (max-width: 1200px) {
   .contact_list {
     width: 340px;
@@ -462,6 +466,11 @@ h2 {
 
   #right_content {
     display: none;
+    position: fixed;
+    left: calc(50% - 216px);
+    top: 0;
+    background-color: #f6f7f8;
+    width: 320px;
   }
 
   #mobile_header {
@@ -500,12 +509,42 @@ h2 {
   .contact_member {
     width: 100%;
     height: calc(100vh - 260px);
+  
   }
 
   .contact-group {
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  .text_right{
+    display: none;
+  }
+
+ #details_container{
+  margin-top: 8px;
+  height: calc(100vh - 160px);
+  margin-left: 16px;
+
+ }
+
+  #details_name{
+    line-height: 40px;
+  }
+
+#details_name_icon{
+  width: 80px!important;
+  height: 80px!important;
+  scale: initial;
+}
+
+#details_name_area{
+  gap:10px;
+}
+
+  #contact_info span {
+    color: #000;
   }
 
   .contact-group img {
@@ -525,8 +564,19 @@ h2 {
   .button_design p {
     display: none;
   }
-  #card{
+
+  #card {
     margin-left: 200px;
   }
 
+  #contacts_icon_mobile_arrow{
+    margin-right: 16px;
+  }
+
+  #contacts_icon_mobile_block {
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
 }
