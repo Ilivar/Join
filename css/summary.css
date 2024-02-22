@@ -438,6 +438,12 @@ body {
     font-size: 14px; /* Beispiel: Schriftgröße verkleinern */
   }
 
+  .summary_background_color{
+    overflow: auto;
+    height: calc(100vh - 80px);
+  }
+ 
+
   .summary_main {
     display: flex;
     width: 40%;
