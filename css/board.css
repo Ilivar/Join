@@ -731,13 +731,14 @@ body {
     } */
 
     .board_main {
+        box-sizing: border-box;
         display: flex;
         /* flex-direction: column; */
         width: 300px;
         height: 152px;
         flex-shrink: 0;
         /* margin-bottom: 79.5px; */
-        margin-right: 20px;
+        margin-right: 0px;
         margin-top: 0px;
     }
 
@@ -814,7 +815,7 @@ body {
 
    .find_task_media{
     display: flex;
-    width: 100%;
+    width: 98%;
     padding: 8px 16px;
     align-items: center;
     gap: 10px;
