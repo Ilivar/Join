@@ -93,6 +93,7 @@ body {
 }
 
 .todo {
+  cursor: pointer;
   display: flex;
   width: 264px;
   height: 168px;
@@ -167,6 +168,7 @@ body {
 } */
 
 .done {
+  cursor: pointer;
   display: flex;
   width: 264px;
   height: 168px;
@@ -193,6 +195,7 @@ body {
 }
 
 .urgent {
+  cursor: pointer;
   display: flex;
   width: 560px;
   height: 168px;
@@ -213,6 +216,7 @@ body {
 }
 
 .board {
+  cursor: pointer;
   display: flex;
   width: 168px;
   height: 168px;
@@ -413,6 +417,14 @@ body {
   line-height: 120%;
 }
 
+@media (min-width: 700px) {
+
+  .summary_vector_responsive{
+    display: none;
+  }
+}
+
+
 
 @media (max-width: 1340px) {
   .welcome {
@@ -437,13 +449,19 @@ body {
   }
 
   .summary_headline {
+    display: flex;
+    flex-direction: column;
     display: inline-flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     gap: 15px;
-    margin-top: 110px;
+    margin-top: 50px;
     margin-left: 40px;
     margin-bottom: 30px;
+  }
+
+  .summary_headline_between img  {
+    display: none;
   }
   
   .summary_headline360 {
@@ -451,7 +469,7 @@ body {
   
     /* Version 2/t1 */
     font-family: Inter;
-    font-size: 30px;
+    font-size: 47px;
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
@@ -466,7 +484,7 @@ body {
   }
   
   .summary_headline_between {
-    display: inline-flex;
+    display: none;
     justify-content: center;
     align-items: center;
     gap: 15px;
@@ -585,7 +603,7 @@ body {
     height: 84px;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 10px;
     border-radius: 30px;
     background: var(--white, #fff);
   
@@ -628,6 +646,7 @@ body {
   .urgent_flex {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
   
   .urgent_text {
@@ -746,5 +765,21 @@ body {
     line-height: 120%;
   }
   
-  
+  #footer {
+    z-index: 1;
+    width: 100%;
+    height: 80px;
+    background-color: #2a3647;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  #footer Div{
+    z-index: 1;
+    width: 100%;
+    height: 80px;
+    background-color: #2a3647;
+    display: flex;
+    justify-content: space-around;
+  }
 }
