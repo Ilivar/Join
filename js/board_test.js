@@ -47,6 +47,8 @@ function init() {
     boardTasks();
     includeHTML();
     setProgress(progress);
+    openBurgerMenu();
+    openBurgerMenuMobile();
 }
 
 function boardTasks() {

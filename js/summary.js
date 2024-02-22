@@ -8,6 +8,8 @@ async function init() {
   getNearestTask();
   setCardValues();
   renderUserInitial();
+  openBurgerMenu();
+  openBurgerMenuMobile();
 }
 
 function setCardValues() {

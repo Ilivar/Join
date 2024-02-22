@@ -3,4 +3,6 @@ async function init(){
    await loadPreviousMember();
    await loadCurrentUserData();
    renderUserInitial();
+   openBurgerMenu();
+   openBurgerMenuMobile();
 }
