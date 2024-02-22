@@ -75,7 +75,7 @@ a {
 }
 
 .background {
-  height: 1080px;
+  height: 100vh;
   width: 100%;
   background: #f6f7f8;
 }
@@ -364,6 +364,13 @@ h4 {
 
 #sub_task_listelements {
   width: 100%;
+}
+
+.last_section {
+  display: flex;
+  height: 100px;
+  width: 86%;
+  /* border: 1px solid black */
 }
 
 .last_section_border {
@@ -726,7 +733,7 @@ h4 {
 @media(max-width: 1000px) {
 
   .background {
-    height: 1000px;
+    height: calc(100vh - 80px);
   }
 
   .background_template { 
@@ -753,7 +760,7 @@ h4 {
   }
   
   .last_section {
-    width: 100%;
+    width: 90%;
   }
 
    .left_stroke_right_area {
@@ -769,9 +776,7 @@ h4 {
     flex-direction: column;
    }
 
-  .task {
-    padding:0px;
-  }
+
 }
 
 @media(max-width: 750px) {
@@ -852,7 +857,8 @@ h4 {
    }
 
   .last_section {
-    padding-top: 120px;
+
+    padding-top: 100px;
     display: flex;
   }
 
