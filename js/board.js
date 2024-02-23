@@ -232,14 +232,15 @@ function changeStatus(id, status) {
   if (currentDraggedElement != null) {
     let currentStatusArray = value[currentUserNumber].newAddTask;
     let foundIndex = currentStatusArray.findIndex((item) => item.id === id);
+    let formFix = value;
     let updatedArray = [...currentStatusArray];
 
-    // if (foundIndex !== -1) {
+    if (foundIndex !== -1) {
       currentStatusArray[foundIndex].status = status;
-    // } else {
-    //   console.error("ID:", id, "didnt exist!");
-    //   return;
-    // }
+    } else {
+      console.error("ID:", id, "didnt exist!");
+      return;
+    }
 
     value[currentUserNumber].newAddTask = [];
 
@@ -247,9 +248,9 @@ function changeStatus(id, status) {
       value[currentUserNumber].newAddTask.push(updatedArray[i]);
     }
 
-    value[currentUserNumber].newAddTask = [];
-    value[currentUserNumber].newAddTask = currentStatusArray;
-    updateItem("users", value);
+    formFix[currentUserNumber].newAddTask = [];
+    formFix[currentUserNumber].newAddTask = currentStatusArray;
+    updateItem("users", formFix);
   } else {
     console.log("currentDraggedElement is null");
   }
@@ -474,12 +475,19 @@ function deleteTodo(todoIndex) {
   const index = todos[todoIndex];
   if (index !== -1) {
     todos.splice(todoIndex, 1); // Entferne das Todo aus dem Array
+    resetIDs();
     updateItem("users", todos);
     updateHTML(); // Aktualisiere die Anzeige
     closeDialog();
+    
   }
 }
 
+function resetIDs() {
+  for (let i = 0; i < todos.length; i++) {
+    todos[i].id = i;
+  }
+}
 
 function renderSubtasks(todoIndex) {
   const subtaskList = document.getElementById("subtask_list");
