@@ -1,6 +1,7 @@
 let urgentTasks = [];
 
 async function init() {
+  await getCurrentUserNumber();
   await includeHTML();
   await loadPreviousMember();
   await loadCurrentUserData();
@@ -23,7 +24,7 @@ function setCardValues() {
 }
 
 function setName() {
-  document.getElementById("greet_name").innerHTML = value[0].name;
+  document.getElementById("greet_name").innerHTML = value[currentUserNumber].name;
 }
 
 function setToDos() {
@@ -36,7 +37,7 @@ function setDones() {
 
 function setTaskInBoard() {
   document.getElementById("task_in_board").innerHTML =
-    value[0].newAddTask.length;
+    value[currentUserNumber].newAddTask.length;
 }
 
 function setInProgress() {
@@ -55,8 +56,8 @@ function setUrgentTasks() {
 
 function countOccurences(status) {
   let count = 0;
-  for (let i = 0; i < value[0].newAddTask.length; i++) {
-    if (value[0].newAddTask[i].status === status) {
+  for (let i = 0; i < value[currentUserNumber].newAddTask.length; i++) {
+    if (value[currentUserNumber].newAddTask[i].status === status) {
       count++;
     }
   }
@@ -90,7 +91,7 @@ function greetUser() {
 }
 
 function getNearestTask() {
-  const tasks = value[0].newAddTask;
+  const tasks = value[currentUserNumber].newAddTask;
 
   tasks.sort((a, b) => {
     if (a.due_date < b.due_date) return -1;

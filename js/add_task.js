@@ -4,6 +4,7 @@ let currentStatus = "drag_to_do";
 let contacts = [];
 
 async function initAddTask() {
+  await getCurrentUserNumber()
   await includeHTML();
   await loadPreviousMember();
   await loadCurrentUserData();
@@ -19,7 +20,7 @@ async function initAddTask() {
 
 
 async function renderContacts() {
-  contacts = value[0].contacts;
+  contacts = value[currentUserNumber].contacts;
   document.getElementById("MemberField").innerHTML = "";
   generateIconColorsA();
   document.getElementById("MemberFiel_Search").innerHTML += `
@@ -111,7 +112,7 @@ function changeColorClickContact(i) {
   }
 }
 
-function renderActiveMemberIcons() {
+async function renderActiveMemberIcons() {
   const activeMemberIconsDiv = document.getElementById("aktiveMemberIcons");
   if (!activeMemberIconsDiv) {
     console.error("später abchecken - aber funcktioniert erstmal");

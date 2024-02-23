@@ -5,7 +5,7 @@ let key = "users";
 
 let currentUser;
 let currentUserData = [];
-let currentUserNumber
+let currentUserNumber;
 
 
 async function includeHTML() {
@@ -41,7 +41,7 @@ async function includeHTML() {
 }
 
 async function renderUserInitial() {
-  let currentUserName = value[0].name;
+  let currentUserName = value[currentUserNumber].name;
   let names = currentUserName.split(" ");
   let initials = "";
 
@@ -116,6 +116,7 @@ async function findUserByEmail(emailToFind) {
   }
 }
 
-function getCurrentUserNumber(){
+async function getCurrentUserNumber(){
  currentUserNumber = localStorage.getItem("currentUserNumber");
+ currentUserNumber = parseInt(currentUserNumber);
 }

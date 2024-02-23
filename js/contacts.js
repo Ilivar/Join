@@ -1,6 +1,7 @@
 let contacts = [];
 
 async function init() {
+  await getCurrentUserNumber();
   await includeHTML();
   await loadPreviousMember();
   await loadCurrentUserData();
@@ -41,12 +42,12 @@ function fillWithCurrentData() {
 }
 
 function renderCurrentUserDataBlock() {
-  document.getElementById("current_user_name").innerHTML = value[0].name+" (me)";
-  document.getElementById("current_unser_email").innerHTML = value[0].email;
+  document.getElementById("current_user_name").innerHTML = value[currentUserNumber].name+" (me)";
+  document.getElementById("current_unser_email").innerHTML = value[currentUserNumber].email;
 }
 
 async function renderContacts() {
-  contacts = value[0].contacts;
+  contacts = value[currentUserNumber].contacts;
   document.getElementById("conctactMemberField").innerHTML = "";
   contacts.sort((a, b) => a.name.localeCompare(b.name));
 

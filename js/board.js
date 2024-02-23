@@ -8,10 +8,11 @@ let iconColors = [];
 
 
 function updateToDoArray() {
-  todos = value[0].newAddTask;
+  todos = value[currentUserNumber].newAddTask;
 }
 
 async function init() {
+  await getCurrentUserNumber()
   await includeHTML();
   await loadPreviousMember();
   await loadCurrentUserData();
@@ -27,7 +28,7 @@ async function openAddTask() {
   document.getElementById("overlayAddTask").style.display = "flex";
      await includeHTML();
     setTimeout(function(){
-      contacts = value[0].contacts;
+      contacts = value[currentUserNumber].contacts;
       prioMediumOnLoad();
       futureDate();
       renderContacts();
@@ -118,7 +119,7 @@ function updateHTML() {
 }
 
 function initRenderProgressBar() {
-  for (let i = 0; i < value[0].newAddTask.length; i++) {
+  for (let i = 0; i < value[currentUserNumber].newAddTask.length; i++) {
     renderProgressBar(i);
   }
 }
@@ -230,7 +231,7 @@ function updateSubtaskStatus(subtaskIndex, isChecked) {
 
 function changeStatus(id, status) {
   if (currentDraggedElement != null) {
-    let currentStatusArray = value[0].newAddTask;
+    let currentStatusArray = value[currentUserNumber].newAddTask;
     let foundIndex = currentStatusArray.findIndex((item) => item.id === id);
     let formFix = value;
     let updatedArray = [...currentStatusArray];
@@ -242,10 +243,10 @@ function changeStatus(id, status) {
       return;
     }
 
-    value[0].newAddTask = [];
+    value[currentUserNumber].newAddTask = [];
 
     for (let i = 0; i < updatedArray.length; i++) {
-      value[0].newAddTask.push(updatedArray[i]);
+      value[currentUserNumber].newAddTask.push(updatedArray[i]);
     }
 
     formFix[0].newAddTask = [];
@@ -438,7 +439,7 @@ async function openDialogEdit(todoIndex) {
   
 
   
-  contacts = value[0].contacts;
+  contacts = value[currentUserNumber].contacts;
   await renderContacts();
   prioMediumOnLoad();
   futureDate();
@@ -532,7 +533,7 @@ function renderProgressBar(todoIndex) {
 }
 
 function updateSubtaskStatus(todoIndex, subtaskIndex, isChecked) {
-  let holeValue = value[0];
+  let holeValue = value[currentUserNumber];
   holeValue.newAddTask[todoIndex].subtasks[subtaskIndex].completed = isChecked;
   setItem("users", value);
   renderProgressBar(todoIndex);

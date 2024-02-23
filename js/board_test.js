@@ -173,7 +173,7 @@ let todos = [{
   let currentDraggedElement;
   
   function updateToDoArray() {
-    todos = value[0].newAddTask;
+    todos = value[currentUserNumber].newAddTask;
   }
   
   
@@ -430,7 +430,7 @@ let todos = [{
   
   
   // function separateArrays(){
-  //     value[0].newAddTask.forEach(task => {
+  //     value[currentUserNumber].newAddTask.forEach(task => {
   //         switch (task.status) {
   //             case 'todo':
   //                 separatedTodo.push(task);
