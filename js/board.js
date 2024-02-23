@@ -126,8 +126,8 @@ function initRenderProgressBar() {
 }
 
 function startDragging(id) {
-  currentDraggedElement = id;
   resetIDs();
+  currentDraggedElement = id;
 }
 
 function generateTodoHTML(element, i) {
