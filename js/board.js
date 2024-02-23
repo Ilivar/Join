@@ -21,6 +21,7 @@ async function init() {
   await renderUserInitial();
   await openBurgerMenu();
   await openBurgerMenuMobile();
+  resetIDs();
 }
 
 async function openAddTask() {
