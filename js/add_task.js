@@ -115,7 +115,7 @@ async function renderActiveMemberIcons() {
   const activeMemberIconsDiv = document.getElementById("aktiveMemberIcons");
   if (!activeMemberIconsDiv) {
     console.error("später abchecken - aber funcktioniert erstmal");
-    return; // Beende die Funktion, wenn das Element nicht gefunden wurde
+    return; 
   }
   activeMemberIconsDiv.innerHTML = "";
   const selectedContacts = [];
@@ -173,21 +173,6 @@ function futureDate() {
   today = yyyy + "-" + mm + "-" + dd;
   document.getElementById("input_date").setAttribute("min", today);
 }
-
-// für später
-
-// function checkFutureDate() {
-//     let inputDate = document.getElementById('input_date').value;
-//     let currentDate = new Date();
-//     let inputDateArray = inputDate.split('/');
-//     let inputDateObject = new Date(inputDateArray[2], inputDateArray[1] - 1, inputDateArray[0]);
-
-//     if (inputDateObject > currentDate) {
-//         alert('Das eingegebene Datum liegt in der Zukunft!');
-//     } else {
-//         alert('Das eingegebene Datum liegt nicht in der Zukunft.');
-//     }
-// }
 
 let activeButton = null;
 
