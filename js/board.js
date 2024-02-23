@@ -18,7 +18,9 @@ async function init() {
   await loadCurrentUserData();
   updateToDoArray();
   updateHTML();
-  renderUserInitial();
+  await renderUserInitial();
+  await openBurgerMenu();
+  await openBurgerMenuMobile();
 }
 
 async function openAddTask() {
@@ -115,8 +117,9 @@ function updateHTML() {
       addNameLetters(contactsboard, i);
     }
   }
+
   initRenderProgressBar();
-  
+  resetIDs();
 }
 
 function initRenderProgressBar() {

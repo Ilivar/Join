@@ -8,9 +8,9 @@ async function init() {
   greetUser();
   getNearestTask();
   setCardValues();
-  renderUserInitial();
-  openBurgerMenu();
-  openBurgerMenuMobile();
+  await renderUserInitial();
+  await openBurgerMenu();
+  await openBurgerMenuMobile();
 }
 
 function setCardValues() {

@@ -29,7 +29,7 @@ async function createNewMember(event) {
   }
 }
 
-async function createSampleTasks(user) {
+async function createSampleTasks() {
   let sampleTasks = {
     id: 0,
     title: "Sample Task",
@@ -55,9 +55,7 @@ function addSampleContactToUserData(newContact, valueLength) {
   if (!value[valueLength].contacts) {
     value[valueLength].contacts = [];
   }
-
   value[valueLength].contacts.push(newContact);
-
   updateItem("users", value);
 }
 

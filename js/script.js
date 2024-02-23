@@ -47,13 +47,13 @@ async function renderUserInitial() {
   names.forEach((name) => {
     initials += name.charAt(0).toUpperCase();
   });
-
   document.getElementById("user_icon_login").innerHTML = initials;
   document.getElementById("user_icon_login_mobile").innerHTML = initials;
 }
 
-function openBurgerMenu() {
+async function openBurgerMenu() {
   let burgerMenuDisplay = document.getElementById("burger_menu").style.display;
+
   if (burgerMenuDisplay === "none") {
     document.getElementById("burger_menu").style.display = "flex";
   } else {
@@ -61,9 +61,9 @@ function openBurgerMenu() {
   }
 }
 
-function openBurgerMenuMobile() {
-  let burgerMenuMobile =
-    document.getElementById("burger_menu_mobile").style.display;
+async function openBurgerMenuMobile() {
+  let burgerMenuMobile = document.getElementById("burger_menu_mobile").style.display;
+  
   if (burgerMenuMobile === "none") {
     document.getElementById("burger_menu_mobile").style.display = "flex";
   } else {
