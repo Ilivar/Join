@@ -1,8 +1,8 @@
 let username;
 
-function init() {
-  loadPreviousMember();
+function ini() {
   loadFromLocalStorage();
+  loadPreviousMember();
 }
 
 function login() {
@@ -22,6 +22,11 @@ function login() {
         .setAttribute("style", "display: block;");
     }
   }
+}
+
+function logInGuest(){
+  localStorage.setItem("currentUserNumber", 0);
+  window.location.href = "../html/summary.html";
 }
 
 function setUserNumber(value, userEmail) {
@@ -44,7 +49,7 @@ function rememberMe() {
   }
 }
 
-function loadFromLocalStorage() {
+async function loadFromLocalStorage() {
   let inputMail = localStorage.getItem("email");
   if (inputMail) {
     document.getElementById("remember_check").checked = true;
