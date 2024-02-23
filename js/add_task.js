@@ -115,7 +115,7 @@ async function renderActiveMemberIcons() {
   const activeMemberIconsDiv = document.getElementById("aktiveMemberIcons");
   if (!activeMemberIconsDiv) {
     console.error("später abchecken - aber funcktioniert erstmal");
-    return; // Beende die Funktion, wenn das Element nicht gefunden wurde
+    return; 
   }
   activeMemberIconsDiv.innerHTML = "";
   const selectedContacts = [];
@@ -174,21 +174,6 @@ function futureDate() {
   document.getElementById("input_date").setAttribute("min", today);
 }
 
-// für später
-
-// function checkFutureDate() {
-//     let inputDate = document.getElementById('input_date').value;
-//     let currentDate = new Date();
-//     let inputDateArray = inputDate.split('/');
-//     let inputDateObject = new Date(inputDateArray[2], inputDateArray[1] - 1, inputDateArray[0]);
-
-//     if (inputDateObject > currentDate) {
-//         alert('Das eingegebene Datum liegt in der Zukunft!');
-//     } else {
-//         alert('Das eingegebene Datum liegt nicht in der Zukunft.');
-//     }
-// }
-
 let activeButton = null;
 
 function setActiveButton(buttonId, imgSrc, bgColor) {
@@ -226,7 +211,7 @@ function setActiveButton(buttonId, imgSrc, bgColor) {
 function prioMediumOnLoad() {
   setActiveButton(
     "buttonMedium",
-    "../assets/img/Prio media white.svg",
+    "../assets/img/Priomediawhite.svg",
     "orange"
   );
 }
@@ -234,7 +219,7 @@ function prioMediumOnLoad() {
 function buttonUrgent() {
   setActiveButton(
     "buttonUrgent",
-    "../assets/img/prio alta.svg",
+    "../assets/img/prioalta.svg",
     "rgba(255, 61, 0, 1)"
   );
 }
@@ -242,7 +227,7 @@ function buttonUrgent() {
 function buttonMedium() {
   setActiveButton(
     "buttonMedium",
-    "../assets/img/prio media white.svg",
+    "../assets/img/Priomediawhite.svg",
     "rgba(255, 168, 0, 1)"
   );
 }
@@ -250,7 +235,7 @@ function buttonMedium() {
 function buttonLow() {
   setActiveButton(
     "buttonLow",
-    "../assets/img/Prio baja.svg",
+    "../assets/img/Priobaja.svg",
     "rgba(122, 226, 41, 1)"
   );
 }
@@ -379,6 +364,7 @@ function checkInputSubTask() {
   container.appendChild(deleteIcon);
 
   document.getElementById("sub_task_listelements").appendChild(container);
+  document.getElementById("input_subtask").value = ``;
 }
 
 function editSubTask(id) {
