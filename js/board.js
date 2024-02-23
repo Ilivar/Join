@@ -293,11 +293,11 @@ function openDialog(todoIndex) {
 
   // Aufbau des HTML-Inhalts für das Dialogfeld
   document.getElementById("todo_HTML").innerHTML = `
-  <div class="edit_dialog_content" id="edit_dialog"></div>
+  <div class="edit_dialog_content " id="edit_dialog"></div>
     <div class="dialog_content" id="close_dialog">
       <div class="category_x">
         <div class="category_dialog" style="background-color: ${categoryBackgroundColor};">${todo["category"]}</div>
-        <button class="close_button" onclick="closeDialog()">
+        <button class="close_button cursor_pointer" onclick="closeDialog()">
           <img src="../assets/img/close.svg" alt="">
         </button>
       </div>
@@ -370,7 +370,7 @@ async function openDialogEdit(todoIndex) {
     
   <div class="column">
     <div class="right">
-        <button class="close_button" onclick="closeDialog()">
+        <button class="close_button cursor_pointer" onclick="closeDialog()">
           <img src="../assets/img/close.svg" alt="">
         </button>
     </div>
