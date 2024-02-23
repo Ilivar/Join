@@ -1,6 +1,6 @@
 let currentDraggedElement;
 let currentStatusValue;
-
+let totalSubtasks;
 let todos = [];
 
 let iconColors = [];
@@ -438,7 +438,7 @@ async function openDialogEdit(todoIndex) {
   await renderContacts();
   prioMediumOnLoad();
   futureDate();
-  renderSubTask()
+  renderSubTask();
 
   
  
@@ -510,9 +510,8 @@ function renderSubtasks(todoIndex) {
 
 function renderProgressBar(todoIndex) {
   try {
-    const totalSubtasks = todos[todoIndex].subtasks.length;
+    totalSubtasks = todos[todoIndex].subtasks.length;
     let completedSubtasks = 0;
-
     todos[todoIndex].subtasks.forEach((subtask) => {
       if (subtask.completed) {
         completedSubtasks++;
@@ -528,6 +527,11 @@ function renderProgressBar(todoIndex) {
 
     const progressText = document.getElementById("progress_text" + todoIndex);
     progressText.textContent = `${completedSubtasks}/${totalSubtasks} Subtask`;
+
+    if (totalSubtasks == 0){
+      document.getElementById("over_progressbar" + todoIndex).style.display =
+      "none";
+    }
   } catch {
     document.getElementById("over_progressbar" + todoIndex).style.display =
       "none";

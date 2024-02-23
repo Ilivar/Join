@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/fonts.css" />
     <link rel="icon" href="../assets/img/favicon.svg" type="image/x-icon" />
   </head>
-  <body onload="init()">
+  <body onload="ini()">
     <div id="mobile_animation"></div>
     <div id="mainContainer">
       <img id="joinIcon" src="../assets/img/Capa 2.svg" alt="" />
@@ -56,9 +56,7 @@
               <button type="submit" class="buttonDark" style="height: 48px">
                 Log in
               </button>
-              <a href="../html/summary.html">
-                <button type="button" class="buttonBright">Guest Log in</button>
-              </a>
+                <button onclick="logInGuest()" type="button" class="buttonBright">Guest Log in</button>
             </div>
           </form>
         </div>
