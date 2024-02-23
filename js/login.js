@@ -13,12 +13,23 @@ function login() {
     if (user.email === email && user.password === password) {
       username = user.name;
       setCurrentUser(user.email);
+      setUserNumber(value, user.email);
       rememberMe();
       window.location.href = "../html/summary.html";
     } else {
       document
         .getElementById("wrong_data")
         .setAttribute("style", "display: block;");
+    }
+  }
+}
+
+function setUserNumber(value, userEmail) {
+  for (let i = 0; i < value.length; i++) {
+    if (value[i].email === userEmail) {
+      localStorage.setItem("currentUserNumber", i);
+      console.log(i);
+      return;
     }
   }
 }
@@ -45,10 +56,10 @@ function setCurrentUser(currentMail) {
   localStorage.setItem("user", currentMail, username);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  var mobileAnimation = document.getElementById('mobile_animation');
+document.addEventListener("DOMContentLoaded", function () {
+  var mobileAnimation = document.getElementById("mobile_animation");
 
-  mobileAnimation.addEventListener('animationend', function() {
-      mobileAnimation.style.display = 'none';
+  mobileAnimation.addEventListener("animationend", function () {
+    mobileAnimation.style.display = "none";
   });
 });

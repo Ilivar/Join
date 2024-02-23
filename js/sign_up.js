@@ -84,7 +84,7 @@ async function isUserNew(user, email) {
       .setAttribute("style", "display: block;");
   } else {
     value.push(user);
-    await setItem(key, value);
+    setItem("users", value);
     signInSuccess();
   }
 }

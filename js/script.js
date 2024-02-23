@@ -5,8 +5,8 @@ let key = "users";
 
 let currentUser;
 let currentUserData = [];
+let currentUserNumber
 
-// Template -> Header Sidebar //
 
 async function includeHTML() {
   var z, i, elmnt, file, xhttp;
@@ -114,4 +114,8 @@ async function findUserByEmail(emailToFind) {
       break;
     }
   }
+}
+
+function getCurrentUserNumber(){
+ currentUserNumber = localStorage.getItem("currentUserNumber");
 }
