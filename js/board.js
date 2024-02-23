@@ -116,6 +116,7 @@ function updateHTML() {
     }
   }
   initRenderProgressBar();
+  
 }
 
 function initRenderProgressBar() {
@@ -209,7 +210,7 @@ function moveTodo(todoIndex, direction) {
   todos[todoIndex].status = targetColumn;
 
   // Aktualisieren der Anzeige
-  updateItem("users", todos[todoIndex]);
+  updateItem("users", todos);
   updateHTML();
 }
 
@@ -231,15 +232,14 @@ function changeStatus(id, status) {
   if (currentDraggedElement != null) {
     let currentStatusArray = value[currentUserNumber].newAddTask;
     let foundIndex = currentStatusArray.findIndex((item) => item.id === id);
-    let formFix = value;
     let updatedArray = [...currentStatusArray];
 
-    if (foundIndex !== -1) {
+    // if (foundIndex !== -1) {
       currentStatusArray[foundIndex].status = status;
-    } else {
-      console.error("ID:", id, "didnt exist!");
-      return;
-    }
+    // } else {
+    //   console.error("ID:", id, "didnt exist!");
+    //   return;
+    // }
 
     value[currentUserNumber].newAddTask = [];
 
@@ -247,9 +247,9 @@ function changeStatus(id, status) {
       value[currentUserNumber].newAddTask.push(updatedArray[i]);
     }
 
-    formFix[0].newAddTask = [];
-    formFix[0].newAddTask = currentStatusArray;
-    updateItem("users", formFix);
+    value[currentUserNumber].newAddTask = [];
+    value[currentUserNumber].newAddTask = currentStatusArray;
+    updateItem("users", value);
   } else {
     console.log("currentDraggedElement is null");
   }
@@ -465,7 +465,7 @@ function dataToBackend(todoIndex) {
   todos[todoIndex].subtasks = subtasksData;
   todos[todoIndex].assigned_to = assigned;
 
-  updateItem("users", todos[index]);
+  updateItem("users", todos);
   updateHTML();
   closeDialog();
 }
