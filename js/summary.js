@@ -24,15 +24,18 @@ function setCardValues() {
 }
 
 function setName() {
-  document.getElementById("greet_name").innerHTML = value[currentUserNumber].name;
+  document.getElementById("greet_name").innerHTML =
+    value[currentUserNumber].name;
 }
 
 function setToDos() {
-  document.getElementById("todoNumber").innerHTML = countOccurences("drag_to_do");
+  document.getElementById("todoNumber").innerHTML =
+    countOccurences("drag_to_do");
 }
 
 function setDones() {
-  document.getElementById("doneNumber").innerHTML = countOccurences("drag_done");
+  document.getElementById("doneNumber").innerHTML =
+    countOccurences("drag_done");
 }
 
 function setTaskInBoard() {
@@ -46,7 +49,9 @@ function setInProgress() {
 }
 
 function setAwaiting() {
-  document.getElementById("awaiting").innerHTML = countOccurences("drag_await_feedback");
+  document.getElementById("awaiting").innerHTML = countOccurences(
+    "drag_await_feedback"
+  );
 }
 
 function setUrgentTasks() {
@@ -65,17 +70,23 @@ function countOccurences(status) {
 }
 
 function findUrgentTasks() {
-  value.forEach((value) => {
-    if (value.newAddTask) {
-      value.newAddTask.forEach((task) => {
-        if (task.prio === "Urgent") {
-          urgentTasks.push(task);
-        }
-      });
-    }
-  });
-  return urgentTasks;
+try {
+    value.forEach((value) => {
+      if (value.newAddTask) {
+        value.newAddTask.forEach((task) => {
+          if (task.prio === "Urgent") {
+            urgentTasks.push(task);
+          }
+        });
+      }
+    });
+    // return urgentTasks;
+  } catch {
+    console.log("No tasks yet!");
+  }
 }
+
+
 
 function greetUser() {
   let now = new Date();
@@ -91,20 +102,37 @@ function greetUser() {
 }
 
 function getNearestTask() {
-  const tasks = value[currentUserNumber].newAddTask;
+  try {
+    const tasks = value[currentUserNumber].newAddTask;
 
-  tasks.sort((a, b) => {
-    if (a.due_date < b.due_date) return -1;
-    if (a.due_date > b.due_date) return 1;
-    return 0;
-  });
+    tasks.sort((a, b) => {
+      if (a.due_date < b.due_date) return -1;
+      if (a.due_date > b.due_date) return 1;
+      return 0;
+    });
 
-  const nearestTaskDate = formatDate(tasks[0].due_date);
-  document.getElementById("nearest_task").innerHTML = nearestTaskDate;
+    const nearestTaskDate = formatDate(tasks[0].due_date);
+    document.getElementById("nearest_task").innerHTML = nearestTaskDate;
+  } catch {
+    document.getElementById("nearest_task").innerHTML = "No tasks yet!";
+  }
 }
 
 function formatDate(inputDate) {
-  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
   const parts = inputDate.split("-");
   const year = parts[0];
   const month = months[parseInt(parts[1]) - 1]; // Monatsindex beginnt bei 0

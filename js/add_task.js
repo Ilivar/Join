@@ -4,12 +4,12 @@ let currentStatus = "drag_to_do";
 let contacts = [];
 
 async function initAddTask() {
-  await getCurrentUserNumber()
+  await getCurrentUserNumber();
   await includeHTML();
   await loadPreviousMember();
   await loadCurrentUserData();
-  await renderContacts(); 
-  await renderActiveMemberIcons(); 
+  await renderContacts();
+  await renderActiveMemberIcons();
   includeHTML();
   prioMediumOnLoad();
   futureDate();
@@ -17,7 +17,6 @@ async function initAddTask() {
   openBurgerMenu();
   openBurgerMenuMobile();
 }
-
 
 async function renderContacts() {
   contacts = value[currentUserNumber].contacts;
@@ -259,14 +258,14 @@ function buttonLow() {
 function toggleAccordionCatergory(element) {
   let accordionContent = element.nextElementSibling;
   if (accordionContent.style.maxHeight) {
-      accordionContent.style.maxHeight = null;
+    accordionContent.style.maxHeight = null;
   } else {
-      // Schließen aller geöffneten Akkordeons
-      let allAccordionContents = document.querySelectorAll('.accordion-content');
-      allAccordionContents.forEach(content => {
-          content.style.maxHeight = null;
-      });
-      accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+    // Schließen aller geöffneten Akkordeons
+    let allAccordionContents = document.querySelectorAll(".accordion-content");
+    allAccordionContents.forEach((content) => {
+      content.style.maxHeight = null;
+    });
+    accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
   }
 }
 
@@ -290,8 +289,8 @@ async function addNewAddTask() {
   let assigned = selectedContacts;
   let dueDate = document.getElementById("input_date").value;
   let prio = button;
-  let category = document.getElementById('category').value;
-  let subtasks = inputValues; 
+  let category = document.getElementById("category").value;
+  let subtasks = inputValues;
   let status = currentStatus;
 
   let subtasksData = subtasks.map((subtask, index) => ({
@@ -314,29 +313,29 @@ async function addNewAddTask() {
 
   try {
     let latestEntry =
-      currentUserData[0].newAddTask[currentUserData[0].newAddTask.length - 1]
-        .id;
+      currentUserData[currentUserNumber].newAddTask[
+        currentUserData[currentUserNumber].newAddTask.length - 1
+      ].id;
     taskId = latestEntry;
     await addAddTaskToUserData(newAddTask);
-    setTimeout(function(){
+    setTimeout(function () {
       window.location.href = "board.html";
-  }, 1000);
+    }, 1000);
   } catch (error) {
     await addAddTaskToUserData(newAddTask);
-    setTimeout(function(){
+    setTimeout(function () {
       window.location.href = "board.html";
-  }, 1000);
+    }, 1000);
   }
 }
 
 async function addAddTaskToUserData(newAddTask) {
-  if (!currentUserData[0].newAddTask) {
-    currentUserData[0].newAddTask = []; // Wenn newAddTask noch nicht existiert, erstelle ein neues Array
+  if (!value[currentUserNumber].newAddTask) {
+    value[currentUserNumber].newAddTask = [];
   }
   newAddTask.id = taskId + 1;
-  currentUserData[0].newAddTask.push(newAddTask);
-  setItem("users", currentUserData);
-  
+  value[currentUserNumber].newAddTask.push(newAddTask);
+  updateItem("users", value);
 }
 
 function clickInputSubTask() {

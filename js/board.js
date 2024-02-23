@@ -209,7 +209,7 @@ function moveTodo(todoIndex, direction) {
   todos[todoIndex].status = targetColumn;
 
   // Aktualisieren der Anzeige
-  setItem("users", currentUserData);
+  updateItem("users", todos[todoIndex]);
   updateHTML();
 }
 
@@ -251,7 +251,7 @@ function changeStatus(id, status) {
 
     formFix[0].newAddTask = [];
     formFix[0].newAddTask = currentStatusArray;
-    setItem("users", formFix);
+    updateItem("users", formFix);
   } else {
     console.log("currentDraggedElement is null");
   }
@@ -471,7 +471,7 @@ function dataToBackend(todoIndex) {
   todos[todoIndex].subtasks = subtasksData;
   todos[todoIndex].assigned_to = assigned;
 
-  setItem("users", currentUserData);
+  updateItem("users", todos[index]);
   updateHTML();
   closeDialog();
 }
@@ -480,7 +480,7 @@ function deleteTodo(todoIndex) {
   const index = todos[todoIndex];
   if (index !== -1) {
     todos.splice(todoIndex, 1); // Entferne das Todo aus dem Array
-    setItem("users", currentUserData);
+    updateItem("users", todos);
     updateHTML(); // Aktualisiere die Anzeige
     closeDialog();
   }
@@ -535,7 +535,7 @@ function renderProgressBar(todoIndex) {
 function updateSubtaskStatus(todoIndex, subtaskIndex, isChecked) {
   let holeValue = value[currentUserNumber];
   holeValue.newAddTask[todoIndex].subtasks[subtaskIndex].completed = isChecked;
-  setItem("users", value);
+  updateItem("users", value);
   renderProgressBar(todoIndex);
 }
 

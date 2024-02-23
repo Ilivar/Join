@@ -121,7 +121,7 @@ function addContactToUserData(newContact) {
 
   currentUserData[0].contacts.push(newContact);
 
-  setItem("users", currentUserData);
+  updateItem("users", currentUserData);
 }
 
 function addNewContact() {
@@ -212,7 +212,7 @@ function delContact() {
   let contact = document.getElementById("details_email").innerHTML;
   let contactIndex = contacts.findIndex((c) => c.email === contact);
   contacts.splice(contactIndex, 1);
-  setItem("users", currentUserData);
+  updateItem("users", currentUserData);
   closeEditContact();
   renderContacts();
   document.getElementById("details_container").innerHTML = "";
@@ -226,7 +226,7 @@ function editContact() {
   contactToEdit.email = document.getElementById("edit_input_email").value;
   contactToEdit.phone = document.getElementById("edit_input_phone").value;
   document.getElementById("details_container").innerHTML = "";
-  setItem("users", currentUserData);
+  updateItem("users", currentUserData);
   closeEditContact();
   renderContacts();
   closeDetailMobile();
