@@ -819,7 +819,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 28px;
-    margin-left: 20px;
+    margin-left: 0px;
   }
 
   .summary_headline {
@@ -897,7 +897,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 14px;
-    margin-left: 10px;
+    ;
   }
   
   
