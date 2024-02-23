@@ -70,23 +70,20 @@ function countOccurences(status) {
 }
 
 function findUrgentTasks() {
-try {
-    value.forEach((value) => {
-      if (value.newAddTask) {
-        value.newAddTask.forEach((task) => {
-          if (task.prio === "Urgent") {
-            urgentTasks.push(task);
-          }
-        });
-      }
-    });
-    // return urgentTasks;
+  try {
+    let currentValue = value[currentUserNumber];
+    if (currentValue && currentValue.newAddTask) {
+      currentValue.newAddTask.forEach((task) => {
+        if (task.prio === "Urgent") {
+          urgentTasks.push(task);
+        }
+      });
+    }
+    return urgentTasks;
   } catch {
     console.log("No tasks yet!");
   }
 }
-
-
 
 function greetUser() {
   let now = new Date();
