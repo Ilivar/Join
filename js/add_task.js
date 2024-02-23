@@ -219,7 +219,7 @@ function prioMediumOnLoad() {
 function buttonUrgent() {
   setActiveButton(
     "buttonUrgent",
-    "../assets/img/prioalta.svg",
+    "../assets/img/Prioalta.svg",
     "rgba(255, 61, 0, 1)"
   );
 }
