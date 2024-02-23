@@ -142,7 +142,6 @@ function generateTodoHTML(element, i) {
           <div class="d_flex">
             <div class="category" style="background-color: ${categoryBackgroundColor};">${element["category"]}</div>
             <div class="move-buttons">
-           
           </div>
           </div>
           <p class="invis">${element["id"]}</p>
