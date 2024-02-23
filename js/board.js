@@ -21,7 +21,6 @@ async function init() {
   await renderUserInitial();
   await openBurgerMenu();
   await openBurgerMenuMobile();
-  resetIDs();
 }
 
 async function openAddTask() {
@@ -42,6 +41,7 @@ function closeAddTask() {
   document.getElementById("overlayAddTask").style.display = "none";
   document.getElementById('overlay').innerHTML = ``;
   // document.getElementById("overlayAddTask").remove();
+  resetIDs();
 }
 
 function AddTaskToDo(drag_to_do) {
