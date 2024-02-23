@@ -116,7 +116,6 @@ function updateHTML() {
   }
 
   initRenderProgressBar();
-  resetIDs();
 }
 
 function initRenderProgressBar() {
@@ -126,11 +125,11 @@ function initRenderProgressBar() {
 }
 
 function startDragging(id) {
-  resetIDs();
   currentDraggedElement = id;
 }
 
 function generateTodoHTML(element, i) {
+  resetIDs();
   const prioImage = displayImagePrio(element["prio"]);
   const categoryBackgroundColor = backgroundColorCategory(element.category);
 
