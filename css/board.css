@@ -670,7 +670,7 @@ body {
     }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1350px) {
 
     .display_none_media_1000 {
         display: none;
@@ -678,7 +678,7 @@ body {
 }
 
 
-@media (max-width: 1000px) {
+@media (max-width: 1350px) {
 
     .board_background_color {
         overflow: auto;
@@ -701,7 +701,7 @@ body {
     .user_story_content {
         flex-direction: column;
         display: flex;
-        width: 100%;
+        width: 800px;
         height: 62%;
         padding: 0px 0px;
         align-items: flex-start;
@@ -717,7 +717,7 @@ body {
     .drag-area {
         display: flex;
         height: 100%;
-        width: 270px;
+        width: 100%;
         background-color: transparent;
         overflow: auto;
         min-height: 310px;
@@ -896,4 +896,71 @@ body {
     z-index: 1;
 } */
 
+}
+
+
+@media (max-width: 1050px) {
+
+    .user_story_content {
+        flex-direction: column;
+        display: flex;
+        width: 550px;
+        height: 62%;
+        padding: 0px 0px;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 26px;
+        flex-shrink: 0;
+        margin-top: 15px;
+    }
+
+    .drag-area {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        background-color: transparent;
+        overflow: auto;
+        min-height: 310px;
+        overflow-y: hidden;
+        /* Transparente Hintergrundfarbe */
+        border: none;
+        gap: 10px;
+        margin-left: 10px;
+        /* Keine Grenzen */
+        /* margin-bottom: 50px; */
+        /* position: relative; */
+    }
+}
+
+@media (max-width: 580px) {
+
+    .user_story_content {
+        flex-direction: column;
+        display: flex;
+        width: 300px;
+        height: 62%;
+        padding: 0px 0px;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 26px;
+        flex-shrink: 0;
+        margin-top: 15px;
+    }
+
+    .drag-area {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        background-color: transparent;
+        overflow: auto;
+        min-height: 310px;
+        overflow-y: hidden;
+        /* Transparente Hintergrundfarbe */
+        border: none;
+        gap: 10px;
+        margin-left: 10px;
+        /* Keine Grenzen */
+        /* margin-bottom: 50px; */
+        /* position: relative; */
+    }
 }
