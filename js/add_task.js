@@ -13,9 +13,9 @@ async function initAddTask() {
   includeHTML();
   prioMediumOnLoad();
   futureDate();
-  renderUserInitial();
-  openBurgerMenu();
-  openBurgerMenuMobile();
+  await renderUserInitial();
+  await openBurgerMenu();
+  await openBurgerMenuMobile();
 }
 
 async function renderContacts() {

@@ -1,43 +1,42 @@
 let currentDraggedElement;
 let currentStatusValue;
-
+let totalSubtasks;
 let todos = [];
 
 let iconColors = [];
-
-
 
 function updateToDoArray() {
   todos = value[currentUserNumber].newAddTask;
 }
 
 async function init() {
-  await getCurrentUserNumber()
+  await getCurrentUserNumber();
   await includeHTML();
   await loadPreviousMember();
   await loadCurrentUserData();
   updateToDoArray();
   updateHTML();
-  renderUserInitial();
+  await renderUserInitial();
+  await openBurgerMenu();
+  await openBurgerMenuMobile();
 }
 
 async function openAddTask() {
-  
-  document.getElementById('overlay').innerHTML = `
+  document.getElementById("overlay").innerHTML = `
   <div id="overlayAddTask" w3-include-html="../assets/templates/add_task_template.html"></div>`;
   document.getElementById("overlayAddTask").style.display = "flex";
-     await includeHTML();
-    setTimeout(function(){
-      contacts = value[currentUserNumber].contacts;
-      prioMediumOnLoad();
-      futureDate();
-      renderContacts();
-    }, 1000);
-  }
+  await includeHTML();
+  setTimeout(function () {
+    contacts = value[currentUserNumber].contacts;
+    prioMediumOnLoad();
+    futureDate();
+    renderContacts();
+  }, 1000);
+}
 
 function closeAddTask() {
   document.getElementById("overlayAddTask").style.display = "none";
-  document.getElementById('overlay').innerHTML = ``;
+  document.getElementById("overlay").innerHTML = ``;
   // document.getElementById("overlayAddTask").remove();
 }
 
@@ -115,8 +114,8 @@ function updateHTML() {
       addNameLetters(contactsboard, i);
     }
   }
+
   initRenderProgressBar();
-  
 }
 
 function initRenderProgressBar() {
@@ -130,11 +129,12 @@ function startDragging(id) {
 }
 
 function generateTodoHTML(element, i) {
+  resetIDs();
   const prioImage = displayImagePrio(element["prio"]);
   const categoryBackgroundColor = backgroundColorCategory(element.category);
 
   return `
-    <div class="drag_div_height" draggable="true" ondragstart="startDragging(${element['id']})">
+    <div class="drag_div_height" draggable="true" ondragstart="startDragging(${element["id"]})">
     <button class="z_index display_none_media_1000" onclick="moveTodo(${i}, 'up')">↑</button>
     <button class="z_index display_none_media_1000" onclick="moveTodo(${i}, 'down')">↓</button>
       <div class="task_content" onclick="openDialog(${i})">
@@ -177,15 +177,22 @@ function generateTodoHTML(element, i) {
 function moveTodo(todoIndex, direction) {
   // Richtung überprüfen (hoch oder runter)
   if (direction !== "up" && direction !== "down") {
-    console.error("Ungültige Richtung angegeben. Bitte geben Sie 'up' oder 'down' an.");
+    console.error(
+      "Ungültige Richtung angegeben. Bitte geben Sie 'up' oder 'down' an."
+    );
     return;
   }
 
   // Spalten des Kanban-Boards definieren
-  const columns = ["drag_to_do", "drag_in_progress", "drag_await_feedback", "drag_done"];
+  const columns = [
+    "drag_to_do",
+    "drag_in_progress",
+    "drag_await_feedback",
+    "drag_done",
+  ];
 
   // Index der aktuellen Spalte und Todo
-  const currentColumnIndex = columns.findIndex(column => {
+  const currentColumnIndex = columns.findIndex((column) => {
     return todos[todoIndex].status === column;
   });
 
@@ -358,11 +365,10 @@ function openDialog(todoIndex) {
 }
 
 async function openDialogEdit(todoIndex) {
-  
   const todo = todos[todoIndex];
-  let newtitle = document.getElementById('title').innerHTML;
-  let description = document.getElementById('description').innerHTML;
-  let due_date = document.getElementById('dialogDueDate').innerHTML;
+  let newtitle = document.getElementById("title").innerHTML;
+  let description = document.getElementById("description").innerHTML;
+  let due_date = document.getElementById("dialogDueDate").innerHTML;
 
   document.getElementById("todo_HTML").style.display = "flex";
   document.getElementById("close_dialog").style.display = "none";
@@ -431,34 +437,28 @@ async function openDialogEdit(todoIndex) {
   document.getElementById("description").value = description;
   document.getElementById("input_date").value = due_date;
 
-  
-
-  
   contacts = value[currentUserNumber].contacts;
   await renderContacts();
   prioMediumOnLoad();
   futureDate();
-  renderSubTask()
-
-  
- 
+  renderSubTask();
 }
 
 function dataToBackend(todoIndex) {
-  let newtitle = document.getElementById('input_title').value;
-  let description = document.getElementById('description').value;
-  let due_Date = document.getElementById('input_date').value;
+  let newtitle = document.getElementById("input_title").value;
+  let description = document.getElementById("description").value;
+  let due_Date = document.getElementById("input_date").value;
   let button = activeButton.replace("button", "");
   let prioButton = button;
   const selectedContacts = renderActiveMemberIcons();
   let assigned = selectedContacts;
-  let subtasks = inputValues; 
+  let subtasks = inputValues;
   let subtasksData = subtasks.map((subtask, index) => ({
     id: index + 1,
     title: subtask,
     completed: false,
   }));
- 
+
   todos[todoIndex].title = newtitle;
   todos[todoIndex].description = description;
   todos[todoIndex].due_date = due_Date;
@@ -479,7 +479,6 @@ function deleteTodo(todoIndex) {
     updateItem("users", todos);
     updateHTML(); // Aktualisiere die Anzeige
     closeDialog();
-    
   }
 }
 
@@ -510,9 +509,8 @@ function renderSubtasks(todoIndex) {
 
 function renderProgressBar(todoIndex) {
   try {
-    const totalSubtasks = todos[todoIndex].subtasks.length;
+    totalSubtasks = todos[todoIndex].subtasks.length;
     let completedSubtasks = 0;
-
     todos[todoIndex].subtasks.forEach((subtask) => {
       if (subtask.completed) {
         completedSubtasks++;
@@ -528,6 +526,11 @@ function renderProgressBar(todoIndex) {
 
     const progressText = document.getElementById("progress_text" + todoIndex);
     progressText.textContent = `${completedSubtasks}/${totalSubtasks} Subtask`;
+
+    if (totalSubtasks == 0) {
+      document.getElementById("over_progressbar" + todoIndex).style.display =
+        "none";
+    }
   } catch {
     document.getElementById("over_progressbar" + todoIndex).style.display =
       "none";
@@ -544,9 +547,9 @@ function updateSubtaskStatus(todoIndex, subtaskIndex, isChecked) {
 function closeDialog() {
   document.getElementById("close_dialog").innerHTML = "";
   document.getElementById("todo_HTML").style.display = "none";
-  let editDialog = document.getElementById('edit_dialog');
+  let editDialog = document.getElementById("edit_dialog");
   if (editDialog) {
-    document.getElementById('edit_dialog').innerHTML = ``;
+    document.getElementById("edit_dialog").innerHTML = ``;
   }
 }
 
@@ -590,14 +593,11 @@ function filterTodosTitle() {
     .value.trim()
     .toLowerCase();
 
-    let searchTextMedia = document
+  let searchTextMedia = document
     .getElementById("filter_input_media")
     .value.trim()
     .toLowerCase();
 
-
-
-    
   // Leeren Sie den HTML-Inhalt aller Spalten
   const dragColumns = [
     "drag_to_do",
@@ -654,15 +654,11 @@ function filterTodosTitle() {
 }
 
 function filterTodosTitleMedia() {
-
-    let searchTextMedia = document
+  let searchTextMedia = document
     .getElementById("filter_input_media")
     .value.trim()
     .toLowerCase();
 
-
-
-    
   // Leeren Sie den HTML-Inhalt aller Spalten
   const dragColumns = [
     "drag_to_do",

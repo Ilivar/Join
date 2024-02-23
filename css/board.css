@@ -367,15 +367,22 @@ body {
 
 
 .drag-area {
-    height: 100%;
+    overflow: auto;
+    height: 562px;
     width: 252px;
     background-color: transparent;
     /* Transparente Hintergrundfarbe */
     border: none;
     /* Keine Grenzen */
-    margin-bottom: 50px;
+    margin-bottom: 0px;
     /* position: relative; */
 }
+
+/* ::-webkit-scrollbar {
+    background: transparent;
+    width: 0;
+  } */
+  
 
 .drag-area-highlight {
     background-color: rgba(0, 0, 0, 0.05);
@@ -682,7 +689,7 @@ body {
 
     .board_background_color {
         overflow: auto;
-        height: calc(100vh - 80px);
+        height: calc(100vh - 0px);
         background: #F6F7F8;
         width: 100%;
     }
@@ -876,10 +883,14 @@ body {
     }
 
 
-    #mobile_header{
+    #mobile_header {
         z-index: 1;
-      }
-    
+    }
+
+    .drag-area-highligh {
+        border-radius: 0px;
+    }
+
 
     /* #footer{
     margin-{top: 100px !important;
@@ -930,6 +941,10 @@ body {
         /* margin-bottom: 50px; */
         /* position: relative; */
     }
+
+    .drag-area-highligh {
+        border-radius: 0px;
+    }
 }
 
 @media (max-width: 580px) {
@@ -962,5 +977,9 @@ body {
         /* Keine Grenzen */
         /* margin-bottom: 50px; */
         /* position: relative; */
+    }
+
+    .drag-area-highligh {
+        border-radius: 0px;
     }
 }

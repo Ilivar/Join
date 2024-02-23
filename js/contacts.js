@@ -7,9 +7,9 @@ async function init() {
   await loadCurrentUserData();
   await renderContacts();
   renderCurrentUserDataBlock();
-  renderUserInitial();
-  openBurgerMenu();
-  openBurgerMenuMobile();
+  await renderUserInitial();
+  await openBurgerMenu();
+  await openBurgerMenuMobile();
 }
 
 function openNewContact() {

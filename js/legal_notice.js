@@ -1,8 +1,9 @@
 async function init(){
+    getCurrentUserNumber()
     await includeHTML();
     await loadPreviousMember();
     await loadCurrentUserData();
-    renderUserInitial();
-    openBurgerMenu();
-    openBurgerMenuMobile();
+    await renderUserInitial();
+    await openBurgerMenu();
+    await openBurgerMenuMobile();
  }

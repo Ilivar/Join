@@ -17,7 +17,7 @@
   --hover: #f4f4f4;
 }
 
-html{
+html {
   height: 100vh;
 }
 
@@ -200,7 +200,6 @@ h2 {
   display: flex;
   width: 100%;
   gap: 30px;
-  /* border: 2px solid blue; */
 }
 
 .title {
@@ -260,7 +259,6 @@ h2 {
 }
 
 .contact_member {
-  /* border: 2px solid rebeccapurple; */
   width: 350px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -320,6 +318,7 @@ h2 {
   font-weight: 400;
   cursor: pointer;
 }
+
 #del_button_edit:hover {
   color: #29abe2;
   scale: 1.1;
@@ -431,7 +430,7 @@ h2 {
   color: #7e7cee;
 }
 
-#contacts_icon_mobile_block{
+#contacts_icon_mobile_block {
   display: none;
 }
 
@@ -448,16 +447,18 @@ h2 {
     width: 90%;
   }
 
-
   .headline_metrics {
     display: none;
   }
+
   #details_name_area {
     width: 100%;
   }
+
   #details_name_icon {
     scale: 0.5;
   }
+
   #details_name {
     font-size: 36px;
   }
@@ -516,7 +517,6 @@ h2 {
   .contact_member {
     width: 100%;
     height: calc(100vh - 260px);
-  
   }
 
   .contact-group {
@@ -525,30 +525,29 @@ h2 {
     justify-content: center;
   }
 
-  .text_right{
+  .text_right {
     display: none;
   }
 
- #details_container{
-  margin-top: 8px;
-  height: calc(100vh - 160px);
-  margin-left: 16px;
+  #details_container {
+    margin-top: 8px;
+    height: calc(100vh - 160px);
+    margin-left: 16px;
+  }
 
- }
-
-  #details_name{
+  #details_name {
     line-height: 40px;
   }
 
-#details_name_icon{
-  width: 80px!important;
-  height: 80px!important;
-  scale: initial;
-}
+  #details_name_icon {
+    width: 80px !important;
+    height: 80px !important;
+    scale: initial;
+  }
 
-#details_name_area{
-  gap:10px;
-}
+  #details_name_area {
+    gap: 10px;
+  }
 
   #contact_info span {
     color: #000;
@@ -576,7 +575,7 @@ h2 {
     margin-left: 200px;
   }
 
-  #contacts_icon_mobile_arrow{
+  #contacts_icon_mobile_arrow {
     margin-right: 16px;
   }
 
@@ -593,10 +592,7 @@ h2 {
     background: #f6f7f8;
   }
 
-  .input_field_mobile{
-    font-size: 16px!important;
+  .input_field_mobile {
+    font-size: 16px !important;
   }
-
-
-  
 }
