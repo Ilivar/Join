@@ -115,11 +115,11 @@ function addNameLetters() {
 }
 
 function addContactToUserData(newContact) {
-  if (!currentUserData[0].contacts) {
-    currentUserData[0].contacts = [];
+  if (!value[currentUserNumber].contacts) {
+    value[currentUserNumber].contacts = [];
   }
 
-  currentUserData[0].contacts.push(newContact);
+  value[currentUserNumber].contacts.push(newContact);
 
   updateItem("users", currentUserData);
 }
