@@ -264,6 +264,10 @@ function replaceToUserStory() {
   heading.textContent = "User Story";
 }
 
+function clearTask() {
+  location.reload();
+}
+
 let taskId = -1;
 
 async function addNewAddTask() {

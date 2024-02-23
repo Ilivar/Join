@@ -521,6 +521,8 @@ body {
 
 
   .todo_main {
+    scale: 1.5;
+    margin-top: 100px;
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -887,6 +889,8 @@ body {
 
 
   .todo_main {
+    scale: 1.1;
+    margin-top: 50px;
     display: flex;
     width: 100%;
     flex-direction: column;

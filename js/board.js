@@ -213,8 +213,6 @@ function moveTodo(todoIndex, direction) {
   updateHTML();
 }
 
-
-
 function updateSubtaskStatus(subtaskIndex, isChecked) {
   if (subtaskIndex >= 0 && subtaskIndex < subtasks.length) {
     subtasks[subtaskIndex].completed = isChecked;
@@ -317,9 +315,9 @@ function openDialog(todoIndex) {
       <div id="subtask_list"> </div>
       
       <div class="dialog_delete_edit">
-        <div onclick="deleteTodo(${todoIndex})"><img src="../assets/img/property_1=delete.svg" alt="">delete</div> 
+        <div class="cursor_pointer" onclick="deleteTodo(${todoIndex})"><img src="../assets/img/property_1=delete.svg" alt="">delete</div> 
         <img src="../assets/img/vector_delete_edit.svg" alt="" >
-        <div onclick="openDialogEdit(${todoIndex})"><img src="../assets/img/property_1=edit.svg" alt="">edit</div>
+        <div class="cursor_pointer" onclick="openDialogEdit(${todoIndex})"><img src="../assets/img/property_1=edit.svg" alt="">edit</div>
     </div>
   `;
 
@@ -357,10 +355,6 @@ function openDialog(todoIndex) {
   addNameLettersForDialog(contactsboard, todoIndex);
   renderSubtasks(todoIndex);
 }
-
-////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////
 
 async function openDialogEdit(todoIndex) {
   
