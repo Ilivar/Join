@@ -116,6 +116,7 @@ function updateHTML() {
     }
   }
   initRenderProgressBar();
+  
 }
 
 function initRenderProgressBar() {
@@ -209,7 +210,7 @@ function moveTodo(todoIndex, direction) {
   todos[todoIndex].status = targetColumn;
 
   // Aktualisieren der Anzeige
-  updateItem("users", todos[todoIndex]);
+  updateItem("users", todos);
   updateHTML();
 }
 
@@ -247,8 +248,8 @@ function changeStatus(id, status) {
       value[currentUserNumber].newAddTask.push(updatedArray[i]);
     }
 
-    formFix[0].newAddTask = [];
-    formFix[0].newAddTask = currentStatusArray;
+    formFix[currentUserNumber].newAddTask = [];
+    formFix[currentUserNumber].newAddTask = currentStatusArray;
     updateItem("users", formFix);
   } else {
     console.log("currentDraggedElement is null");
@@ -465,7 +466,7 @@ function dataToBackend(todoIndex) {
   todos[todoIndex].subtasks = subtasksData;
   todos[todoIndex].assigned_to = assigned;
 
-  updateItem("users", todos[index]);
+  updateItem("users", todos);
   updateHTML();
   closeDialog();
 }
@@ -474,12 +475,19 @@ function deleteTodo(todoIndex) {
   const index = todos[todoIndex];
   if (index !== -1) {
     todos.splice(todoIndex, 1); // Entferne das Todo aus dem Array
+    resetIDs();
     updateItem("users", todos);
     updateHTML(); // Aktualisiere die Anzeige
     closeDialog();
+    
   }
 }
 
+function resetIDs() {
+  for (let i = 0; i < todos.length; i++) {
+    todos[i].id = i;
+  }
+}
 
 function renderSubtasks(todoIndex) {
   const subtaskList = document.getElementById("subtask_list");

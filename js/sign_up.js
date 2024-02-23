@@ -3,7 +3,6 @@ async function init() {
   await loadCurrentUserData();
 }
 
-
 async function createNewMember(event) {
   event.preventDefault();
   let name = document.getElementById("input_name").value;
@@ -26,7 +25,7 @@ async function createNewMember(event) {
     };
     await loadPreviousMember();
     isUserNew(user, email);
-    // createSampleTasks(user);
+    createSampleTasks(user);
   }
 }
 
@@ -40,40 +39,35 @@ async function createSampleTasks(user) {
     prio: "Urgent",
     category: "User Story",
     subtasks: "",
-    status: "drag_in_progress"
-  }
+    status: "drag_in_progress",
+  };
   addSampleToData(sampleTasks);
 }
 
 async function addSampleToData(sampleTasks) {
-  await loadPreviousMember();
-  await loadCurrentUserData();
-  if (!value[0].newAddTask) {
-    value[0].newAddTask = [];
-  }
-  value[0].newAddTask.push(sampleTasks);
-  setItem("users", currentUserData);
-  addNewSampleContact();
+  let valueLength = (value.length)-1;
+  value[valueLength].newAddTask = [];
+  value[valueLength].newAddTask.push(sampleTasks);
+  addNewSampleContact(valueLength);
 }
 
-function addSampleContactToUserData(newContact) {
-  if (!value[0].contacts) {
-    value[0].contacts = [];
+function addSampleContactToUserData(newContact, valueLength) {
+  if (!value[valueLength].contacts) {
+    value[valueLength].contacts = [];
   }
 
-  value[0].contacts.push(newContact);
+  value[valueLength].contacts.push(newContact);
 
-  setItem("users", currentUserData);
+  updateItem("users", value);
 }
 
-function addNewSampleContact() {
-
+function addNewSampleContact(valueLength) {
   const newContact = {
-    name: value[0].name,
-    email: value[0].email,
-    phone: '-',
+    name: value[valueLength].name,
+    email: value[valueLength].email,
+    phone: "-",
   };
-  addSampleContactToUserData(newContact);
+  addSampleContactToUserData(newContact , valueLength);
 }
 
 async function isUserNew(user, email) {
@@ -95,4 +89,3 @@ function signInSuccess() {
     window.location.href = "index.html";
   }, 2000);
 }
-
