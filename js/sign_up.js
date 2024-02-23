@@ -26,7 +26,7 @@ async function createNewMember(event) {
     };
     await loadPreviousMember();
     isUserNew(user, email);
-    createSampleTasks(user);
+    // createSampleTasks(user);
   }
 }
 

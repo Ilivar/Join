@@ -7,7 +7,6 @@ let currentUser;
 let currentUserData = [];
 let currentUserNumber;
 
-
 async function includeHTML() {
   var z, i, elmnt, file, xhttp;
   /* Loop through a collection of all HTML elements: */
@@ -55,7 +54,7 @@ async function renderUserInitial() {
 
 function openBurgerMenu() {
   let burgerMenuDisplay = document.getElementById("burger_menu").style.display;
-  if (burgerMenuDisplay=== "none") {
+  if (burgerMenuDisplay === "none") {
     document.getElementById("burger_menu").style.display = "flex";
   } else {
     document.getElementById("burger_menu").style.display = "none";
@@ -63,7 +62,8 @@ function openBurgerMenu() {
 }
 
 function openBurgerMenuMobile() {
-  let burgerMenuMobile = document.getElementById("burger_menu_mobile").style.display;
+  let burgerMenuMobile =
+    document.getElementById("burger_menu_mobile").style.display;
   if (burgerMenuMobile === "none") {
     document.getElementById("burger_menu_mobile").style.display = "flex";
   } else {
@@ -86,6 +86,15 @@ async function setItem(key, value) {
 async function getItem() {
   const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
   return fetch(url).then((res) => res.json());
+}
+
+async function updateItem(key ,updatedItem) {
+  let currentArray = value;
+
+  const index = currentArray.findIndex((item) => item.key === key);
+  currentArray[index] = { ...currentArray[index], ...updatedItem };
+
+  await setItem(key, currentArray);
 }
 
 async function loadPreviousMember() {
@@ -116,7 +125,7 @@ async function findUserByEmail(emailToFind) {
   }
 }
 
-async function getCurrentUserNumber(){
- currentUserNumber = localStorage.getItem("currentUserNumber");
- currentUserNumber = parseInt(currentUserNumber);
+async function getCurrentUserNumber() {
+  currentUserNumber = localStorage.getItem("currentUserNumber");
+  currentUserNumber = parseInt(currentUserNumber);
 }
