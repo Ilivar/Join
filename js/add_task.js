@@ -111,7 +111,7 @@ function changeColorClickContact(i) {
   }
 }
 
-async function renderActiveMemberIcons() {
+function renderActiveMemberIcons() {
   const activeMemberIconsDiv = document.getElementById("aktiveMemberIcons");
   if (!activeMemberIconsDiv) {
     console.error("später abchecken - aber funcktioniert erstmal");
