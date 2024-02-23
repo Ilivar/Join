@@ -632,6 +632,10 @@ body {
     align-items: center;
 }
 
+.cursor_pointer:hover {
+    cursor: pointer;
+}
+
 @media(max-width: 650px) {
 
     .dialog_content {
